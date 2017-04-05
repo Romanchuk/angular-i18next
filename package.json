@@ -1,0 +1,38 @@
+{
+  "name": "angular-i18next",
+  "version": "0.0.1",
+  "dependencies": {
+    "@angular/core": "^2.4.3",
+    "@angular/platform-browser": "^2.4.3",
+    "rxjs": "^5.2.0",
+    "zone.js": "^0.8.5", 
+    "i18next": "^5.0.0"    
+  },
+  "devDependencies": {
+    "typescript": "^2.2.1",
+    "tslint": "^5.0.0",
+    "codelyzer": "^2.1.1"
+  },
+  "main": "ng2-i18next.js",
+  "typings": "ng2-i18next.d.ts",
+  "description": "use i18next with Angular2",
+  
+  "license": "MIT",
+  "maintainers": [
+    {
+      "email": "rezety@gmail.com",
+      "name": "Sergey Romanchuk"
+    }
+  ], 
+  "author": {
+    "name": "Sergey Romanchuk"
+  },
+  "peerDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Romanchuk/angular-i18next.git"
+  },
+  "scripts": {
+    
+  }
+}
