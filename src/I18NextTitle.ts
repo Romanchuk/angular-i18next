@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Injectable, Inject } from '@angular/core';
+import { Title, DOCUMENT } from '@angular/platform-browser';
 import { I18NextPipe } from './I18NextPipe';
 
 @Injectable()
 export class I18NextTitle extends Title {
-   constructor(private i18nextPipe: I18NextPipe) {
-    super();
+   constructor(private i18nextPipe: I18NextPipe, @Inject(DOCUMENT) doc) {
+    super(doc);
    }
 
    setTitle(value: string) {

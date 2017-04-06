@@ -7,5 +7,7 @@ Thumbs.db
 # Ignored files
 *.ts
 !*.d.ts
+# IDE files
+.vscode
 # Source files
 src

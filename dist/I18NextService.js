@@ -16,7 +16,6 @@ var I18NextService = (function () {
         enumerable: true,
         configurable: true
     });
-    ;
     I18NextService.prototype.use = function (plugin) {
         i18next.use(plugin);
         return this;

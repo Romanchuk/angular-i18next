@@ -16,7 +16,7 @@ export class I18NextService {
 
     get options(): any {
         return i18next.options;
-    };
+    }
 
     private i18nextPromise: Promise<void>;
 
