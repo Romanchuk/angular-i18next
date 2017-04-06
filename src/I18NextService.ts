@@ -5,7 +5,7 @@ import {
 
 import { I18NextEvents } from './I18NextEvents';
 
-const i18next = require('i18next/index');
+import * as i18next from 'i18next/index';
 
 @Injectable()
 export class I18NextService {

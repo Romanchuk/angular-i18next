@@ -7,9 +7,11 @@
     "experimentalDecorators": true,
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
+    "declaration": true,
     "noEmitHelpers": true,
     "strictNullChecks": false,
     "baseUrl": "./src",
+    "outDir": "./dist",
     "paths": {
     },
     "lib": [
@@ -17,13 +19,7 @@
       "es6"
     ],
     "types": [
-      "hammerjs",
-      "jasmine",
-      "node",
-      "selenium-webdriver",
-      "source-map",
-      "uglify-js",
-      "webpack"
+     
     ]
   },
   "exclude": [
