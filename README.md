@@ -112,6 +112,7 @@ i18next.use(i18nextXHRBackend)
 
 
 ### Initialize i18next before angular application
+Angular would not load until i18next initilize event fired
 ```typescript
 const PROVIDERS = [
   {
