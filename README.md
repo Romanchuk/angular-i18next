@@ -137,7 +137,7 @@ export class AppModule {}
 
 
 
-### Document title change on i18next before angular application
+### Document title update on language or route change
 
 
 ```typescript
