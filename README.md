@@ -33,7 +33,7 @@ import { I18NextModule } from 'i18next';
 export class AppModule {}
 
 ```
-3. Inject I18NextService and call "init" method. Best option to do it <a id="app-init">before angular initialized</a>
+3. Inject I18NextService and call "init" method. Best option to do it before angular initialized [app-init]
 
 ```typescript
 (i18next: I18NextService) => () => {
