@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 import { I18NextService } from './I18NextService';
-import { I18NEXT_NAMESPACE, I18NEXT_SCOPE } from './I18NEXT_CONSTANTS';
+import { I18NEXT_NAMESPACE, I18NEXT_SCOPE } from './I18NEXT_TOKENS';
 import { I18NextPipe } from './I18NextPipe';
 
 @Injectable()
