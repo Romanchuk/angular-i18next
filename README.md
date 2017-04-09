@@ -12,9 +12,10 @@ i18next integration with angular 2.0+
 
 # Instalation
 
+1. Install package
     npm install angular-i18next --save
 
-Import I18NextModule to AppModule
+2. Import I18NextModule to AppModule
 
 ```typescript
 
@@ -32,7 +33,13 @@ import { I18NextModule } from 'i18next';
 export class AppModule {}
 
 ```
+3. Inject I18NextService and call "init" method. Best option to do it <a id="app-init">before angular initialized</a>
 
+```typescript
+(i18next: I18NextService) => () => {
+      return i18next.init();
+    },
+```
 
 # Usage
 
@@ -111,7 +118,7 @@ i18next.use(i18nextXHRBackend)
 
 
 
-### Initialize i18next before angular application
+### Initialize i18next before angular application (#app-init)
 Angular would not load until i18next initilize event fired
 ```typescript
 const PROVIDERS = [
