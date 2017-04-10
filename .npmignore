@@ -9,5 +9,6 @@ Thumbs.db
 !*.d.ts
 # IDE files
 .vscode
+.json
 # Source files
 src
