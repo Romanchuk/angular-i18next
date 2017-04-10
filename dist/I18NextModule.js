@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
-var I18NEXT_CONSTANTS_1 = require("./I18NEXT_CONSTANTS");
+var I18NEXT_TOKENS_1 = require("./I18NEXT_TOKENS");
 var I18NextTitle_1 = require("./I18NextTitle");
 var I18NextPipe_1 = require("./I18NextPipe");
 var I18NextCapPipe_1 = require("./I18NextCapPipe");
@@ -26,11 +26,11 @@ I18NextModule = I18NextModule_1 = __decorate([
     core_1.NgModule({
         providers: [
             {
-                provide: I18NEXT_CONSTANTS_1.I18NEXT_NAMESPACE,
+                provide: I18NEXT_TOKENS_1.I18NEXT_NAMESPACE,
                 useValue: ''
             },
             {
-                provide: I18NEXT_CONSTANTS_1.I18NEXT_SCOPE,
+                provide: I18NEXT_TOKENS_1.I18NEXT_SCOPE,
                 useValue: ''
             },
             I18NextPipe_1.I18NextPipe,
