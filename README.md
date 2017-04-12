@@ -1,21 +1,27 @@
 # angular-i18next
 i18next integration with angular 2.0+
 
+ - [Features](#features)
+ - [Instalation](#instalation)
+ - [Usage](#usage)
+ - [Cookbook](#cookbook)
+
+
 # Features
 
-- Native i18next options http://i18next.com/docs/options/#init-options
+- Native i18next [options](http://i18next.com/docs/options/#init-options)
 - Promise initialization
-- i18next plugin support http://i18next.com/docs/ownplugin/
+- [i18next plugin](http://i18next.com/docs/ownplugin/) support 
 - Events support
 - Document Title translation
 - i18next namespaces and scopes (prefixes) for angular modules and components
 
 # Instalation
 
-1. Install package
+**1.** Install package
     npm install angular-i18next --save
 
-2. Import I18NextModule to AppModule
+**2.** Import I18NextModule to AppModule
 
 ```typescript
 
@@ -33,12 +39,24 @@ import { I18NextModule } from 'i18next';
 export class AppModule {}
 
 ```
-3. Inject I18NextService and call "init" method. Best option to do it before angular initialized [app-init]
-
+**3.** Inject I18NextService to AppComponent and call "init" method (with prefered [options]( http://i18next.com/docs/options/#init-options)). Or use more [advanced initialization](#initialize-i18next-before-angular-application).
 ```typescript
-(i18next: I18NextService) => () => {
-      return i18next.init();
-    },
+
+export class AppComponent {
+
+  constructor(private i18NextService: I18NextService) {
+      return i18next.init({
+        whitelist: ['en', 'ru'],
+        fallbackLng: 'enu',
+        debug: true,
+        returnEmptyString: false,
+        ns: [
+          'translation',
+          'validation',
+          'error'          
+        ],
+      });
+  }
 ```
 
 # Usage
@@ -47,7 +65,7 @@ Use "i18next" pipe (or "i18nextCap" to capitalize translated text) to translate 
 
     <div>{{ 'test' | i18next }}</div>
 
-Passing "t options" http://i18next.com/docs/options/#t-options :
+Passing ["t options"](http://i18next.com/docs/options/#t-options):
 
     <div>{{ 'test' | i18next: { count: 5, nsSeparator: '#' } }}</div>
 
@@ -96,7 +114,7 @@ export class I18NextTitle extends Title {
 
 ```
 
-Warning: Injection of I18NextService is possible, but it would not consider I18NEXT_NAMESPACE and I18NEXT_SCOPE providers
+> **Warning:** Injection of I18NextService is possible, but it would not consider I18NEXT_NAMESPACE and I18NEXT_SCOPE providers
 
 
 # Cookbook
@@ -118,8 +136,8 @@ i18next.use(i18nextXHRBackend)
 
 
 
-### Initialize i18next before angular application (#app-init)
-Angular would not load until i18next initilize event fired
+### Initialize i18next before angular application
+Angular would not load until i18next initialize event fired
 ```typescript
 const PROVIDERS = [
   {
