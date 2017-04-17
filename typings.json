@@ -1,0 +1,5 @@
+{
+    "globalDevDependencies": {
+        "jasmine": "registry:dt/jasmine#2.5.2+20170317130948"
+    }
+}
