@@ -1,36 +1,36 @@
 {
-  "compilerOptions": {
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "sourceMap": true,
-    "declaration": true,
-    "noEmitHelpers": true,
-    "strictNullChecks": false,
-    "baseUrl": "./src",
-    "outDir": "./dist",
-    "paths": {
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "declaration": true,
+        "noEmitHelpers": true,
+        "strictNullChecks": false,
+        "baseUrl": "./src",
+        "outDir": "./dist",
+        "paths": {},
+        "lib": [
+            "dom",
+            "es2015",
+            "es2015.iterable"
+        ],
+        "types": [
+            "jasmine"
+        ]
     },
-    "lib": [
-      "dom",
-      "es6"
+    "exclude": [
+        "node_modules",
+        "dist"
     ],
-    "types": [
-     
-    ]
-  },
-  "exclude": [
-    "node_modules",
-    "dist"
-  ],
-  "awesomeTypescriptLoaderOptions": {
-    "forkChecker": true,
-    "useWebpackText": true
-  },
-  "compileOnSave": false,
-  "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+    "awesomeTypescriptLoaderOptions": {
+        "forkChecker": true,
+        "useWebpackText": true
+    },
+    "compileOnSave": false,
+    "buildOnSave": false,
+    "atom": { "rewriteTsconfig": false }
 }

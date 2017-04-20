@@ -1,5 +1,5 @@
 # angular-i18next
-i18next integration with angular 2.0+
+[i18next](http://i18next.com/) integration with angular 2.0+
 
  - [Features](#features)
  - [Instalation](#instalation)

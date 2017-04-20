@@ -10,8 +10,10 @@
         "i18next": "^7.1.3"
     },
     "devDependencies": {
-        "@types/jasmine": "^2.5.47",
+        "@angular/compiler": "^4.0.2",
+        "@angular/platform-browser-dynamic": "^4.0.2",
         "codelyzer": "^2.1.1",
+        "es6-shim": "^0.35.3",
         "jasmine": "^2.5.3",
         "jasmine-core": "^2.5.2",
         "jasmine-ts": "^0.1.0",
@@ -22,11 +24,14 @@
         "karma-ie-launcher": "^1.0.0",
         "karma-jasmine": "^1.1.0",
         "karma-opera-launcher": "^1.0.0",
+        "karma-sourcemap-loader": "^0.3.7",
         "karma-typescript": "^3.0.0",
+        "karma-webpack": "^2.0.3",
         "rimraf": "^2.6.1",
         "tslint": "^5.0.0",
         "typescript": "^2.2.1",
-        "typings": "^2.1.1"
+        "typings": "^2.1.1",
+        "webpack": "^2.4.1"
     },
     "main": "./dist/index.js",
     "typings": "./dist/index.d.ts",

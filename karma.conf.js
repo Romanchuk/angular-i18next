@@ -15,10 +15,11 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            //{ pattern: "src/**/*.ts" },
+            'node_modules/es6-shim/es6-shim.min.js',
+            'karma.entry.js',
+            { pattern: "src/**/*.ts" },
             { pattern: "tests/**/*.ts" }
         ],
-
 
         // list of files to exclude
         exclude: [
@@ -29,6 +30,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
+            'karma.entry.js': ['webpack', 'sourcemap'],
             "src/**/*.ts": ["karma-typescript", "coverage"],
             "tests/**/*.ts": ["karma-typescript"]
         },
