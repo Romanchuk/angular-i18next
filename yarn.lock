@@ -32,6 +32,10 @@
   dependencies:
     tslib "^1.7.1"
 
+"@types/i18next@^2.3.38":
+  version "2.3.38"
+  resolved "https://registry.yarnpkg.com/@types/i18next/-/i18next-2.3.38.tgz#eb9bd4f579aefb7a2e86b15e2b8024edaaf4a4c9"
+
 "@types/jasmine@^2.5.53":
   version "2.5.53"
   resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-2.5.53.tgz#4e0cefad09df5ec48c8dd40433512f84b1568d61"

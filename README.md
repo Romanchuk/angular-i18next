@@ -2,7 +2,7 @@
 [i18next](http://i18next.com/) integration with angular 2.0+
 
  - [Features](#features)
- - [Instalation](#instalation)
+ - [Installation](#installation)
  - [Usage](#usage)
  - [Cookbook](#cookbook)
 
@@ -16,7 +16,7 @@
 - Document Title translation
 - i18next namespaces and scopes (prefixes) for angular modules and components
 
-# Instalation
+# Installation
 
 **1.** Install package
     npm install angular-i18next --save
