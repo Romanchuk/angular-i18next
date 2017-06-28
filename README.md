@@ -32,7 +32,7 @@
 
 ```typescript
 
-import { I18NextModule } from 'i18next';
+import { I18NextModule } from 'angular-i18next';
 
 @NgModule({
   bootstrap: [ AppComponent ],
@@ -48,6 +48,8 @@ export class AppModule {}
 ```
 **3.** Inject I18NextService to AppComponent and call "init" method (with prefered [options]( http://i18next.com/docs/options/#init-options)). Or use more [advanced initialization](#initialize-i18next-before-angular-application).
 ```typescript
+
+import { I18NextService } from 'angular-i18next';
 
 export class AppComponent {
 

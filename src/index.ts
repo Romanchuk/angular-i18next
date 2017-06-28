@@ -1,3 +1,9 @@
+export * from './I18NEXT_TOKENS';
+export * from './I18NextPipe';
+export * from './I18NextCapPipe';
+export * from './I18NextService';
+export * from './I18NextTitle';
+
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE } from './I18NEXT_TOKENS';
