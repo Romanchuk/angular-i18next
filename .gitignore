@@ -1,3 +1,29 @@
-
 node_modules
 coverage
+dist
+build
+.publish
+index.js
+index.d.ts
+index.js.map
+src/**/*.js
+src/**/*.js.map
+src/**/*.d.ts
+tests/**/*.js
+tests/**/*.js.map
+tests/**/*.d.ts
+npm-debug.log
+npm-debug.log.*
+*.metadata.json
+
+### JetBrains template
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
+*.iml
+
+## Directory-based project format:
+.idea/
+
+## File-based project format:
+*.ipr
+*.iws
+
