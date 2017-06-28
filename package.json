@@ -12,6 +12,7 @@
     "devDependencies": {
         "@angular/compiler": "^4.0.2",
         "@angular/platform-browser-dynamic": "^4.0.2",
+        "@types/jasmine": "^2.5.53",
         "codelyzer": "^2.1.1",
         "es6-shim": "^0.35.3",
         "jasmine": "^2.5.3",
@@ -29,8 +30,7 @@
         "karma-webpack": "^2.0.3",
         "rimraf": "^2.6.1",
         "tslint": "^5.0.0",
-        "typescript": "^2.2.1",
-        "typings": "^2.1.1",
+        "typescript": "~2.3.4",
         "webpack": "^2.4.1"
     },
     "main": "./dist/index.js",
