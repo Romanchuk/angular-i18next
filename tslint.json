@@ -1,5 +1,7 @@
 {
-  
+  "rulesDirectory": [
+    "./node_modules/codelyzer"
+  ],
   "rules": {
     "member-access": false,
     "member-ordering": [
@@ -55,7 +57,6 @@
     "no-shadowed-variable": true,
     "no-string-literal": false,
     "no-switch-case-fall-through": true,
-    "no-unreachable": true,
     "no-unused-expression": true,
     "no-unused-variable": false,
     "no-use-before-declare": true,

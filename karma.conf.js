@@ -1,75 +1,76 @@
-// Karma configuration
-// Generated on Mon Apr 17 2017 20:18:26 GMT+0700 (Новосибирское стандартное время)
-
-module.exports = function(config) {
+var webpack = require('webpack');
+var path = require('path');
+module.exports = function (config) {
     config.set({
-
-        // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
-
-
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['jasmine', "karma-typescript"],
-
-
-        // list of files / patterns to load in the browser
+        browsers: ['Chrome'],
+        colors: true,
+        coverageReporter: {
+            dir: './',
+            reporters: [
+                { type: 'lcov', subdir: 'coverage' }
+            ]
+        },
+        customLaunchers: {
+            Chrome_travis_ci: {
+                base: 'Chrome',
+                flags: ['--no-sandbox']
+            }
+        },
         files: [
-            'node_modules/es6-shim/es6-shim.min.js',
-            'karma.entry.js',
-            { pattern: "src/**/*.ts" },
-            { pattern: "tests/**/*.ts" }
+            'karma.entry.js'
         ],
-
-        // list of files to exclude
-        exclude: [
-
-        ],
-
-
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        frameworks: ['jasmine'],
         preprocessors: {
             'karma.entry.js': ['webpack', 'sourcemap'],
-            "src/**/*.ts": ["karma-typescript", "coverage"],
-            "tests/**/*.ts": ["karma-typescript"]
+            'src/**/*.js': ['coverage']
         },
-
-
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ["progress", "karma-typescript"],
-
-
-        // web server port
-        port: 9876,
-
-
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
-
-
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
-
-
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: true,
-
-
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['Chrome'], // 'Firefox', 'Opera', 'IE'],
-
-
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false,
-
-        // Concurrency level
-        // how many browser should be started simultaneous
-        concurrency: Infinity
-    })
-}
+        reporters: ['spec', 'coverage'],
+        singleRun: true,
+        webpack: {
+            devtool: 'inline-source-map',
+            module: {
+                rules: [
+                    {
+                        exclude: [path.resolve(__dirname, 'node_modules')],
+                        include: [
+                            path.resolve(__dirname, 'src'),
+                            path.resolve(__dirname, 'tests')
+                        ],
+                        loader: 'ts-loader',
+                        test: /.*(?!\.d\.ts)|(\.ts)$/,
+                        options: {
+                            compilerOptions: {
+                                noEmitHelpers: true
+                            }
+                        }
+                    },
+                    {
+                        exclude: [
+                            path.resolve(__dirname, 'node_modules/@angular'),
+                            path.resolve(__dirname, 'node_modules/rxjs')
+                        ],
+                        include: [
+                            path.resolve(__dirname, 'src')
+                        ],
+                        loader: 'istanbul-instrumenter-loader',
+                        test: /\.ts$/,
+                        enforce: 'post'
+                    }
+                ]
+            },
+            resolve: {
+                extensions: ['.ts', '.tsx', '.json', '.js'],
+                modules: [
+                    'node_modules'
+                ]
+            }
+        },
+        webpackServer: {
+            noInfo: true,
+            noLog: true
+        }
+    });
+    if (process.env.TRAVIS) {
+        config.browsers = ['Chrome_travis_ci'];
+    }
+};
