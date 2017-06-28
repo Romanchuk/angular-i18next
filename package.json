@@ -40,6 +40,7 @@
         "compile:es5": "npm run ngc -- -p src/tsconfig-es5.json && npm run rollup -- build/angular-i18next.js -o dist/angular-i18next.es5.js",
         "copy:assets": "npm run cpy -- \"**/*.*\" \"!**/*.js\" \"../dist\" --parents --cwd=build && npm run cpy -- src/package.json dist && npm run cpy -- README.md dist && npm run cpy -- CHANGELOG.md dist",
         "conventional-changelog": "conventional-changelog",
+        "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
         "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
         "preversion": "npm run precommit && npm run copy:assets",
         "version": "npm run changelog && git add CHANGELOG.md",
