@@ -22,6 +22,7 @@
 - Events support
 - Document Title translation
 - i18next namespaces and scopes (prefixes) for angular modules and components
+- AOT support
 
 # Installation
 
