@@ -56,7 +56,7 @@ import { I18NextService } from 'angular-i18next';
 export class AppComponent {
 
   constructor(private i18NextService: I18NextService) {
-      return i18next.init({
+      i18NextService.init({
         whitelist: ['en', 'ru'],
         fallbackLng: 'enu',
         debug: true,
