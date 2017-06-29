@@ -17,9 +17,9 @@
 
 # Features
 
-- Native i18next [options](http://i18next.com/docs/options/#init-options)
+- Native i18next [options](https://www.i18next.com/configuration-options.html)
 - Promise initialization
-- [i18next plugin](http://i18next.com/docs/ownplugin/) support 
+- [i18next plugin](https://www.i18next.com/plugins-and-utils.html#plugins) support 
 - Events support
 - Document Title translation
 - i18next namespaces and scopes (prefixes) for angular modules and components
@@ -48,7 +48,7 @@ import { I18NextModule } from 'angular-i18next';
 export class AppModule {}
 
 ```
-**3.** Inject I18NextService to AppComponent and call "init" method (with prefered [options]( http://i18next.com/docs/options/#init-options)). Or use more [advanced initialization](#initialize-i18next-before-angular-application).
+**3.** Inject I18NextService to AppComponent and call "init" method (with prefered [options](https://www.i18next.com/configuration-options.html)). We recommend to use more [advanced and prefered initialization](#initialize-i18next-before-angular-application).
 ```typescript
 
 import { I18NextService } from 'angular-i18next';
