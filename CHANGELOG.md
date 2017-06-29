@@ -1,3 +1,13 @@
+<a name="0.2.2"></a>
+## [0.2.2](https://github.com/Romanchuk/angular-i18next/compare/v0.2.1...v0.2.2) (2017-06-29)
+
+
+### Bug Fixes
+
+* **I18NextService:** context-safe calls of i18next methods ([455a07d](https://github.com/Romanchuk/angular-i18next/commit/455a07d))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/Romanchuk/angular-i18next/compare/v0.2.0...v0.2.1) (2017-06-29)
 
