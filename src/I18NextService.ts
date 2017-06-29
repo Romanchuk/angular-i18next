@@ -50,9 +50,9 @@ export class I18NextService {
     return i18next.t.call(i18next, <any>key, options);
   }
 
-  public changeLanguage(lng: string): Promise<i18next.TranslationFunction> {
-    return new Promise<i18next.TranslationFunction>(
-      (resolve: (thenableOrResult?: i18next.TranslationFunction) => void,
+  public changeLanguage(lng: string): Promise<any> {
+    return new Promise<any>(
+      (resolve: (thenableOrResult?: any) => void,
         reject: (error: any) => void) => {
         i18next.changeLanguage.call(i18next, lng, (err, t) => {
           if (!err)
