@@ -21,7 +21,7 @@ export class I18NextService {
   private i18nextPromise: Promise<void>;
 
   public use(plugin: Function) {
-    i18next.use(plugin);
+    i18next.use.call(i18next, plugin);
     return this;
   }
 
@@ -32,7 +32,7 @@ export class I18NextService {
 
     return this.i18nextPromise =
       new Promise<void>((resolve: (thenableOrResult?: void | Promise<void>) => void, reject: (error: any) => void) => {
-        i18next.init(Object.assign({}, options),
+        i18next.init.call(i18next, Object.assign({}, options),
           (err: any) => {
             if (err) {
               console.error(err);
@@ -47,14 +47,14 @@ export class I18NextService {
 
   public t(key: string | string[], options?: any): string {
     options = options || {};
-    return i18next.t(<any>key, options);
+    return i18next.t.call(i18next, <any>key, options);
   }
 
   public changeLanguage(lng: string): Promise<i18next.TranslationFunction> {
     return new Promise<i18next.TranslationFunction>(
       (resolve: (thenableOrResult?: i18next.TranslationFunction) => void,
         reject: (error: any) => void) => {
-        i18next.changeLanguage(lng, (err, t) => {
+        i18next.changeLanguage.call(i18next, lng, (err, t) => {
           if (!err)
             resolve(t);
           else
@@ -65,14 +65,14 @@ export class I18NextService {
   }
 
   private subscribeEvents() {
-    i18next.on('initialized', e => {
+    i18next.on.call(i18next, 'initialized', e => {
       this.language = i18next.language;
       this.languages = i18next.languages;
       this.events.initialized.next(!!e);
     });
-    i18next.on('loaded', e => this.events.loaded.next(!!e));
-    i18next.on('failedLoading', e => this.events.failedLoading.next(e));
-    i18next.on('languageChanged', e => {
+    i18next.on.call(i18next, 'loaded', e => this.events.loaded.next(!!e));
+    i18next.on.call(i18next, 'failedLoading', e => this.events.failedLoading.next(e));
+    i18next.on.call(i18next, 'languageChanged', e => {
       this.language = i18next.language;
       this.languages = i18next.languages;
       this.events.languageChanged.next(e);
