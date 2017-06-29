@@ -48,7 +48,7 @@ import { I18NextModule } from 'angular-i18next';
 export class AppModule {}
 
 ```
-**3.** Inject I18NextService to AppComponent and call "init" method (with prefered [options](https://www.i18next.com/configuration-options.html)). We recommend to use more [advanced and prefered initialization](#initialize-i18next-before-angular-application).
+**3.** Inject I18NextService to AppComponent and call "init" method (with prefered [options](https://www.i18next.com/configuration-options.html)). **We recommend** to use more [advanced and prefered initialization](#initialize-i18next-before-angular-application).
 ```typescript
 
 import { I18NextService } from 'angular-i18next';
@@ -58,7 +58,7 @@ export class AppComponent {
   constructor(private i18NextService: I18NextService) {
       i18NextService.init({
         whitelist: ['en', 'ru'],
-        fallbackLng: 'enu',
+        fallbackLng: 'en',
         debug: true,
         returnEmptyString: false,
         ns: [
@@ -76,7 +76,7 @@ Use "i18next" pipe (or "i18nextCap" to capitalize translated text) to translate 
 
     <div>{{ 'test' | i18next }}</div>
 
-Passing ["t options"](http://i18next.com/docs/options/#t-options):
+Passing ["t options"](https://www.i18next.com/api.html#t):
 
     <div>{{ 'test' | i18next: { count: 5, nsSeparator: '#' } }}</div>
 
