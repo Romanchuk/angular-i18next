@@ -7,6 +7,7 @@ import {
 
 import { I18NextService } from './I18NextService';
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE } from './I18NEXT_TOKENS';
+import { ITranslationService } from './ITranslationService';
 
 @Injectable()
 @Pipe({
@@ -14,9 +15,12 @@ import { I18NEXT_NAMESPACE, I18NEXT_SCOPE } from './I18NEXT_TOKENS';
 })
 export class I18NextPipe implements PipeTransform {
 
-    constructor(private translateI18Next: I18NextService, @Inject(I18NEXT_NAMESPACE) private ns: string, @Inject(I18NEXT_SCOPE) private scope: string) {}
+    constructor(
+        private translateI18Next: ITranslationService,
+        @Inject(I18NEXT_NAMESPACE) private ns: string,
+        @Inject(I18NEXT_SCOPE) private scope: string) {}
 
-    public transform(key: string | string[], options: any): string {
+    public transform(key: string | string[], options?: any): string {
       options = this.prepareOptions(options);
 
       let i18nOpts = this.translateI18Next.options;

@@ -3,12 +3,13 @@ import {
   Inject
 } from '@angular/core';
 
-import { I18NextEvents } from './I18NextEvents';
-
 import * as i18next from 'i18next/index';
 
+import { I18NextEvents } from './I18NextEvents';
+import { ITranslationService } from './ITranslationService';
+
 @Injectable()
-export class I18NextService {
+export class I18NextService implements ITranslationService {
 
   events: I18NextEvents = new I18NextEvents();
   language: string = '';
