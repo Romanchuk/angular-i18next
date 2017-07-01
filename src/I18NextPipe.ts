@@ -6,7 +6,7 @@ import {
 } from '@angular/core';
 
 import { I18NextService } from './I18NextService';
-import { I18NEXT_NAMESPACE, I18NEXT_SCOPE } from './I18NEXT_TOKENS';
+import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
 import { ITranslationService } from './ITranslationService';
 
 @Injectable()
@@ -16,7 +16,7 @@ import { ITranslationService } from './ITranslationService';
 export class I18NextPipe implements PipeTransform {
 
     constructor(
-        private translateI18Next: ITranslationService,
+        @Inject(I18NEXT_SERVICE) private translateI18Next: ITranslationService,
         @Inject(I18NEXT_NAMESPACE) private ns: string,
         @Inject(I18NEXT_SCOPE) private scope: string) {}
 

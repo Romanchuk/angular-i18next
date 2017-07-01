@@ -6,7 +6,7 @@ export * from './I18NextTitle';
 
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { I18NEXT_NAMESPACE, I18NEXT_SCOPE } from './I18NEXT_TOKENS';
+import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
 import { I18NextTitle } from './I18NextTitle';
 import { I18NextPipe } from './I18NextPipe';
 import { I18NextCapPipe } from './I18NextCapPipe';
@@ -43,7 +43,10 @@ export class I18NextModule {
     return {
       ngModule: I18NextModule,
       providers: [
-        I18NextService,
+        {
+          provide: I18NEXT_SERVICE,
+          useClass: I18NextService
+        },
         I18NextPipe,
         I18NextCapPipe
       ]
