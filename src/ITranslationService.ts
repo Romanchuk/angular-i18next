@@ -1,3 +1,4 @@
+import { ITranslationEvents } from './ITranslationEvents';
 import {
   Injectable,
   Inject
@@ -9,6 +10,7 @@ export interface ITranslationService {
 
   language: string;
   languages: string[];
+  events: ITranslationEvents;
 
   options: any;
 

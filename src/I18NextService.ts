@@ -1,3 +1,4 @@
+import { ITranslationEvents } from './ITranslationEvents';
 import {
   Injectable,
   Inject
@@ -11,7 +12,7 @@ import { ITranslationService } from './ITranslationService';
 @Injectable()
 export class I18NextService implements ITranslationService {
 
-  events: I18NextEvents = new I18NextEvents();
+  events: ITranslationEvents = new I18NextEvents();
   language: string = '';
   languages: string[] = [];
 

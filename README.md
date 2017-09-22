@@ -55,7 +55,7 @@ import { I18NextService } from 'angular-i18next';
 
 export class AppComponent {
 
-  constructor(private i18NextService: I18NextService) {
+  constructor(@Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
       i18NextService.init({
         whitelist: ['en', 'ru'],
         fallbackLng: 'en',
@@ -125,7 +125,23 @@ export class I18NextTitle extends Title {
 
 ```
 
-> **Warning:** Injection of I18NextService is possible, but it would not consider I18NEXT_NAMESPACE and I18NEXT_SCOPE providers
+Ways to use I18NextService in your code:
+> **Warning:** Injection of **I18NextService** is possible, but it would not consider I18NEXT_NAMESPACE and I18NEXT_SCOPE providers. There are 2 possible reasons to inject **I18NextService**: initialization and subscribtion to its events. In all other cases inject **I18NextPipe**.
+1) **Recommended way:** Inject via **I18NEXT_SERVICE** token. By default it will inject instance of **I18NextService**.
+```typescript
+export class AppComponent implements OnInit  {
+  constructor(private router: Router,
+              private title: Title,
+              @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) 
+```
+
+2) Legacy way: Inject via type
+```typescript
+export class AppComponent implements OnInit  {
+  constructor(private router: Router,
+              private title: Title,
+              private i18NextService: I18NextService) 
+```
 
 
 # Cookbook
@@ -133,7 +149,7 @@ export class I18NextTitle extends Title {
 ### i18next plugin support
 
 ```typescript
-import { I18NextService } from 'i18next';
+import { I18NextModule, ITranslationService, I18NEXT_SERVICE } from 'angular-i18next';
 import * as i18nextXHRBackend from 'i18next-xhr-backend';
 import * as i18nextLanguageDetector from 'i18next-browser-languagedetector';
 
@@ -153,10 +169,10 @@ Angular would not load until i18next initialize event fired
 const PROVIDERS = [
   {
     provide: APP_INITIALIZER,
-    useFactory: (i18next: I18NextService) => () => {
+    useFactory: (i18next: ITranslationService) => () => {
       return i18next.init();
     },
-    deps: [I18NextService],
+    deps: [I18NEXT_SERVICE],
     multi: true
   }];
    
@@ -181,7 +197,7 @@ export class AppModule {}
 export class AppComponent implements OnInit  {
   constructor(private router: Router,
               private title: Title,
-              private i18NextService: I18NextService) {
+              @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
       // page title subscription
       // https://toddmotto.com/dynamic-page-titles-angular-2-router-events#final-code
       this.router.events

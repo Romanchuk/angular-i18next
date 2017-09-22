@@ -1,3 +1,4 @@
+import { ITranslationEvents } from './../../src/ITranslationEvents';
 import { ITranslationService } from '../../src/ITranslationService';
 import {
   Injectable,
@@ -8,6 +9,7 @@ import {
 @Injectable()
 export class MockI18NextService implements ITranslationService {
 
+  events: ITranslationEvents;
   language: string = '';
   languages: string[] = [];
 

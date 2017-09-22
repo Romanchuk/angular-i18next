@@ -4,6 +4,9 @@ export * from './I18NextCapPipe';
 export * from './I18NextService';
 export * from './I18NextTitle';
 
+export * from './ITranslationService';
+export * from './ITranslationEvents';
+
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
@@ -47,6 +50,7 @@ export class I18NextModule {
           provide: I18NEXT_SERVICE,
           useClass: I18NextService
         },
+        I18NextService,
         I18NextPipe,
         I18NextCapPipe
       ]
