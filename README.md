@@ -13,6 +13,7 @@
  - [Installation](#installation)
  - [Usage](#usage)
  - [Cookbook](#cookbook)
+ - [Demo](#demo)
 
 
 # Features
@@ -243,3 +244,16 @@ const appRoutes: Routes = [
   }
 ];
 ```
+
+
+
+# Demo
+
+Demo app source code now awailable: https://github.com/Romanchuk/angular-i18next-demo
+It's not yet deployed as public web site.
+To run:
+```
+npm update
+npm start
+```
+
