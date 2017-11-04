@@ -7,7 +7,8 @@
 [![devDependency Status](https://david-dm.org/Romanchuk/angular-i18next/dev-status.svg)](https://david-dm.org/Romanchuk/angular-i18next?type=dev)
 
 # angular-i18next
-[i18next](http://i18next.com/) integration with angular 2.0+
+[i18next](http://i18next.com/) v7.0+ integration with [angular](https://angular.io/) v2.0+
+
 
  - [Features](#features)
  - [Installation](#installation)
