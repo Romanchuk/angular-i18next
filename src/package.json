@@ -1,38 +1,36 @@
 {
-  "name": "angular-i18next",
-  "version": "1.0.2",
-  "homepage": "https://github.com/Romanchuk/angular-i18next#readme",
-  "author": {
-    "name": "Sergey Romanchuk"
-  },
-  "license": "MIT",
-  "description": "i18next module for Angular",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Romanchuk/angular-i18next.git"
-  },
-  "keywords": [
-    "i18n",
-    "i18next",
-    "angular"
-  ],
-  "bugs": {
-    "url": "https://github.com/Romanchuk/angular-i18next/issues"
-  },
-  "maintainers": [
-    {
-      "email": "rezety@gmail.com",
-      "name": "Sergey Romanchuk"
+    "name": "angular-i18next",
+    "version": "1.1.0",
+    "homepage": "https://github.com/Romanchuk/angular-i18next#readme",
+    "author": {
+        "name": "Sergey Romanchuk"
+    },
+    "license": "MIT",
+    "description": "i18next module for Angular",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Romanchuk/angular-i18next.git"
+    },
+    "keywords": [
+        "i18n",
+        "i18next",
+        "angular"
+    ],
+    "bugs": {
+        "url": "https://github.com/Romanchuk/angular-i18next/issues"
+    },
+    "maintainers": [{
+        "email": "rezety@gmail.com",
+        "name": "Sergey Romanchuk"
+    }],
+    "module": "angular-i18next.es5.js",
+    "es2015": "angular-i18next.js",
+    "typings": "angular-i18next.d.ts",
+    "peerDependencies": {
+        "@angular/common": ">=2.0.0 <5.0.0",
+        "@angular/core": ">=2.0.0 <5.0.0",
+        "@angular/platform-browser": ">=2.0.0 <5.0.0",
+        "rxjs": "^5.5.2",
+        "i18next": ">=7.0.0 <11.0.0"
     }
-  ],
-  "module": "angular-i18next.es5.js",
-  "es2015": "angular-i18next.js",
-  "typings": "angular-i18next.d.ts",
-  "peerDependencies": {
-    "@angular/common": ">=2.0.0 <5.0.0",
-    "@angular/core": ">=2.0.0 <5.0.0",
-    "@angular/platform-browser": ">=2.0.0 <5.0.0",
-    "rxjs": "^5.3.0",
-    "i18next": ">=7.0.0 <10.0.0"
-  }
 }
