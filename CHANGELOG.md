@@ -1,3 +1,8 @@
+<a name="2.0.0-beta"></a>
+# [2.0.0-beta](https://github.com/Romanchuk/angular-i18next/compare/v1.1.0...v2.0.0-beta) (2017-11-05)
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/Romanchuk/angular-i18next/compare/v1.0.2...v1.1.0) (2017-11-04)
 
