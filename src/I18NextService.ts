@@ -1,4 +1,3 @@
-import { ITranslationEvents } from './ITranslationEvents';
 import {
   Injectable,
   Inject
@@ -6,6 +5,7 @@ import {
 
 import * as i18next from 'i18next/index';
 
+import { ITranslationEvents } from './ITranslationEvents';
 import { I18NextEvents } from './I18NextEvents';
 import { ITranslationService } from './ITranslationService';
 

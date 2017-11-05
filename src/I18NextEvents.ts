@@ -1,5 +1,5 @@
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { ITranslationEvents } from 'ITranslationEvents';
+import { ITranslationEvents } from './ITranslationEvents';
 
 export class I18NextEvents implements ITranslationEvents {
   initialized: BehaviorSubject<boolean> = new BehaviorSubject(false);
