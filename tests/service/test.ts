@@ -2,16 +2,16 @@ import { I18NextService } from './../../src/I18NextService';
 import { I18NextPipe } from './../../src/I18NextPipe';
 
 // Be descriptive with titles here. The describe and it titles combined read like a sentence.
-describe('I18nService tests', function() {
+describe('I18nService', function() {
 
-    it('success init', function(done) {
+    it('should init', function(done) {
         let service = new I18NextService();
         service.init().then(result => {
            done();
         });
     });
 
-    it('success event trigger', function(done) {
+    it('should trigger initialize event', function(done) {
         let service = new I18NextService();
         let options = {};
         let expectedInitStatus = false;
@@ -22,5 +22,12 @@ describe('I18nService tests', function() {
                 done();
         });
         service.init(options);
+    });
+
+    it('should load namespace', function(done) {
+        let service = new I18NextService();
+        service.loadNamespaces(['somens']).then(() => {
+            done();
+        });
     });
 });

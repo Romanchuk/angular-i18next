@@ -62,9 +62,22 @@ export class I18NextService implements ITranslationService {
           else
             reject(err);
         });
-        resolve(null);
       });
   }
+
+  public loadNamespaces(namespaces: string[]): Promise<any> {
+    return new Promise<any>(
+      (resolve: (thenableOrResult?: any) => void,
+        reject: (error: any) => void) => {
+          i18next.loadNamespaces.call(i18next, namespaces, (err) => {
+          if (!err)
+            resolve();
+          else
+            reject(err);
+        });
+      });
+  }
+
 
   private subscribeEvents() {
     i18next.on.call(i18next, 'initialized', e => {

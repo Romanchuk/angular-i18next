@@ -49,4 +49,12 @@ export class MockI18NextService implements ITranslationService {
             resolve(this.language);
       });
   }
+
+  public loadNamespaces(namespaces: string[]): Promise<any> {
+    return new Promise<any>(
+      (resolve: (thenableOrResult?: any) => void,
+        reject: (error: any) => void) => {
+            resolve();
+      });
+  }
 }

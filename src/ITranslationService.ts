@@ -21,4 +21,6 @@ export interface ITranslationService {
   t(key: string | string[], options?: any): string;
 
   changeLanguage(lng: string): Promise<any>;
+
+  loadNamespaces(namespaces: string[]): Promise<any>;
 }
