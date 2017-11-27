@@ -4,12 +4,12 @@ import { ITranslationService } from './ITranslationService';
 
 // tslint:disable-next-line:variable-name
 export const I18nextNamespaceResolver: FactoryProvider = {
-    provide: I18NEXT_NAMESPACE_RESOLVER,
-    useFactory: (i18next: ITranslationService) =>
-      (activatedRouteSnapshot, routerStateSnapshot): Promise<void> => {
-        let namespaces: string[] = [];
-        namespaces = activatedRouteSnapshot.data && activatedRouteSnapshot.data.i18nextNamespaces || namespaces;
-        return i18next.loadNamespaces(namespaces.filter(n => n));
-    },
-    deps: [I18NEXT_SERVICE]
-  };
+  provide: I18NEXT_NAMESPACE_RESOLVER,
+  useFactory: (i18next: ITranslationService) =>
+    (activatedRouteSnapshot, routerStateSnapshot): Promise<void> => {
+      let namespaces: string[] = [];
+      namespaces = activatedRouteSnapshot.data && activatedRouteSnapshot.data.i18nextNamespaces || namespaces;
+      return i18next.loadNamespaces(namespaces.filter(n => n));
+  },
+  deps: [I18NEXT_SERVICE]
+};

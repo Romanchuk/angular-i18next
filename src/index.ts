@@ -30,11 +30,8 @@ import { I18nextNamespaceResolver } from './I18nextNamespaceResolver';
       useValue: ''
     },
     I18NextPipe,
-    I18NextTitle,
-    {
-      provide: Title,
-      useClass: I18NextTitle
-    }
+    I18NextCapPipe,
+    I18NextTitle
   ],
   declarations: [
     I18NextPipe,
@@ -46,19 +43,28 @@ import { I18nextNamespaceResolver } from './I18nextNamespaceResolver';
   ]
 })
 export class I18NextModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(localizeTitle: boolean = false): ModuleWithProviders {
+    let providers: any = [
+      {
+        provide: I18NEXT_SERVICE,
+        useClass: I18NextService
+      },
+      I18NextService,
+      I18NextPipe,
+      I18NextCapPipe,
+      I18nextNamespaceResolver
+    ];
+
+    if (localizeTitle){
+      providers.push({
+        provide: Title,
+        useClass: I18NextTitle
+      });
+    }
+
     return {
       ngModule: I18NextModule,
-      providers: [
-        {
-          provide: I18NEXT_SERVICE,
-          useClass: I18NextService
-        },
-        I18NextService,
-        I18NextPipe,
-        I18NextCapPipe,
-        I18nextNamespaceResolver
-      ]
+      providers: providers
     };
   }
 }
