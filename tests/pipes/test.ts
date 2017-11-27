@@ -20,7 +20,7 @@ describe('I18NextPipe tests', function() {
       let pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
       let capPipe = new I18NextCapPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
       let key = 'test';
-      let transResult = pipe.transform(key, { case: 'cap' });
+      let transResult = pipe.transform(key, { format: 'cap' });
       let transCapResult = capPipe.transform(key);
       expect(transResult[0]).toEqual(key[0].toUpperCase());
       expect(transResult).toEqual(transCapResult);

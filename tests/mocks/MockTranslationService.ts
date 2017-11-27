@@ -41,6 +41,12 @@ export class MockI18NextService implements ITranslationService {
     return key;
   }
 
+  public format(value: string, format: string, lng: string): string {
+    if (format === 'cap')
+      return value.toUpperCase();
+    return value;
+  }
+
   public changeLanguage(lng: string): Promise<any> {
     return new Promise<any>(
       (resolve: (thenableOrResult?: any) => void,

@@ -21,7 +21,7 @@ export class I18NextCapPipe extends I18NextPipe implements PipeTransform {
 
   public transform(key: string | string[], options?: any): string {
     options = options || {};
-    options.case = 'cap';
+    options.format = 'cap';
     return super.transform(key, options);
   }
 }
