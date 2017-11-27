@@ -15,52 +15,33 @@ import { ITranslationService } from './ITranslationService';
 })
 export class I18NextPipe implements PipeTransform {
 
-    constructor(
-        @Inject(I18NEXT_SERVICE) private translateI18Next: ITranslationService,
-        @Inject(I18NEXT_NAMESPACE) private ns: string,
-        @Inject(I18NEXT_SCOPE) private scope: string) {}
+  constructor(
+      @Inject(I18NEXT_SERVICE) private translateI18Next: ITranslationService,
+      @Inject(I18NEXT_NAMESPACE) private ns: string,
+      @Inject(I18NEXT_SCOPE) private scope: string) {}
 
-    public transform(key: string | string[], options?: any): string {
-      options = this.prepareOptions(options);
+  public transform(key: string | string[], options?: any): string {
+    options = this.prepareOptions(options);
 
-      let i18nOpts = this.translateI18Next.options;
-      if (options.prependScope === undefined || options.prependScope === true) {
-        if (this.scope) {
-          key = this.prependScope(key, this.scope, i18nOpts.keySeparator, i18nOpts.nsSeparator);
-        }
+    let i18nOpts = this.translateI18Next.options;
+    if (options.prependScope === undefined || options.prependScope === true) {
+      if (this.scope) {
+        key = this.prependScope(key, this.scope, i18nOpts.keySeparator, i18nOpts.nsSeparator);
       }
-      if (options.prependNamespace === undefined || options.prependNamespace === true) {
-        if (this.ns) {
-          key = this.prependNamespace(key, this.ns, i18nOpts.nsSeparator);
-        }
-      }
-      let result = this.translateI18Next.t(key, options);
-      if (options.case) {
-        if (result) {
-          result = this.postProcessCase(result, options.case);
-        }
-      }
-      return result;
     }
-
-    private postProcessCase(value: string, wordCase: string): string {
-      if (!value) return value;
-      switch (wordCase) {
-        case null:
-        case 'none':
-          return value;
-        case 'upper':
-        case 'uppercase':
-          return value.toUpperCase();
-        case 'lower':
-        case 'lowercase':
-          return value.toLowerCase();
-        case 'cap':
-        case 'capitalize':
-          return value.charAt(0).toUpperCase() + value.slice(1);
-        default:
-          return value;
+    if (options.prependNamespace === undefined || options.prependNamespace === true) {
+      if (this.ns) {
+        key = this.prependNamespace(key, this.ns, i18nOpts.nsSeparator);
+      }
     }
+    let result = this.translateI18Next.t(key, options);
+    if (options.format) {
+      if (result) {
+        result = this.translateI18Next
+          .format(result, options.format, this.translateI18Next.language);
+      }
+    }
+    return result;
   }
 
   private prependScope(key: string | string[], scope: string, keySeparator: string,  nsSeparator: string): string | string[] {

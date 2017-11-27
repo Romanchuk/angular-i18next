@@ -52,6 +52,10 @@ export class I18NextService implements ITranslationService {
     return i18next.t.call(i18next, <any>key, options);
   }
 
+  public format(value: string, format: string, lng: string): string {
+    return i18next.format.call(i18next, value, format, lng);
+  }
+
   public changeLanguage(lng: string): Promise<any> {
     return new Promise<any>(
       (resolve: (thenableOrResult?: any) => void,
