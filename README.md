@@ -256,7 +256,78 @@ It's not yet deployed as public web site.
 
 To run:
 ```
-npm update
+npm install
 npm start
 ```
 
+
+# Roadmap (Version 3)
+version 3.0.0-alpha now available: `npm install angular-i18next@3.0.0-alpha`
+1) Namespaces lazy loading - DONE
+2) i18next format support - DONE
+3) Test coverage - TO DO
+4) Documentation update - IN PROGRESS
+
+### Lazy loading
+
+Use I18NEXT_NAMESPACE_RESOLVER in your routes to to load i18next namespace.
+
+Note: It is not neccesary to register lazy loading namespaces in global i18next options.
+
+```
+{
+    path: 'rich_form',
+    loadChildren: 'app/features/rich_form_feature/RichFormFeatureModule#RichFormFeatureModule',
+    data: {
+      i18nextNamespaces: ['feature.rich_form']
+    },
+    resolve: {
+      i18next: I18NEXT_NAMESPACE_RESOLVER
+    }
+ },
+
+```
+
+### I18next native interpolation format support
+
+Now you can call native i18next [format method](https://www.i18next.com/formatting.html) by using I18NextFormatPipe or I18NextPipe with option 'format':
+
+`{{ 'any_key' | i18next | i18nextFormat }}`
+
+`{{ 'any_key' | i18next: { format: 'uppercase' } }}`
+
+
+- Added i18NextFormat pipe to support i18next
+- BREAKING: Reserved option 'case' in I18NextPipe changed to 'format'
+- BREAKING: I18NextPipe has no own formaters
+- I18NextModule has static method `static interpolationFormat(customFormat: Function = null): Function` that can be used as default interpolation format (it provides 'upper', 'cap' and 'lower' formatters) . You also can pass your custom function to be called after I18NextModule formatters .
+
+```
+const i18nextOptions = {
+  whitelist: ['en', 'ru'],
+  ns: [
+    'translation',
+    'validation',
+    'error',
+  ],
+  interpolation: {
+    format: I18NextModule.interpolationFormat((value, format, lng) => {
+      if(value instanceof Date)
+        return moment(value).format(format);
+      return value;
+    });
+    // format: I18NextModule.interpolationFormat()
+  }
+};
+
+```
+
+### Other breaking changes
+
+- i18next version support >= 8.4.0
+
+- Title provider does not resolving as I18NextTitle by default anymore.
+
+    If you want to resolve Title as I18NextTitle pass 'true' to _forRoot_ method of I18NextModule:
+
+    `I18NextModule.forRoot(true)`

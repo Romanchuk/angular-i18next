@@ -61,7 +61,7 @@ export class I18NextModule {
       I18nextNamespaceResolver
     ];
 
-    if (localizeTitle){
+    if (localizeTitle) {
       providers.push({
         provide: Title,
         useClass: I18NextTitle
@@ -75,31 +75,32 @@ export class I18NextModule {
   }
 
   static interpolationFormat(customFormat: Function = null): Function {
-    return (value: string, format: string, lng: string): string => {
-        let formatedValue: string;
-        if (!value)
+    function defaultInterpolation(value: string, format: string, lng: string): string {
+      let formatedValue: string;
+      if (!value)
+        formatedValue = value;
+      switch (format) {
+        case 'upper':
+        case 'uppercase':
+          formatedValue = value.toUpperCase();
+        break;
+        case 'lower':
+        case 'lowercase':
+          formatedValue = value.toLowerCase();
+        break;
+        case 'cap':
+        case 'capitalize':
+          formatedValue = value.charAt(0).toUpperCase() + value.slice(1);
+        break;
+        case null:
+        case 'none':
+        default:
           formatedValue = value;
-        switch (format) {
-          case 'upper':
-          case 'uppercase':
-            formatedValue = value.toUpperCase();
-          break;
-          case 'lower':
-          case 'lowercase':
-            formatedValue = value.toLowerCase();
-          break;
-          case 'cap':
-          case 'capitalize':
-            formatedValue = value.charAt(0).toUpperCase() + value.slice(1);
-          break;
-          case null:
-          case 'none':
-          default:
-            formatedValue = value;
       }
       if (customFormat === null)
         return formatedValue;
       return customFormat(formatedValue, format, lng);
-    };
+    }
+    return defaultInterpolation;
   }
 }
