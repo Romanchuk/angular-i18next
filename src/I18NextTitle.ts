@@ -13,6 +13,6 @@ export class I18NextTitle extends Title {
    }
 
    private translate(text: string) {
-     return this.i18nextPipe.transform(text, { case: 'cap'});
+     return this.i18nextPipe.transform(text, { format: 'cap'});
    }
 }
