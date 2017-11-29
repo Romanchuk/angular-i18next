@@ -1,6 +1,8 @@
 import { TestBed } from '@angular/core/testing';
+import { Title } from '@angular/platform-browser';
 
 import {
+    defaultInterpolationFormat,
     I18NEXT_NAMESPACE,
     I18NEXT_SCOPE,
     I18NEXT_SERVICE,
@@ -9,6 +11,7 @@ import {
     I18NextModule,
     I18NextPipe,
     I18NextService,
+    I18NextTitle,
 } from '../../src/index';
 
 // Be descriptive with titles here. The describe and it titles combined read like a sentence.
@@ -18,7 +21,7 @@ describe('I18NextModule', function() {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [I18NextModule.forRoot()]
+      imports: [I18NextModule.forRoot(true)]
     });
   });
 
@@ -45,12 +48,53 @@ describe('I18NextModule', function() {
     expect(i18nextFormatPipe).not.toBeNull();
   });
 
-  it('should support interpolation format and custom formatters', function() {
+  it('should provide title', function() {
+    let title: I18NextTitle = TestBed.get(Title);
+    // let document = TestBed.get(DOCUMENT);
+    expect(title).toBeTruthy();
+    expect(title instanceof I18NextTitle).toBeTruthy();
+    // title.setTitle('abc');
+    // expect(document.title).toEqual('Abc');
+  });
+
+
+  it('should have default formatters', function() {
+    const capitalizedTest = defaultInterpolationFormat('test', 'cap');
+    const capitalized2Test = defaultInterpolationFormat('test', 'capitalize');
+    expect(capitalizedTest).toEqual('Test');
+    expect(capitalizedTest).toEqual(capitalized2Test);
+
+    const uppercaseTest = defaultInterpolationFormat('test', 'upper');
+    const uppercase2Test = defaultInterpolationFormat('test', 'uppercase');
+    expect(uppercaseTest).toEqual('TEST');
+    expect(uppercaseTest).toEqual(uppercase2Test);
+
+    let lowercaseTest = defaultInterpolationFormat('TEST', 'lower');
+    let lowercase2Test = defaultInterpolationFormat('TEST', 'lowercase');
+    expect(lowercaseTest).toEqual('test');
+    expect(lowercaseTest).toEqual(lowercase2Test);
+
+    let noFormat = defaultInterpolationFormat('test', undefined);
+    let noFormat2 = defaultInterpolationFormat('test', null);
+    let noFormat3 = defaultInterpolationFormat('test', 'none');
+    expect(noFormat).toEqual('test');
+    expect(noFormat).toEqual(noFormat2);
+    expect(noFormat).toEqual(noFormat3);
+  });
+
+  it('should support interpolation custom formatters', function() {
+    const valueParam = 'test';
+    const formatParam = 'cap';
+    const lngParam = 'en';
     let customFormat = function (value, format, lng) {
+        expect(value).toEqual('Test');
+        expect(format).toEqual(formatParam);
+        expect(lng).toEqual(lngParam);
+
         return `$${value}$`;
     };
     let formatFunc = I18NextModule.interpolationFormat(customFormat);
-    let result = formatFunc('test', 'cap');
+    let result = formatFunc(valueParam, formatParam, lngParam);
     expect(result).toBe('$Test$');
   });
 

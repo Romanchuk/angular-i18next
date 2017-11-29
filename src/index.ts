@@ -75,32 +75,33 @@ export class I18NextModule {
   }
 
   static interpolationFormat(customFormat: Function = null): Function {
-    function defaultInterpolation(value: string, format: string, lng: string): string {
-      let formatedValue: string;
-      if (!value)
-        formatedValue = value;
-      switch (format) {
-        case 'upper':
-        case 'uppercase':
-          formatedValue = value.toUpperCase();
-        break;
-        case 'lower':
-        case 'lowercase':
-          formatedValue = value.toLowerCase();
-        break;
-        case 'cap':
-        case 'capitalize':
-          formatedValue = value.charAt(0).toUpperCase() + value.slice(1);
-        break;
-        case null:
-        case 'none':
-        default:
-          formatedValue = value;
-      }
+    function formatDelegate(value: string, format: string, lng: string): string {
+      let formatedValue: string = defaultInterpolationFormat(value, format, lng);
       if (customFormat === null)
         return formatedValue;
       return customFormat(formatedValue, format, lng);
     }
-    return defaultInterpolation;
+    return formatDelegate;
+  }
+}
+
+export function defaultInterpolationFormat(value: string, format: string, lng: string = undefined): string {
+  if (!value)
+    return value;
+  switch (format) {
+    case 'upper':
+    case 'uppercase':
+      return value.toUpperCase();
+    case 'lower':
+    case 'lowercase':
+      return value.toLowerCase();
+    case 'cap':
+    case 'capitalize':
+      return value.charAt(0).toUpperCase() + value.slice(1);
+    case null:
+    case undefined:
+    case 'none':
+    default:
+      return value;
   }
 }
