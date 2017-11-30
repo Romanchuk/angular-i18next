@@ -3,7 +3,8 @@ import { I18NextPipe } from './../../src/I18NextPipe';
 import { MockI18NextService } from '../mocks/MockTranslationService';
 
 
-// Be descriptive with titles here. The describe and it titles combined read like a sentence.
+// TODO: use TestBed
+
 describe('I18NextPipe tests', function() {
   let service = new MockI18NextService();
   const DEFAULT_NAMESPACE = '';
@@ -16,14 +17,14 @@ describe('I18NextPipe tests', function() {
       expect(transResult).toEqual(key);
   });
 
-  it('case options', function(){
+  it('format options', function(){
       let pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
       let capPipe = new I18NextCapPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
       let key = 'test';
       let transResult = pipe.transform(key, { format: 'cap' });
       let transCapResult = capPipe.transform(key);
-      expect(transResult[0]).toEqual(key[0].toUpperCase());
       expect(transResult).toEqual(transCapResult);
+      expect(transResult).toEqual('Test');
   });
 
   it('namespace prefix', function(){
