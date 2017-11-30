@@ -264,10 +264,10 @@ npm start
 
 # Roadmap (Version 3)
 version 3.0.0-alpha now available: `npm install angular-i18next@3.0.0-alpha`
-1) Namespaces lazy loading - DONE
-2) i18next format support - DONE
-3) Test coverage - TO DO
-4) Documentation update - IN PROGRESS
+1) Namespaces lazy loading - **DONE**
+2) i18next format support - **DONE**
+3) Test coverage - **IN PROGRESS**
+4) Documentation update - **TO DO**
 
 ### Lazy loading
 
