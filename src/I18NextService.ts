@@ -1,12 +1,10 @@
-import {
-  Injectable,
-  Inject
-} from '@angular/core';
-
+import { Inject, Injectable } from '@angular/core';
 import * as i18next from 'i18next/index';
 
-import { ITranslationEvents } from './ITranslationEvents';
+import { I18NEXT_RESOLVE_STRATEGY } from './I18NEXT_TOKENS';
 import { I18NextEvents } from './I18NextEvents';
+import { I18NextResolveStrategy } from './I18NextResolveStrategies';
+import { ITranslationEvents } from './ITranslationEvents';
 import { ITranslationService } from './ITranslationService';
 
 @Injectable()
@@ -22,6 +20,8 @@ export class I18NextService implements ITranslationService {
 
   private i18nextPromise: Promise<void>;
 
+  constructor(@Inject(I18NEXT_RESOLVE_STRATEGY) private resolveStrategy: I18NextResolveStrategy) {}
+
   public use(plugin: Function) {
     i18next.use.call(i18next, plugin);
     return this;
@@ -34,16 +34,7 @@ export class I18NextService implements ITranslationService {
 
     return this.i18nextPromise =
       new Promise<void>((resolve: (thenableOrResult?: void | Promise<void>) => void, reject: (error: any) => void) => {
-        i18next.init.call(i18next, Object.assign({}, options),
-          (err: any) => {
-            if (err) {
-              console.error(err);
-              reject(err);
-            } else {
-              console.log('[$I18NextService] The translations has been loaded for the current language', i18next.language);
-              resolve(null);
-            }
-          });
+        i18next.init.call(i18next, Object.assign({}, options), this.resolveStrategy.handle(resolve, reject));
       });
   }
 
@@ -60,12 +51,7 @@ export class I18NextService implements ITranslationService {
     return new Promise<any>(
       (resolve: (thenableOrResult?: any) => void,
         reject: (error: any) => void) => {
-        i18next.changeLanguage.call(i18next, lng, (err, t) => {
-          if (!err)
-            resolve(t);
-          else
-            reject(err);
-        });
+        i18next.changeLanguage.call(i18next, lng, this.resolveStrategy.handle(resolve, reject));
       });
   }
 
@@ -73,12 +59,7 @@ export class I18NextService implements ITranslationService {
     return new Promise<any>(
       (resolve: (thenableOrResult?: any) => void,
         reject: (error: any) => void) => {
-          i18next.loadNamespaces.call(i18next, namespaces, (err) => {
-          if (!err)
-            resolve();
-          else
-            reject(err);
-        });
+          i18next.loadNamespaces.call(i18next, namespaces, this.resolveStrategy.handle(resolve, reject));
       });
   }
 

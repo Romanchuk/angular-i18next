@@ -16,7 +16,7 @@ export interface ITranslationService {
 
   use(plugin: Function);
 
-  init(options?: any): Promise<void>;
+  init(options?: any): Promise<any>;
 
   t(key: string | string[], options?: any): string;
 
