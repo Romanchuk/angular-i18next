@@ -1,20 +1,23 @@
+import { FactoryProvider } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 
 import {
     defaultInterpolationFormat,
     I18NEXT_NAMESPACE,
+    I18NEXT_NAMESPACE_RESOLVER,
     I18NEXT_SCOPE,
     I18NEXT_SERVICE,
     I18NextCapPipe,
     I18NextFormatPipe,
     I18NextModule,
+    I18nextNamespaceResolver,
     I18NextPipe,
     I18NextService,
     I18NextTitle,
 } from '../../src/index';
+import { MockI18NextService } from './../mocks/MockTranslationService';
 
-// Be descriptive with titles here. The describe and it titles combined read like a sentence.
 describe('I18NextModule', function() {
   const DEFAULT_NAMESPACE = '';
   const DEFAULT_SCOPE = '';
@@ -50,13 +53,9 @@ describe('I18NextModule', function() {
 
   it('should provide title', function() {
     let title: I18NextTitle = TestBed.get(Title);
-    // let document = TestBed.get(DOCUMENT);
     expect(title).toBeTruthy();
     expect(title instanceof I18NextTitle).toBeTruthy();
-    // title.setTitle('abc');
-    // expect(document.title).toEqual('Abc');
   });
-
 
   it('should have default formatters', function() {
     const capitalizedTest = defaultInterpolationFormat('test', 'cap');
@@ -98,4 +97,17 @@ describe('I18NextModule', function() {
     expect(result).toBe('$Test$');
   });
 
+  it('should provide resolver', function(done) {
+    let resolver: FactoryProvider = TestBed.get(I18NEXT_NAMESPACE_RESOLVER);
+    expect(resolver).toBeTruthy();
+
+    let routingFunc: Function = I18nextNamespaceResolver.useFactory(new MockI18NextService());
+    routingFunc({
+      data: {
+        i18nextNamespaces: []
+      }
+    }).then(() => {
+      done();
+    });
+  });
 });

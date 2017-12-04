@@ -1,4 +1,5 @@
 import { FactoryProvider } from '@angular/core';
+
 import { I18NEXT_NAMESPACE_RESOLVER, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
 import { ITranslationService } from './ITranslationService';
 

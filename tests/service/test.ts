@@ -51,7 +51,8 @@ describe('I18nService', function() {
     it('should init', function(done) {
         let service: ITranslationService = TestBed.get(I18NEXT_SERVICE);
         service.init().then(result => {
-           done();
+            expect(service.options).toBeTruthy();
+            done();
         });
     });
 
@@ -76,6 +77,8 @@ describe('I18nService', function() {
                 // service
                 const serviceResult = service.t(key);
                 expect(serviceResult).toEqual('test');
+                const serviceResult2 = service.t([key, key + '2']);
+                expect(serviceResult2).toEqual('test2');
                 // pipes
                 const pipeResult = i18nextPipe.transform(key);
                 expect(pipeResult).toEqual('test');
