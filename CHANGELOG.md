@@ -1,3 +1,8 @@
+<a name="3.0.0-alpha.2"></a>
+# [3.0.0-alpha.2](https://github.com/Romanchuk/angular-i18next/compare/v3.0.0-alpha...v3.0.0-alpha.2) (2017-12-05)
+
+
+
 <a name="3.0.0-alpha"></a>
 # [3.0.0-alpha](https://github.com/Romanchuk/angular-i18next/compare/v2.0.0...v3.0.0-alpha) (2017-11-27)
 
