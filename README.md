@@ -263,11 +263,11 @@ npm start
 
 
 # Roadmap (Version 3)
-version 3.0.0-alpha now available: `npm install angular-i18next@3.0.0-alpha`
+version 3.0.0-alpha.2 now available: `npm install angular-i18next@3.0.0-alpha.2`
 1) Namespaces lazy loading - **DONE**
 2) i18next format support - **DONE**
-3) Test coverage - **IN PROGRESS**
-4) Documentation update - **TO DO**
+3) Test coverage - **DONE**
+4) Documentation update - **IN PROGRESS**
 
 ### Lazy loading
 
@@ -329,6 +329,13 @@ const i18nextOptions = {
 
 - Title provider does not resolving as I18NextTitle by default anymore.
 
-    If you want to resolve Title as I18NextTitle pass 'true' to _forRoot_ method of I18NextModule:
+    If you want to resolve Title as I18NextTitle pass 'localizeTitle: true' to _forRoot_ method of I18NextModule:
 
-    `I18NextModule.forRoot(true)`
+    `I18NextModule.forRoot({ localizeTitle: true })`
+
+
+- Fix [#9](https://github.com/Romanchuk/angular-i18next/issues/9): Error handling is now configurable:
+  1) By default i18next promise will use NativeErrorHandlingStrategy. I18Next would be always resolve succesfully. Error could be get from 'then' handler parameter.
+  2) You can set StrictErrorHandlingStrategy to reject load promises (init, languageChange, loadNamespaces) on first load fail:
+
+      `I18NextModule.forRoot({ errorHandlingStrategy: StrictErrorHandlingStrategy })`
