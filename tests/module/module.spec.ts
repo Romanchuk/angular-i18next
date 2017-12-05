@@ -24,7 +24,7 @@ describe('I18NextModule', function() {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [I18NextModule.forRoot(true)]
+      imports: [I18NextModule.forRoot({ localizeTitle: true })]
     });
   });
 

@@ -5,14 +5,15 @@ export * from './I18NextFormatPipe';
 export * from './I18NextService';
 export * from './I18NextTitle';
 export * from './I18nextNamespaceResolver';
-export * from './I18NextResolveStrategies';
+export * from './I18NextErrorHandlingStrategies';
+export * from './I18NextModuleParams';
 
 export * from './ITranslationService';
 export * from './ITranslationEvents';
 
 import { NgModule, ModuleWithProviders, FactoryProvider, Type } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE, I18NEXT_NAMESPACE_RESOLVER, I18NEXT_RESOLVE_STRATEGY } from './I18NEXT_TOKENS';
+import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE, I18NEXT_NAMESPACE_RESOLVER, I18NEXT_ERROR_HANDLING_STRATEGY } from './I18NEXT_TOKENS';
 import { I18NextTitle } from './I18NextTitle';
 import { I18NextPipe } from './I18NextPipe';
 import { I18NextCapPipe } from './I18NextCapPipe';
@@ -20,7 +21,8 @@ import { I18NextFormatPipe } from './I18NextFormatPipe';
 import { I18NextService } from './I18NextService';
 import { ITranslationService } from './ITranslationService';
 import { I18nextNamespaceResolver } from './I18nextNamespaceResolver';
-import { I18NextResolveStrategy, NativeResolveStrategy, StrictResolveStrategy } from './I18NextResolveStrategies';
+import { I18NextErrorHandlingStrategy, NativeErrorHandlingStrategy, StrictErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
+import { I18NextModuleParams } from './I18NextModuleParams';
 
 
 @NgModule({
@@ -50,15 +52,17 @@ import { I18NextResolveStrategy, NativeResolveStrategy, StrictResolveStrategy } 
   ]
 })
 export class I18NextModule {
-  static forRoot(localizeTitle: boolean = false, resolveStrategy: Type<I18NextResolveStrategy> = NativeResolveStrategy): ModuleWithProviders {
+  static forRoot(params: I18NextModuleParams = undefined): ModuleWithProviders {
+    params = params || {};
+    params.errorHandlingStrategy = params.errorHandlingStrategy || NativeErrorHandlingStrategy;
     let providers: any = [
       {
         provide: I18NEXT_SERVICE,
         useClass: I18NextService
       },
       {
-        provide: I18NEXT_RESOLVE_STRATEGY,
-        useClass: resolveStrategy
+        provide: I18NEXT_ERROR_HANDLING_STRATEGY,
+        useClass: params.errorHandlingStrategy
       },
       I18NextService,
       I18NextPipe,
@@ -67,7 +71,7 @@ export class I18NextModule {
       I18nextNamespaceResolver
     ];
 
-    if (localizeTitle) {
+    if (params.localizeTitle) {
       providers.push({
         provide: Title,
         useClass: I18NextTitle
