@@ -7,6 +7,7 @@ export * from './I18NextTitle';
 export * from './I18nextNamespaceResolver';
 export * from './I18NextErrorHandlingStrategies';
 export * from './I18NextModuleParams';
+export * from './I18NextLoadResult';
 
 export * from './ITranslationService';
 export * from './ITranslationEvents';
