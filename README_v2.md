@@ -267,7 +267,7 @@ version 3.0.0-alpha.2 now available: `npm install angular-i18next@3.0.0-alpha.2`
 1) Namespaces lazy loading - **DONE**
 2) i18next format support - **DONE**
 3) Test coverage - **DONE**
-4) Documentation update - **IN PROGRESS**
+4) Documentation update - **DONE**
 
 ### Lazy loading
 
