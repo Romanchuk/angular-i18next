@@ -15,7 +15,7 @@
  - [Usage](#usage)
  - [Cookbook](#cookbook)
  - [Demo](#demo)
- - [Migration from v2)](#migration-to-v3)
+ - [Migration to v3)](#migration-to-v3)
 
 # Features
 
