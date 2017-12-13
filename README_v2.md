@@ -7,7 +7,7 @@
 [![devDependency Status](https://david-dm.org/Romanchuk/angular-i18next/dev-status.svg)](https://david-dm.org/Romanchuk/angular-i18next?type=dev)
 
 # angular-i18next
-[i18next](http://i18next.com/) v8.4+ integration with [angular](https://angular.io/) v2.0+
+[i18next](http://i18next.com/) v7.0+ integration with [angular](https://angular.io/) v2.0+
 
 
  - [Features](#features)
@@ -15,7 +15,8 @@
  - [Usage](#usage)
  - [Cookbook](#cookbook)
  - [Demo](#demo)
- - [Migration from v2)](#migration-to-v3)
+ - [Roadmap (Version 3)](#roadmap-version-3)
+
 
 # Features
 
@@ -23,10 +24,7 @@
 - Promise initialization
 - [i18next plugin](https://www.i18next.com/plugins-and-utils.html#plugins) support 
 - Events support
-- Namespaces lazy load
-- i18next native [format](https://www.i18next.com/api.html#format) support
-- document.title localization
-- Error handling strategies
+- Document Title translation
 - i18next namespaces and scopes (prefixes) for angular modules and components
 - AOT support
 
@@ -77,9 +75,7 @@ export class AppComponent {
 
 # Usage
 
-### Pipes
-
-Use "i18next" pipe to translate key:
+Use "i18next" pipe (or "i18nextCap" to capitalize translated text) to translate key:
 
     <div>{{ 'test' | i18next }}</div>
 
@@ -87,40 +83,6 @@ Passing ["t options"](https://www.i18next.com/api.html#t):
 
     <div>{{ 'test' | i18next: { count: 5, nsSeparator: '#' } }}</div>
 
-
-Trigger native i18next [format method](https://www.i18next.com/formatting.html) by using I18NextFormatPipe or I18NextPipe with option 'format':
-
-`{{ 'any_key' | i18next | i18nextFormat }}`
-
-`{{ 'any_key' | i18next: { format: 'cap' } }}`
-
-`{{ 'any_key' | i18nextCap }}`
-
-**Note:** Using "i18nextCap" you will get the same result as  `i18next: { format: 'cap' }`
-
-**REMEMBER** that format will not work until you set "interpolation.format" function in i18next options.
-
-I18NextModule has static method `static interpolationFormat(customFormat: Function = null): Function` that can be used as default interpolation format function (it provides 'upper', 'cap' and 'lower' formatters). You also can pass your custom function to be called after I18NextModule formatters:
-
-```typescript
-const i18nextOptions = {
-  whitelist: ['en', 'ru'],
-  ns: [
-    'translation',
-    'validation',
-    'error',
-  ],
-  interpolation: {
-    format: I18NextModule.interpolationFormat((value, format, lng) => {
-      if(value instanceof Date)
-        return moment(value).format(format);
-      return value;
-    });
-    // format: I18NextModule.interpolationFormat()
-  }
-};
-
-```
 
 Subscribing to event observables:
 ```typescript
@@ -143,11 +105,7 @@ Add a provider to module/component if you want to prefix child i18next keys:
 }
 ```
 
-If you want to turn on document title localization pass 'localizeTitle: true' to _forRoot_ method of I18NextModule (it will resolve Title as I18NextTitle):
-
-`I18NextModule.forRoot({ localizeTitle: true })`
-
-Also you can implement your own Title service with specific behavior. Inject I18NextPipe (or I18NextService) to service/component:
+Translating strings in code. Inject I18NextPipe (or I18NextService) to service/component:
 ```typescript
 import { Injectable, Inject } from '@angular/core';
 import { Title, DOCUMENT } from '@angular/platform-browser';
@@ -164,7 +122,7 @@ export class I18NextTitle extends Title {
    }
 
    private translate(text: string) {
-     return this.i18nextPipe.transform(text, { format: 'cap'});
+     return this.i18nextPipe.transform(text, { case: 'cap'});
    }
 }
 
@@ -187,37 +145,6 @@ export class AppComponent implements OnInit  {
               private title: Title,
               private i18NextService: I18NextService) 
 ```
-
-### Error handling
-
-Error handling is now configurable:
-  1) By default i18next promise will use NativeErrorHandlingStrategy. I18Next would be always resolve succesfully. Error could be get from 'then' handler parameter.
-  2) Set StrictErrorHandlingStrategy to reject load promises (init, languageChange, loadNamespaces) on first load fail (this was default in v2 but changed to fit [native i18next behavior](https://github.com/Romanchuk/angular-i18next/issues/9):
-
-    `I18NextModule.forRoot({ errorHandlingStrategy: StrictErrorHandlingStrategy })`
-
-    
-
-### Lazy loading
-
-Use I18NEXT_NAMESPACE_RESOLVER in your routes to to load i18next namespace.
-
-Note: It is not neccesary to register lazy loading namespaces in global i18next options.
-
-```
-{
-    path: 'rich_form',
-    loadChildren: 'app/features/rich_form_feature/RichFormFeatureModule#RichFormFeatureModule',
-    data: {
-      i18nextNamespaces: ['feature.rich_form']
-    },
-    resolve: {
-      i18next: I18NEXT_NAMESPACE_RESOLVER
-    }
- },
-
-```
-
 
 
 # Cookbook
@@ -242,26 +169,26 @@ i18next.use(i18nextXHRBackend)
 ### Initialize i18next before angular application
 Angular would not load until i18next initialize event fired
 ```typescript
-export function appInit(i18next: ITranslationService) {
-    return () => i18next.init();
-}
-
-export function localeIdFactory(i18next: ITranslationService)  {
-    return i18next.language;
-}
-
-export const I18N_PROVIDERS = [
-{
+const PROVIDERS = [
+  {
     provide: APP_INITIALIZER,
-    useFactory: appInit,
+    useFactory: (i18next: ITranslationService) => () => {
+      return i18next.init();
+    },
     deps: [I18NEXT_SERVICE],
     multi: true
-},
-{
-    provide: LOCALE_ID,
-    deps: [I18NEXT_SERVICE],
-    useFactory: localeIdFactory
-}];
+  }];
+   
+@NgModule({
+  bootstrap: [ AppComponent ],
+  declarations: [   
+    AppComponent
+  ],
+  providers: [
+    PROVIDERS
+  ]
+})
+export class AppModule {}
 ```
 
 
@@ -335,26 +262,80 @@ npm start
 ```
 
 
-# Migration to v3
+# Roadmap (Version 3)
+version 3.0.0-alpha.2 now available: `npm install angular-i18next@3.0.0-alpha.2`
+1) Namespaces lazy loading - **DONE**
+2) i18next format support - **DONE**
+3) Test coverage - **DONE**
+4) Documentation update - **IN PROGRESS**
 
-To keep same behavior you should:
-1. update i18next version to >= 8.4.0
-2. set options.interpolation.format: I18NextModule.interpolationFormat()
-3. set I18NextModule.forRoot params to:
+### Lazy loading
 
-  `I18NextModule.forRoot({ localizeTitle: true, errorHandlingStrategy: StrictErrorHandlingStrategy })`
+Use I18NEXT_NAMESPACE_RESOLVER in your routes to to load i18next namespace.
 
-**v2** docs available [here](https://github.com/Romanchuk/angular-i18next/blob/master/README_v2.md)
+Note: It is not neccesary to register lazy loading namespaces in global i18next options.
 
-### Breaking changes list
+```
+{
+    path: 'rich_form',
+    loadChildren: 'app/features/rich_form_feature/RichFormFeatureModule#RichFormFeatureModule',
+    data: {
+      i18nextNamespaces: ['feature.rich_form']
+    },
+    resolve: {
+      i18next: I18NEXT_NAMESPACE_RESOLVER
+    }
+ },
+
+```
+
+### I18next native interpolation format support
+
+Now you can call native i18next [format method](https://www.i18next.com/formatting.html) by using I18NextFormatPipe or I18NextPipe with option 'format':
+
+`{{ 'any_key' | i18next | i18nextFormat }}`
+
+`{{ 'any_key' | i18next: { format: 'uppercase' } }}`
+
 
 - Added i18NextFormat pipe to support i18next
 - BREAKING: Reserved option 'case' in I18NextPipe changed to 'format'
-- BREAKING: I18NextCapPipe has no own formaters
+- BREAKING: I18NextPipe has no own formaters
 - I18NextModule has static method `static interpolationFormat(customFormat: Function = null): Function` that can be used as default interpolation format (it provides 'upper', 'cap' and 'lower' formatters) . You also can pass your custom function to be called after I18NextModule formatters .
+
+```
+const i18nextOptions = {
+  whitelist: ['en', 'ru'],
+  ns: [
+    'translation',
+    'validation',
+    'error',
+  ],
+  interpolation: {
+    format: I18NextModule.interpolationFormat((value, format, lng) => {
+      if(value instanceof Date)
+        return moment(value).format(format);
+      return value;
+    });
+    // format: I18NextModule.interpolationFormat()
+  }
+};
+
+```
+
+### Other breaking changes
 
 - i18next version support >= 8.4.0
 
-- Title provider does not resolving as I18NextTitle by default anymore
+- Title provider does not resolving as I18NextTitle by default anymore.
 
-- Fix [#9](https://github.com/Romanchuk/angular-i18next/issues/9)
+    If you want to resolve Title as I18NextTitle pass 'localizeTitle: true' to _forRoot_ method of I18NextModule:
+
+    `I18NextModule.forRoot({ localizeTitle: true })`
+
+
+- Fix [#9](https://github.com/Romanchuk/angular-i18next/issues/9): Error handling is now configurable:
+  1) By default i18next promise will use NativeErrorHandlingStrategy. I18Next would be always resolve succesfully. Error could be get from 'then' handler parameter.
+  2) You can set StrictErrorHandlingStrategy to reject load promises (init, languageChange, loadNamespaces) on first load fail:
+
+      `I18NextModule.forRoot({ errorHandlingStrategy: StrictErrorHandlingStrategy })`
