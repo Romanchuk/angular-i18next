@@ -1,3 +1,16 @@
+import { ModuleWithProviders, NgModule } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+
+import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
+import { I18NextCapPipe } from './I18NextCapPipe';
+import { NativeErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
+import { I18NextFormatPipe } from './I18NextFormatPipe';
+import { I18NextModuleParams } from './I18NextModuleParams';
+import { I18nextNamespaceResolver } from './I18nextNamespaceResolver';
+import { I18NextPipe } from './I18NextPipe';
+import { I18NextService } from './I18NextService';
+import { I18NextTitle } from './I18NextTitle';
+
 export * from './I18NEXT_TOKENS';
 export * from './I18NextPipe';
 export * from './I18NextCapPipe';
@@ -11,19 +24,6 @@ export * from './I18NextLoadResult';
 
 export * from './ITranslationService';
 export * from './ITranslationEvents';
-
-import { NgModule, ModuleWithProviders, FactoryProvider, Type } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE, I18NEXT_NAMESPACE_RESOLVER, I18NEXT_ERROR_HANDLING_STRATEGY } from './I18NEXT_TOKENS';
-import { I18NextTitle } from './I18NextTitle';
-import { I18NextPipe } from './I18NextPipe';
-import { I18NextCapPipe } from './I18NextCapPipe';
-import { I18NextFormatPipe } from './I18NextFormatPipe';
-import { I18NextService } from './I18NextService';
-import { ITranslationService } from './ITranslationService';
-import { I18nextNamespaceResolver } from './I18nextNamespaceResolver';
-import { I18NextErrorHandlingStrategy, NativeErrorHandlingStrategy, StrictErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
-import { I18NextModuleParams } from './I18NextModuleParams';
 
 
 @NgModule({

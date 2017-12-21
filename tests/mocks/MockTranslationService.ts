@@ -1,10 +1,7 @@
-import { ITranslationEvents } from './../../src/ITranslationEvents';
-import { ITranslationService } from '../../src/ITranslationService';
-import {
-  Injectable,
-  Inject
-} from '@angular/core';
+import { Injectable } from '@angular/core';
 
+import { ITranslationService } from '../../src/ITranslationService';
+import { ITranslationEvents } from './../../src/ITranslationEvents';
 
 @Injectable()
 export class MockI18NextService implements ITranslationService {

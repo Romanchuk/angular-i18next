@@ -1,10 +1,4 @@
-import {
-  Injectable,
-  Inject
-} from '@angular/core';
-
 import { ITranslationEvents } from './ITranslationEvents';
-import { I18NextEvents } from './I18NextEvents';
 
 export interface ITranslationService {
 

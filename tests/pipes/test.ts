@@ -11,71 +11,79 @@ describe('I18NextPipe tests', function() {
   const DEFAULT_SCOPE = '';
 
   it('transform', function(){
-      let pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
-      let key = 'test';
-      let transResult = pipe.transform(key, null);
+      const pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
+      const key = 'test';
+      const transResult = pipe.transform(key, null);
       expect(transResult).toEqual(key);
   });
 
   it('format options', function(){
-      let pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
-      let capPipe = new I18NextCapPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
-      let key = 'test';
-      let transResult = pipe.transform(key, { format: 'cap' });
-      let transCapResult = capPipe.transform(key);
+      const pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
+      const capPipe = new I18NextCapPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
+      const key = 'test';
+      const transResult = pipe.transform(key, { format: 'cap' });
+      const transCapResult = capPipe.transform(key);
       expect(transResult).toEqual(transCapResult);
       expect(transResult).toEqual('Test');
   });
 
   it('namespace prefix', function(){
-      let namespace = 'error';
-      let pipe = new I18NextPipe(service, namespace, DEFAULT_SCOPE);
-      let key = 'test';
-      let transResult = pipe.transform(key);
-      expect(transResult.startsWith(namespace + service.options.nsSeparator)).toBeTruthy();
+      const namespace = 'error';
+      const pipe = new I18NextPipe(service, namespace, DEFAULT_SCOPE);
+      const key = 'test';
+      const transResult = pipe.transform(key);
+      expect(transResult).toEqual(namespace + service.options.nsSeparator + key);
       // for array key
-      let arrayKey = ['test_1', 'test_2'];
-      let arrResult = pipe.transform(key);
-      expect(arrResult.startsWith(namespace + service.options.nsSeparator)).toBeTruthy();
+      const arrayKey = ['test_1', 'test_2'];
+      const arrResult = pipe.transform(arrayKey);
+      expect(arrResult).toEqual(namespace + service.options.nsSeparator + arrayKey[0]);
   });
 
-
   it('ignore namespace param if key already contains it', function(){
-      let namespace = 'error';
-      let pipe = new I18NextPipe(service, namespace, DEFAULT_SCOPE);
-      let realns = 'realns';
-      let key = [realns, 'test'].join(service.options.nsSeparator);
-      let transResult = pipe.transform(key);
-      expect(transResult.startsWith(realns + service.options.nsSeparator)).toBeTruthy();
+      const namespace = 'error';
+      const pipe = new I18NextPipe(service, namespace, DEFAULT_SCOPE);
+      const realns = 'realns';
+      const keyWithNamespace = [realns, 'test'].join(service.options.nsSeparator);
+      const transResult = pipe.transform(keyWithNamespace);
+      expect(transResult).toEqual(keyWithNamespace);
   });
 
   it('scope prefix', function(){
-      let scope = 'scope';
-      let pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, scope);
-      let key = 'test';
-      let transResult = pipe.transform(key);
-      expect(transResult.startsWith(scope + service.options.keySeparator)).toBeTruthy();
+      const scope = 'scope';
+      const pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, scope);
+      const key = 'test';
+      const transResult = pipe.transform(key);
+      expect(transResult).toEqual(scope + service.options.keySeparator + key);
       // for array key
-      let arrayKey = ['test_1', 'test_2'];
-      let arrResult = pipe.transform(arrayKey);
-      expect(arrResult.startsWith(scope + service.options.keySeparator)).toBeTruthy();
+      const arrayKey = ['test_1', 'test_2'];
+      const arrResult = pipe.transform(arrayKey);
+      expect(arrResult).toEqual(scope + service.options.keySeparator + arrayKey[0]);
   });
 
   it('ns and scope prefix', function(){
-      let scope = 'scope';
-      let ns = 'ns';
-      let pipe = new I18NextPipe(service, ns, scope);
-      let key = 'test';
-      let transResult = pipe.transform(key);
+      const scope = 'scope';
+      const ns = 'ns';
+      const pipe = new I18NextPipe(service, ns, scope);
+      const key = 'test';
+      const transResult = pipe.transform(key);
       expect(transResult).toEqual([ns, [scope, key].join(service.options.keySeparator)].join(service.options.nsSeparator));
   });
 
+  it('ns and scope prefix (arrays)', function(){
+    const scope = ['scope1', 'scope2'];
+    const ns = ['ns1', 'ns2'];
+    const pipe = new I18NextPipe(service, ns, scope);
+    const key = 'test';
+    const transResult = pipe.transform(key);
+    expect(transResult).toEqual([ns[0], [scope[0], key].join(service.options.keySeparator)].join(service.options.nsSeparator));
+});
+
   it('ns and scope no prefix (prependScope = false and prependNamespace = false)', function(){
-      let scope = 'scope';
-      let ns = 'ns';
-      let pipe = new I18NextPipe(service, ns, scope);
-      let key = 'test';
-      let transResult = pipe.transform(key, {
+      const scope = 'scope';
+      const ns = 'ns';
+      const pipe = new I18NextPipe(service, ns, scope);
+      const key = 'test';
+      const transResult = pipe.transform(key, {
         prependScope: false,
         prependNamespace: false
       });

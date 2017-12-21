@@ -1,14 +1,7 @@
-import {
-    Injectable,
-    Inject,
-    Pipe,
-    PipeTransform
-} from '@angular/core';
+import { Inject, Injectable, Pipe, PipeTransform } from '@angular/core';
 
-import { I18NextService } from './I18NextService';
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
 import { ITranslationService } from './ITranslationService';
-
 @Injectable()
 @Pipe({
     name: 'i18next'
@@ -17,8 +10,8 @@ export class I18NextPipe implements PipeTransform {
 
   constructor(
       @Inject(I18NEXT_SERVICE) private translateI18Next: ITranslationService,
-      @Inject(I18NEXT_NAMESPACE) private ns: string,
-      @Inject(I18NEXT_SCOPE) private scope: string) {}
+      @Inject(I18NEXT_NAMESPACE) private ns: string | string[],
+      @Inject(I18NEXT_SCOPE) private scope: string | string[]) {}
 
   public transform(key: string | string[], options?: any): string {
     options = this.prepareOptions(options);
@@ -44,42 +37,47 @@ export class I18NextPipe implements PipeTransform {
     return result;
   }
 
-  private prependScope(key: string | string[], scope: string, keySeparator: string,  nsSeparator: string): string | string[] {
-    if (key instanceof Array) {
-      for (let i = 0; i < key.length; i++) {
-        if (!this.keyContainsNsSeparator(key[i], nsSeparator)) // Не подставлять scope, если в ключе указан namespace
-          key[i] = this.joinStrings(scope, key[i], keySeparator);
-      }
-    } else {
-      if (!this.keyContainsNsSeparator(key, nsSeparator))
-        key = this.joinStrings(scope, key, keySeparator);
+  private prependScope(key: string | string[], scope: string | string[], keySeparator: string,  nsSeparator: string): string[] {
+    if (typeof(key) === 'string') {
+      key = [key];
     }
-    return key;
+    if (typeof(scope) === 'string') {
+      scope = [scope];
+    }
+    let keysWithScope = [];
+    for (let i = 0; i < key.length; i++) {
+      const k = key[i];
+      if (this.keyContainsNsSeparator(k, nsSeparator)) { // Не подставлять scope, если в ключе указан namespace
+        keysWithScope.push(k);
+      } else {
+        keysWithScope.push(...scope.map(sc => this.joinStrings(keySeparator, sc, k)));
+      }
+    }
+    return keysWithScope;
   }
 
-  private prependNamespace(key: string | string[], ns: string, nsSeparator: string): string | string[] {
-    if (key instanceof Array) {
-      let keysWithNamespace = [];
-      for (let i = 0; i < key.length; i++) {
-        if (!this.keyContainsNsSeparator(key[i], nsSeparator)) // Не подставлять namespace, если он уже указан в ключе
-        {
-          keysWithNamespace.push(this.joinStrings(ns, key[i], nsSeparator));
-        }
-      }
-      return keysWithNamespace.concat(key); // fallback to key
-    } else {
-      let keyWithNamespace;
-      if (!this.keyContainsNsSeparator(key, nsSeparator)) {
-        keyWithNamespace = this.joinStrings(ns, key, nsSeparator);
-      }
-      if (keyWithNamespace)
-        return [keyWithNamespace, key]; // fallback to key
-      return key;
+  private prependNamespace(key: string | string[], ns: string | string[], nsSeparator: string): string[] {
+    if (typeof(key) === 'string') {
+      key = [key];
     }
+    if (typeof(ns) === 'string') {
+      ns = [ns];
+    }
+    let keysWithNamespace = [];
+    for (let i = 0; i < key.length; i++) {
+      const k = key[i];
+      if (this.keyContainsNsSeparator(k, nsSeparator)) // Не подставлять namespace, если он уже указан в ключе
+      {
+        keysWithNamespace.push(k);
+      } else {
+        keysWithNamespace.push(...ns.map(n => this.joinStrings(nsSeparator, n, k)));
+      }
+    }
+    return keysWithNamespace;
   }
 
-  private joinStrings(str1: string, str2: string, separator: string) {
-    return [str1, str2].join(separator);
+  private joinStrings(separator: string, ...str: string[]) {
+    return [...str].join(separator);
   }
 
   private keyContainsNsSeparator(key: string, nsSeparator: string) {
