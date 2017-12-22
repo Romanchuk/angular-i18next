@@ -142,6 +142,17 @@ Add a provider to module/component if you want to prefix child i18next keys:
   useValue: 'person' // set 'person.' prefix 
 }
 ```
+**Version: 3.1.0**
+
+It is possible to pass array of namespaces (or scopes). [Key would fallback](https://www.i18next.com/api.html#t) to next namespace in array if the previous failed to resolve.
+
+`[feature.validators:key, validators:key]`
+```typescript
+{
+  provide: I18NEXT_NAMESPACE,
+  useValue: ['feature.validators', 'validators']
+}
+```
 
 If you want to turn on document title localization pass 'localizeTitle: true' to _forRoot_ method of I18NextModule (it will resolve Title as I18NextTitle):
 
@@ -217,7 +228,7 @@ Note: It is not neccesary to register lazy loading namespaces in global i18next 
  },
 
 ```
-
+Use I18NextService.loadNamespaces() method to load namespaces in code.
 
 
 # Cookbook
