@@ -1,7 +1,15 @@
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/Romanchuk/angular-i18next/compare/v3.0.0...v3.1.0) (2017-12-22)
 
+It is possible to pass array of namespaces (or scopes). [Key would fallback](https://www.i18next.com/api.html#t) to next namespace in array if the previous failed to resolve.
 
+`[feature.validators:key, validators:key]`
+```typescript
+{
+  provide: I18NEXT_NAMESPACE,
+  useValue: ['feature.validators', 'validators']
+}
+```
 
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/Romanchuk/angular-i18next/compare/v3.0.0-alpha.2...v3.0.0) (2017-12-15)
