@@ -1,3 +1,14 @@
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/Romanchuk/angular-i18next/compare/v3.1.0...v3.1.1) (2018-01-01)
+
+
+### Bug Fixes
+
+* bug namespace fallback ([a16b067](https://github.com/Romanchuk/angular-i18next/commit/a16b067))
+* conventional-github-releaser run ([df3bb84](https://github.com/Romanchuk/angular-i18next/commit/df3bb84))
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/Romanchuk/angular-i18next/compare/v3.0.0...v3.1.0) (2017-12-22)
 
