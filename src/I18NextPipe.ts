@@ -47,11 +47,10 @@ export class I18NextPipe implements PipeTransform {
     let keysWithScope = [];
     for (let i = 0; i < key.length; i++) {
       const k = key[i];
-      if (this.keyContainsNsSeparator(k, nsSeparator)) { // Не подставлять scope, если в ключе указан namespace
-        keysWithScope.push(k);
-      } else {
+      if (!this.keyContainsNsSeparator(k, nsSeparator)) {// Не подставлять scope, если в ключе указан namespace
         keysWithScope.push(...scope.map(sc => this.joinStrings(keySeparator, sc, k)));
       }
+      keysWithScope.push(k);
     }
     return keysWithScope;
   }
@@ -66,12 +65,10 @@ export class I18NextPipe implements PipeTransform {
     let keysWithNamespace = [];
     for (let i = 0; i < key.length; i++) {
       const k = key[i];
-      if (this.keyContainsNsSeparator(k, nsSeparator)) // Не подставлять namespace, если он уже указан в ключе
-      {
-        keysWithNamespace.push(k);
-      } else {
+      if (!this.keyContainsNsSeparator(k, nsSeparator)) { // Не подставлять namespace, если он уже указан в ключе
         keysWithNamespace.push(...ns.map(n => this.joinStrings(nsSeparator, n, k)));
       }
+      keysWithNamespace.push(k);
     }
     return keysWithNamespace;
   }
