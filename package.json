@@ -1,6 +1,6 @@
 {
     "name": "angular-i18next",
-    "version": "3.1.1",
+    "version": "3.2.0",
     "author": {
         "name": "Sergey Romanchuk"
     },
@@ -19,10 +19,12 @@
     "bugs": {
         "url": "https://github.com/Romanchuk/angular-i18next/issues"
     },
-    "maintainers": [{
-        "email": "rezety@gmail.com",
-        "name": "Sergey Romanchuk"
-    }],
+    "maintainers": [
+        {
+            "email": "rezety@gmail.com",
+            "name": "Sergey Romanchuk"
+        }
+    ],
     "scripts": {
         "tsc": "tsc",
         "karma": "karma",
