@@ -154,9 +154,12 @@ It is possible to pass array of namespaces (or scopes). [Key would fallback](htt
 }
 ```
 
-If you want to turn on document title localization pass 'localizeTitle: true' to _forRoot_ method of I18NextModule (it will resolve Title as I18NextTitle):
+If you want to turn on document title localization resolve Title as I18NextTile imported from 'angular-i18next':
 
-`I18NextModule.forRoot({ localizeTitle: true })`
+```typescript{
+  provide: Title,
+  useClass: I18NextTitle
+}```
 
 Also you can implement your own Title service with specific behavior. Inject I18NextPipe (or I18NextService) to service/component:
 ```typescript
@@ -354,6 +357,11 @@ To keep same behavior you should:
 3. set I18NextModule.forRoot params to:
 
   `I18NextModule.forRoot({ localizeTitle: true, errorHandlingStrategy: StrictErrorHandlingStrategy })`
+
+# Migration to v3.2.0
+- 'localizeTitle' option was removed. You need to resolve Title service manually.
+
+
 
 **v2** docs available [here](https://github.com/Romanchuk/angular-i18next/blob/master/README_v2.md)
 

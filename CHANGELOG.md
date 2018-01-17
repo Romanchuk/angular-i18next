@@ -1,6 +1,13 @@
 <a name="3.2.0"></a>
 # [3.2.0](https://github.com/Romanchuk/angular-i18next/compare/v3.1.1...v3.2.0) (2018-01-17)
 
+### Bug Fixes
+* aot build failed ([a16b067](https://github.com/Romanchuk/angular-i18next/commit/a16b067))
+
+### Breaking changes
+
+Removed parameter 'localizeTitle' from forRoot method.
+You need to manually resolve Title as I18NextTitle for same behavior.
 
 
 <a name="3.1.1"></a>
