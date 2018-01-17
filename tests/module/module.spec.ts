@@ -11,7 +11,6 @@ import {
     I18NextCapPipe,
     I18NextFormatPipe,
     I18NextModule,
-    I18nextNamespaceResolver,
     I18NextPipe,
     I18NextService,
     I18NextTitle,
@@ -24,7 +23,7 @@ describe('I18NextModule', function() {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [I18NextModule.forRoot({ localizeTitle: true })]
+      imports: [I18NextModule.forRoot()]
     });
   });
 
@@ -52,7 +51,7 @@ describe('I18NextModule', function() {
   });
 
   it('should provide title', function() {
-    let title: I18NextTitle = TestBed.get(Title);
+    let title: I18NextTitle = TestBed.get(I18NextTitle);
     expect(title).toBeTruthy();
     expect(title instanceof I18NextTitle).toBeTruthy();
   });
@@ -98,11 +97,9 @@ describe('I18NextModule', function() {
   });
 
   it('should provide resolver', function(done) {
-    let resolver: FactoryProvider = TestBed.get(I18NEXT_NAMESPACE_RESOLVER);
+    let resolver: Function = TestBed.get(I18NEXT_NAMESPACE_RESOLVER);
     expect(resolver).toBeTruthy();
-
-    let routingFunc: Function = I18nextNamespaceResolver.useFactory(new MockI18NextService());
-    routingFunc({
+    resolver({
       data: {
         i18nextNamespaces: []
       }

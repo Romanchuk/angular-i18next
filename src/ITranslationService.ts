@@ -8,7 +8,7 @@ export interface ITranslationService {
 
   options: any;
 
-  use(plugin: Function);
+  use(plugin: any);
 
   init(options?: any): Promise<any>;
 

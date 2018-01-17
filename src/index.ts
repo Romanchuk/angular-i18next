@@ -1,15 +1,15 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { ModuleWithProviders, NgModule, FactoryProvider } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 
-import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
+import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE, I18NEXT_NAMESPACE_RESOLVER } from './I18NEXT_TOKENS';
 import { I18NextCapPipe } from './I18NextCapPipe';
 import { NativeErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
 import { I18NextFormatPipe } from './I18NextFormatPipe';
 import { I18NextModuleParams } from './I18NextModuleParams';
-import { I18nextNamespaceResolver } from './I18nextNamespaceResolver';
 import { I18NextPipe } from './I18NextPipe';
 import { I18NextService } from './I18NextService';
 import { I18NextTitle } from './I18NextTitle';
+import { ITranslationService } from 'ITranslationService';
 
 export * from './I18NEXT_TOKENS';
 export * from './I18NextPipe';
@@ -17,7 +17,6 @@ export * from './I18NextCapPipe';
 export * from './I18NextFormatPipe';
 export * from './I18NextService';
 export * from './I18NextTitle';
-export * from './I18nextNamespaceResolver';
 export * from './I18NextErrorHandlingStrategies';
 export * from './I18NextModuleParams';
 export * from './I18NextLoadResult';
@@ -25,6 +24,15 @@ export * from './I18NextLoadResult';
 export * from './ITranslationService';
 export * from './ITranslationEvents';
 
+
+export function resolver(activatedRouteSnapshot, routerStateSnapshot): Promise<void> {
+  let namespaces: string[] = [];
+  namespaces = activatedRouteSnapshot.data && activatedRouteSnapshot.data.i18nextNamespaces || namespaces;
+  return this.loadNamespaces(namespaces.filter(n => n));
+}
+export function i18nextNamespaceResolverFactory(i18next: ITranslationService) {
+  return resolver.bind(i18next);
+}
 
 @NgModule({
   providers: [
@@ -53,35 +61,29 @@ export * from './ITranslationEvents';
   ]
 })
 export class I18NextModule {
-  static forRoot(params: I18NextModuleParams = undefined): ModuleWithProviders {
-    params = params || {};
-    params.errorHandlingStrategy = params.errorHandlingStrategy || NativeErrorHandlingStrategy;
-    let providers: any = [
-      {
-        provide: I18NEXT_SERVICE,
-        useClass: I18NextService
-      },
-      {
-        provide: I18NEXT_ERROR_HANDLING_STRATEGY,
-        useClass: params.errorHandlingStrategy
-      },
-      I18NextService,
-      I18NextPipe,
-      I18NextCapPipe,
-      I18NextFormatPipe,
-      I18nextNamespaceResolver
-    ];
-
-    if (params.localizeTitle) {
-      providers.push({
-        provide: Title,
-        useClass: I18NextTitle
-      });
-    }
-
+  static forRoot(params: I18NextModuleParams = {}): ModuleWithProviders {
     return {
       ngModule: I18NextModule,
-      providers: providers
+      providers: [
+        {
+          provide: I18NEXT_SERVICE,
+          useClass: I18NextService
+        },
+        {
+          provide: I18NEXT_ERROR_HANDLING_STRATEGY,
+          useClass: params.errorHandlingStrategy || NativeErrorHandlingStrategy
+        },
+        I18NextService,
+        I18NextPipe,
+        I18NextCapPipe,
+        I18NextFormatPipe,
+        I18NextTitle,
+        {
+          provide: I18NEXT_NAMESPACE_RESOLVER,
+          useFactory: i18nextNamespaceResolverFactory,
+          deps: [I18NEXT_SERVICE]
+        }
+      ]
     };
   }
 

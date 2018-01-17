@@ -19,7 +19,7 @@ export class MockI18NextService implements ITranslationService {
 
   private i18nextPromise: Promise<void>;
 
-  public use(plugin: Function) {
+  public use(plugin: any) {
     return this;
   }
 

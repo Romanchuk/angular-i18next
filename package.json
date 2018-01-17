@@ -19,12 +19,10 @@
     "bugs": {
         "url": "https://github.com/Romanchuk/angular-i18next/issues"
     },
-    "maintainers": [
-        {
-            "email": "rezety@gmail.com",
-            "name": "Sergey Romanchuk"
-        }
-    ],
+    "maintainers": [{
+        "email": "rezety@gmail.com",
+        "name": "Sergey Romanchuk"
+    }],
     "scripts": {
         "tsc": "tsc",
         "karma": "karma",
@@ -47,7 +45,7 @@
         "ci": "npm run lint && npm run compile && npm run test",
         "clean:compile": "npm run rimraf -- dist build",
         "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- \"tests/**/*.+(js|js.map|d.ts|metadata.json)\" ",
-        "lint": "npm run tslint -- --type-check --project tsconfig.json",
+        "lint": "npm run tslint -- --project tsconfig.json",
         "test": "npm run clean:tests && karma start karma.conf.js",
         "test:watch": "npm run clean:tests && karma start karma.conf.debug.js"
     },

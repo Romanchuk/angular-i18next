@@ -34,7 +34,7 @@ describe('I18nService', function() {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [I18NextModule.forRoot({ localizeTitle: true })],
+            imports: [I18NextModule.forRoot()],
             providers: [I18N_PROVIDERS]
         });
     });

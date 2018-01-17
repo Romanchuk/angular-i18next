@@ -23,7 +23,7 @@ export class I18NextService implements ITranslationService {
 
   constructor(@Inject(I18NEXT_ERROR_HANDLING_STRATEGY) private errorHandlingStrategy: I18NextErrorHandlingStrategy) {}
 
-  public use(plugin: Function) {
+  public use(plugin: any) {
     i18next.use.call(i18next, plugin);
     return this;
   }
