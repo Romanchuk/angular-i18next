@@ -9,7 +9,7 @@ import { I18NextModuleParams } from './I18NextModuleParams';
 import { I18NextPipe } from './I18NextPipe';
 import { I18NextService } from './I18NextService';
 import { I18NextTitle } from './I18NextTitle';
-import { ITranslationService } from 'ITranslationService';
+import { ITranslationService } from './ITranslationService';
 
 export * from './I18NEXT_TOKENS';
 export * from './I18NextPipe';
