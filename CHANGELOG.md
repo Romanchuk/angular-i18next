@@ -2,7 +2,7 @@
 # [3.2.0](https://github.com/Romanchuk/angular-i18next/compare/v3.1.1...v3.2.0) (2018-01-17)
 
 ### Bug Fixes
-* aot build failed ([a16b067](https://github.com/Romanchuk/angular-i18next/commit/a16b067))
+* [aot build failed](Romanchuk/angular-i18next#10)
 
 ### Breaking changes
 
