@@ -4,6 +4,7 @@ import { By } from '@angular/platform-browser';
 
 import { I18NextPipe } from '../../src/I18NextPipe';
 import { I18NextCapPipe } from '../../src/I18NextCapPipe';
+import { I18NextFormatPipe } from '../../src/I18NextFormatPipe';
 import { I18NextService } from '../../src/I18NextService';
 import { ITranslationService } from '../../src/ITranslationService';
 import { I18NEXT_SERVICE, I18NEXT_NAMESPACE, I18NEXT_SCOPE } from '../../src/I18NEXT_TOKENS';
@@ -12,14 +13,17 @@ import { MockChangeDetectorRef } from '../mocks/MockChangeDetectorRef';
 
 
 @Component({template: `<p>{{ 'test' | i18next }}</p>`})
-class TestCompontent {}
+class TestPipeCompontent {}
+
+@Component({template: `<p>{{ 'test' | i18nextFormat:'cap' }}</p>`})
+class TestFormatPipeCompontent {}
 
 function before(namespace: string | string[] = '', scope: string | string[] = '') {
   return beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [I18NextPipe, I18NextCapPipe, TestCompontent],
+      declarations: [I18NextPipe, I18NextCapPipe, I18NextFormatPipe, TestPipeCompontent, TestFormatPipeCompontent],
       providers: [
-        I18NextPipe, I18NextCapPipe,
+        I18NextPipe, I18NextCapPipe, I18NextFormatPipe,
         {provide: I18NextService, useClass: MockI18NextService},
         {provide: I18NEXT_SERVICE, useClass: MockI18NextService},
         {provide: I18NEXT_NAMESPACE, useValue: namespace},
@@ -121,26 +125,51 @@ describe('I18NextPipe tests', () => {
 });
 
 describe('I18NextPipe tests', () => {
-  let component: TestCompontent;
-  let fixture: ComponentFixture<TestCompontent>;
+  let component: TestPipeCompontent;
+  let fixture: ComponentFixture<TestPipeCompontent>;
   let el: DebugElement;
   let service: ITranslationService;
 
   before();
   beforeEach(() => {
-    fixture = TestBed.createComponent(TestCompontent);
+    fixture = TestBed.createComponent(TestPipeCompontent);
     component = fixture.componentInstance;
     service = fixture.debugElement.injector.get(I18NEXT_SERVICE);
     el = fixture.debugElement.query(By.css('p'));
   });
 
-  it('detect changes', /*inject([I18NextService], (service: I18NextService)*/() => {
+  it('detect changes', () => {
     expect(el.nativeElement.textContent).toBe('');
     fixture.detectChanges();
     expect(el.nativeElement.textContent).toBe('test');
     service.changeLanguage('lang').then(() => {
       fixture.detectChanges();
       expect(el.nativeElement.textContent).toBe('lang');
+    });
+  });
+});
+
+describe('I18NextPipe tests', () => {
+  let component: TestFormatPipeCompontent;
+  let fixture: ComponentFixture<TestFormatPipeCompontent>;
+  let el: DebugElement;
+  let service: ITranslationService;
+
+  before();
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TestFormatPipeCompontent);
+    component = fixture.componentInstance;
+    service = fixture.debugElement.injector.get(I18NEXT_SERVICE);
+    el = fixture.debugElement.query(By.css('p'));
+  });
+
+  it('detect changes', () => {
+    expect(el.nativeElement.textContent).toBe('');
+    fixture.detectChanges();
+    expect(el.nativeElement.textContent).toBe('Test');
+    service.changeLanguage('lang').then(() => {
+      fixture.detectChanges();
+      expect(el.nativeElement.textContent).toBe('Lang');
     });
   });
 });
