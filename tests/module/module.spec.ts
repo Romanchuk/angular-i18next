@@ -1,4 +1,4 @@
-import { FactoryProvider } from '@angular/core';
+import { FactoryProvider, ChangeDetectorRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
 
@@ -15,7 +15,8 @@ import {
     I18NextService,
     I18NextTitle,
 } from '../../src/index';
-import { MockI18NextService } from './../mocks/MockTranslationService';
+import { MockI18NextService } from '../mocks/MockTranslationService';
+import { MockChangeDetectorRef } from '../mocks/MockChangeDetectorRef';
 
 describe('I18NextModule', function() {
   const DEFAULT_NAMESPACE = '';
@@ -23,7 +24,8 @@ describe('I18NextModule', function() {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [I18NextModule.forRoot()]
+      imports: [I18NextModule.forRoot()],
+      providers: [{provide: ChangeDetectorRef, useClass: MockChangeDetectorRef}]
     });
   });
 

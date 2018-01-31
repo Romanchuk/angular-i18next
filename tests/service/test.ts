@@ -1,8 +1,9 @@
-import { APP_INITIALIZER, LOCALE_ID } from '@angular/core';
+import { APP_INITIALIZER, LOCALE_ID, ChangeDetectorRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { DOCUMENT, Title } from '@angular/platform-browser';
 
 import { I18NEXT_SERVICE, I18NextModule, ITranslationService, I18NextPipe } from '../../src';
+import { MockChangeDetectorRef } from '../mocks/MockChangeDetectorRef';
 
 const i18nextOptions = {
     lng: 'cimode',
@@ -35,7 +36,7 @@ describe('I18nService', function() {
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [I18NextModule.forRoot()],
-            providers: [I18N_PROVIDERS]
+            providers: [I18N_PROVIDERS, {provide: ChangeDetectorRef, useClass: MockChangeDetectorRef}]
         });
     });
 
