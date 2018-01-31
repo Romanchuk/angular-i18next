@@ -1,4 +1,4 @@
-import { Inject, Injectable, Pipe, PipeTransform, ChangeDetectorRef } from '@angular/core';
+import { Inject, Injectable, Pipe, PipeTransform, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 
 import { I18NEXT_SERVICE } from './I18NEXT_TOKENS';
@@ -8,7 +8,7 @@ import { ITranslationService } from './ITranslationService';
 @Pipe({
     name: 'i18nextFormat', pure: false
 })
-export class I18NextFormatPipe implements PipeTransform {
+export class I18NextFormatPipe implements PipeTransform, OnDestroy {
   private _latestValue: string;
   private _subscription: Subscription = null;
 
@@ -36,7 +36,13 @@ export class I18NextFormatPipe implements PipeTransform {
     return this._latestValue;
   }
 
-  private format(value: string, options?: any): string {
+  ngOnDestroy() {
+    if (this._subscription) {
+      this._subscription.unsubscribe();
+    }
+  }
+
+  private format(value: string, options: Object | string): string {
     let opts: any = typeof(options) === 'string' ? { format: options } : options;
     return this.translateI18Next.format(value, opts.format, opts.lng);
   }
