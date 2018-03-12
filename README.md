@@ -154,14 +154,16 @@ It is possible to pass array of namespaces (or scopes). [Key would fallback](htt
 }
 ```
 
-If you want to turn on document title localization resolve Title as I18NextTile imported from 'angular-i18next':
+If you want to turn on document title localization resolve Title as `I18NextTitle` imported from 'angular-i18next':
 
-```typescript{
+```typescript
+{
   provide: Title,
   useClass: I18NextTitle
-}```
+}
+```
 
-Also you can implement your own Title service with specific behavior. Inject I18NextPipe (or I18NextService) to service/component:
+Also you can implement your own Title service with specific behavior. Inject `I18NextPipe` (or `I18NextService`) to service/component:
 ```typescript
 import { Injectable, Inject } from '@angular/core';
 import { Title, DOCUMENT } from '@angular/platform-browser';
@@ -185,7 +187,7 @@ export class I18NextTitle extends Title {
 ```
 
 Ways to use I18NextService in your code:
-> **Warning:** Injection of **I18NextService** is possible, but it would not consider I18NEXT_NAMESPACE and I18NEXT_SCOPE providers. There are 2 possible reasons to inject **I18NextService**: initialization and subscribtion to its events. In all other cases inject **I18NextPipe**.
+> **Warning:** Injection of **I18NextService** is possible, but it would not consider I18NEXT_NAMESPACE and I18NEXT_SCOPE providers. There are 2 possible reasons to inject **I18NextService**: initialization and subscription to its events. In all other cases inject **I18NextPipe**.
 1) **Recommended way:** Inject via **I18NEXT_SERVICE** token. By default it will inject instance of **I18NextService**.
 ```typescript
 export class AppComponent implements OnInit  {
