@@ -1,7 +1,9 @@
 <a name="3.3.0"></a>
 # [3.3.0](https://github.com/Romanchuk/angular-i18next/compare/v3.3.0-beta.2...v3.3.0) (2018-03-12)
 
-
+- added umd bundle
+- comments cleanup
+- updated dev dependencies
 
 <a name="3.3.0-beta.2"></a>
 # [3.3.0-beta.2](https://github.com/Romanchuk/angular-i18next/compare/v3.3.0-beta.1...v3.3.0-beta.2) (2018-03-12)
