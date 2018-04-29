@@ -14,7 +14,7 @@ export interface ITranslationService {
 
   t(key: string | string[], options?: any): string;
 
-  format(value: string, format: string, lng: string): string;
+  format(value: any, format: string, lng: string): string;
 
   changeLanguage(lng: string): Promise<any>;
 
