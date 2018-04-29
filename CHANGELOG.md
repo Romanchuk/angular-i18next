@@ -1,6 +1,7 @@
 <a name="3.4.1"></a>
 ## [3.4.1](https://github.com/Romanchuk/angular-i18next/compare/v3.4.0...v3.4.1) (2018-04-29)
 
+- default formater fixes
 
 
 <a name="3.4.0"></a>
