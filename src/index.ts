@@ -88,7 +88,7 @@ export class I18NextModule {
   }
 
   static interpolationFormat(customFormat: Function = null): Function {
-    function formatDelegate(value: string, format: string, lng: string): string {
+    function formatDelegate(value: any, format: string, lng: string): string {
       let formatedValue: string = defaultInterpolationFormat(value, format, lng);
       if (customFormat === null)
         return formatedValue;
@@ -98,7 +98,7 @@ export class I18NextModule {
   }
 }
 
-export function defaultInterpolationFormat(value: string, format: string, lng: string = undefined): string {
+export function defaultInterpolationFormat(value: any, format: string, lng: string = undefined): string {
   if (!value)
     return value;
   switch (format) {
