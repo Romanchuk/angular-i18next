@@ -1,6 +1,8 @@
 <a name="3.4.0"></a>
 # [3.4.0](https://github.com/Romanchuk/angular-i18next/compare/v3.3.0...v3.4.0) (2018-04-29)
 
+- i18next v11 support 
+- fix: [format pipe](https://github.com/Romanchuk/angular-i18next/issues/15)
 
 
 <a name="3.3.0"></a>
