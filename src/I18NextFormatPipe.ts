@@ -13,7 +13,7 @@ export class I18NextFormatPipe implements PipeTransform {
       @Inject(I18NEXT_SERVICE) private translateI18Next: ITranslationService
   ) {}
 
-  public transform(value: string, options: Object | string): string {
+  public transform(value: any, options: Object | string): string {
     let opts: any = typeof(options) === 'string' ? { format: options } : options;
     return this.translateI18Next.format(value, opts.format, opts.lng);
   }
