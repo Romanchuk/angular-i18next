@@ -1,4 +1,4 @@
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { BehaviorSubject } from 'rxjs';
 import { ITranslationEvents } from './ITranslationEvents';
 
 export class I18NextEvents implements ITranslationEvents {
