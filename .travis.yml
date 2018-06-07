@@ -12,7 +12,7 @@ before_script:
   - sleep 3
 language: node_js
 node_js:
-  - "6"
+  - "8"
 script:
   - npm run ci
 after_success: 
