@@ -350,6 +350,10 @@ npm install
 npm start
 ```
 
+# Migration to v4
+1. Update angular to v6+
+2. Update rxjs to v6.2.0+
+
 
 # Migration to v3
 
