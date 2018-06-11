@@ -1,3 +1,8 @@
+<a name="4.0.0-beta"></a>
+# [4.0.0-beta](https://github.com/Romanchuk/angular-i18next/compare/v3.4.2...v4.0.0-beta) (2018-06-11)
+
+
+
 <a name="3.4.2"></a>
 ## [3.4.2](https://github.com/Romanchuk/angular-i18next/compare/v3.4.1...v3.4.2) (2018-05-05)
 
