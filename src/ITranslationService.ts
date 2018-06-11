@@ -22,7 +22,7 @@ export interface ITranslationService {
 
   setDefaultNamespace(ns: string);
 
-  dir(lng: string);
+  dir(lng: string): string;
 
   changeLanguage(lng: string): Promise<any>;
 

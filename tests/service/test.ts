@@ -95,7 +95,7 @@ describe('I18nService', function() {
     it('should dir', function() {
         const lng = 'ru';
         let service: ITranslationService = TestBed.get(I18NEXT_SERVICE);
-        // expect(<string>(i18next.dir(lng)).toEqual('ltr');
-        expect(i18next.dir(lng)).toEqual(service.dir(lng));
+        expect(<any>(i18next.dir(lng))).toEqual('ltr');
+        expect(<any>i18next.dir(lng)).toEqual(service.dir(lng));
     });
 });
