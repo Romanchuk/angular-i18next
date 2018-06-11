@@ -53,6 +53,22 @@ export class I18NextService implements ITranslationService {
     return i18next.format.call(i18next, value, format, lng);
   }
 
+  public exists(key, options) {
+    return i18next.exists.call(i18next, key, options);
+  }
+
+  public getFixedT(lng, ns) {
+    return i18next.getFixedT.call(i18next, lng, ns);
+  }
+
+  public setDefaultNamespace(ns: string) {
+    i18next.setDefaultNamespace.call(i18next, ns);
+  }
+
+  public dir(lng: string = undefined) {
+      return i18next.dir.call(i18next, lng);
+  }
+
   public changeLanguage(lng: string): Promise<I18NextLoadResult> {
     return new Promise<I18NextLoadResult>(
       (
@@ -64,7 +80,7 @@ export class I18NextService implements ITranslationService {
     );
   }
 
-  public loadNamespaces(namespaces: string[]): Promise<any> {
+  public loadNamespaces(namespaces: string | string[]): Promise<any> {
     return new Promise<I18NextLoadResult>(
       (
         resolve: (thenableOrResult?: I18NextLoadResult) => void,
@@ -75,19 +91,69 @@ export class I18NextService implements ITranslationService {
     );
   }
 
+  public loadLanguages(lngs: string | string[], callback: Function) {
+    return new Promise<I18NextLoadResult>(
+      (
+        resolve: (thenableOrResult?: I18NextLoadResult) => void,
+        reject: (error: any) => void
+      ) => {
+          i18next.loadNamespaces.call(i18next, lngs, this.errorHandlingStrategy.handle(resolve, reject));
+      }
+    );
+  }
+
+  //#region resource handling
+
+  public reloadResources(...params) {
+    i18next.reloadResources.apply(i18next, params);
+  }
+
+  public getResource(lng, ns, key, options) {
+      return i18next.getResource.call(i18next, lng, ns, key, options);
+  }
+
+  public addResource(lng, ns, key, value, options) {
+      i18next.addResource.call(i18next, lng, ns, key, value, options);
+  }
+
+  public addResources(lng, ns, resources) {
+      i18next.addResources.call(i18next, lng, ns, resources);
+  }
+
+  public addResourceBundle(lng, ns, resources, deep, overwrite) {
+      i18next.addResourceBundle.call(i18next, lng, ns, resources, deep, overwrite);
+  }
+
+  public hasResourceBundle(lng, ns) {
+      return i18next.hasResourceBundle.call(i18next, lng, ns);
+  }
+
+  public getResourceBundle(lng, ns) {
+      return i18next.getResourceBundle.call(i18next, lng, ns);
+  }
+
+  public removeResourceBundle(lng, ns) {
+      i18next.removeResourceBundle.call(i18next, lng, ns);
+  }
+
+  //#endregion
 
   private subscribeEvents() {
-    i18next.on.call(i18next, 'initialized', e => {
+    i18next.on.call(i18next, 'initialized', options => {
       this.language = i18next.language;
       this.languages = i18next.languages;
-      this.events.initialized.next(!!e);
+      this.events.initialized.next(options);
     });
-    i18next.on.call(i18next, 'loaded', e => this.events.loaded.next(!!e));
-    i18next.on.call(i18next, 'failedLoading', e => this.events.failedLoading.next(e));
-    i18next.on.call(i18next, 'languageChanged', e => {
+    i18next.on.call(i18next, 'loaded', loaded => this.events.loaded.next(loaded));
+    i18next.on.call(i18next, 'failedLoading', (lng, ns, msg) => this.events.failedLoading.next({lng, ns, msg}));
+    i18next.on.call(i18next, 'languageChanged', lng => {
       this.language = i18next.language;
       this.languages = i18next.languages;
-      this.events.languageChanged.next(e);
+      this.events.languageChanged.next(lng);
     });
+    i18next.on.call(i18next, 'missingKey', (lngs, namespace, key, res) => this.events.missingKey.next({lngs, namespace, key, res}));
+    i18next.on.call(i18next, 'added', (lng, ns) => this.events.added.next({lng, ns}));
+    i18next.on.call(i18next, 'removed', (lng, ns) => this.events.removed.next({lng, ns}));
+
   }
 }

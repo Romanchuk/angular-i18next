@@ -63,4 +63,40 @@ export class MockI18NextService implements ITranslationService {
             resolve();
       });
   }
+
+  exists(key: any, options: any) {
+    return true;
+  }
+
+  getFixedT(lng: any, ns: any) {
+    return null;
+  }
+
+  setDefaultNamespace(ns: string) {}
+
+  dir(lng: string) {
+    return 'ltr';
+  }
+
+  reloadResources(...params: any[]) {}
+
+  getResource(lng: any, ns: any, key: any, options: any) {
+    return null;
+  }
+
+  addResource(lng: any, ns: any, key: any, value: any, options: any) {}
+
+  addResources(lng: any, ns: any, resources: any) {}
+
+  addResourceBundle(lng: any, ns: any, resources: any, deep: any, overwrite: any) {}
+
+  hasResourceBundle(lng: any, ns: any) {
+    return true;
+  }
+
+  getResourceBundle(lng: any, ns: any) {
+    return null;
+  }
+
+  removeResourceBundle(lng: any, ns: any) {}
 }

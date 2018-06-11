@@ -1,6 +1,7 @@
 import { APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { DOCUMENT, Title } from '@angular/platform-browser';
+import * as i18next from 'i18next/index';
 
 import { I18NEXT_SERVICE, I18NextModule, ITranslationService, I18NextPipe } from '../../src';
 
@@ -8,12 +9,12 @@ const i18nextOptions = {
     lng: 'cimode',
     debug: true
 };
-export function appInit(i18next: ITranslationService) {
-    return () => i18next
+export function appInit(i18n: ITranslationService) {
+    return () => i18n
         .init(i18nextOptions);
 }
-export function localeIdFactory(i18next: ITranslationService)  {
-    return i18next.language;
+export function localeIdFactory(i18n: ITranslationService)  {
+    return i18n.language;
 }
 export const I18N_PROVIDERS: any = [
     {
@@ -89,5 +90,12 @@ describe('I18nService', function() {
                 done();
             }
         });
+    });
+
+    it('should dir', function() {
+        const lng = 'ru';
+        let service: ITranslationService = TestBed.get(I18NEXT_SERVICE);
+        // expect(<string>(i18next.dir(lng)).toEqual('ltr');
+        expect(i18next.dir(lng)).toEqual(service.dir(lng));
     });
 });

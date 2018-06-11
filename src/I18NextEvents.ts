@@ -1,9 +1,13 @@
-import { BehaviorSubject } from 'rxjs';
-import { ITranslationEvents } from './ITranslationEvents';
+import { BehaviorSubject, Subject } from 'rxjs';
+
+import { ITranslationEvents, MissingKeyEvent, ResourceEvent } from './ITranslationEvents';
 
 export class I18NextEvents implements ITranslationEvents {
-  initialized: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  loaded: BehaviorSubject<boolean> = new BehaviorSubject(false);
-  failedLoading: BehaviorSubject<any> = new BehaviorSubject(null);
-  languageChanged: BehaviorSubject<string> = new BehaviorSubject(null);
+  initialized = new BehaviorSubject(false);
+  loaded = new BehaviorSubject(false);
+  failedLoading = new Subject();
+  missingKey = new Subject<MissingKeyEvent>();
+  added = new Subject<ResourceEvent>();
+  removed = new Subject<ResourceEvent>();
+  languageChanged = new BehaviorSubject(null);
 }
