@@ -354,6 +354,8 @@ npm start
 1. Update angular to v6+
 2. Update rxjs to v6.2.0+
 
+In v4 passed through most of i18next api methods
+
 
 # Migration to v3
 
