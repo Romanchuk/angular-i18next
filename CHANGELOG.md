@@ -1,6 +1,10 @@
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/Romanchuk/angular-i18next/compare/v4.0.0-beta...v4.0.0) (2018-06-25)
 
+In v4 passed through most of i18next api methods
+
+1. Update angular to v6+
+2. Update rxjs to v6.2.0+
 
 
 <a name="4.0.0-beta"></a>
