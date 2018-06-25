@@ -1,7 +1,7 @@
 import { BehaviorSubject, Subject } from 'rxjs';
 
-export type ResourceEvent = {lng, ns};
-export type MissingKeyEvent = {lngs, namespace, key, res};
+export type ResourceEvent = { lng: any, ns: any };
+export type MissingKeyEvent = { lngs: any, namespace: any, key: any, res: any };
 
 export interface ITranslationEvents {
     initialized: BehaviorSubject<any>;
