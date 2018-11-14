@@ -167,7 +167,7 @@ Also you can implement your own Title service with specific behavior. Inject `I1
 ```typescript
 import { Injectable, Inject } from '@angular/core';
 import { Title, DOCUMENT } from '@angular/platform-browser';
-import { I18NextPipe } from './I18NextPipe';
+import { I18NextPipe } from 'angular-i18next';
 
 @Injectable()
 export class I18NextTitle extends Title {
