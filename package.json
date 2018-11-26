@@ -1,16 +1,21 @@
 {
     "name": "angular-i18next",
-    "version": "4.0.0",
-    "homepage": "https://github.com/Romanchuk/angular-i18next#readme",
+    "version": "4.1.0",
+    "ngPackage": {
+        "lib": {
+            "entryFile": "src/index.ts"
+        }
+    },
     "author": {
         "name": "Sergey Romanchuk"
     },
-    "license": "MIT",
-    "description": "i18next module for Angular",
+    "homepage": "https://github.com/Romanchuk/angular-i18next#readme",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Romanchuk/angular-i18next.git"
     },
+    "license": "MIT",
+    "description": "i18next module for Angular",
     "keywords": [
         "i18n",
         "i18next",
@@ -19,19 +24,97 @@
     "bugs": {
         "url": "https://github.com/Romanchuk/angular-i18next/issues"
     },
-    "maintainers": [{
-        "email": "rezety@gmail.com",
-        "name": "Sergey Romanchuk"
-    }],
-    "main": "angular-i18next.umd.js",
-    "module": "angular-i18next.es5.js",
-    "es2015": "angular-i18next.js",
-    "typings": "angular-i18next.d.ts",
+    "maintainers": [
+        {
+            "email": "rezety@gmail.com",
+            "name": "Sergey Romanchuk"
+        }
+    ],
+    "scripts": {
+        "tsc": "tsc",
+        "karma": "karma",
+        "rimraf": "rimraf",
+        "tslint": "tslint",
+        "ngc": "ngc",
+        "rollup": "rollup",
+        "cpy": "cpy",
+        "build": "npx ng-packagr -p package.json",
+        "compile": "npm run compile:es2015 && npm run compile:es5 && npm run compile:umd",
+        "compile:es2015": "npm run ngc -- -p src/tsconfig-es2015.json && npm run rollup -- build/angular-i18next.js -o dist/angular-i18next.js -f es -m",
+        "compile:es5": "npm run ngc -- -p src/tsconfig-es5.json && npm run rollup -- build/angular-i18next.js -o dist/angular-i18next.es5.js -f es -m",
+        "compile:umd": "npm run ngc -- -p src/tsconfig-es5.json && npm run rollup -- build/angular-i18next.js -o dist/angular-i18next.umd.js -f umd --name angular-i18next -m",
+        "copy:assets": "npm run cpy -- \"**/*.*\" \"!**/*.js\" \"../dist\" --parents --cwd=build && npm run cpy -- src/package.json dist && npm run cpy -- README.md dist && npm run cpy -- CHANGELOG.md dist",
+        "conventional-changelog": "conventional-changelog",
+        "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
+        "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
+        "version": "npm run changelog && git add CHANGELOG.md",
+        "ci": "npm run lint && npm run compile && npm run test",
+        "clean:build": "npm run rimraf -- dist build",
+        "clean": "npm run clean:build && npm run clean:tests",
+        "clean:compile": "npm run rimraf -- dist build",
+        "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- \"tests/**/*.+(js|js.map|d.ts|metadata.json)\" ",
+        "lint": "npm run tslint -- --project tsconfig.json",
+        "test": "npm run clean:tests && karma start karma.conf.js",
+        "test:watch": "npm run clean:tests && karma start karma.conf.debug.js",
+        "release": "npx np --contents=dist"
+    },
     "peerDependencies": {
         "@angular/common": ">=6.0.0 <8.0.0",
         "@angular/core": ">=6.0.0 <8.0.0",
         "@angular/platform-browser": ">=6.0.0 <8.0.0",
+        "i18next": "^12.1.0",
+        "rxjs": "^6.3.3"
+    },
+    "devDependencies": {
+        "@angular/animations": "^7.1.0",
+        "@angular/common": "^7.1.0",
+        "@angular/core": "^7.1.0",
+        "@angular/compiler": "^7.1.0",
+        "@angular/compiler-cli": "^7.1.0",
+        "@angular/platform-browser": "^7.1.0",
+        "@angular/platform-browser-dynamic": "^7.1.0",
+        "@angular/platform-server": "^7.1.0",
+        "@types/chai": "^4.1.7",
+        "@types/i18next": "^11.9.3",
+        "@types/jasmine": "^3.3.0",
+        "@types/sinon": "^5.0.7",
+        "i18next": "^12.1.0",
+        "chai": "^4.2.0",
+        "codelyzer": "^4.5.0",
+        "conventional-changelog-cli": "^2.0.11",
+        "conventional-github-releaser": "^3.1.2",
+        "coveralls": "^3.0.2",
+        "cpy-cli": "^2.0.0",
+        "cz-conventional-changelog": "^2.1.0",
+        "es6-shim": "0.35.4",
+        "istanbul-instrumenter-loader": "3.0.1",
+        "jasmine": "^3.3.0",
+        "jasmine-core": "^3.3.0",
+        "karma": "^1.7.1",
+        "karma-chrome-launcher": "^2.2.0",
+        "karma-coverage": "^1.1.2",
+        "karma-jasmine": "^2.0.1",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-spec-reporter": "^0.0.32",
+        "karma-webpack": "^3.0.5",
+        "ng-packagr": "^4.4.0",
+        "np": "^3.0.4",
+        "mocha": "^5.2.0",
+        "replace": "^1.0.0",
+        "require-dir": "^1.1.0",
+        "rimraf": "^2.6.2",
+        "rollup": "^0.67.3",
+        "rxjs-compat": "^6.3.3",
+        "sinon": "^7.1.1",
+        "ts-helpers": "^1.1.2",
+        "ts-loader": "^5.3.0",
+        "tslint": "^5.11.0",
+        "typedoc": "^0.13.0",
+        "typescript": "^3.1.6",
+        "wallaby-webpack": "^3.9.13",
+        "webpack": "^4.26.0",
+        "zone.js": "^0.8.26",
         "rxjs": "^6.3.3",
-        "i18next": ">=8.4.0 <13.0.0"
+        "tsickle": "^0.34.0"
     }
 }
