@@ -49,6 +49,7 @@
         "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
         "version": "npm run changelog && git add CHANGELOG.md",
         "ci": "npm run lint && npm run compile && npm run test",
+        "clean:build": "npm run rimraf -- dist build",
         "clean": "npm run clean:build && npm run clean:tests",
         "clean:compile": "npm run rimraf -- dist build",
         "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- \"tests/**/*.+(js|js.map|d.ts|metadata.json)\" ",
