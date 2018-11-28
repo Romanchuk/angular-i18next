@@ -58,8 +58,8 @@
         "@angular/common": ">=6.0.0 <8.0.0",
         "@angular/core": ">=6.0.0 <8.0.0",
         "@angular/platform-browser": ">=6.0.0 <8.0.0",
-        "i18next": "^12.1.0",
-        "rxjs": "^6.3.3"
+        "i18next": ">=8.4.0 <13.0.0",
+        "rxjs": ">=6.2.0 <7.0.0"
     },
     "devDependencies": {
         "@angular/animations": "^7.1.0",
