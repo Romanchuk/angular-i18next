@@ -39,7 +39,7 @@
         "rollup": "rollup",
         "cpy": "cpy",
         "build": "npx ng-packagr -p package.json",
-        "copy:assets": "npm run cpy -- \"**/*.*\" \"!**/*.js\" \"../dist\" --parents --cwd=build && npm run cpy -- src/package.json dist && npm run cpy -- README.md dist && npm run cpy -- CHANGELOG.md dist",
+        "copy:assets": "npm run cpy -- CHANGELOG.md dist",
         "conventional-changelog": "conventional-changelog",
         "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
         "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
