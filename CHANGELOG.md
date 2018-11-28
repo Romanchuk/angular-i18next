@@ -1,3 +1,12 @@
+# [5.0.0-beta](https://github.com/Romanchuk/angular-i18next/compare/v4.0.0...v5.0.0-beta) (2018-11-28)
+
+
+### Bug Fixes
+
+* docs ([220a0b8](https://github.com/Romanchuk/angular-i18next/commit/220a0b8))
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/Romanchuk/angular-i18next/compare/v4.0.0-beta...v4.0.0) (2018-06-25)
 
