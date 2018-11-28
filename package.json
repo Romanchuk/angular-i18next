@@ -1,6 +1,6 @@
 {
     "name": "angular-i18next",
-    "version": "4.1.0",
+    "version": "4.0.0",
     "ngPackage": {
         "lib": {
             "entryFile": "src/index.ts"
@@ -38,7 +38,7 @@
         "ngc": "ngc",
         "rollup": "rollup",
         "cpy": "cpy",
-        "build": "npx ng-packagr -p package.json",       
+        "build": "npx ng-packagr -p package.json",
         "copy:assets": "npm run cpy -- \"**/*.*\" \"!**/*.js\" \"../dist\" --parents --cwd=build && npm run cpy -- src/package.json dist && npm run cpy -- README.md dist && npm run cpy -- CHANGELOG.md dist",
         "conventional-changelog": "conventional-changelog",
         "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
