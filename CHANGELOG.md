@@ -1,3 +1,7 @@
+## [5.0.6](https://github.com/Romanchuk/angular-i18next/compare/v5.0.5...v5.0.6) (2018-12-03)
+
+
+
 ## [5.0.5](https://github.com/Romanchuk/angular-i18next/compare/v5.0.4...v5.0.5) (2018-12-03)
 
 
