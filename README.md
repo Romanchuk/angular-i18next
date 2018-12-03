@@ -29,6 +29,7 @@
 - Error handling strategies
 - i18next namespaces and scopes (prefixes) for angular modules and components
 - AOT support
+- [Angular Package Format v6](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview) support
 
 # Installation
 
