@@ -35,8 +35,6 @@
         "karma": "karma",
         "rimraf": "rimraf",
         "tslint": "tslint",
-        "ngc": "ngc",
-        "rollup": "rollup",
         "cpy": "cpy",
         "build": "npx ng-packagr -p package.json",
         "copy:assets": "npm run cpy -- CHANGELOG.md dist",
