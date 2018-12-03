@@ -1,3 +1,12 @@
+## [5.0.2](https://github.com/Romanchuk/angular-i18next/compare/v5.0.1...v5.0.2) (2018-12-03)
+
+
+### Bug Fixes
+
+* package.json ([54a8c37](https://github.com/Romanchuk/angular-i18next/commit/54a8c37))
+
+
+
 ## [5.0.1](https://github.com/Romanchuk/angular-i18next/compare/v5.0.0...v5.0.1) (2018-11-28)
 
 
