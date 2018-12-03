@@ -53,15 +53,10 @@ import { I18NextModule } from 'angular-i18next';
 export class AppModule {}
 
 ```
-**3.** Inject I18NextService to AppComponent and call "init" method (with prefered [options](https://www.i18next.com/configuration-options.html)). **We recommend** to use more [advanced and prefered initialization](#initialize-i18next-before-angular-application).
+**3.** Import I18NextModule to AppModule and setup provider with "init" method (use native [options](https://www.i18next.com/configuration-options.html)). Angular would not load until i18next initialize event fired
 ```typescript
-
-import { I18NextService } from 'angular-i18next';
-
-export class AppComponent {
-
-  constructor(@Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
-      i18NextService.init({
+export function appInit(i18next: ITranslationService) {
+    return () => i18next.init({
         whitelist: ['en', 'ru'],
         fallbackLng: 'en',
         debug: true,
@@ -72,7 +67,40 @@ export class AppComponent {
           'error'          
         ],
       });
-  }
+}
+
+export function localeIdFactory(i18next: ITranslationService)  {
+    return i18next.language;
+}
+
+export const I18N_PROVIDERS = [
+{
+    provide: APP_INITIALIZER,
+    useFactory: appInit,
+    deps: [I18NEXT_SERVICE],
+    multi: true
+},
+{
+    provide: LOCALE_ID,
+    deps: [I18NEXT_SERVICE],
+    useFactory: localeIdFactory
+}];
+```
+
+```typescript
+@NgModule({
+    imports: [
+        ...
+        I18NextModule.forRoot()
+    ],
+    providers: [
+        ...
+        I18N_PROVIDERS, 
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
 ```
 
 # Usage
