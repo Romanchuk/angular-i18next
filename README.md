@@ -53,7 +53,7 @@ import { I18NextModule } from 'angular-i18next';
 export class AppModule {}
 
 ```
-**3.** Import I18NextModule to AppModule and setup provider with "init" method (use native [options](https://www.i18next.com/configuration-options.html)). Angular would not load until i18next initialize event fired
+**3.** Import I18NextModule.forRoot() to AppModule and setup provider with "init" method (use native [options](https://www.i18next.com/configuration-options.html)). Angular would not load until i18next initialize event fired
 ```typescript
 export function appInit(i18next: ITranslationService) {
     return () => i18next.init({
