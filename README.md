@@ -34,7 +34,11 @@
 # Installation
 
 **1.** Install package
+
+   ```
+    npm install i18next --save
     npm install angular-i18next --save
+  ```
 
 **2.** Import I18NextModule to AppModule
 
