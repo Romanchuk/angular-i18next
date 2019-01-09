@@ -186,6 +186,7 @@ Since v3.1.0+ it is possible to pass array of namespaces (or scopes). [Key would
 ```
 _NOTE:_ **Do NOT** use default (or custom) i18next delimiters in namespace names.
 
+### Document title
 If you want to turn on document title localization resolve Title as `I18NextTitle` imported from 'angular-i18next':
 
 ```typescript
