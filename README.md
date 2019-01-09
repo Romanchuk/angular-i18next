@@ -175,17 +175,16 @@ Add a provider to module/component if you want to prefix child i18next keys:
   useValue: 'person' // set 'person.' prefix 
 }
 ```
-**Version: 3.1.0**
+Since v3.1.0+ it is possible to pass array of namespaces (or scopes). [Key would fallback](https://www.i18next.com/api.html#t) to next namespace in array if the previous failed to resolve.
 
-It is possible to pass array of namespaces (or scopes). [Key would fallback](https://www.i18next.com/api.html#t) to next namespace in array if the previous failed to resolve.
-
-`[feature.validators:key, validators:key]`
+`[feature_validators:key, validators:key]`
 ```typescript
 {
   provide: I18NEXT_NAMESPACE,
-  useValue: ['feature.validators', 'validators']
+  useValue: ['feature_validators', 'validators']
 }
 ```
+_NOTE:_ **Do NOT** use default (or custom) i18next delimiters in namespace names.
 
 If you want to turn on document title localization resolve Title as `I18NextTitle` imported from 'angular-i18next':
 
