@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import * as i18next from 'i18next/index';
+import * as i18n from 'i18next';
 
 import { I18NEXT_ERROR_HANDLING_STRATEGY } from './I18NEXT_TOKENS';
 import { I18NextErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
@@ -7,6 +7,9 @@ import { I18NextEvents } from './I18NextEvents';
 import { I18NextLoadResult } from './I18NextLoadResult';
 import { ITranslationEvents } from './ITranslationEvents';
 import { ITranslationService } from './ITranslationService';
+
+
+const i18next = i18n.default;
 
 @Injectable()
 export class I18NextService implements ITranslationService {
@@ -19,8 +22,6 @@ export class I18NextService implements ITranslationService {
     return i18next.options;
   }
 
-  private i18nextPromise: Promise<I18NextLoadResult>;
-
   constructor(@Inject(I18NEXT_ERROR_HANDLING_STRATEGY) private errorHandlingStrategy: I18NextErrorHandlingStrategy) {}
 
   public use(plugin: any) {
@@ -28,13 +29,12 @@ export class I18NextService implements ITranslationService {
     return this;
   }
 
-  public init(options?: any): Promise<I18NextLoadResult> {
+  public init(options?: any): Promise<any> {
     options = options || {};
 
     this.subscribeEvents();
 
-    return this.i18nextPromise =
-      new Promise<I18NextLoadResult>(
+    return new Promise<I18NextLoadResult>(
         (
           resolve: (thenableOrResult?: I18NextLoadResult) => void,
           reject: (error: any) => void
@@ -42,6 +42,7 @@ export class I18NextService implements ITranslationService {
           i18next.init.call(i18next, Object.assign({}, options), this.errorHandlingStrategy.handle(resolve, reject));
         }
       );
+
   }
 
   public t(key: string | string[], options?: any): string {
