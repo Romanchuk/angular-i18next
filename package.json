@@ -1,6 +1,6 @@
 {
     "name": "angular-i18next",
-    "version": "5.0.6",
+    "version": "6.0.0-beta",
     "ngPackage": {
         "lib": {
             "entryFile": "src/index.ts"
