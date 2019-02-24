@@ -31,9 +31,7 @@
         }
     ],
     "scripts": {
-        "tsc": "tsc",
-        "karma": "karma",
-        "rimraf": "rimraf",
+        "rimraf": "npx rimraf",
         "tslint": "tslint",
         "cpy": "cpy",
         "build": "npx ng-packagr -p package.json",
@@ -49,8 +47,8 @@
         "clean:build": "npm run rimraf -- dist build",
         "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- \"tests/**/*.+(js|js.map|d.ts|metadata.json)\" ",
         "lint": "npm run tslint -- --project tsconfig.json",
-        "test": "npm run clean:tests && karma start karma.conf.js",
-        "test:watch": "npm run clean:tests && karma start karma.conf.debug.js",
+        "test": "npm run clean:tests && npx karma start karma.conf.js",
+        "test:watch": "npm run clean:tests && npx karma start karma.conf.debug.js",
         "release": "npx np --contents=dist"
     },
     "peerDependencies": {
@@ -85,7 +83,7 @@
         "istanbul-instrumenter-loader": "3.0.1",
         "jasmine": "^3.3.0",
         "jasmine-core": "^3.3.0",
-        "karma": "^1.7.1",
+        "karma": "4.0.0",
         "karma-chrome-launcher": "^2.2.0",
         "karma-coverage": "^1.1.2",
         "karma-jasmine": "^2.0.1",

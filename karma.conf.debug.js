@@ -3,6 +3,14 @@ var path = require('path');
 module.exports = function (config) {
     config.set({
         browsers: ['Chrome'],
+        plugins: [
+            'karma-coverage',
+            'karma-sourcemap-loader',
+            'karma-webpack',
+            'karma-chrome-launcher',
+            'karma-jasmine',
+            'karma-spec-reporter'
+        ],
         colors: true,
         files: [
             'karma.entry.js'
