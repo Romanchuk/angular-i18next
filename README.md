@@ -9,6 +9,7 @@
 # angular-i18next
 [i18next](http://i18next.com/) v8.4+ integration with [angular](https://angular.io/) v2.0+
 
+[Live DEMO](https://romanchuk.github.io/angular-i18next-demo/)
 
  - [Features](#features)
  - [Installation](#installation)
