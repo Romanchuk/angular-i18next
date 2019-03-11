@@ -98,7 +98,7 @@ export class I18NextService implements ITranslationService {
         resolve: (thenableOrResult?: I18NextLoadResult) => void,
         reject: (error: any) => void
       ) => {
-          i18next.loadNamespaces.call(i18next, lngs, this.errorHandlingStrategy.handle(resolve, reject));
+          i18next.loadLanguages.call(i18next, lngs, this.errorHandlingStrategy.handle(resolve, reject));
       }
     );
   }
