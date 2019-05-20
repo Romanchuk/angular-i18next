@@ -1,5 +1,6 @@
-import { Injectable, Inject } from '@angular/core';
-import { Title, DOCUMENT } from '@angular/platform-browser';
+import { DOCUMENT } from '@angular/common';
+import { Inject, Injectable } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { I18NextPipe } from './I18NextPipe';
 
 @Injectable()
