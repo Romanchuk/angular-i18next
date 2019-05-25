@@ -5,6 +5,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Dependency Status](https://david-dm.org/Romanchuk/angular-i18next.svg)](https://david-dm.org/Romanchuk/angular-i18next)
 [![devDependency Status](https://david-dm.org/Romanchuk/angular-i18next/dev-status.svg)](https://david-dm.org/Romanchuk/angular-i18next?type=dev)
+[![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/badge.svg?style=flat-square)](https://beerpay.io/Romanchuk/angular-i18next)
 
 # angular-i18next
 [i18next](http://i18next.com/) v8.4+ integration with [angular](https://angular.io/) v2.0+
@@ -15,8 +16,9 @@
  - [Installation](#installation)
  - [Usage](#usage)
  - [Cookbook](#cookbook)
+ - [Deep integration](#deep-integration)
  - [Demo](#demo)
- - [Migration to v3](#migration-to-v3)
+ - [Support project](#support-on-beerpay)
 
 # Features
 
@@ -31,6 +33,10 @@
 - i18next namespaces and scopes (prefixes) for angular modules and components
 - AOT support
 - [Angular Package Format v6](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview) support
+
+[Related packages](#deep-integration) also has implementations for:
+- Reactive forms validators localization
+- Http error message localizer
 
 # Installation
 
@@ -371,6 +377,13 @@ const appRoutes: Routes = [
 ```
 
 
+# Deep integration
+
+List of packages to integrate angular and i18next more deeply:
+
+- [angular-validation-message](https://github.com/Romanchuk/angular-validation-message) - angular [reactive form validators](https://angular.io/guide/reactive-forms#step-2-making-a-field-required) integration (and [angular-validation-message-i18next ](https://github.com/Romanchuk/angular-validation-message-i18next) is i18next bridge to it). It gives you possibility to localize form validators and it automatically puts localized validator error message to markup (if there is one).
+- [angular-i18next-error-interceptor](https://github.com/LCGroupIT/angular-i18next-error-interceptor) - allows you to set default errot messages for non-200 http status responses. So if the back-end didn't specify { message: 'some error' } in a response (sort of contract with our backend) interceptor will check response status code and will fill { message: 'Server is not available. Please try again.' }. Also package includes pipe where you can pass HttpErrorResponse and it will return error message whenever it's back-end message or our localized message.
+
 
 # Demo
 
@@ -385,43 +398,10 @@ npm install
 npm start
 ```
 
-# Migration to v4
-1. Update angular to v6+
-2. Update rxjs to v6.2.0+
 
-In v4 passed through most of i18next api methods
-
-
-# Migration to v3
-
-To keep same behavior you should:
-1. update i18next version to >= 8.4.0
-2. set options.interpolation.format: I18NextModule.interpolationFormat()
-3. set I18NextModule.forRoot params to:
-
-  `I18NextModule.forRoot({ localizeTitle: true, errorHandlingStrategy: StrictErrorHandlingStrategy })`
-
-# Migration to v3.2.0
-- 'localizeTitle' option was removed. You need to resolve Title service manually.
-
-
-
-**v2** docs available [here](https://github.com/Romanchuk/angular-i18next/blob/master/README_v2.md)
-
-### Breaking changes list
-
-- Added i18NextFormat pipe to support i18next
-- BREAKING: Reserved option 'case' in I18NextPipe changed to 'format'
-- BREAKING: I18NextCapPipe has no own formaters
-- I18NextModule has static method `static interpolationFormat(customFormat: Function = null): Function` that can be used as default interpolation format (it provides 'upper', 'cap' and 'lower' formatters) . You also can pass your custom function to be called after I18NextModule formatters .
-
-- i18next version support >= 8.4.0
-
-- Title provider does not resolving as I18NextTitle by default anymore
-
-- Fix [#9](https://github.com/Romanchuk/angular-i18next/issues/9)
-
-## Support on Beerpay
+# Support on Beerpay
 Hey dude! Help me out for a couple of :beers:!
+
+Поддержи проект - угости автора кружечкой пива!
 
 [![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/badge.svg?style=beer-square)](https://beerpay.io/Romanchuk/angular-i18next)  [![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/make-wish.svg?style=flat-square)](https://beerpay.io/Romanchuk/angular-i18next?focus=wish)
