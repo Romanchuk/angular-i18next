@@ -420,3 +420,8 @@ To keep same behavior you should:
 - Title provider does not resolving as I18NextTitle by default anymore
 
 - Fix [#9](https://github.com/Romanchuk/angular-i18next/issues/9)
+
+## Support on Beerpay
+Hey dude! Help me out for a couple of :beers:!
+
+[![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/badge.svg?style=beer-square)](https://beerpay.io/Romanchuk/angular-i18next)  [![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/make-wish.svg?style=flat-square)](https://beerpay.io/Romanchuk/angular-i18next?focus=wish)
