@@ -1,3 +1,7 @@
+# [6.1.0-beta](https://github.com/Romanchuk/angular-i18next/compare/v6.0.1...v6.1.0-beta) (2019-05-25)
+
+
+
 ## [6.0.1](https://github.com/Romanchuk/angular-i18next/compare/v6.0.0...v6.0.1) (2019-03-11)
 
 
