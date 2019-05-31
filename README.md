@@ -18,6 +18,7 @@
  - [Cookbook](#cookbook)
  - [Deep integration](#deep-integration)
  - [Demo](#demo)
+ - [Articles](#articles)
  - [Support project](#support-on-beerpay)
 
 # Features
@@ -397,6 +398,10 @@ To run:
 npm install
 npm start
 ```
+
+# Articles
+- [Angular L10n with I18next](https://phraseapp.com/blog/posts/angular-l10n-with-i18next/)
+- [Best Libraries for Angular I18n](https://phraseapp.com/blog/posts/best-libraries-for-angular-i18n/)
 
 
 # Support on Beerpay
