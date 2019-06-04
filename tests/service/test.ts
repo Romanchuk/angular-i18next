@@ -1,9 +1,9 @@
+import { DOCUMENT } from '@angular/common';
 import { APP_INITIALIZER, LOCALE_ID } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { DOCUMENT, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import * as i18n from 'i18next/index';
-
-import { I18NEXT_SERVICE, I18NextModule, ITranslationService, I18NextPipe } from '../../src';
+import { I18NextModule, I18NextPipe, I18NEXT_SERVICE, ITranslationService } from '../../src';
 
 
 const i18next = i18n.default;
