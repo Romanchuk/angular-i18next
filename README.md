@@ -20,6 +20,10 @@
  - [Demo](#demo)
  - [Articles](#articles)
  - [Support project](#support-on-beerpay)
+ 
+# Migration to v7
+
+If you use "i18next-xhr-backend" plugin make sure it's version 3.0.0 or higher
 
 # Features
 
