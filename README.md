@@ -23,7 +23,7 @@
  
 # Migration to v7
 
-If you use "i18next-xhr-backend" plugin make sure it's version 3.0.0 or higher
+If you use "i18next-xhr-backend" plugin make sure it's version less than 3.0.0 (version 3.0.0 is not working properly)
 
 # Features
 
