@@ -392,7 +392,7 @@ List of packages to integrate angular and i18next more deeply:
 You might want to unit-test project components that are using i18next pipes
 
 Example tests setup:
-> /tests/projectTests/projectTests.spec.ts
+[/tests/projectTests/projectTests.spec.ts](https://github.com/Romanchuk/angular-i18next/blob/master/tests/projectTests/projectTests.spec.ts)
 
 # Demo
 
