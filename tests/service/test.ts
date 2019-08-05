@@ -34,7 +34,7 @@ export const I18N_PROVIDERS: any = [
 ];
 
 // Be descriptive with titles here. The describe and it titles combined read like a sentence.
-describe('I18nService', function() {
+xdescribe('I18nService', function() {
 
     beforeEach(() => {
         TestBed.configureTestingModule({

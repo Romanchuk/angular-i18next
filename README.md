@@ -17,6 +17,7 @@
  - [Usage](#usage)
  - [Cookbook](#cookbook)
  - [Deep integration](#deep-integration)
+ - [In-project testing](#in-project-testing)
  - [Demo](#demo)
  - [Articles](#articles)
  - [Support project](#support-on-beerpay)
@@ -386,6 +387,12 @@ List of packages to integrate angular and i18next more deeply:
 - [angular-validation-message](https://github.com/Romanchuk/angular-validation-message) - angular [reactive form validators](https://angular.io/guide/reactive-forms#step-2-making-a-field-required) integration (and [angular-validation-message-i18next ](https://github.com/Romanchuk/angular-validation-message-i18next) is i18next bridge to it). It gives you possibility to localize form validators and it automatically puts localized validator error message to markup (if there is one).
 - [angular-i18next-error-interceptor](https://github.com/LCGroupIT/angular-i18next-error-interceptor) - allows you to set default errot messages for non-200 http status responses. So if the back-end didn't specify { message: 'some error' } in a response (sort of contract with our backend) interceptor will check response status code and will fill { message: 'Server is not available. Please try again.' }. Also package includes pipe where you can pass HttpErrorResponse and it will return error message whenever it's back-end message or our localized message.
 
+# In-project testing
+
+You might want to unit-test project components that are using i18next pipes
+
+Example tests setup:
+> /tests/projectTests/projectTests.spec.ts
 
 # Demo
 

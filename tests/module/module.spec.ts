@@ -17,7 +17,7 @@ import {
 } from '../../src/index';
 import { MockI18NextService } from './../mocks/MockTranslationService';
 
-describe('I18NextModule', function() {
+xdescribe('I18NextModule', function() {
   const DEFAULT_NAMESPACE = '';
   const DEFAULT_SCOPE = '';
 
