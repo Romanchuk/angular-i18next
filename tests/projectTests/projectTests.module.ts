@@ -4,13 +4,10 @@ import { I18NextModule } from '../../src';
 
 
 @NgModule({
-    bootstrap: [ProjectComponent],
-    declarations: [ProjectComponent],
-    // providers: providers,
-    imports: [
-      //lib
-      I18NextModule,
-    ]
-  })
-  export class ProjectTestModule {}
-  
+  bootstrap: [ProjectComponent],
+  declarations: [ProjectComponent],
+  imports: [
+    I18NextModule,
+  ]
+})
+export class ProjectTestModule {}

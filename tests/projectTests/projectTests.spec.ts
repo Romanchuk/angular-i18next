@@ -14,11 +14,11 @@ export function appInit(i18next: ITranslationService) {
       return promise;
     };
   }
-  
+
   export function localeIdFactory(i18next: ITranslationService)  {
     return i18next.language;
   }
-  
+
   export const I18N_PROVIDERS = [
     {
       provide: APP_INITIALIZER,

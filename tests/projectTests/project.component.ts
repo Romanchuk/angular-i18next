@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from "@angular/core";
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
     selector: 'project-component',
@@ -6,4 +6,3 @@ import { Component, ViewEncapsulation } from "@angular/core";
     template: '<div>{{ "privet" | i18next }}</div>'
 })
 export class ProjectComponent {}
-  
