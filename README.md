@@ -285,13 +285,16 @@ Use I18NextService.loadNamespaces() method to load namespaces in code.
 
 ```typescript
 import { I18NextModule, ITranslationService, I18NEXT_SERVICE } from 'angular-i18next';
-import * as i18nextXHRBackend from 'i18next-xhr-backend';
-import * as i18nextLanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-xhr-backend';
+import LanguageDetector from 'i18next-browser-languagedetector';
+// For older i18next plugin versions
+// import * as Backend from 'i18next-xhr-backend';
+// import * as LanguageDetector from 'i18next-browser-languagedetector';
 
 ...
 
-i18next.use(i18nextXHRBackend)
-       .use(i18nextLanguageDetector)
+i18next.use(Backend)
+       .use(LanguageDetector)
        .init(i18nextOptions)
 ```
 
