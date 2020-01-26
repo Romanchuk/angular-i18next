@@ -9,9 +9,9 @@ import { ITranslationService } from './ITranslationService';
 export class I18NextPipe implements PipeTransform {
 
   constructor(
-      @Inject(I18NEXT_SERVICE) private translateI18Next: ITranslationService,
-      @Inject(I18NEXT_NAMESPACE) private ns: string | string[],
-      @Inject(I18NEXT_SCOPE) private scope: string | string[]) {}
+      @Inject(I18NEXT_SERVICE) protected translateI18Next: ITranslationService,
+      @Inject(I18NEXT_NAMESPACE) protected ns: string | string[],
+      @Inject(I18NEXT_SCOPE) protected scope: string | string[]) {}
 
   public transform(key: string | string[], options?: any): string {
     options = this.prepareOptions(options);

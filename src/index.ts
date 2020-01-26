@@ -10,9 +10,11 @@ import { I18NextPipe } from './I18NextPipe';
 import { I18NextService } from './I18NextService';
 import { I18NextTitle } from './I18NextTitle';
 import { ITranslationService } from './ITranslationService';
+import { I18NextEagerPipe } from 'I18NextEagerPipe';
 
 export * from './I18NEXT_TOKENS';
 export * from './I18NextPipe';
+export * from './I18NextEagerPipe';
 export * from './I18NextCapPipe';
 export * from './I18NextFormatPipe';
 export * from './I18NextService';
@@ -47,17 +49,20 @@ export function i18nextNamespaceResolverFactory(i18next: ITranslationService) {
     I18NextPipe,
     I18NextCapPipe,
     I18NextFormatPipe,
-    I18NextTitle
+    I18NextTitle,
+    I18NextEagerPipe
   ],
   declarations: [
     I18NextPipe,
     I18NextCapPipe,
-    I18NextFormatPipe
+    I18NextFormatPipe,
+    I18NextEagerPipe
   ],
   exports: [
     I18NextPipe,
     I18NextCapPipe,
-    I18NextFormatPipe
+    I18NextFormatPipe,
+    I18NextEagerPipe
   ]
 })
 export class I18NextModule {
@@ -78,6 +83,7 @@ export class I18NextModule {
         I18NextCapPipe,
         I18NextFormatPipe,
         I18NextTitle,
+        I18NextEagerPipe,
         {
           provide: I18NEXT_NAMESPACE_RESOLVER,
           useFactory: i18nextNamespaceResolverFactory,
