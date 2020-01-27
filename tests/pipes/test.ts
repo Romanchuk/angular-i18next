@@ -5,7 +5,7 @@ import { MockI18NextService } from '../mocks/MockTranslationService';
 
 // TODO: use TestBed
 
-xdescribe('I18NextPipe tests', function() {
+describe('I18NextPipe tests', function() {
   let service = new MockI18NextService();
   const DEFAULT_NAMESPACE = '';
   const DEFAULT_SCOPE = '';
