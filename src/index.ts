@@ -10,7 +10,7 @@ import { I18NextPipe } from './I18NextPipe';
 import { I18NextService } from './I18NextService';
 import { I18NextTitle } from './I18NextTitle';
 import { ITranslationService } from './ITranslationService';
-import { I18NextEagerPipe } from 'I18NextEagerPipe';
+import { I18NextEagerPipe } from './I18NextEagerPipe';
 
 export * from './I18NEXT_TOKENS';
 export * from './I18NextPipe';

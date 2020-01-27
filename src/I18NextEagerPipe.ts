@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Inject, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { I18NextPipe } from 'index';
+import { I18NextPipe } from './I18NextPipe';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
