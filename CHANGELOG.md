@@ -1,3 +1,12 @@
+# [7.2.0-beta](https://github.com/Romanchuk/angular-i18next/compare/v7.0.0...v7.2.0-beta) (2020-01-28)
+
+
+### Bug Fixes
+
+* I18NextEagerPipe ([8dbefe1](https://github.com/Romanchuk/angular-i18next/commit/8dbefe1))
+
+
+
 # [7.0.0](https://github.com/Romanchuk/angular-i18next/compare/v6.1.0...v7.0.0) (2019-06-05)
 
 
