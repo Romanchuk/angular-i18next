@@ -35,7 +35,7 @@
 - Error handling strategies
 - i18next namespaces and scopes (prefixes) for angular modules and components
 - AOT support
-- [Angular Package Format v6](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview) support
+- [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview) support
 
 [Related packages](#deep-integration) also has implementations for:
 - Reactive forms validators localization
@@ -164,6 +164,12 @@ const i18nextOptions = {
 };
 
 ```
+
+**i18nextEager pipe**
+
+This is the impure analog of *i18next pipe* that is subscribed to language change, it will change string right away to choosen language (without reloading page).
+
+**Warning!**: Use i18nextEager only in combine with [OnPush change detection strategy](https://netbasal.com/a-comprehensive-guide-to-angular-onpush-change-detection-strategy-5bac493074a4), or else (default change detection) each pipe will retrigger more than one time (cause of performance issues).
 
 Subscribing to event observables:
 ```typescript
