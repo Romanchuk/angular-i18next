@@ -5,7 +5,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Dependency Status](https://david-dm.org/Romanchuk/angular-i18next.svg)](https://david-dm.org/Romanchuk/angular-i18next)
 [![devDependency Status](https://david-dm.org/Romanchuk/angular-i18next/dev-status.svg)](https://david-dm.org/Romanchuk/angular-i18next?type=dev)
-[![paypal](https://img.shields.io/badge/paypal-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
+[![paypal](https://img.shields.io/badge/say_thanks-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
 
 # angular-i18next
 [i18next](http://i18next.com/) v8.4+ integration with [angular](https://angular.io/) v2.0+
