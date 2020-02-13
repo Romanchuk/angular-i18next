@@ -5,7 +5,7 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Dependency Status](https://david-dm.org/Romanchuk/angular-i18next.svg)](https://david-dm.org/Romanchuk/angular-i18next)
 [![devDependency Status](https://david-dm.org/Romanchuk/angular-i18next/dev-status.svg)](https://david-dm.org/Romanchuk/angular-i18next?type=dev)
-[![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/badge.svg?style=flat-square)](https://beerpay.io/Romanchuk/angular-i18next)
+[![paypal](https://img.shields.io/badge/paypal-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
 
 # angular-i18next
 [i18next](http://i18next.com/) v8.4+ integration with [angular](https://angular.io/) v2.0+
@@ -415,9 +415,9 @@ npm start
 - [Best Libraries for Angular I18n](https://phraseapp.com/blog/posts/best-libraries-for-angular-i18n/)
 
 
-# Support on Beerpay
+# Cheers!
 Hey dude! Help me out for a couple of :beers:!
 
 Поддержи проект - угости автора кружечкой пива!
 
-[![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/badge.svg?style=beer-square)](https://beerpay.io/Romanchuk/angular-i18next)  [![Beerpay](https://beerpay.io/Romanchuk/angular-i18next/make-wish.svg?style=flat-square)](https://beerpay.io/Romanchuk/angular-i18next?focus=wish)
+[![paypal](https://img.shields.io/badge/paypal-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
