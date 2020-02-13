@@ -1,3 +1,7 @@
+# [8.0.0-beta.1](https://github.com/Romanchuk/angular-i18next/compare/v8.0.0-beta...v8.0.0-beta.1) (2020-02-13)
+
+
+
 # [8.0.0-beta](https://github.com/Romanchuk/angular-i18next/compare/v7.2.0-beta...v8.0.0-beta) (2020-02-13)
 
 
