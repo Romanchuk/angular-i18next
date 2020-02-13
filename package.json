@@ -1,6 +1,6 @@
 {
     "name": "angular-i18next",
-    "version": "7.2.0-beta",
+    "version": "8.0.0-beta",
     "ngPackage": {
         "lib": {
             "entryFile": "src/index.ts"
