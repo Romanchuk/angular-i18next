@@ -27,7 +27,13 @@ export class I18NextPipe implements PipeTransform {
         key = this.prependNamespace(key, this.ns, i18nOpts.nsSeparator);
       }
     }
-    let result = this.translateI18Next.t(key, options);
+
+    let result: string;
+    if (options.defaultValue) {
+      result = this.translateI18Next.t(key, options.defaultValue, options);
+    } else {
+      result = this.translateI18Next.t(key, options);
+    }
     if (options.format) {
       if (result) {
         result = this.translateI18Next
