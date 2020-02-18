@@ -40,6 +40,7 @@
     "scripts": {
         "tslint": "tslint",
         "build": "npx ng-packagr -p package.json",
+        "postbuild": "node ./.tools/afterBuild.js",
         "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
         "conventional-changelog": "conventional-changelog",
         "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
@@ -53,8 +54,7 @@
         "lint": "npm run tslint -- --project tsconfig.json",
         "test": "npm run clean:tests && npx karma start karma.conf.js",
         "test:watch": "npm run clean:tests && npx karma start karma.conf.debug.js",
-        "release": "npx np",
-        "postinstall": "node postinstall.js"
+        "release": "npx np"
     },
     "peerDependencies": {
         "@angular/common": ">=6.0.0 <10.0.0",
