@@ -10,14 +10,14 @@ export class MockI18NextService implements ITranslationService {
   language: string = '';
   languages: string[] = [];
 
+  private i18nextPromise: Promise<void>;
+
   get options(): any {
     return {
         keySeparator: '.',
         nsSeparator: ':'
     };
   }
-
-  private i18nextPromise: Promise<void>;
 
   public use(plugin: any) {
     return this;
