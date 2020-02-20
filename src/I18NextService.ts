@@ -45,9 +45,10 @@ export class I18NextService implements ITranslationService {
 
   }
 
-  public t(key: string | string[], options?: any): string {
+  public t(key: string | string[], options?: any): string;
+  public t(key: string | string[], defaultValue?: any, options?: any): string {
     options = options || {};
-    return i18next.t.call(i18next, <any>key, options);
+    return i18next.t.call(i18next, <any>key, defaultValue, options);
   }
 
   public format(value: any, format: string, lng: string): string {

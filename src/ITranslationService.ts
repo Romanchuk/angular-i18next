@@ -13,6 +13,7 @@ export interface ITranslationService {
   init(options?: any): Promise<any>;
 
   t(key: string | string[], options?: any): string;
+  t(key: string | string[], defaultValue?: any, options?: any): string;
 
   format(value: any, format: string, lng: string): string;
 
