@@ -25,6 +25,7 @@ export * from './I18NextLoadResult';
 
 export * from './ITranslationService';
 export * from './ITranslationEvents';
+export * from './models';
 
 
 export function resolver(activatedRouteSnapshot, routerStateSnapshot): Promise<void> {

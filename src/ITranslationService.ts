@@ -1,5 +1,6 @@
 import * as i18n from 'i18next';
 import { ITranslationEvents } from './ITranslationEvents';
+import { I18NextLoadResult } from './I18NextLoadResult';
 
 export interface ITranslationService {
 
@@ -9,9 +10,9 @@ export interface ITranslationService {
 
   options: any;
 
-  use<T extends i18n.Module>(module: T | i18n.Newable<T> | i18n.ThirdPartyModule[] | i18n.Newable<i18n.ThirdPartyModule>[]);
+  use<T extends i18n.Module>(module: T | i18n.Newable<T> | i18n.ThirdPartyModule[] | i18n.Newable<i18n.ThirdPartyModule>[]): ITranslationService;
 
-  init(options?: i18n.InitOptions): Promise<any>;
+  init(options?: i18n.InitOptions): Promise<I18NextLoadResult>;
 
   t(key: string | string[], optionsOrDefault?: string | i18n.TOptions, options?: i18n.TOptions): string;
 

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { ITranslationService } from '../../src/ITranslationService';
 import { ITranslationEvents } from './../../src/ITranslationEvents';
+import { I18NextLoadResult } from '../../src/I18NextLoadResult';
 
 @Injectable()
 export class MockI18NextService implements ITranslationService {
@@ -23,7 +24,7 @@ export class MockI18NextService implements ITranslationService {
     return this;
   }
 
-  public init(options?: any): Promise<void> {
+  public init(options?: any): Promise<I18NextLoadResult> {
     options = options || {};
     return new Promise<any>(
       (resolve: (thenableOrResult?: any) => void,
