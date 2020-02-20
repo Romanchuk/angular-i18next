@@ -73,7 +73,6 @@
         "@angular/platform-browser-dynamic": "^9.0.1",
         "@angular/platform-server": "^9.0.1",
         "@types/chai": "^4.1.7",
-        "@types/i18next": "^12.1.0",
         "@types/jasmine": "^3.3.13",
         "@types/sinon": "^5.0.7",
         "chai": "^4.2.0",
