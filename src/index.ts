@@ -11,6 +11,7 @@ import { I18NextService } from './I18NextService';
 import { I18NextTitle } from './I18NextTitle';
 import { ITranslationService } from './ITranslationService';
 import { I18NextEagerPipe } from './I18NextEagerPipe';
+import { FormatFunction } from 'i18next';
 
 export * from './I18NEXT_TOKENS';
 export * from './I18NextPipe';
@@ -94,7 +95,7 @@ export class I18NextModule {
     };
   }
 
-  static interpolationFormat(customFormat: Function = null): Function {
+  static interpolationFormat(customFormat: Function = null): FormatFunction {
     function formatDelegate(value: any, format: string, lng: string): string {
       let formatedValue: string = defaultInterpolationFormat(value, format, lng);
       if (customFormat === null)
