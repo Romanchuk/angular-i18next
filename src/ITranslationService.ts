@@ -1,3 +1,4 @@
+import * as i18n from 'i18next';
 import { ITranslationEvents } from './ITranslationEvents';
 
 export interface ITranslationService {
@@ -8,14 +9,13 @@ export interface ITranslationService {
 
   options: any;
 
-  use(plugin: any);
+  use<T extends i18n.Module>(module: T | i18n.Newable<T> | i18n.ThirdPartyModule[] | i18n.Newable<i18n.ThirdPartyModule>[]);
 
-  init(options?: any): Promise<any>;
+  init(options?: i18n.InitOptions): Promise<any>;
 
-  t(key: string | string[], options?: any): string;
-  t(key: string | string[], defaultValue?: any, options?: any): string;
+  t(key: string | string[], optionsOrDefault?: string | i18n.TOptions, options?: i18n.TOptions): string;
 
-  format(value: any, format: string, lng: string): string;
+  format: i18n.FormatFunction;
 
   exists(key, options);
 

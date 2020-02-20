@@ -1,7 +1,9 @@
 import { Inject, Injectable, Pipe, PipeTransform } from '@angular/core';
+import * as i18n from 'i18next';
 
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
 import { ITranslationService } from './ITranslationService';
+import { PipeOptions } from './models';
 @Injectable()
 @Pipe({
     name: 'i18next'
@@ -13,10 +15,10 @@ export class I18NextPipe implements PipeTransform {
       @Inject(I18NEXT_NAMESPACE) protected ns: string | string[],
       @Inject(I18NEXT_SCOPE) protected scope: string | string[]) {}
 
-  public transform(key: string | string[], options?: any): string {
+  public transform(key: string | string[], options?: PipeOptions): string {
     options = this.prepareOptions(options);
 
-    let i18nOpts = this.translateI18Next.options;
+    let i18nOpts: i18n.TOptions = this.translateI18Next.options;
     if (options.prependScope === undefined || options.prependScope === true) {
       if (this.scope) {
         key = this.prependScope(key, this.scope, i18nOpts.keySeparator, i18nOpts.nsSeparator);
@@ -28,12 +30,8 @@ export class I18NextPipe implements PipeTransform {
       }
     }
 
-    let result: string;
-    if (options.defaultValue) {
-      result = this.translateI18Next.t(key, options.defaultValue, options);
-    } else {
-      result = this.translateI18Next.t(key, options);
-    }
+    let result: string = this.translateI18Next.t(key, options);
+
     if (options.format) {
       if (result) {
         result = this.translateI18Next
@@ -87,7 +85,7 @@ export class I18NextPipe implements PipeTransform {
     return key.indexOf(nsSeparator) !== -1;
   }
 
-  private prepareOptions(options: any) {
+  private prepareOptions(options: PipeOptions) {
     options = options || {};
     if (options.context != null)
       options.context = options.context.toString();

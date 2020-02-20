@@ -4,6 +4,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
 import { ITranslationService } from './ITranslationService';
+import { PipeOptions } from './models';
 
 @Pipe({
   name: 'i18nextEager',
@@ -32,7 +33,7 @@ constructor(
       });
   }
 
-  public transform(key: string | string[], options?: any): string {
+  public transform(key: string | string[], options?: PipeOptions): string {
     const newKey = this.translateI18Next.language + '|' + JSON.stringify(key);
     if (!this.lastKey || this.lastKey !== newKey) {
       this.lastKey = newKey;

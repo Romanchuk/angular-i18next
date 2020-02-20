@@ -24,12 +24,12 @@ export class I18NextService implements ITranslationService {
 
   constructor(@Inject(I18NEXT_ERROR_HANDLING_STRATEGY) private errorHandlingStrategy: I18NextErrorHandlingStrategy) {}
 
-  public use(plugin: any) {
-    i18next.use.call(i18next, plugin);
+  public use<T extends i18n.Module>(module: T | i18n.Newable<T> | i18n.ThirdPartyModule[] | i18n.Newable<i18n.ThirdPartyModule>[]) {
+    i18next.use.call(i18next, module);
     return this;
   }
 
-  public init(options?: any): Promise<any> {
+  public init(options?: i18n.InitOptions): Promise<any> {
     options = options || {};
 
     this.subscribeEvents();
@@ -45,13 +45,16 @@ export class I18NextService implements ITranslationService {
 
   }
 
-  public t(key: string | string[], options?: any): string;
-  public t(key: string | string[], defaultValue?: any, options?: any): string {
-    options = options || {};
-    return i18next.t.call(i18next, <any>key, defaultValue, options);
+  t(key: string | string[], optionsOrDefault?: string | i18n.TOptions, options?: i18n.TOptions): string {
+    const hasDefault = optionsOrDefault && typeof(optionsOrDefault) === 'string';
+    if (hasDefault) {
+      return i18next.t.call(i18next, <any>key, optionsOrDefault, options);
+    } else {
+      return i18next.t.call(i18next, <any>key, options);
+    }
   }
 
-  public format(value: any, format: string, lng: string): string {
+  public format(value: any, format?: string, lng?: string): string {
     return i18next.format.call(i18next, value, format, lng);
   }
 
