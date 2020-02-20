@@ -1,7 +1,4 @@
-import { FactoryProvider } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
-import { Title } from '@angular/platform-browser';
-
 import {
     defaultInterpolationFormat,
     I18NEXT_NAMESPACE,
@@ -15,7 +12,6 @@ import {
     I18NextService,
     I18NextTitle,
 } from '../../src/index';
-import { MockI18NextService } from './../mocks/MockTranslationService';
 
 describe('I18NextModule', function() {
   const DEFAULT_NAMESPACE = '';

@@ -97,25 +97,26 @@ describe('I18nService', function() {
 
     // does not work because language=cimode ignores default value
     // setting language to anything other than 'cimode' breaks the rest of the tests
-    //  
-    // it('should translate with default value', function(done) {
-    //     let service: ITranslationService = TestBed.get(I18NEXT_SERVICE);
-    //     let title: Title = TestBed.get(Title);
-    //     let i18nextPipe: I18NextPipe = TestBed.get(I18NextPipe);
-    //     const key = 'test2';
-    //     const defaultValue = 'test3';
-    //     service.events.initialized.subscribe((value) => {
-    //         if (value) {
-    //             // service
-    //             const serviceResult = service.t(key, defaultValue);
-    //             expect(serviceResult).toEqual(defaultValue);
-    //             // pipes
-    //             const pipeResult = i18nextPipe.transform(key, {defaultValue});
-    //             expect(pipeResult).toEqual(defaultValue);
-    //             done();
-    //         }
-    //     });
-    // });
+    // TODO: make correct test
+
+    xit('should translate with default value', function(done) {
+        let service: ITranslationService = TestBed.get(I18NEXT_SERVICE);
+        let title: Title = TestBed.get(Title);
+        let i18nextPipe: I18NextPipe = TestBed.get(I18NextPipe);
+        const key = 'test2';
+        const defaultValue = 'test3';
+        service.events.initialized.subscribe((value) => {
+            if (value) {
+                // service
+                const serviceResult = service.t(key, defaultValue);
+                expect(serviceResult).toEqual(defaultValue);
+                // pipes
+                const pipeResult = i18nextPipe.transform(key, {defaultValue});
+                expect(pipeResult).toEqual(defaultValue);
+                done();
+            }
+        });
+    });
 
     it('should dir', function() {
         const lng = 'ru';
