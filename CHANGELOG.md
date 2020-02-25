@@ -1,3 +1,12 @@
+## [9.0.1](https://github.com/Romanchuk/angular-i18next/compare/v9.0.0...v9.0.1) (2020-02-25)
+
+
+### Bug Fixes
+
+* pass translate options ([4cfe42c](https://github.com/Romanchuk/angular-i18next/commit/4cfe42c))
+
+
+
 # [9.0.0](https://github.com/Romanchuk/angular-i18next/compare/v8.1.0-beta.3...v9.0.0) (2020-02-20)
 
 
