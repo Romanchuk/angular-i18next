@@ -50,7 +50,7 @@ export class I18NextService implements ITranslationService {
     if (hasDefault) {
       return i18next.t.call(i18next, <any>key, optionsOrDefault, options);
     } else {
-      return i18next.t.call(i18next, <any>key, options);
+      return i18next.t.call(i18next, <any>key, optionsOrDefault);
     }
   }
 
