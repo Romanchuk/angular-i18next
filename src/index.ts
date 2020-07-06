@@ -68,7 +68,7 @@ export function i18nextNamespaceResolverFactory(i18next: ITranslationService) {
   ]
 })
 export class I18NextModule {
-  static forRoot(params: I18NextModuleParams = {}): ModuleWithProviders {
+  static forRoot(params: I18NextModuleParams = {}): ModuleWithProviders<I18NextModule> {
     return {
       ngModule: I18NextModule,
       providers: [

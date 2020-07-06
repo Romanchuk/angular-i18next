@@ -41,7 +41,9 @@ export class I18NextPipe implements PipeTransform {
     return result;
   }
 
-  private prependScope(key: string | string[], scope: string | string[], keySeparator: string,  nsSeparator: string): string[] {
+  private prependScope(key: string | string[], scope: string | string[], keySeparator: string | false,  nsSeparator: string | false): string[] {
+    const nsSep = nsSeparator || '';
+    const keySep = keySeparator || '';
     if (typeof(key) === 'string') {
       key = [key];
     }
@@ -51,15 +53,16 @@ export class I18NextPipe implements PipeTransform {
     let keysWithScope = [];
     for (let i = 0; i < key.length; i++) {
       const k = key[i];
-      if (!this.keyContainsNsSeparator(k, nsSeparator)) { // Do not set scope, if key contains a namespace
-        keysWithScope.push(...scope.map(sc => this.joinStrings(keySeparator, sc, k)));
+      if (!this.keyContainsNsSeparator(k, nsSep)) { // Do not set scope, if key contains a namespace
+        keysWithScope.push(...scope.map(sc => this.joinStrings(keySep, sc, k)));
       }
       keysWithScope.push(k);
     }
     return keysWithScope;
   }
 
-  private prependNamespace(key: string | string[], ns: string | string[], nsSeparator: string): string[] {
+  private prependNamespace(key: string | string[], ns: string | string[], nsSeparator: string | false): string[] {
+    const nsSep = nsSeparator || '';
     if (typeof(key) === 'string') {
       key = [key];
     }
@@ -69,8 +72,8 @@ export class I18NextPipe implements PipeTransform {
     let keysWithNamespace = [];
     for (let i = 0; i < key.length; i++) {
       const k = key[i];
-      if (!this.keyContainsNsSeparator(k, nsSeparator)) { // Do not set namespace, if key contains a namespace
-        keysWithNamespace.push(...ns.map(n => this.joinStrings(nsSeparator, n, k)));
+      if (!this.keyContainsNsSeparator(k, nsSep)) { // Do not set namespace, if key contains a namespace
+        keysWithNamespace.push(...ns.map(n => this.joinStrings(nsSep, n, k)));
       }
       keysWithNamespace.push(k);
     }

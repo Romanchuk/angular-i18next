@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "es2016",
+        "module": "es2020",
         "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
@@ -16,12 +16,8 @@
         "paths": {},
         "lib": [
             "dom",
-            "es2015",
-            "es2015.iterable"
+            "es2017"
         ],
-        "types": [
-            "jasmine"
-        ]
     },
     "exclude": [
         "node_modules",

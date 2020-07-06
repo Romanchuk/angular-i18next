@@ -62,7 +62,10 @@ module.exports = function (config) {
                         ],
                         loader: 'istanbul-instrumenter-loader',
                         test: /\.ts$/,
-                        enforce: 'post'
+                        enforce: 'post',
+                        query: {
+                            esModules: true
+                        }
                     }
                 ]
             },
