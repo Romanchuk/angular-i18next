@@ -99,7 +99,7 @@
         "karma-spec-reporter": "^0.0.32",
         "karma-webpack": "^4.0.2",
         "ng-packagr": "^10.0.0",
-        "np": "^6.3.0",
+        "np": "^6.2.3",
         "replace": "^1.0.0",
         "require-dir": "^1.1.0",
         "rimraf": "3.0.0",
