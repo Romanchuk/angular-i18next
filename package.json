@@ -13,6 +13,9 @@
     "np": {
         "contents": "dist"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "author": {
         "name": "Sergey Romanchuk"
     },
