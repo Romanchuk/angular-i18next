@@ -407,15 +407,8 @@ Example tests setup:
 # Demo
 
 [Live DEMO](https://romanchuk.github.io/angular-i18next-demo/)
-Demo app source code now awailable: https://github.com/Romanchuk/angular-i18next-demo
+Demo app source code available here: https://github.com/Romanchuk/angular-i18next-demo
 
-It's not yet deployed as public web site.
-
-To run:
-```
-npm install
-npm start
-```
 
 # Articles
 - [Angular L10n with I18next](https://phraseapp.com/blog/posts/angular-l10n-with-i18next/)
