@@ -42,6 +42,14 @@
 - Reactive forms validators localization
 - Http error message localizer
 
+# Cheers!
+Hey dude! Help me out for a couple of :beers:!
+
+Поддержи проект - угости автора кружечкой пива!
+
+[![paypal](https://img.shields.io/badge/paypal-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
+
+
 # Installation
 
 **1.** Install package
@@ -414,10 +422,3 @@ Demo app source code available here: https://github.com/Romanchuk/angular-i18nex
 - [Angular L10n with I18next](https://phraseapp.com/blog/posts/angular-l10n-with-i18next/)
 - [Best Libraries for Angular I18n](https://phraseapp.com/blog/posts/best-libraries-for-angular-i18n/)
 
-
-# Cheers!
-Hey dude! Help me out for a couple of :beers:!
-
-Поддержи проект - угости автора кружечкой пива!
-
-[![paypal](https://img.shields.io/badge/paypal-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
