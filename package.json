@@ -63,9 +63,9 @@
         "tslib": "^2.0.3"
     },
     "peerDependencies": {
-        "@angular/common": ">=11.0.0 <12.0.0",
-        "@angular/core": ">=11.0.0 <12.0.0",
-        "@angular/platform-browser": ">=11.0.0 <12.0.0",
+        "@angular/common": ">=10.0.0 <12.0.0",
+        "@angular/core": ">=10.0.0 <12.0.0",
+        "@angular/platform-browser": ">=10.0.0 <12.0.0",
         "i18next": ">=19.5.4 <20.0.0",
         "rxjs": ">=6.6.0 <7.0.0"
     },
