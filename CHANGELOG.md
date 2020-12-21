@@ -1,3 +1,7 @@
+## [10.0.1](https://github.com/Romanchuk/angular-i18next/compare/v10.0.1-beta...v10.0.1) (2020-12-21)
+
+
+
 ## [10.0.1-beta](https://github.com/Romanchuk/angular-i18next/compare/v10.0.0...v10.0.1-beta) (2020-12-21)
 
 
