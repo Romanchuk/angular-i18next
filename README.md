@@ -6,7 +6,7 @@
 [![Dependency Status](https://david-dm.org/Romanchuk/angular-i18next.svg)](https://david-dm.org/Romanchuk/angular-i18next)
 [![devDependency Status](https://david-dm.org/Romanchuk/angular-i18next/dev-status.svg)](https://david-dm.org/Romanchuk/angular-i18next?type=dev)
 [![paypal](https://img.shields.io/badge/say_thanks-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
-![GitHub stars](https://img.shields.io/github/stars/romanchuk/angular-i18next?label=Please%20star%20repo%21&style=social)
+[![GitHub stars](https://img.shields.io/github/stars/romanchuk/angular-i18next?label=Please%20star%20repo%21&style=social)](https://github.com/romanchuk/angular-i18next)
 
 # angular-i18next
 [i18next](http://i18next.com/) v8.4+ integration with [angular](https://angular.io/) v2.0+
