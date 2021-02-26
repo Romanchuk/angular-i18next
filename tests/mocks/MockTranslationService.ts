@@ -33,20 +33,20 @@ export class MockI18NextService implements ITranslationService {
       });
   }
 
-  public t(key: string | string[], options?: any): string {
+  public t = jasmine.createSpy('MockI18NextService.t').and.callFake((key: string | string[], options?: any): string => {
     if (key instanceof Array)
         return key.length > 0 ? key[0] : '';
     return key;
-  }
+  });
 
-  public format(value: string, format: string, lng: string): string {
+  public format = jasmine.createSpy('MockI18NextService.format').and.callFake((value: string, format: string, lng: string): string => {
     if (!value)
       return value;
     if (format === 'cap') {
       return value[0].toUpperCase() + value.substring(1);
     }
     return value;
-  }
+  });
 
   public changeLanguage(lng: string): Promise<any> {
     return new Promise<any>(
