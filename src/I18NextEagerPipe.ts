@@ -1,8 +1,8 @@
 import { ChangeDetectorRef, Inject, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { I18NextPipe } from './I18NextPipe';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE } from './I18NEXT_TOKENS';
+import { I18NextPipe } from './I18NextPipe';
 import { ITranslationService } from './ITranslationService';
 import { PipeOptions } from './models';
 
@@ -13,6 +13,7 @@ import { PipeOptions } from './models';
 export class I18NextEagerPipe extends I18NextPipe implements PipeTransform, OnDestroy {
 
 private lastKey: string;
+private lastOptions: PipeOptions;
 private lastValue: string;
 
 private ngUnsubscribe: Subject<any> = new Subject();
@@ -31,12 +32,21 @@ constructor(
       .subscribe(() => {
           this.cd.markForCheck();
       });
+}
+  private hasKeyChanged(key: string | string[]): boolean {
+    return !this.lastKey || this.lastKey !== key;
+  }
+
+  private hasOptionsChanged(options: PipeOptions): boolean {
+    return this.lastOptions !== options;
   }
 
   public transform(key: string | string[], options?: PipeOptions): string {
     const newKey = this.translateI18Next.language + '|' + JSON.stringify(key);
-    if (!this.lastKey || this.lastKey !== newKey) {
+
+    if (this.hasKeyChanged(newKey) || this.hasOptionsChanged(options)) {
       this.lastKey = newKey;
+      this.lastOptions = options;
       this.lastValue = super.transform(key, options);
     }
     return this.lastValue;
