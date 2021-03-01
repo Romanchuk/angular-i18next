@@ -1,3 +1,12 @@
+# [10.1.0-0](https://github.com/Romanchuk/angular-i18next/compare/v10.0.1...v10.1.0-0) (2021-03-01)
+
+
+### Bug Fixes
+
+* **I18NextEagerPipe:** ensure changing PipeOptions returns correct translated value a not cached one with different PipeOptions but same key ([4a6d375](https://github.com/Romanchuk/angular-i18next/commit/4a6d375181dda41399c58f7644b97d3755acf84f))
+
+
+
 ## [10.0.1](https://github.com/Romanchuk/angular-i18next/compare/v10.0.1-beta...v10.0.1) (2020-12-21)
 
 
