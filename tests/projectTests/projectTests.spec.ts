@@ -8,7 +8,6 @@ export function appInit(i18next: ITranslationService) {
     return () => {
       let promise: Promise<I18NextLoadResult> = i18next
         .init({
-            debug: true,
             lng: 'cimode'
         });
       return promise;

@@ -10,7 +10,6 @@ const i18next = i18n.default;
 
 const i18nextOptions = {
     lng: 'cimode',
-    debug: true
 };
 export function appInit(service: ITranslationService) {
     return () => service
