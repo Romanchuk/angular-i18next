@@ -1,3 +1,12 @@
+# [10.2.0-0](https://github.com/Romanchuk/angular-i18next/compare/v10.1.0...v10.2.0-0) (2021-05-12)
+
+
+### Features
+
+* i18next v20+ support ([0327a7c](https://github.com/Romanchuk/angular-i18next/commit/0327a7c9f35140f0c8e098d9d1528b6e7303a8d0))
+
+
+
 # [10.1.0](https://github.com/Romanchuk/angular-i18next/compare/v10.1.0-0...v10.1.0) (2021-03-01)
 
 
