@@ -66,7 +66,7 @@
         "@angular/common": ">=10.0.0 <12.0.0",
         "@angular/core": ">=10.0.0 <12.0.0",
         "@angular/platform-browser": ">=10.0.0 <12.0.0",
-        "i18next": ">=19.5.4 <20.0.0",
+        "i18next": ">=19.5.4 <21.0.0",
         "rxjs": ">=6.6.0 <7.0.0"
     },
     "devDependencies": {
@@ -88,7 +88,7 @@
         "coveralls": "^3.1.0",
         "cz-conventional-changelog": "^2.1.0",
         "es6-shim": "0.35.4",
-        "i18next": "^19.8.4",
+        "i18next": "^20.2.2",
         "istanbul-instrumenter-loader": "3.0.1",
         "jasmine": "^3.6.3",
         "jasmine-core": "^3.6.0",
