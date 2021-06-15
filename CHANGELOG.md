@@ -1,3 +1,7 @@
+# [10.3.0-0](https://github.com/Romanchuk/angular-i18next/compare/v10.2.0...v10.3.0-0) (2021-06-15)
+
+
+
 # [10.2.0](https://github.com/Romanchuk/angular-i18next/compare/v10.2.0-0...v10.2.0) (2021-05-12)
 
 
