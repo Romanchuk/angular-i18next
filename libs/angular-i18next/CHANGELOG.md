@@ -1,3 +1,12 @@
+# [11.0.0-0](https://github.com/Romanchuk/angular-i18next/compare/v10.3.0...v11.0.0-0) (2022-01-04)
+
+
+### Bug Fixes
+
+* np dist ([670004f](https://github.com/Romanchuk/angular-i18next/commit/670004f2b1c41e0de88708767563b960bd88a3e6))
+
+
+
 # [10.3.0](https://github.com/Romanchuk/angular-i18next/compare/v10.3.0-0...v10.3.0) (2021-06-15)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "angular-i18next",
-  "version": "10.3.0",
+  "version": "11.0.0-0",
   "ngPackage": {
     "assets": [
       "CHANGELOG.md",
