@@ -11,7 +11,8 @@
     }
   },
   "np": {
-    "contents": "dist"
+    "contents": "dist",
+    "yolo": true
   },
   "publishConfig": {
     "access": "public"
