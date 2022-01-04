@@ -1,33 +1,3 @@
 {
-    "compilerOptions": {
-        "target": "es2016",
-        "module": "es2020",
-        "moduleResolution": "node",
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "allowSyntheticDefaultImports": true,
-        "importHelpers": true,
-        "sourceMap": true,
-        "declaration": true,
-        "noEmitHelpers": true,
-        "strictNullChecks": false,
-        "baseUrl": "./src",
-        "outDir": "./dist",
-        "paths": {},
-        "lib": [
-            "dom",
-            "es2017"
-        ],
-    },
-    "exclude": [
-        "node_modules",
-        "dist"
-    ],
-    "awesomeTypescriptLoaderOptions": {
-        "forkChecker": true,
-        "useWebpackText": true
-    },
-    "compileOnSave": false,
-    "buildOnSave": false,
-    "atom": { "rewriteTsconfig": false }
+  "extends": "./tsconfig.json"
 }

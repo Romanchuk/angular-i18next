@@ -1,8 +1,9 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "search.exclude": {
-        "coverage": true,
-        "dist": true,
-        "build": true
-    }
+  "search.exclude": {
+    "coverage": true,
+    "dist": true,
+    "build": true
+  },
+  "typescript.tsdk": "node_modules\\typescript\\lib"
 }

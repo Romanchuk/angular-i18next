@@ -1,29 +1,39 @@
-node_modules
-coverage
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# compiled output
 dist
-build
-.publish
-index.js
-index.d.ts
-index.js.map
-src/**/*.js
-src/**/*.js.map
-src/**/*.d.ts
-tests/**/*.js
-tests/**/*.js.map
-tests/**/*.d.ts
+/tmp
+/out-tsc
+
+# dependencies
+node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
 npm-debug.log
-npm-debug.log.*
-*.metadata.json
+yarn-error.log
+testem.log
+/typings
 
-### JetBrains template
-# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
-*.iml
-
-## Directory-based project format:
-.idea/
-
-## File-based project format:
-*.ipr
-*.iws
-
+# System Files
+.DS_Store
+Thumbs.db
