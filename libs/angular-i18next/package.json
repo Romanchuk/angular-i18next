@@ -50,12 +50,12 @@
     "changelog:add": "git add --force CHANGELOG.md package.json",
     "changelog:commit": "git commit -m \"Updated CHANGELOG.md\"",
     "version": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build  && npm run changelog:add && npm run changelog:commit",
-    "ci": "npm run lint && npm run build && npm run test",
+    "ci": "npm run build && npm run test",
     "clean": "npm run clean:build && npm run clean:tests",
     "clean:build": "npx rimraf -- dist build",
     "clean:tests": "npx rimraf -- coverage && npx rimraf tests/**/*.+{js,js.map,d.ts,metadata.json}",
     "test:watch": "npm run clean:tests && npx karma start karma.conf.debug.js",
-    "release": "npm run lint && npx np"
+    "release": "npx np"
   },
   "dependencies": {
     "tslib": "^2.2.0"
