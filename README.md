@@ -1,4 +1,4 @@
-**Angular 13** support ```angular-i18next@11.0.0-0```
+**Angular 13** support ```angular-i18next@11.0.0```
 
 [![npm version](https://badge.fury.io/js/angular-i18next.svg)](https://badge.fury.io/js/angular-i18next)
 [![Downloads](http://img.shields.io/npm/dm/angular-i18next.svg)](https://npmjs.org/package/angular-i18next)
