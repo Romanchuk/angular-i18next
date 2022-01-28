@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { jest } from '@jest/globals';
+import { Callback, FormatFunction, i18n, InterpolationOptions, Modules, ResourceStore, Services, TFunction } from 'i18next';
 import { I18NextLoadResult } from '../../lib/I18NextLoadResult';
 import { ITranslationEvents } from '../../lib/ITranslationEvents';
 import { ITranslationService } from '../../lib/ITranslationService';
@@ -7,6 +8,56 @@ import { ITranslationService } from '../../lib/ITranslationService';
 
 @Injectable()
 export class MockI18NextService implements ITranslationService {
+  isInitialized?: boolean | undefined;
+  modules: Modules;
+  services: Services;
+  store: ResourceStore;
+  resolvedLanguage: string;
+  t: TFunction =  jest.fn()
+    .mockImplementation(()=> {
+      return ((key: string | string[], options?: any): string => {
+        if (key instanceof Array) {
+          return key.length > 0 ? key[0] : '';
+        }
+        return key;
+      })
+    });
+
+  format: FormatFunction = jest.fn().mockImplementation(() => {
+    return <FormatFunction>1
+  });
+
+  getFixedT(lng: string | readonly string[], ns?: string | readonly string[], keyPrefix?: string): TFunction;
+  getFixedT(lng: null, ns: string | readonly string[] | null, keyPrefix?: string): TFunction;
+  getFixedT(lng: any, ns?: any, keyPrefix?: any): import("i18next").TFunction {
+    throw new Error('Method not implemented.');
+  }
+  loadLanguages(lngs: string | readonly string[], callback?: Callback): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  loadResources(callback?: (err: any) => void): void {
+    throw new Error('Method not implemented.');
+  }
+  getDataByLanguage(lng: string): { translation: { [key: string]: string; }; } | undefined {
+    throw new Error('Method not implemented.');
+  }
+  reloadResources(lngs?: string | readonly string[], ns?: string | readonly string[], callback?: () => void): Promise<void>;
+  reloadResources(lngs: null, ns: string | readonly string[], callback?: () => void): Promise<void>;
+  reloadResources(lngs?: any, ns?: any, callback?: any): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
+  addResource(lng: string, ns: string, key: string, value: string, options?: { keySeparator?: string | undefined; silent?: boolean | undefined; }): i18n {
+    throw new Error('Method not implemented.');
+  }
+  addResources(lng: string, ns: string, resources: any): i18n {
+    throw new Error('Method not implemented.');
+  }
+  addResourceBundle(lng: string, ns: string, resources: any, deep?: boolean, overwrite?: boolean): i18n {
+    throw new Error('Method not implemented.');
+  }
+  removeResourceBundle(lng: string, ns: string): i18n {
+    throw new Error('Method not implemented.');
+  }
   events: ITranslationEvents;
   language: string = '';
   languages: string[] = [];
@@ -20,7 +71,7 @@ export class MockI18NextService implements ITranslationService {
     };
   }
 
-  public use(plugin: any) {
+  public use(plugin: any): ITranslationService {
     return this;
   }
 
@@ -36,24 +87,6 @@ export class MockI18NextService implements ITranslationService {
     );
   }
 
-  public t = jest
-    .spyOn(this, 't')
-    .mockImplementation(((key: string | string[], options?: any): string => {
-      if (key instanceof Array) {
-        return key.length > 0 ? key[0] : '';
-      }
-      return key;
-    });
-
-  public format = jest
-    .spyOn(this, 'format')
-    .and.callFake((value: string, format: string, lng: string): string => {
-      if (!value) return value;
-      if (format === 'cap') {
-        return value[0].toUpperCase() + value.substring(1);
-      }
-      return value;
-    });
 
   public changeLanguage(lng: string): Promise<any> {
     return new Promise<any>(
@@ -82,9 +115,7 @@ export class MockI18NextService implements ITranslationService {
     return true;
   }
 
-  getFixedT(lng: any, ns: any) {
-    return null;
-  }
+
 
   setDefaultNamespace(ns: string) {}
 
@@ -92,23 +123,13 @@ export class MockI18NextService implements ITranslationService {
     return 'ltr';
   }
 
-  reloadResources(...params: any[]) {}
+
 
   getResource(lng: any, ns: any, key: any, options: any) {
     return null;
   }
 
-  addResource(lng: any, ns: any, key: any, value: any, options: any) {}
 
-  addResources(lng: any, ns: any, resources: any) {}
-
-  addResourceBundle(
-    lng: any,
-    ns: any,
-    resources: any,
-    deep: any,
-    overwrite: any
-  ) {}
 
   hasResourceBundle(lng: any, ns: any) {
     return true;
@@ -118,5 +139,5 @@ export class MockI18NextService implements ITranslationService {
     return null;
   }
 
-  removeResourceBundle(lng: any, ns: any) {}
+
 }

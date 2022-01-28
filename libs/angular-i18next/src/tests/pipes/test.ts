@@ -1,18 +1,19 @@
 import { I18NextCapPipe } from './../../lib/I18NextCapPipe';
 import { I18NextPipe } from './../../lib/I18NextPipe';
 import { MockI18NextService } from '../mocks/MockTranslationService';
+import { ITranslationService } from '../../lib/ITranslationService';
 
 // TODO: use TestBed
 
 describe('I18NextPipe tests', function () {
-  let service = new MockI18NextService();
+  let service: ITranslationService = new MockI18NextService();
   const DEFAULT_NAMESPACE = '';
   const DEFAULT_SCOPE = '';
 
   it('transform', function () {
     const pipe = new I18NextPipe(service, DEFAULT_NAMESPACE, DEFAULT_SCOPE);
     const key = 'test';
-    const transResult = pipe.transform(key, null);
+    const transResult = pipe.transform(key, undefined);
     expect(transResult).toEqual(key);
   });
 
