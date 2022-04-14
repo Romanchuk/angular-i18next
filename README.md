@@ -79,11 +79,13 @@ import { I18NextModule } from 'angular-i18next';
 export class AppModule {}
 
 ```
-**3.** Import I18NextModule.forRoot() to AppModule and setup provider with "init" method (use native [options](https://www.i18next.com/configuration-options.html)). Angular would not load until i18next initialize event fired
+**3.** Import I18NextModule.forRoot() to AppModule and setup provider with "init" method (use native [options](https://www.i18next.com/overview/configuration-options)). Angular would not load until i18next initialize event fired
+> **Warning:**: options in example valid for i18next v20 (Always check latest API options of i18next)
+
 ```typescript
 export function appInit(i18next: ITranslationService) {
     return () => i18next.init({
-        whitelist: ['en', 'ru'],
+        supportedLngs: ['en', 'ru'],
         fallbackLng: 'en',
         debug: true,
         returnEmptyString: false,
@@ -158,7 +160,7 @@ I18NextModule has static method `static interpolationFormat(customFormat: Functi
 
 ```typescript
 const i18nextOptions = {
-  whitelist: ['en', 'ru'],
+  supportedLngs: ['en', 'ru'],
   ns: [
     'translation',
     'validation',
