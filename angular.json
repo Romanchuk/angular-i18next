@@ -2,6 +2,7 @@
   "version": 1,
   "projects": {
     "angular-i18next": {
+      "$schema": "..\\..\\node_modules\\nx\\schemas\\project-schema.json",
       "projectType": "library",
       "root": "libs/angular-i18next",
       "sourceRoot": "libs/angular-i18next/src",
@@ -10,7 +11,7 @@
           "builder": "@nrwl/jest:jest",
           "outputs": ["coverage/libs/angular-i18next"],
           "options": {
-            "jestConfig": "libs/angular-i18next/jest.config.js",
+            "jestConfig": "libs/angular-i18next/jest.config.ts",
             "passWithNoTests": true
           }
         },
@@ -25,33 +26,6 @@
         }
       },
       "tags": []
-    }
-  },
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "css"
     }
   }
 }

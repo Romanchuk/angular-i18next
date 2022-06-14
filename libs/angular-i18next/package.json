@@ -1,15 +1,6 @@
 {
   "name": "angular-i18next",
   "version": "11.0.0",
-  "ngPackage": {
-    "assets": [
-      "CHANGELOG.md",
-      "postinstall.js"
-    ],
-    "lib": {
-      "entryFile": "src/index.ts"
-    }
-  },
   "np": {
     "contents": "./dist",
     "yolo": true
@@ -42,28 +33,28 @@
     }
   ],
   "scripts": {
-    "tslint": "npx tslint",
-    "build": "npx ng-packagr -p package.json",
+    "tslint": "npm exec -- tslint",
+    "build": "npm exec -- ng-packagr -p ng-package.json",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "conventional-changelog": "conventional-changelog",
     "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "changelog:add": "git add --force CHANGELOG.md package.json",
     "changelog:commit": "git commit -m \"Updated CHANGELOG.md\"",
-    "version": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build  && npm run changelog:add && npm run changelog:commit",
+    "version": "npm exec -- conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build  && npm run changelog:add && npm run changelog:commit",
     "ci": "npm run build && npm run test",
     "clean": "npm run clean:build && npm run clean:tests",
-    "clean:build": "npx rimraf -- dist build",
-    "clean:tests": "npx rimraf -- coverage && npx rimraf tests/**/*.+{js,js.map,d.ts,metadata.json}",
-    "test:watch": "npm run clean:tests && npx karma start karma.conf.debug.js",
-    "release": "npx np"
+    "clean:build": "npm exec -- rimraf -- dist build",
+    "clean:tests": "npm exec -- rimraf -- coverage && npm exec -- rimraf tests/**/*.+{js,js.map,d.ts,metadata.json}",
+    "test:watch": "npm run clean:tests && npm exec -- karma start karma.conf.debug.js",
+    "release": "npm exec -- np"
   },
   "dependencies": {
     "tslib": "^2.2.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=13.0.0 <14.0.0",
-    "@angular/core": ">=13.0.0 <14.0.0",
-    "@angular/platform-browser": ">=13.0.0 <14.0.0",
+    "@angular/common": ">=14.0.0 <15.0.0",
+    "@angular/core": ">=14.0.0 <15.0.0",
+    "@angular/platform-browser": ">=14.0.0 <15.0.0",
     "i18next": ">=19.5.4 <22.0.0",
     "rxjs": ">=6.6.0 <8.0.0"
   }

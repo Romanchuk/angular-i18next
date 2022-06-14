@@ -6,7 +6,8 @@
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,"allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
     "importHelpers": true,
     "strictPropertyInitialization": false,
     "target": "esnext",
@@ -15,9 +16,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {
-
-    }
+    "paths": {}
   },
   "exclude": ["node_modules", "tmp"]
 }

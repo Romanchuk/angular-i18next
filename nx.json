@@ -12,9 +12,14 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+      "runner": "nx/tasks-runners/default",
       "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
+        "cacheableOperations": [
+          "build",
+          "lint",
+          "test",
+          "e2e"
+        ]
       }
     }
   },
@@ -27,7 +32,6 @@
     ]
   },
   "cli": {
-    "defaultCollection": "@nrwl/angular",
     "packageManager": "npm"
   },
   "generators": {
@@ -57,5 +61,6 @@
       "style": "css"
     }
   },
-  "defaultProject": "angular-i18next"
+  "defaultProject": "angular-i18next",
+  "$schema": "./node_modules/nx/schemas/nx-schema.json"
 }
