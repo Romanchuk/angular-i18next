@@ -1,6 +1,6 @@
 {
   "name": "angular-i18next",
-  "version": "14.0.0-0",
+  "version": "14.0.0",
   "np": {
     "contents": "./dist",
     "yolo": true
