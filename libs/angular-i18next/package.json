@@ -4,6 +4,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "np": {
+    "contents": "./dist",
+    "yolo": true
+  },
   "author": {
     "name": "Sergey Romanchuk"
   },
