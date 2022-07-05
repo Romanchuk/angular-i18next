@@ -47,7 +47,7 @@
     "version": "node ../../node_modules/conventional-changelog-cli/cli.js -p angular -i CHANGELOG.md -s -r && npm run build",
     "build": "node ../../node_modules/ng-packagr/cli/main.js -p ng-package.json",
     "release": "npm exec -- np",
-    "postrelease": "git add package.json CHANGELOG.md && git commit -m \"🎉 @datana-smart/arm version released 🎉\" && git push"
+    "postrelease": "git add package.json CHANGELOG.md && git commit -m \"🎉 angular-i18next version released 🎉\" && git push"
   },
   "dependencies": {
     "tslib": "^2.2.0"
