@@ -1,10 +1,6 @@
 {
   "name": "angular-i18next",
   "version": "14.0.3",
-  "np": {
-    "contents": "dist",
-    "yolo": true
-  },
   "publishConfig": {
     "access": "public"
   },
@@ -46,7 +42,7 @@
     "clean:build": "npm exec -- rimraf -- dist build",
     "clean:tests": "npm exec -- rimraf -- coverage && npm exec -- rimraf tests/**/*.+{js,js.map,d.ts,metadata.json}",
     "test:watch": "npm run clean:tests && npm exec -- karma start karma.conf.debug.js",
-    "release": "npm exec -- np"
+    "release": "npm exec np"
   },
   "dependencies": {
     "tslib": "^2.2.0"
