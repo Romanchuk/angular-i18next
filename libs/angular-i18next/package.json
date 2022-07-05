@@ -34,19 +34,20 @@
   ],
   "scripts": {
     "tslint": "npm exec -- tslint",
-    "build": "npm exec -- ng-packagr -p ng-package.json",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/.bin/coveralls",
     "conventional-changelog": "conventional-changelog",
     "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "changelog:add": "git add --force CHANGELOG.md package.json",
     "changelog:commit": "git commit -m \"Updated CHANGELOG.md\"",
-    "version": "npm exec -- conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build  && npm run changelog:add && npm run changelog:commit",
     "ci": "npm run build && npm run test",
     "clean": "npm run clean:build && npm run clean:tests",
     "clean:build": "npm exec -- rimraf -- dist build",
     "clean:tests": "npm exec -- rimraf -- coverage && npm exec -- rimraf tests/**/*.+{js,js.map,d.ts,metadata.json}",
     "test:watch": "npm run clean:tests && npm exec -- karma start karma.conf.debug.js",
-    "release": "npm exec np"
+    "version": "node ../../node_modules/conventional-changelog-cli/cli.js -p angular -i CHANGELOG.md -s -r && npm run build",
+    "build": "node ../../node_modules/ng-packagr/cli/main.js -p ng-package.json",
+    "release": "npm exec -- np",
+    "postrelease": "git add package.json CHANGELOG.md && git commit -m \"🎉 @datana-smart/arm version released 🎉\" && git push"
   },
   "dependencies": {
     "tslib": "^2.2.0"
