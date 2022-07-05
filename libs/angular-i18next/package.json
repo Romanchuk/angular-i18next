@@ -2,9 +2,8 @@
   "name": "angular-i18next",
   "version": "14.0.2",
   "np": {
-    "contents": "./dist",
-    "yolo": true,
-    "publish": false
+    "contents": "dist",
+    "yolo": true
   },
   "publishConfig": {
     "access": "public"
