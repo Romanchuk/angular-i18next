@@ -3,7 +3,8 @@
   "version": "14.0.1",
   "np": {
     "contents": "./dist",
-    "yolo": true
+    "yolo": true,
+    "publish": false
   },
   "publishConfig": {
     "access": "public"
