@@ -31,9 +31,9 @@ export class I18NextEagerPipe
   private ngUnsubscribe: Subject<void> = new Subject();
 
   constructor(
-    @Inject(I18NEXT_SERVICE) protected translateI18Next: ITranslationService,
-    @Inject(I18NEXT_NAMESPACE) protected ns: string | string[],
-    @Inject(I18NEXT_SCOPE) protected scope: string | string[],
+    @Inject(I18NEXT_SERVICE) protected override translateI18Next: ITranslationService,
+    @Inject(I18NEXT_NAMESPACE) protected override ns: string | string[],
+    @Inject(I18NEXT_SCOPE) protected override scope: string | string[],
     private cd: ChangeDetectorRef
   ) {
     super(translateI18Next, ns, scope);
@@ -51,7 +51,7 @@ export class I18NextEagerPipe
     return this.lastOptions !== options;
   }
 
-  public transform(key: string | string[], options?: PipeOptions): string {
+  public override transform(key: string | string[], options?: PipeOptions): string {
     const newKey = this.translateI18Next.language + '|' + JSON.stringify(key);
 
     if (this.hasKeyChanged(newKey) || this.hasOptionsChanged(options)) {

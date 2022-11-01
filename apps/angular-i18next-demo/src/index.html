@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+      <meta charset="utf-8">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="DEMO angular-i18next">
+
+      <title>
+          DEMO angular-i18next
+      </title>
+      <link rel="icon" type="image/ico" href="assets/favicon.ico" />
+      <!-- base url -->
+      <base href="/">
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+      <app>
+          <style type="text/css">
+              * {
+                  outline: 0!important
+              }
+
+              .app-loader {
+                  display: table;
+                  height: 100vh;
+                  width: 100%
+              }
+
+              .app-loader .loader-pusher {
+                  display: table-cell;
+                  text-align: center;
+                  vertical-align: middle
+              }
+
+              .app-loader .loader-pusher .spinner {
+                  background: url('assets/logo.svg') no-repeat 50% 50% #f2f2f2;
+                  background-size: 80%;
+                  border-radius: 50%;
+                  display: inline-block;
+                  height: 80px;
+                  position: relative;
+                  width: 80px;
+                  line-height: 80px;
+                  text-align: center;
+                  color: #fff;
+              }
+
+              .app-loader .loader-pusher .spinner .spinner-tail {
+                  -webkit-animation: spinner .86s linear infinite;
+                  animation: spinner .86s linear infinite;
+                  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzgiIGhlaWdodD0iMzgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IHgxPSI4LjA0MiUiIHkxPSIwJSIgeDI9IjY1LjY4MiUiIHkyPSIyMy44NjUlIiBpZD0iYSI+PHN0b3Agc3RvcC1jb2xvcj0iI2JlYmViZSIgc3RvcC1vcGFjaXR5PSIwIiBvZmZzZXQ9IjAlIi8+PHN0b3Agc3RvcC1jb2xvcj0iI2JlYmViZSIgc3RvcC1vcGFjaXR5PSIuNjMxIiBvZmZzZXQ9IjYzLjE0NiUiLz48c3RvcCBzdG9wLWNvbG9yPSIjYmViZWJlIiBvZmZzZXQ9IjEwMCUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxIDEpIiBmaWxsPSJub25lIj48cGF0aCBkPSJNMzYgMThjMC05Ljk0LTguMDYtMTgtMTgtMTgiIHN0cm9rZT0idXJsKCNhKSIgc3Ryb2tlLXdpZHRoPSIyIi8+PGNpcmNsZSBmaWxsPSIjYmViZWJlIiBjeD0iMzYiIGN5PSIxOCIgcj0iMSIvPjwvZz48L3N2Zz4=) 0 0/cover no-repeat;
+                  bottom: -10px;
+                  left: -10px;
+                  position: absolute;
+                  right: -10px;
+                  top: -10px;
+              }
+
+              @-webkit-keyframes spinner {
+                  0% {
+                      -webkit-transform: rotate(0);
+                      transform: rotate(0)
+                  }
+                  100% {
+                      -webkit-transform: rotate(360deg);
+                      transform: rotate(360deg)
+                  }
+              }
+
+              @keyframes spinner {
+                  0% {
+                      -webkit-transform: rotate(0);
+                      transform: rotate(0)
+                  }
+                  100% {
+                      -webkit-transform: rotate(360deg);
+                      transform: rotate(360deg)
+                  }
+              }
+          </style>
+          <div class="app-loader">
+              <div class="loader-pusher">
+                  <div class="spinner">
+                      <div class="spinner-tail"></div>
+                  </div>
+              </div>
+          </div>
+      </app>
+  </body>
+
+</html>

@@ -9,7 +9,7 @@ export class I18NextTitle extends Title {
     super(doc);
   }
 
-  setTitle(value: string) {
+  override setTitle(value: string) {
     return super.setTitle(this.translate(value));
   }
 
