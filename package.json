@@ -44,7 +44,7 @@
     "affected:lint": "nx affected:lint",
     "affected:dep-graph": "nx affected:dep-graph",
     "affected": "nx affected",
-    "build:prod": "npm exec -- nx build angular-i18next-demo",
+    "build": "npm exec -- nx build angular-i18next-demo",
     "deploy": "npm run build:prod && npm exec -- gh-pages -d dist/apps/angular-i18next-demo",
     "format": "nx format:write",
     "format:write": "nx format:write",
