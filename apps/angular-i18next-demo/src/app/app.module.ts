@@ -113,8 +113,7 @@ export const I18N_PROVIDERS = [
   ],
   exports: [
   ],
-  providers: [ // expose our Services and Providers into Angular's dependency injection
-    //ENV_PROVIDERS,
+  providers: [
     I18N_PROVIDERS
   ],
   entryComponents: [
