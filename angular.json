@@ -26,6 +26,128 @@
         }
       },
       "tags": []
+    },
+    "angular-i18next-demo": {
+      "projectType": "application",
+      "root": "apps/angular-i18next-demo",
+      "sourceRoot": "apps/angular-i18next-demo/src",
+      "prefix": "angular-i18next",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/angular-i18next-demo",
+            "index": "apps/angular-i18next-demo/src/index.html",
+            "main": "apps/angular-i18next-demo/src/main.ts",
+            "polyfills": "apps/angular-i18next-demo/src/polyfills.ts",
+            "tsConfig": "apps/angular-i18next-demo/tsconfig.app.json",
+            "assets": [
+              "apps/angular-i18next-demo/src/assets/favicon.ico",
+              "apps/angular-i18next-demo/src/assets",
+              "apps/angular-i18next-demo/src/locales"
+            ],
+            "styles": ["apps/angular-i18next-demo/src/styles.css"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-i18next-demo/src/environments/environment.ts",
+                  "with": "apps/angular-i18next-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "angular-i18next-demo:build:production"
+            },
+            "development": {
+              "browserTarget": "angular-i18next-demo:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "angular-i18next-demo:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/angular-i18next-demo/**/*.ts",
+              "apps/angular-i18next-demo/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/angular-i18next-demo"],
+          "options": {
+            "jestConfig": "apps/angular-i18next-demo/jest.config.ts",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "angular-i18next-demo-e2e": {
+      "root": "apps/angular-i18next-demo-e2e",
+      "sourceRoot": "apps/angular-i18next-demo-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/angular-i18next-demo-e2e/cypress.json",
+            "devServerTarget": "angular-i18next-demo:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "angular-i18next-demo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/angular-i18next-demo-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["angular-i18next-demo"]
     }
   }
 }

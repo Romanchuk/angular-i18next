@@ -22,7 +22,7 @@ export class I18NextCapPipe extends I18NextPipe implements PipeTransform {
     super(translateI18Next, ns, scope);
   }
 
-  public transform(key: string | string[], options?: PipeOptions): string {
+  public override transform(key: string | string[], options?: PipeOptions): string {
     options = options || {};
     options.format = 'cap';
     return super.transform(key, options);

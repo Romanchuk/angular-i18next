@@ -16,7 +16,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@libs/angular-i18next": ["libs/angular-i18next/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
