@@ -5,9 +5,10 @@ import {
   MissingKeyEvent,
   ResourceEvent,
 } from './ITranslationEvents';
+import * as i18n from 'i18next';
 
 export class I18NextEvents implements ITranslationEvents {
-  initialized = new BehaviorSubject(false);
+  initialized = new BehaviorSubject<i18n.InitOptions | undefined>(undefined);
   loaded = new BehaviorSubject(false);
   failedLoading = new Subject();
   missingKey = new Subject<MissingKeyEvent>();

@@ -24,30 +24,30 @@ describe('I18NextModule', function () {
   });
 
   it('should provide tokens with default values', function () {
-    let tokenNs = TestBed.get(I18NEXT_NAMESPACE);
+    let tokenNs = TestBed.inject(I18NEXT_NAMESPACE);
     expect(tokenNs).toEqual(DEFAULT_NAMESPACE);
-    let tokenScope = TestBed.get(I18NEXT_SCOPE);
+    let tokenScope = TestBed.inject(I18NEXT_SCOPE);
     expect(tokenScope).toEqual(DEFAULT_SCOPE);
   });
 
   it('should provide I18NextService', function () {
-    let i18nextService = TestBed.get(I18NEXT_SERVICE);
+    let i18nextService = TestBed.inject(I18NEXT_SERVICE);
     expect(i18nextService).not.toBeNull();
-    let i18nextService2 = TestBed.get(I18NextService);
+    let i18nextService2 = TestBed.inject(I18NextService);
     expect(i18nextService2).not.toBeNull();
   });
 
   it('should provide pipes', function () {
-    let i18nextPipe = TestBed.get(I18NextPipe);
+    let i18nextPipe = TestBed.inject(I18NextPipe);
     expect(i18nextPipe).not.toBeNull();
-    let i18nextCapPipe = TestBed.get(I18NextCapPipe);
+    let i18nextCapPipe = TestBed.inject(I18NextCapPipe);
     expect(i18nextCapPipe).not.toBeNull();
-    let i18nextFormatPipe = TestBed.get(I18NextFormatPipe);
+    let i18nextFormatPipe = TestBed.inject(I18NextFormatPipe);
     expect(i18nextFormatPipe).not.toBeNull();
   });
 
   it('should provide title', function () {
-    let title: I18NextTitle = TestBed.get(I18NextTitle);
+    let title: I18NextTitle = TestBed.inject(I18NextTitle);
     expect(title).toBeTruthy();
     expect(title instanceof I18NextTitle).toBeTruthy();
   });
@@ -90,8 +90,8 @@ describe('I18NextModule', function () {
     expect(result).toBe('$Test$');
   });
 
-  it('should provide resolver', function (done) {
-    let resolver: Function = TestBed.get(I18NEXT_NAMESPACE_RESOLVER);
+  it('should provide resolver',  function  (done)  {
+    let resolver =  TestBed.inject(I18NEXT_NAMESPACE_RESOLVER);
     expect(resolver).toBeTruthy();
     resolver({
       data: {

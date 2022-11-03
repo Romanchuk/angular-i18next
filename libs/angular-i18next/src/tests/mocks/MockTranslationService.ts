@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { jest } from '@jest/globals';
 import { Callback, FormatFunction, i18n, InterpolationOptions, Modules, ResourceStore, Services, TFunction } from 'i18next';
+import { defaultInterpolationFormat } from '../../lib';
+import { I18NextEvents } from '../../lib/I18NextEvents';
 import { I18NextLoadResult } from '../../lib/I18NextLoadResult';
 import { ITranslationEvents } from '../../lib/ITranslationEvents';
 import { ITranslationService } from '../../lib/ITranslationService';
@@ -13,19 +14,20 @@ export class MockI18NextService implements ITranslationService {
   services: Services;
   store: ResourceStore;
   resolvedLanguage: string;
-  t: TFunction =  jest.fn()
-    .mockImplementation(()=> {
-      return ((key: string | string[], options?: any): string => {
+  t: TFunction =  (key: string | string[], options?: any): string => {
         if (key instanceof Array) {
           return key.length > 0 ? key[0] : '';
         }
         return key;
-      })
-    });
+    };
 
-  format: FormatFunction = jest.fn().mockImplementation(() => {
-    return <FormatFunction>1
-  });
+  format: FormatFunction =  (
+    value: any,
+    format?: string,
+    lng?: string,
+    options?: InterpolationOptions & { [key: string]: any },
+  ) => defaultInterpolationFormat(value, format, lng);
+
 
   getFixedT(lng: string | readonly string[], ns?: string | readonly string[], keyPrefix?: string): TFunction;
   getFixedT(lng: null, ns: string | readonly string[] | null, keyPrefix?: string): TFunction;
@@ -58,7 +60,7 @@ export class MockI18NextService implements ITranslationService {
   removeResourceBundle(lng: string, ns: string): i18n {
     throw new Error('Method not implemented.');
   }
-  events: ITranslationEvents;
+  events: ITranslationEvents = new I18NextEvents();
   language: string = '';
   languages: string[] = [];
 
