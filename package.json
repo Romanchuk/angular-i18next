@@ -4,9 +4,7 @@
   "author": {
     "name": "Sergey Romanchuk"
   },
-  "workspaces": [
-    "/libs/*"
-  ],
+  "workspaces": ["apps/*", "libs/*"],
   "homepage": "https://github.com/Romanchuk/angular-i18next#readme",
   "repository": {
     "type": "git",
