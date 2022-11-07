@@ -4,7 +4,10 @@
   "author": {
     "name": "Sergey Romanchuk"
   },
-  "workspaces": ["apps/*", "libs/*"],
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "homepage": "https://github.com/Romanchuk/angular-i18next#readme",
   "repository": {
     "type": "git",
@@ -90,6 +93,7 @@
     "i18next": "~21.5.4",
     "jest": "27.5.1",
     "jest-preset-angular": "~11.0.1",
+    "keyv": "^4.5.1",
     "ng-packagr": "~14.0.2",
     "np": "^7.6.0",
     "nx": "14.3.1",
@@ -114,9 +118,9 @@
     "@angular/platform-browser-dynamic": "~14.0.0",
     "@angular/router": "~14.0.0",
     "@protoarch.angular/validation-message": "~14.1.1",
+    "i18next": "~22.0.4",
     "i18next-browser-languagedetector": "~7.0.0",
     "i18next-http-backend": "~2.0.0",
-    "i18next": "~22.0.4",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.4"
