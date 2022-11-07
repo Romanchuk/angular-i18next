@@ -8,7 +8,7 @@ import { I18NextLoadResult } from './I18NextLoadResult';
 import { ITranslationEvents } from './ITranslationEvents';
 import { ITranslationService } from './ITranslationService';
 
-const i18next = i18n.default;
+const i18next = require('i18next');
 
 @Injectable()
 export class I18NextService implements ITranslationService {
@@ -199,25 +199,25 @@ export class I18NextService implements ITranslationService {
   //#endregion
 
   private subscribeEvents() {
-    i18next.on.call(i18next, 'initialized', (options) => {
+    i18next.on.call(i18next, 'initialized', (options: any) => {
       this.events.initialized.next(options);
     });
-    i18next.on.call(i18next, 'loaded', (loaded) =>
+    i18next.on.call(i18next, 'loaded', (loaded: boolean) =>
       this.events.loaded.next(loaded)
     );
-    i18next.on.call(i18next, 'failedLoading', (lng: string, ns: string, msg) =>
+    i18next.on.call(i18next, 'failedLoading', (lng: string, ns: string, msg: string) =>
       this.events.failedLoading.next({ lng, ns, msg })
     );
-    i18next.on.call(i18next, 'languageChanged', (lng) => {
+    i18next.on.call(i18next, 'languageChanged', (lng: string) => {
       this.events.languageChanged.next(lng);
     });
-    i18next.on.call(i18next, 'missingKey', (lngs, namespace, key: string, res) =>
+    i18next.on.call(i18next, 'missingKey', (lngs: string, namespace: string, key: string, res: any) =>
       this.events.missingKey.next({ lngs, namespace, key, res })
     );
-    i18next.on.call(i18next, 'added', (lng: string, ns) =>
+    i18next.on.call(i18next, 'added', (lng: string, ns: string) =>
       this.events.added.next({ lng, ns })
     );
-    i18next.on.call(i18next, 'removed', (lng: string, ns) =>
+    i18next.on.call(i18next, 'removed', (lng: string, ns: string) =>
       this.events.removed.next({ lng, ns })
     );
   }

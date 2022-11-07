@@ -13,7 +13,7 @@ import {
   I18NextTitle,
 } from '../../lib/index';
 
-describe('I18NextModule', function () {
+describe('I18NextModule', () => {
   const DEFAULT_NAMESPACE = '';
   const DEFAULT_SCOPE = '';
 
@@ -23,21 +23,21 @@ describe('I18NextModule', function () {
     });
   });
 
-  it('should provide tokens with default values', function () {
+  it('should provide tokens with default values', () =>  {
     let tokenNs = TestBed.inject(I18NEXT_NAMESPACE);
     expect(tokenNs).toEqual(DEFAULT_NAMESPACE);
     let tokenScope = TestBed.inject(I18NEXT_SCOPE);
     expect(tokenScope).toEqual(DEFAULT_SCOPE);
   });
 
-  it('should provide I18NextService', function () {
+  it('should provide I18NextService', () => {
     let i18nextService = TestBed.inject(I18NEXT_SERVICE);
     expect(i18nextService).not.toBeNull();
     let i18nextService2 = TestBed.inject(I18NextService);
     expect(i18nextService2).not.toBeNull();
   });
 
-  it('should provide pipes', function () {
+  it('should provide pipes',  () =>  {
     let i18nextPipe = TestBed.inject(I18NextPipe);
     expect(i18nextPipe).not.toBeNull();
     let i18nextCapPipe = TestBed.inject(I18NextCapPipe);
@@ -46,13 +46,13 @@ describe('I18NextModule', function () {
     expect(i18nextFormatPipe).not.toBeNull();
   });
 
-  it('should provide title', function () {
+  it('should provide title',  () => {
     let title: I18NextTitle = TestBed.inject(I18NextTitle);
     expect(title).toBeTruthy();
     expect(title instanceof I18NextTitle).toBeTruthy();
   });
 
-  it('should have default formatters', function () {
+  it('should have default formatters',  () =>  {
     const capitalizedTest = defaultInterpolationFormat('test', 'cap');
     const capitalized2Test = defaultInterpolationFormat('test', 'capitalize');
     expect(capitalizedTest).toEqual('Test');
@@ -74,7 +74,7 @@ describe('I18NextModule', function () {
     expect(noFormat).toEqual(noFormat2);
   });
 
-  it('should support interpolation custom formatters', function () {
+  it('should support interpolation custom formatters', () =>  {
     const valueParam = 'test';
     const formatParam = 'cap';
     const lngParam = 'en';
@@ -90,7 +90,7 @@ describe('I18NextModule', function () {
     expect(result).toBe('$Test$');
   });
 
-  it('should provide resolver',  function  (done)  {
+  it('should provide resolver', (done) => {
     let resolver =  TestBed.inject(I18NEXT_NAMESPACE_RESOLVER);
     expect(resolver).toBeTruthy();
     resolver({

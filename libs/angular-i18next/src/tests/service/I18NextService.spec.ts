@@ -11,14 +11,14 @@ const i18nextOptions = {
 
 
 // Be descriptive with titles here. The describe and it titles combined read like a sentence.
-describe('I18nService', function () {
+describe('I18nService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [I18NextModule.forRoot()]
     });
   });
 
-  it('should trigger initialize event', function (done) {
+  it('should trigger initialize event', (done) => {
     const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
     service.events.initialized.subscribe((isInited) => {
       if (isInited) done();
@@ -27,7 +27,7 @@ describe('I18nService', function () {
   });
 
 
-  it('should init', function (done) {
+  it('should init', (done) => {
     const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
     service.init(i18nextOptions).then(() => {
       expect(service.options).toBeTruthy();
@@ -36,7 +36,7 @@ describe('I18nService', function () {
   });
 
 
-  it('should load namespace', function (done) {
+  it('should load namespace', (done) => {
     const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
     service.init(i18nextOptions).then(()=> {
       service.loadNamespaces(['somens']).then(() => {
@@ -46,7 +46,7 @@ describe('I18nService', function () {
   });
 
 
-  it('should translate', function (done) {
+  it('should translate', (done) => {
     const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
     const key = 'test';
     service.init(i18nextOptions).then(()=> {
@@ -59,7 +59,7 @@ describe('I18nService', function () {
   });
 
 
-  it('should dir', function () {
+  it('should dir', () => {
     const lng = 'ru';
     const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
     expect(<any>service.dir(lng)).toEqual('ltr');
@@ -70,7 +70,7 @@ describe('I18nService', function () {
   // does not work because language=cimode ignores default value
   // setting language to anything other than 'cimode' breaks the rest of the tests
 
-  xit('should translate with default value', function (done) {
+  xit('should translate with default value', (done) => {
     const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
     let title: Title = TestBed.inject(Title);
     let i18nextPipe: I18NextPipe = TestBed.inject(I18NextPipe);
