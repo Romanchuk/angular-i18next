@@ -5,8 +5,7 @@
     "access": "public"
   },
   "np": {
-    "contents": "./dist",
-    "yolo": true
+    "contents": "./dist"
   },
   "author": {
     "name": "Sergey Romanchuk"
