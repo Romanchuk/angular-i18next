@@ -5,6 +5,7 @@ import { I18NextEvents } from '../../lib/I18NextEvents';
 import { I18NextLoadResult } from '../../lib/I18NextLoadResult';
 import { ITranslationEvents } from '../../lib/ITranslationEvents';
 import { ITranslationService } from '../../lib/ITranslationService';
+import { jest } from '@jest/globals';
 
 
 @Injectable()
@@ -14,19 +15,29 @@ export class MockI18NextService implements ITranslationService {
   services: Services;
   store: ResourceStore;
   resolvedLanguage: string;
-  t: TFunction =  (key: string | string[], options?: any): string => {
+  /*
+  t: TFunction = (key: string | string[], options?: any): string => {
         if (key instanceof Array) {
           return key.length > 0 ? key[0] : '';
         }
         return key;
     };
 
-  format: FormatFunction =  (
+  */
+
+  t: TFunction = jest.fn((key: string | string[], options?: any): string => {
+    if (key instanceof Array) {
+      return key.length > 0 ? key[0] : '';
+    }
+    return key;
+})
+
+  format: FormatFunction = jest.fn((
     value: any,
     format?: string,
     lng?: string,
     options?: InterpolationOptions & { [key: string]: any },
-  ) => defaultInterpolationFormat(value, format, lng);
+  ) => defaultInterpolationFormat(value, format, lng));
 
 
   getFixedT(lng: string | readonly string[], ns?: string | readonly string[], keyPrefix?: string): TFunction;

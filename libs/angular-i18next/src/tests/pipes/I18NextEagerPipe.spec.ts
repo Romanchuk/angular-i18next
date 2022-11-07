@@ -1,29 +1,38 @@
-import { ChangeDetectorRef } from '@angular/core';
-import { ITranslationEvents, PipeOptions } from '../../lib/index';
-import { I18NextEagerPipe } from '../../lib/I18NextEagerPipe';
+import { ApplicationInitStatus, ChangeDetectorRef } from '@angular/core';
+import { TestBed } from '@angular/core/testing';
 import { BehaviorSubject } from 'rxjs';
-import { MockI18NextService } from '../mocks/MockTranslationService';
+import { I18NextEagerPipe, I18NextModule, I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE, ITranslationService, PipeOptions } from '../../lib';
+import { I18N_PROVIDERS } from '../setup';
 
-/*
+
 describe('I18NextEagerPipe', () => {
   let pipe: I18NextEagerPipe,
-    languageChangedSubject: BehaviorSubject<string>,
-    changeDetector: ChangeDetectorRef,
-    service: MockI18NextService;
+    service: ITranslationService,
+    markForCheckSpy: jest.SpyInstance<any, unknown[]>;
 
-  beforeEach(() => {
-    service = new MockI18NextService();
-    service.language = 'en';
-    languageChangedSubject = new BehaviorSubject<string>('en');
+  beforeEach(async () => {
+      TestBed.configureTestingModule({
+        imports: [I18NextModule.forRoot()],
+        providers: [...I18N_PROVIDERS,
+          { provide: ChangeDetectorRef, useValue: { detectChanges: () => { }, markForCheck: () => { } } }, {
+            provide: I18NEXT_SCOPE,
+            useValue: 'scope'
+          },
+          {
+            provide: I18NEXT_NAMESPACE,
+            useValue: 'ns'
+          }],
+      });
 
-    const scope: string = 'scope';
-    const ns: string = 'ns';
-    service.events = {
-      languageChanged: languageChangedSubject,
-    } as ITranslationEvents;
+      // until https://github.com/angular/angular/issues/24218 is fixed
+      await TestBed.inject(ApplicationInitStatus).donePromise;
 
-    // changeDetector = jasmine.createSpyObj<ChangeDetectorRef>(['markForCheck']);
-    //pipe = new I18NextEagerPipe(service, ns, scope, changeDetector);
+      service = TestBed.inject(I18NEXT_SERVICE);
+      pipe = TestBed.inject(I18NextEagerPipe);
+      const changeDetector = TestBed.inject(ChangeDetectorRef);
+
+      // So, I am spying directly on the prototype.
+      markForCheckSpy = jest.spyOn(changeDetector, 'markForCheck');
   });
 
   it('should create the pipe', () => {
@@ -43,7 +52,7 @@ describe('I18NextEagerPipe', () => {
     it('should call the translate service', () => {
       expect(service.t).toHaveBeenCalledWith(
         ['ns:scope.myKey', 'scope.myKey', 'ns:myKey', 'myKey'],
-        { myValue: 'value1' }
+        myOptions
       );
     });
 
@@ -53,12 +62,12 @@ describe('I18NextEagerPipe', () => {
 
     describe('when the language changes', () => {
       beforeEach(() => {
-        languageChangedSubject.next('es');
+        service.events.languageChanged.next('es');
         service.language = 'es';
       });
 
       it('should mark for check so it triggers the pipe transform', () => {
-        expect(changeDetector.markForCheck).toHaveBeenCalled();
+        expect(markForCheckSpy).toHaveBeenCalled();
       });
 
       describe('when the pipe gets triggered by change detection', () => {
@@ -184,4 +193,4 @@ describe('I18NextEagerPipe', () => {
     });
   });
 });
-*/
+
