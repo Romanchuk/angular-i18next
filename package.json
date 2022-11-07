@@ -83,6 +83,7 @@
     "conventional-changelog-cli": "^2.1.1",
     "conventional-github-releaser": "^3.1.5",
     "coveralls": "^3.1.0",
+    "cpy-cli": "^4.1.0",
     "cross-env": "~7.0.3",
     "cypress": "^9.1.0",
     "cz-conventional-changelog": "^2.1.0",
