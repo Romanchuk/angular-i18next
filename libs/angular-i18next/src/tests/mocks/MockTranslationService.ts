@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Callback, FormatFunction, i18n, InterpolationOptions, Modules, ResourceStore, Services, TFunction } from 'i18next';
-import { defaultInterpolationFormat } from '../../lib';
-import { I18NextEvents } from '../../lib/I18NextEvents';
-import { I18NextLoadResult } from '../../lib/I18NextLoadResult';
-import { ITranslationEvents } from '../../lib/ITranslationEvents';
-import { ITranslationService } from '../../lib/ITranslationService';
 import { jest } from '@jest/globals';
+import { Callback, FormatFunction, i18n, InterpolationOptions, Modules, ResourceStore, Services, TFunction } from 'i18next';
+import { defaultInterpolationFormat, I18NextEvents, I18NextLoadResult, ITranslationEvents, ITranslationService } from '../../lib';
 
 
 @Injectable()
@@ -15,15 +11,6 @@ export class MockI18NextService implements ITranslationService {
   services: Services;
   store: ResourceStore;
   resolvedLanguage: string;
-  /*
-  t: TFunction = (key: string | string[], options?: any): string => {
-        if (key instanceof Array) {
-          return key.length > 0 ? key[0] : '';
-        }
-        return key;
-    };
-
-  */
 
   t: TFunction = jest.fn((key: string | string[], options?: any): string => {
     if (key instanceof Array) {

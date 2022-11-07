@@ -28,6 +28,7 @@ export * from './I18NextTitle';
 export * from './I18NEXT_TOKENS';
 export * from './ITranslationEvents';
 export * from './ITranslationService';
+export * from './I18NextEvents';
 export * from './models';
 
 
