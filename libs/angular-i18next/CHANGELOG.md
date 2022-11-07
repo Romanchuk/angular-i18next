@@ -1,3 +1,18 @@
+## [14.0.5-6](https://github.com/Romanchuk/angular-i18next/compare/v14.0.0...v14.0.5-6) (2022-11-07)
+
+
+### Bug Fixes
+
+* async funcs ([25e2c24](https://github.com/Romanchuk/angular-i18next/commit/25e2c24ba8c0cce1d4b235d1449fb554937b6fe4))
+* build ([aafe356](https://github.com/Romanchuk/angular-i18next/commit/aafe356437287a4a2e30668a726c18e5a118cc04))
+* cpy ([2a2460e](https://github.com/Romanchuk/angular-i18next/commit/2a2460e8e53f5a18185bf979318e0be77019f82e))
+* Fixes i18next format call with options undefined ([ccfc6e1](https://github.com/Romanchuk/angular-i18next/commit/ccfc6e1583fcb4a5a8b591ac0e3e8cf95ce675eb))
+* package ([9b03de0](https://github.com/Romanchuk/angular-i18next/commit/9b03de01029432a679b84f0b535c8c0986a2ce49))
+* test run ([cc2ca1c](https://github.com/Romanchuk/angular-i18next/commit/cc2ca1c6dbef4fe1126de9ffb7c73f0dc2be9062))
+* tests ([0b868fc](https://github.com/Romanchuk/angular-i18next/commit/0b868fc25b9c7ff4902308425e066835d117596d))
+
+
+
 ## [14.0.5-3](https://github.com/Romanchuk/angular-i18next/compare/v14.0.0...v14.0.5-3) (2022-07-05)
 
 
