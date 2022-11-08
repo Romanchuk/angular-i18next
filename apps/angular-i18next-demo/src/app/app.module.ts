@@ -1,8 +1,8 @@
-import { APP_INITIALIZER, LOCALE_ID, NgModule } from '@angular/core';
+import { APP_INITIALIZER, LOCALE_ID, NgModule, Provider } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 
-import { defaultInterpolationFormat, I18NextLoadResult, I18NextModule, I18NEXT_SERVICE, ITranslationService } from '@libs/angular-i18next';
+import { defaultInterpolationFormat, I18NextLoadResult, I18NextModule, I18NextTitle, I18NEXT_SERVICE, ITranslationService } from '@libs/angular-i18next';
 import { I18NextValidationMessageModule } from '@protoarch.angular/validation-message/provider-i18next';
 
 import LanguageDetector from 'i18next-browser-languagedetector';
@@ -28,9 +28,7 @@ const i18nextOptions = {
   ns: [
     'translation',
     'validation',
-    'error',
-
-    // 'feature.rich_form'
+    'error'
   ],
   interpolation: {
     format: I18NextModule.interpolationFormat(defaultInterpolationFormat)
@@ -70,7 +68,7 @@ export function localeIdFactory(i18next: ITranslationService)  {
   return i18next.language;
 }
 
-export const I18N_PROVIDERS = [
+export const I18N_PROVIDERS: Provider[] = [
   {
     provide: APP_INITIALIZER,
     useFactory: appInit,
@@ -82,6 +80,10 @@ export const I18N_PROVIDERS = [
     deps: [I18NEXT_SERVICE],
     useFactory: localeIdFactory
   },
+  {
+    provide: Title,
+    useExisting: I18NextTitle
+  }
 ];
 
 

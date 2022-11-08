@@ -9,13 +9,13 @@
             <div class="col-6">
                 <div class="form-group">
                     <label class="control-label control-label-sm text-muted">{{ 'email' | i18nextCap }}</label>
-                    <input validate-onblur validationMessage name="email" type="email" class="form-control" formControlName="email" [(ngModel)]="model.email" />
+                    <input validate-onblur prtValidationMessage name="email" type="email" class="form-control" formControlName="email" />
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label class="control-label control-label-sm text-muted">{{ 'count' | i18nextCap }}</label>
-                    <input validate-onblur validationMessage name="count" type="number" class="form-control" formControlName="count" [(ngModel)]="model.count" />
+                    <input validate-onblur prtValidationMessage name="count" type="number" class="form-control" formControlName="count" />
                 </div>
             </div>
         </div>
@@ -30,13 +30,13 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label class="control-label control-label-sm text-muted">{{ '_person.last_name' | i18next: { format: 'cap' } }}</label>
-                        <input validate-onblur validationMessage class="form-control" type="text" formControlName="lastName" [(ngModel)]="model.technicalContact.lastName" />
+                        <input validate-onblur prtValidationMessage class="form-control" type="text" formControlName="lastName"/>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
                         <label class="control-label control-label-sm text-muted">{{ '_person.first_name' | i18next: { format: 'cap' } }}</label>
-                        <input validate-onblur validationMessage class="form-control" type="text" formControlName="firstName" [(ngModel)]="model.technicalContact.firstName">
+                        <input validate-onblur prtValidationMessage class="form-control" type="text" formControlName="firstName">
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label class="control-label control-label-sm text-muted">{{ '_person.middle_name' | i18next: { format: 'cap' } }}</label>
-                        <input validate-onblur validationMessage class="form-control" type="text" formControlName="middleName" [(ngModel)]="model.technicalContact.middleName">
+                        <input validate-onblur prtValidationMessage class="form-control" type="text" formControlName="middleName">
                     </div>
                 </div>
                 <div class="col-6">

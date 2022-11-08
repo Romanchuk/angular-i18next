@@ -42,8 +42,6 @@ export class AppComponent implements OnInit  {
   }
 
   ngOnInit() {
-    console.log('Default test: ' + this.i18NextService.t('not_exists', 'default'));
-    console.log('Initial App State', 0);
     this.i18NextService.events.languageChanged.subscribe(lang => {
       const root = this.router.routerState.root;
       if (root != null && root.firstChild != null) {
@@ -56,14 +54,12 @@ export class AppComponent implements OnInit  {
   // http://stackoverflow.com/questions/37069609/show-loading-screen-when-navigating-between-routes-in-angular-2
   navigationInterceptor(event: RouterEvent): void {
         if (event instanceof NavigationStart) {
-           // this.start = performance.now();
             this.loading = true;
         }
         if (event instanceof NavigationEnd
             || event instanceof NavigationCancel
             || event instanceof NavigationError) {
             this.loading = false;
-           // console.log(performance.now() - this.start);
         }
     }
 

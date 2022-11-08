@@ -1,4 +1,4 @@
-﻿import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+﻿import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { ValidationDirtyChecker } from '../../../lib/validation/services/ValidationDirtyChecker';
@@ -9,7 +9,7 @@ import { RichFormModel } from './rich-form.model';
   encapsulation: ViewEncapsulation.None,
   templateUrl: './rich-form.component.html'
 })
-export class RichFormComponent implements OnInit {
+export class RichFormComponent {
 
   form: FormGroup;
   model: RichFormModel = new RichFormModel();
@@ -26,10 +26,6 @@ export class RichFormComponent implements OnInit {
     });
   }
 
-
-  ngOnInit() {
-
-  }
 
   onSubmit(e: Event) {
     this.form.controls['technicalContact'].updateValueAndValidity();
