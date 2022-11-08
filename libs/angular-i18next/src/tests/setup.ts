@@ -34,11 +34,9 @@ export const I18N_PROVIDERS = [
     deps: [I18NEXT_SERVICE],
     multi: true,
   },
-  // FIXME:
   {
     provide: LOCALE_ID,
-    useValue: 'en-US'
-    //deps: [I18NEXT_SERVICE],
-    //useFactory: localeIdFactory,
+    deps: [I18NEXT_SERVICE],
+    useFactory: localeIdFactory,
   },
 ];
