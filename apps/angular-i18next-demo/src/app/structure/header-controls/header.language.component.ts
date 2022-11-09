@@ -1,4 +1,4 @@
-import { ITranslationService, I18NEXT_SERVICE } from '@libs/angular-i18next';
+import { ITranslationService, I18NEXT_SERVICE } from 'angular-i18next';
 import { Component, ViewEncapsulation, Inject } from '@angular/core';
 
 @Component({

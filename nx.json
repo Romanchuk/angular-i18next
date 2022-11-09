@@ -49,8 +49,7 @@
     },
     "@nrwl/angular:library": {
       "linter": "eslint",
-      "unitTestRunner": "jest",
-      "style": "css"
+      "unitTestRunner": "jest"
     },
     "@nrwl/angular:component": {
       "style": "css"

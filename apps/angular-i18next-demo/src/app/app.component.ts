@@ -3,7 +3,7 @@ import { Title } from '@angular/platform-browser';
 import {
   Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router
 } from '@angular/router';
-import { I18NEXT_SERVICE, ITranslationService } from '@libs/angular-i18next';
+import { I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
 import { filter, map, mergeMap } from 'rxjs/operators';
 
 // import 'assets/ng-validation.css';

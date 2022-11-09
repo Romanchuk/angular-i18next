@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { I18NEXT_NAMESPACE_RESOLVER } from '@libs/angular-i18next';
+import { I18NEXT_NAMESPACE_RESOLVER } from 'angular-i18next';
 import { RichFormFeatureModule } from '../features/rich_form_feature/RichFormFeatureModule';
 
 import { AccessDeniedComponent } from './../content/access-denied/access-denied.component';

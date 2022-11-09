@@ -2,7 +2,7 @@ import { APP_INITIALIZER, LOCALE_ID, NgModule, Provider } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule, Title } from '@angular/platform-browser';
 
-import { defaultInterpolationFormat, I18NextLoadResult, I18NextModule, I18NextTitle, I18NEXT_SERVICE, ITranslationService } from '@libs/angular-i18next';
+import { defaultInterpolationFormat, I18NextLoadResult, I18NextModule, I18NextTitle, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
 import { I18NextValidationMessageModule } from '@protoarch.angular/validation-message/provider-i18next';
 
 import LanguageDetector from 'i18next-browser-languagedetector';
