@@ -53,7 +53,8 @@
     "update": "nx migrate latest",
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
-    "help": "nx help"
+    "help": "nx help",
+    "release": "npm run release -w=libs/angular-i18next"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~14.0.1",
