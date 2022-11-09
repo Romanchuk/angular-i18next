@@ -1,3 +1,13 @@
+# [14.1.0](https://github.com/Romanchuk/angular-i18next/compare/v14.0.5-6...v14.1.0) (2022-11-09)
+
+
+### Bug Fixes
+
+* messages ([1cbebea](https://github.com/Romanchuk/angular-i18next/commit/1cbebea76d188057070442d6ffbd62bbf44ccf09))
+* setup ([86de471](https://github.com/Romanchuk/angular-i18next/commit/86de471f898068274355d87f1c084ce76bb72b91))
+
+
+
 ## [14.0.5-6](https://github.com/Romanchuk/angular-i18next/compare/v14.0.0...v14.0.5-6) (2022-11-07)
 
 
