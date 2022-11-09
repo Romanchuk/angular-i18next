@@ -3,8 +3,6 @@
 [![Build Status](https://travis-ci.com/Romanchuk/angular-i18next.svg?branch=master)](https://travis-ci.com/Romanchuk/angular-i18next)
 [![Coverage Status](https://coveralls.io/repos/github/Romanchuk/angular-i18next/badge.svg?branch=master)](https://coveralls.io/github/Romanchuk/angular-i18next?branch=master)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![Dependency Status](https://david-dm.org/Romanchuk/angular-i18next.svg)](https://david-dm.org/Romanchuk/angular-i18next)
-[![devDependency Status](https://david-dm.org/Romanchuk/angular-i18next/dev-status.svg)](https://david-dm.org/Romanchuk/angular-i18next?type=dev)
 [![paypal](https://img.shields.io/badge/say_thanks-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
 [![GitHub stars](https://img.shields.io/github/stars/romanchuk/angular-i18next?label=Please%20star%20repo%21&style=social)](https://github.com/romanchuk/angular-i18next)
 
