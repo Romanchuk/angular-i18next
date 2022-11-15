@@ -1,5 +1,5 @@
+import * as i18n from 'i18next'
 import { InjectionToken } from '@angular/core';
-
 import { I18NextErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
 import { ITranslationService } from './ITranslationService';
 
@@ -24,3 +24,5 @@ export const I18NEXT_ERROR_HANDLING_STRATEGY =
   new InjectionToken<I18NextErrorHandlingStrategy>(
     'I18NEXT_ERROR_HANDLING_STRATEGY'
   );
+
+export const I18NEXT_INSTANCE = new InjectionToken<i18n.i18n>('I18NEXT_INSTANCE');
