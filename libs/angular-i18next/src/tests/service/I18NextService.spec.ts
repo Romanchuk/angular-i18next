@@ -13,7 +13,7 @@ import * as i18n from 'i18next';
 
 
 // Be descriptive with titles here. The describe and it titles combined read like a sentence.
-fdescribe('I18nService', () => {
+describe('I18nService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [I18NextModule.forRoot()]
@@ -66,21 +66,6 @@ fdescribe('I18nService', () => {
     const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
     expect(<any>service.dir(lng)).toEqual('ltr');
     expect(<any>service.dir(lng)).toEqual(service.dir(lng));
-  });
-
-
-  fit('should support i18next instances', async () => {
-
-    const service1 = TestBed.inject(I18NEXT_SERVICE);
-    const service2 = TestBed.inject(I18NEXT_SERVICE);
-
-    await service1.init(i18nextOptions);
-    await service2.init(i18nextOptions);
-    expect(service1.language).toBe(i18nextOptions.lng);
-    expect(service1.language).toBe(service2.language);
-
-    service1.changeLanguage('en');
-    expect(service1.language).not.toBe(service2.language);
   });
 
 
