@@ -1,21 +1,19 @@
 import 'zone.js/dist/zone-node';
 
-import {APP_BASE_HREF} from '@angular/common';
-import {ngExpressEngine} from '@nguniversal/express-engine';
+import { APP_BASE_HREF } from '@angular/common';
+import { ngExpressEngine } from '@nguniversal/express-engine';
 import * as express from 'express';
-import {existsSync} from 'fs';
-import {join} from 'path';
+import { existsSync } from 'fs';
+import { join } from 'path';
 
-import { REQUEST } from '@nguniversal/express-engine/tokens';
-import type { Request } from 'express';
-import middleware, { I18NextRequest, LanguageDetector } from 'i18next-http-middleware';
-import HttpApi from 'i18next-http-backend';
 import i18next from 'i18next';
+import ChainedBackend from 'i18next-chained-backend';
+import HttpApi from 'i18next-http-backend';
+import middleware from 'i18next-http-middleware';
 import resourcesToBackend from "i18next-resources-to-backend";
-import ChainedBackend from 'i18next-chained-backend'
 
-import {AppServerModule} from './src/main.server';
 import { i18nextOptions } from './src/app/i18next.options';
+import { AppServerModule } from './src/main.server';
 
 const PORT = process.env['PORT'] || 4000;
 
@@ -23,21 +21,25 @@ const PORT = process.env['PORT'] || 4000;
 export async function app(): Promise<express.Express> {
   const server = express();
 
-  await i18next.use(ChainedBackend).use(middleware.LanguageDetector).init({
-    ...i18nextOptions,
-    backend: {
-      backends: [
-        HttpApi,
-        resourcesToBackend((lng, ns, clb) => {
-          import(`./src/locales/${lng}.${ns}.json`)
-                .then((resources) => clb(null, resources))
-                .catch((r)=> clb(r,null))
-        })
-      ],
-      backendOptions: [{
-        loadPath: '/locales/{{lng}}.{{ns}}.json'
-      }]
-    },})
+  await i18next
+    .use(ChainedBackend)
+    .use(middleware.LanguageDetector)
+    .init({
+      ...i18nextOptions,
+      backend: {
+        backends: [
+          HttpApi,
+          resourcesToBackend((lng, ns, clb) => {
+            import(`./src/locales/${lng}.${ns}.json`)
+                  .then((resources) => clb(null, resources))
+                  .catch((r)=> clb(r,null))
+          })
+        ],
+        backendOptions: [{
+          loadPath: '/locales/{{lng}}.{{ns}}.json'
+        }]
+      }
+  })
 
   server.use(
     middleware.handle(i18next, {
@@ -97,3 +99,4 @@ if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
 }
 
 export * from './src/main.server';
+
