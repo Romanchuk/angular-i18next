@@ -4,10 +4,12 @@ import {
   ITranslationService
 } from '../../lib';
 
-const i18nextOptions = {
+const i18nextOptions: i18n.InitOptions = {
   lng: 'cimode',
+  supportedLngs: ['cimode', 'en', 'ru'],
   appendNamespaceToCIMode: true
 };
+import * as i18n from 'i18next';
 
 
 // Be descriptive with titles here. The describe and it titles combined read like a sentence.
@@ -65,6 +67,7 @@ describe('I18nService', () => {
     expect(<any>service.dir(lng)).toEqual('ltr');
     expect(<any>service.dir(lng)).toEqual(service.dir(lng));
   });
+
 
   /*
   // does not work because language=cimode ignores default value

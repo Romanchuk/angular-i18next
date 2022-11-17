@@ -47,7 +47,11 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
   loadResources(callback?: (err: any) => void): void;
 
-  getDataByLanguage(lng: string): { translation: { [key: string]: string } } | undefined;
+  getDataByLanguage(lng: string): {
+    [key: string]: {
+        [key: string]: string;
+    };
+} | undefined;
 
   reloadResources(
     lngs?: string | readonly string[],

@@ -9,7 +9,9 @@
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/angular-i18next"],
+          "outputs": [
+            "coverage/libs/angular-i18next"
+          ],
           "options": {
             "jestConfig": "libs/angular-i18next/jest.config.ts",
             "passWithNoTests": true
@@ -35,9 +37,11 @@
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
-            "outputPath": "dist/apps/angular-i18next-demo",
+            "outputPath": "dist/angular-i18next-demo/browser",
             "index": "apps/angular-i18next-demo/src/index.html",
             "main": "apps/angular-i18next-demo/src/main.ts",
             "polyfills": "apps/angular-i18next-demo/src/polyfills.ts",
@@ -47,7 +51,9 @@
               "apps/angular-i18next-demo/src/assets",
               "apps/angular-i18next-demo/src/locales"
             ],
-            "styles": ["apps/angular-i18next-demo/src/styles.css"],
+            "styles": [
+              "apps/angular-i18next-demo/src/styles.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -113,11 +119,52 @@
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/angular-i18next-demo"],
+          "outputs": [
+            "coverage/apps/angular-i18next-demo"
+          ],
           "options": {
             "jestConfig": "apps/angular-i18next-demo/jest.config.ts",
             "passWithNoTests": true
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/angular-i18next-demo/server",
+            "main": "apps/angular-i18next-demo/server.ts",
+            "tsConfig": "apps/angular-i18next-demo/tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "apps/angular-i18next-demo/src/environments/environment.ts",
+                  "with": "apps/angular-i18next-demo/src/environments/environment.prod.ts"
+                }
+              ]
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "angular-i18next-demo:build:development",
+              "serverTarget": "angular-i18next-demo:server:development"
+            },
+            "production": {
+              "browserTarget": "angular-i18next-demo:build:production",
+              "serverTarget": "angular-i18next-demo:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
         }
       },
       "tags": []
@@ -141,14 +188,20 @@
         },
         "lint": {
           "builder": "@nrwl/linter:eslint",
-          "outputs": ["{options.outputFile}"],
+          "outputs": [
+            "{options.outputFile}"
+          ],
           "options": {
-            "lintFilePatterns": ["apps/angular-i18next-demo-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/angular-i18next-demo-e2e/**/*.{js,ts}"
+            ]
           }
         }
       },
       "tags": [],
-      "implicitDependencies": ["angular-i18next-demo"]
+      "implicitDependencies": [
+        "angular-i18next-demo"
+      ]
     }
   }
 }
