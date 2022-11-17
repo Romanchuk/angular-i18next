@@ -1,3 +1,15 @@
+# [14.2.0-0](https://github.com/Romanchuk/angular-i18next/compare/v14.1.0...v14.2.0-0) (2022-11-17)
+
+
+### Bug Fixes
+
+* i18next instance ([93e48b6](https://github.com/Romanchuk/angular-i18next/commit/93e48b646c486d9e157447a704d88925e05957c6))
+* jest default import ([cea6677](https://github.com/Romanchuk/angular-i18next/commit/cea66776dd6af912dfdfff500f14bbe8e17c81e7))
+* link to global i18next ([4439d3a](https://github.com/Romanchuk/angular-i18next/commit/4439d3a19ef3d2bec7fcb296b8f3eaebbd1af6a8))
+* tests ([78bc41e](https://github.com/Romanchuk/angular-i18next/commit/78bc41e3a4eca2b63f28513120f0ef9863d2a21a))
+
+
+
 # [14.1.0](https://github.com/Romanchuk/angular-i18next/compare/v14.0.5-6...v14.1.0) (2022-11-09)
 
 
