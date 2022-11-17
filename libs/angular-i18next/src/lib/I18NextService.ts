@@ -52,7 +52,7 @@ export class I18NextService implements ITranslationService {
     private errorHandlingStrategy: I18NextErrorHandlingStrategy,
     @Optional() @Inject(I18NEXT_INSTANCE) i18nextInstance?: i18n.i18n
   ) {
-    this.i18next =  i18nextGlobal;
+    this.i18next = i18nextInstance ?? i18nextGlobal;
   }
 
   public use<T extends i18n.Module>(
