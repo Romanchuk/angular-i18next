@@ -9,7 +9,7 @@ import { ITranslationEvents } from './ITranslationEvents';
 import { ITranslationService } from './ITranslationService';
 
 
-const i18nextGlobal: i18n.i18n = require('i18next');
+const i18nextGlobal: i18n.i18n = i18n.default;
 
 @Injectable()
 export class I18NextService implements ITranslationService {
@@ -52,7 +52,7 @@ export class I18NextService implements ITranslationService {
     private errorHandlingStrategy: I18NextErrorHandlingStrategy,
     @Optional() @Inject(I18NEXT_INSTANCE) i18nextInstance?: i18n.i18n
   ) {
-    this.i18next = i18nextInstance ?? i18nextGlobal;
+    this.i18next =  i18nextGlobal;
   }
 
   public use<T extends i18n.Module>(
