@@ -1,3 +1,14 @@
+# [14.2.0-1](https://github.com/Romanchuk/angular-i18next/compare/v14.2.0-0...v14.2.0-1) (2022-11-21)
+
+
+### Bug Fixes
+
+* factory type ([7a0c62c](https://github.com/Romanchuk/angular-i18next/commit/7a0c62cac779149c9b26b8cbd502538457d7159e))
+* missed import ([e793bc5](https://github.com/Romanchuk/angular-i18next/commit/e793bc511227f887d677bd2f45f3b2b173977a8e))
+* specs default import ([532dd94](https://github.com/Romanchuk/angular-i18next/commit/532dd94bc23f57f0e3e0256a3534f0c48381f12f))
+
+
+
 # [14.2.0-0](https://github.com/Romanchuk/angular-i18next/compare/v14.1.0...v14.2.0-0) (2022-11-17)
 
 
