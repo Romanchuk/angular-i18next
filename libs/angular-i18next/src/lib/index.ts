@@ -89,7 +89,7 @@ export class I18NextModule {
       },
         {
           provide: I18NEXT_SERVICE,
-          useFactory: (errHandle: I18NextErrorHandlingStrategy, i18nextInstance: i18n) => new I18NextService(errHandle, i18nextInstance),
+          useFactory: (errHandle: I18NextErrorHandlingStrategy, i18nextInstance: i18n.i18n) => new I18NextService(errHandle, i18nextInstance),
           deps: [
             I18NEXT_ERROR_HANDLING_STRATEGY,
             I18NEXT_INSTANCE
