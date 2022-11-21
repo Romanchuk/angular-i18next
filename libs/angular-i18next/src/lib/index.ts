@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
-import { FormatFunction, i18n, InterpolationOptions } from 'i18next';
+import * as i18n from 'i18next';
+import { FormatFunction, InterpolationOptions } from 'i18next';
 import { I18NextCapPipe } from './I18NextCapPipe';
 import { I18NextEagerPipe } from './I18NextEagerPipe';
 import { I18NextErrorHandlingStrategy, NativeErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
@@ -50,8 +51,7 @@ export function i18nextNamespaceResolverFactory(i18next: ITranslationService) {
   return resolver.bind(i18next);
 }
 
-
-const i18nextGlobal: i18n = require('i18next');
+const i18nextGlobal: i18n.i18n = i18n.default;
 
 @NgModule({
   providers: [
