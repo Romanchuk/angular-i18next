@@ -1,7 +1,6 @@
 import { defaultInterpolationFormat, I18NextModule } from "angular-i18next";
-import * as i18n from 'i18next';
 
-export const i18nextOptions: i18n.InitOptions = {
+export const i18nextOptions = {
   supportedLngs:['en', 'ru'],
   fallbackLng: 'en',
   debug: true, // set debug?

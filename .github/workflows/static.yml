@@ -44,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
-          path: './dist/apps/angular-i18next-demo'
+          path: './dist/apps/angular-i18next-demo/browser'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
