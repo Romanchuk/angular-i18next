@@ -1,3 +1,12 @@
+# [15.0.0-0](https://github.com/Romanchuk/angular-i18next/compare/v14.2.0...v15.0.0-0) (2022-12-22)
+
+
+### Bug Fixes
+
+* pages deploy ([df17d58](https://github.com/Romanchuk/angular-i18next/commit/df17d58fcfd3a18c9862064d43e33e799effb84e))
+
+
+
 # [14.2.0](https://github.com/Romanchuk/angular-i18next/compare/v14.2.0-1...v14.2.0) (2022-11-22)
 
 
