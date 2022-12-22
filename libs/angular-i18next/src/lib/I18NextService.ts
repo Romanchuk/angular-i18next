@@ -79,7 +79,7 @@ export class I18NextService implements ITranslationService {
     key: string | string[],
     optionsOrDefault?: string | i18n.TOptions,
     options?: i18n.TOptions
-  ): i18n.TFunctionResult {
+  ): i18n.DefaultTFuncReturn {
     const hasDefault = optionsOrDefault && typeof optionsOrDefault === 'string';
     if (hasDefault) {
       return this.i18next.t.call(this.i18next, key, optionsOrDefault, options);
@@ -206,7 +206,7 @@ export class I18NextService implements ITranslationService {
   //#endregion
 
   private subscribeEvents() {
-    this.i18next.on.call(this.i18next, 'initialized', (options: any) => {
+    this.i18next.on.call(this.i18next, 'initialized', (options: i18n.InitOptions) => {
       this.events.initialized.next(options);
     });
     this.i18next.on.call(this.i18next, 'loaded', (loaded: boolean) =>

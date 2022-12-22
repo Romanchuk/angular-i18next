@@ -5,7 +5,8 @@
       "module": "commonjs",
       "types": ["jest", "node"],
       "allowSyntheticDefaultImports": true, // Typing support for this case
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "strict": true
   },
   "files": ["src/test-setup.ts"],
   "include": ["**/*.spec.ts", "**/*.test.ts", "**/*.d.ts", "jest.config.ts"]

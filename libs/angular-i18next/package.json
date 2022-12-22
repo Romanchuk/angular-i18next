@@ -49,13 +49,13 @@
     "tslib": "^2.2.0"
   },
   "peerDependencies": {
-    "@angular/common": ">=14.0.0 <15.0.0",
-    "@angular/core": ">=14.0.0 <15.0.0",
-    "@angular/platform-browser": ">=14.0.0 <15.0.0",
-    "i18next": ">=19.5.4 <22.0.0",
+    "@angular/common": ">=15.0.0 <16.0.0",
+    "@angular/core": ">=15.0.0 <16.0.0",
+    "@angular/platform-browser": ">=15.0.0 <16.0.0",
+    "i18next": ">=22.0.8 <23.0.0",
     "rxjs": ">=6.6.0 <8.0.0"
   },
   "devDependencies": {
-    "@angular/platform-browser-dynamic": ">=14.0.0 <15.0.0"
+    "@angular/platform-browser-dynamic": ">=15.0.0 <16.0.0"
   }
 }

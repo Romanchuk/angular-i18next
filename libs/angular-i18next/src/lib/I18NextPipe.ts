@@ -42,7 +42,7 @@ export class I18NextPipe implements PipeTransform {
       }
     }
 
-    let result: string = this.translateI18Next.t(key, options);
+    let result = this.translateI18Next.t(key, options);
 
     if (options.format) {
       if (result) {
@@ -53,7 +53,7 @@ export class I18NextPipe implements PipeTransform {
         );
       }
     }
-    return result;
+    return result ?? '';
   }
 
   private prependScope(

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { jest } from '@jest/globals';
-import { Callback, FormatFunction, i18n, InterpolationOptions, Modules, ResourceStore, Services, TFunction } from 'i18next';
+import { Callback, FormatFunction, InterpolationOptions, Modules, ResourceStore, Services, TFunction, i18n } from 'i18next';
 import { defaultInterpolationFormat, I18NextEvents, I18NextLoadResult, ITranslationEvents, ITranslationService } from '../../lib';
+import * as i18next from 'i18next';
 
 
 @Injectable()
@@ -12,7 +13,9 @@ export class MockI18NextService implements ITranslationService {
   store: ResourceStore;
   resolvedLanguage: string;
 
-  t: TFunction = jest.fn((key: string | string[], options?: any): string => {
+  t = jest.fn((key: string | string[],
+    optionsOrDefault?: string | i18next.TOptions,
+    options?: i18next.TOptions): i18next.DefaultTFuncReturn => {
     if (key instanceof Array) {
       return key.length > 0 ? key[0] : '';
     }
@@ -61,8 +64,6 @@ export class MockI18NextService implements ITranslationService {
   events: ITranslationEvents = new I18NextEvents();
   language: string = '';
   languages: string[] = [];
-
-  private i18nextPromise: Promise<void>;
 
   get options(): any {
     return {
