@@ -1,3 +1,13 @@
+## [15.0.1](https://github.com/Romanchuk/angular-i18next/compare/v15.0.0...v15.0.1) (2023-01-16)
+
+
+### Bug Fixes
+
+* [#97](https://github.com/Romanchuk/angular-i18next/issues/97) "strictNullChecks": true ([92d8205](https://github.com/Romanchuk/angular-i18next/commit/92d8205003908cb89587a99268983184fa4d6316))
+* t signature ([029478a](https://github.com/Romanchuk/angular-i18next/commit/029478a5582afe626d892b8e1ee59c7d08e544f5))
+
+
+
 # [15.0.0](https://github.com/Romanchuk/angular-i18next/compare/v15.0.0-1...v15.0.0) (2023-01-16)
 
 
