@@ -32,7 +32,7 @@
     }
   ],
   "scripts": {
-    "build": "npm exec -- ng-packagr -p ng-package.json",
+    "build": "npm exec -- ng-packagr -p ng-package.json --config tsconfig.lib.json",
     "clean": "npm run clean:build && npm run clean:tests",
     "clean:build": "npm run rimraf -- dist build",
     "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- tests/**/*.+{js,js.map,d.ts,metadata.json}",
