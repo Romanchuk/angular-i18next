@@ -23,9 +23,15 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
   init(options: i18n.InitOptions): Promise<I18NextLoadResult>;
 
-  t(key: string | string[],
-    optionsOrDefault?: string | i18n.TOptions,
-    options?: i18n.TOptions): i18n.DefaultTFuncReturn
+  t(
+    key: string | string[],
+    options? :i18n.TOptionsBase & object & { defaultValue?: string; }
+  ): i18n.DefaultTFuncReturn;
+  t(
+    key: string | string[],
+    defaultValue: string,
+    options?: i18n.TOptionsBase & object & { defaultValue: string; }
+  ): i18n.DefaultTFuncReturn;
 
   format: i18n.FormatFunction;
 

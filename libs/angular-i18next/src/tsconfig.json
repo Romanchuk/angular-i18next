@@ -11,12 +11,21 @@
     }
   ],
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+        "alwaysStrict": true,
+        "forceConsistentCasingInFileNames": true,
+        "sourceMap": true,
+        "declaration": false,
+        "downlevelIteration": true,
+        "experimentalDecorators": true,
+        "moduleResolution": "node",
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "importHelpers": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strict": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

@@ -1,11 +1,11 @@
 export class Contact {
-    lastName: string;
-    firstName: string;
-    middleName: string;
+    lastName: string | undefined;
+    firstName: string | undefined;
+    middleName: string | undefined;
 }
 
 export class RichFormModel {
-    email: string;
-    count: Number = 0;
+    email: string | undefined;
+    count = 0;
     technicalContact: Contact = new Contact();
-} 
+}

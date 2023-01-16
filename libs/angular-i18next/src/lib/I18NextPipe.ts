@@ -22,7 +22,7 @@ export class I18NextPipe implements PipeTransform {
   public transform(key: string | string[], options?: PipeOptions): string {
     options = this.prepareOptions(options);
 
-    let i18nOpts: i18n.InitOptions = this.translateI18Next.options;
+    let i18nOpts = this.translateI18Next.options;
     if (options.prependScope === undefined || options.prependScope === true) {
       if (this.scope) {
         key = this.prependScope(
@@ -116,7 +116,7 @@ export class I18NextPipe implements PipeTransform {
     return key.indexOf(nsSeparator) !== -1;
   }
 
-  private prepareOptions(options?: PipeOptions) {
+  private prepareOptions(options?: PipeOptions): PipeOptions {
     options = options || {};
     if (options.context != null) options.context = options.context.toString();
     return options;

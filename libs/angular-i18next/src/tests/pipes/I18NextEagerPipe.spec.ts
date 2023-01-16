@@ -43,7 +43,7 @@ describe('I18NextEagerPipe', () => {
     let myOptions: PipeOptions;
 
     beforeEach(() => {
-      myOptions = { myValue: 'value1' };
+      myOptions = { defaultValue: 'value1' };
 
       result = pipe.transform('myKey', myOptions);
     });
@@ -78,7 +78,7 @@ describe('I18NextEagerPipe', () => {
         it('should call the translate service', () => {
           expect(service.t).toHaveBeenCalledWith(
             ['ns:scope.myKey', 'scope.myKey', 'ns:myKey', 'myKey'],
-            { myValue: 'value1' }
+            { defaultValue: 'value1' }
           );
         });
 
@@ -106,13 +106,13 @@ describe('I18NextEagerPipe', () => {
     describe('when called with same key but different options', () => {
       beforeEach(() => {
         jest.clearAllMocks();
-        result = pipe.transform('myKey', { myValue: 'value2' });
+        result = pipe.transform('myKey', { defaultValue: 'value2' });
       });
 
       it('should call the translate service', () => {
         expect(service.t).toHaveBeenCalledWith(
           ['ns:scope.myKey', 'scope.myKey', 'ns:myKey', 'myKey'],
-          { myValue: 'value2' }
+          { defaultValue: 'value2' }
         );
       });
 
@@ -130,7 +130,7 @@ describe('I18NextEagerPipe', () => {
       it('should call the translate service', () => {
         expect(service.t).toHaveBeenCalledWith(
           ['ns:scope.myKey2', 'scope.myKey2', 'ns:myKey2', 'myKey2'],
-          { myValue: 'value1' }
+          { defaultValue: 'value1' }
         );
       });
 

@@ -55,6 +55,17 @@ export class I18NextService implements ITranslationService {
     this.i18next = i18nextInstance ?? i18nextGlobal;
   }
 
+  t(key: string | string[], options?: (i18n.TOptionsBase & object & { defaultValue?: string | undefined; }) | undefined): i18n.DefaultTFuncReturn;
+  t(key: string | string[], defaultValue: string, options?: (i18n.TOptionsBase & object & { defaultValue: string; }) | undefined): i18n.DefaultTFuncReturn;
+  t(key: unknown, defaultValue?: unknown, options?: unknown): i18n.DefaultTFuncReturn {
+    const hasDefault = defaultValue && typeof defaultValue === 'string';
+    if (typeof hasDefault === 'string') {
+      return this.i18next.t.call(this.i18next, key as string, defaultValue as string, options as i18n.TOptionsBase);
+    } else {
+      return this.i18next.t.call(this.i18next, key as string, undefined, options as i18n.TOptionsBase);
+    }
+  }
+
   public use<T extends i18n.Module>(
     module:
     T | i18n.NewableModule<T> | i18n.Newable<T>
@@ -75,18 +86,8 @@ export class I18NextService implements ITranslationService {
     });
   }
 
-  t(
-    key: string | string[],
-    optionsOrDefault?: string | i18n.TOptions,
-    options?: i18n.TOptions
-  ): i18n.DefaultTFuncReturn {
-    const hasDefault = optionsOrDefault && typeof optionsOrDefault === 'string';
-    if (hasDefault) {
-      return this.i18next.t.call(this.i18next, key, optionsOrDefault, options);
-    } else {
-      return this.i18next.t.call(this.i18next, key, <string | undefined>optionsOrDefault, undefined);
-    }
-  }
+
+
 
   public format(value: any, format?: string, lng?: string): string {
     return this.i18next.format.call(this.i18next, value, format, lng, {});

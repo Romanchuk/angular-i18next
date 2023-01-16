@@ -11,11 +11,19 @@
     }
   ],
   "compilerOptions": {
-    "experimentalDecorators": true,
+    "declaration": false,
+    "alwaysStrict": true,
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "noImplicitOverride": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "importHelpers": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strict": true
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,
