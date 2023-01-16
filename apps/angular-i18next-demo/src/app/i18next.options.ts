@@ -1,6 +1,9 @@
 import { defaultInterpolationFormat, I18NextModule } from "angular-i18next";
 
-export const i18nextOptions = {
+import * as i18n from 'i18next';
+import { BackendOptions } from "i18next-http-backend";
+
+export const i18nextOptions: i18n.InitOptions & { backend: BackendOptions} = {
   supportedLngs:['en', 'ru'],
   fallbackLng: 'en',
   debug: true, // set debug?
@@ -16,7 +19,6 @@ export const i18nextOptions = {
   //backend plugin options
   backend: {
     loadPath: 'locales/{{lng}}.{{ns}}.json',
-
   },
   // lang detection plugin options
   detection: {

@@ -81,13 +81,8 @@ export const I18N_PROVIDERS: Provider[] = [
     AppRouterModule,
     I18NextValidationMessageModule
   ],
-  exports: [
-  ],
   providers: [
     I18N_PROVIDERS
-  ],
-  entryComponents: [
-
   ]
 })
 export class AppModule {}

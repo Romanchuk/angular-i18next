@@ -11,7 +11,7 @@ import { Component, ViewEncapsulation, Inject } from '@angular/core';
 })
 export class HeaderLanguageComponent {
 
-  language: string = 'ru';
+  language = 'ru';
   languages: string[] = ['ru', 'en'];
 
   constructor(
