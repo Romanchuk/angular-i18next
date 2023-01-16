@@ -23,7 +23,8 @@
     "importHelpers": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
-    "strict": true
+    "strict": true,
+    "strictNullChecks": true,
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": true,

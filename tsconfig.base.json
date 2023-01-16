@@ -16,6 +16,7 @@
     "importHelpers": true,
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
+    "strictNullChecks": true,
     "target": "es2017",
     "module": "es2020",
     "lib": [
