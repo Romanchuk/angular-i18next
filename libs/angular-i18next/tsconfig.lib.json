@@ -1,26 +1,30 @@
 {
-  "extends": "./tsconfig.json",
+  "angularCompilerOptions": {
+    "compilationMode": "partial",
+    "strictTemplates": true,
+    "enableResourceInlining": true
+  },
+  "buildOnSave": false,
+  "compileOnSave": false,
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
+    "baseUrl": ".",
+    "target": "es2020",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "outDir": "./dist",
     "declaration": true,
-    "declarationMap": true,
+    "declarationDir": "./dist",
+    "inlineSourceMap": true,
     "inlineSources": true,
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "importHelpers": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictNullChecks": true,
     "strict": true,
-    "types": [],
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "emitDecoratorMetadata": false,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+
     "lib": ["dom", "es2018"]
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts", "jest.config.ts"],
-  "include": ["**/*.ts"]
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "dist", "**/*.shim.ts", "**/*.spec.ts", "src/test-setup.ts", "jest.config.ts"]
 }
