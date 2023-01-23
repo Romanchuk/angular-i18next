@@ -57,13 +57,14 @@ export class I18NextService implements ITranslationService {
 
   t(key: string | string[], options?: (i18n.TOptionsBase & object & { defaultValue?: string | undefined; }) | undefined): i18n.DefaultTFuncReturn;
   t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: (i18n.TOptionsBase & object & { defaultValue: string; }) | undefined): i18n.DefaultTFuncReturn;
-  t(key: unknown, defaultValue?: unknown, options?: unknown): i18n.DefaultTFuncReturn {
-    const hasDefault = defaultValue && typeof defaultValue === 'string';
+  t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): i18n.DefaultTFuncReturn {
+    const hasDefault = !!defaultValueOrOptions && typeof defaultValueOrOptions === 'string';
+
     this.i18next.t.bind(this.i18next);
-    if (typeof hasDefault === 'string') {
-      return this.i18next.t(key as (string | string[]), defaultValue as string, options as i18n.TOptionsBase);
+    if (hasDefault) {
+      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as string, options as i18n.TOptionsBase);
     } else {
-      return this.i18next.t(key as (string | string[]), options as i18n.TOptionsBase);
+      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as i18n.TOptionsBase);
     }
   }
 
