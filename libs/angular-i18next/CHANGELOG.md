@@ -1,3 +1,12 @@
+## [15.0.5](https://github.com/Romanchuk/angular-i18next/compare/v15.0.4...v15.0.5) (2023-01-24)
+
+
+### Bug Fixes
+
+* [#101](https://github.com/Romanchuk/angular-i18next/issues/101) ([e7d095a](https://github.com/Romanchuk/angular-i18next/commit/e7d095a2336b663f95e08ddadbe65de6cf8b191c))
+
+
+
 ## [15.0.4](https://github.com/Romanchuk/angular-i18next/compare/v15.0.3...v15.0.4) (2023-01-16)
 
 
