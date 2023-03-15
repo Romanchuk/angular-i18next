@@ -1,5 +1,4 @@
 import { inject } from '@angular/core';
-import { from, map } from 'rxjs';
 import { I18NEXT_SERVICE } from './I18NEXT_TOKENS';
 
 /**
@@ -8,9 +7,10 @@ import { I18NEXT_SERVICE } from './I18NEXT_TOKENS';
  * @param i18nextNamespaces I18Next namespaces to load
  * @returns A functional guard that will load the I18Next Namespaces, and continue navigation when loaded.
  */
-export const i18NextGuard =
+export const i18NextNamespacesGuard =
   (...i18nextNamespaces: string[]) =>
   () =>
     inject(I18NEXT_SERVICE)
       .loadNamespaces(i18nextNamespaces.filter(Boolean))
-      .then(() => true);
+      .then(() => true)
+      .catch(() => false);
