@@ -23,6 +23,7 @@ export * from './I18NextCapPipe';
 export * from './I18NextEagerPipe';
 export * from './I18NextErrorHandlingStrategies';
 export * from './I18NextFormatPipe';
+export * from './I18NextGuard'
 export * from './I18NextLoadResult';
 export * from './I18NextModuleParams';
 export * from './I18NextPipe';

@@ -40,7 +40,19 @@ export class MockI18NextService implements ITranslationService {
       return key.length > 0 ? key[0] : '';
     }
     return key;
-})
+  })
+
+  loadNamespaces = jest.fn(
+    (namespaces: string[]) =>
+      new Promise<any>(
+        (
+          resolve: (thenableOrResult?: any) => void,
+          reject: (error: any) => void
+        ) => {
+          resolve();
+        }
+      )
+  );
 
   format: FormatFunction = jest.fn((
     value: any,
@@ -117,17 +129,6 @@ export class MockI18NextService implements ITranslationService {
       ) => {
         this.language = lng;
         resolve(this.language);
-      }
-    );
-  }
-
-  public loadNamespaces(namespaces: string[]): Promise<any> {
-    return new Promise<any>(
-      (
-        resolve: (thenableOrResult?: any) => void,
-        reject: (error: any) => void
-      ) => {
-        resolve();
       }
     );
   }
