@@ -25,12 +25,12 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
   t(
     key: string | string[],
-    options? :i18n.TOptionsBase & object & { defaultValue?: string; }
+    options? :i18n.TOptionsBase & i18n.StringMap & { defaultValue?: string; }
   ): i18n.DefaultTFuncReturn;
   t(
     key: string | string[],
     defaultValue: string,
-    options?: i18n.TOptionsBase & object & { defaultValue: string; }
+    options?: i18n.TOptionsBase & i18n.StringMap & { defaultValue: string; }
   ): i18n.DefaultTFuncReturn;
 
   format: i18n.FormatFunction;

@@ -55,8 +55,8 @@ export class I18NextService implements ITranslationService {
     this.i18next = i18nextInstance ?? i18nextGlobal;
   }
 
-  t(key: string | string[], options?: (i18n.TOptionsBase & object & { defaultValue?: string | undefined; }) | undefined): i18n.DefaultTFuncReturn;
-  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: (i18n.TOptionsBase & object & { defaultValue: string; }) | undefined): i18n.DefaultTFuncReturn;
+  t(key: string | string[], options?: (i18n.TOptionsBase & i18n.StringMap & { defaultValue?: string | undefined; }) | undefined): i18n.DefaultTFuncReturn;
+  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: (i18n.TOptionsBase & i18n.StringMap & { defaultValue: string; }) | undefined): i18n.DefaultTFuncReturn;
   t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): i18n.DefaultTFuncReturn {
     const hasDefault = !!defaultValueOrOptions && typeof defaultValueOrOptions === 'string';
 
