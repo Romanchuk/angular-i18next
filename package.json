@@ -34,7 +34,7 @@
     "nx": "nx",
     "start": "npm exec -- nx run angular-i18next-demo:serve:development",
     "start:ssr": "npm exec -- nx run angular-i18next-demo:serve-ssr",
-    "test": "npm run test -w=libs/angular-i18next",
+    "test": "npm exec -- nx test angular-i18next",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
     "affected:apps": "nx affected:apps",
