@@ -1,4 +1,4 @@
-﻿import { Component, ViewEncapsulation, Input, VERSION  } from '@angular/core';
+﻿import { Component, VERSION, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
@@ -6,11 +6,11 @@
   templateUrl: './app-footer.component.html'
 })
 export class AppFooterComponent {
-  angularVersion: string = '0.0.0';
-  i18nextVersion: string = '0.0.0';
+  angularVersion = '0.0.0';
+  i18nextVersion = '0.0.0';
   constructor(){
     this.angularVersion = VERSION.full;
-    this.i18nextVersion = '20.2.2'; // todo: get version automaticaly
+    this.i18nextVersion = '22.5.1';
   }
 
 }

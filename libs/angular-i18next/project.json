@@ -1,0 +1,26 @@
+{
+  "name": "angular-i18next",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "libs/angular-i18next/src",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["coverage/libs/angular-i18next"],
+      "options": {
+        "jestConfig": "libs/angular-i18next/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/angular-i18next/src/**/*.ts",
+          "libs/angular-i18next/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

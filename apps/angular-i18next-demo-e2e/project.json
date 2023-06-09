@@ -1,0 +1,29 @@
+{
+  "name": "angular-i18next-demo-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/angular-i18next-demo-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/angular-i18next-demo-e2e/cypress.json",
+        "devServerTarget": "angular-i18next-demo:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "angular-i18next-demo:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/angular-i18next-demo-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["angular-i18next-demo"]
+}

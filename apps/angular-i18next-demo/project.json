@@ -1,0 +1,136 @@
+{
+  "name": "angular-i18next-demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/angular-i18next-demo/src",
+  "prefix": "angular-i18next",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/angular-i18next-demo/browser",
+        "index": "apps/angular-i18next-demo/src/index.html",
+        "main": "apps/angular-i18next-demo/src/main.ts",
+        "polyfills": "apps/angular-i18next-demo/src/polyfills.ts",
+        "tsConfig": "apps/angular-i18next-demo/tsconfig.app.json",
+        "assets": [
+          "apps/angular-i18next-demo/src/assets/favicon.ico",
+          "apps/angular-i18next-demo/src/assets",
+          "apps/angular-i18next-demo/src/locales"
+        ],
+        "styles": ["apps/angular-i18next-demo/src/styles.css"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "baseHref": "/angular-i18next/",
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/angular-i18next-demo/src/environments/environment.ts",
+              "with": "apps/angular-i18next-demo/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "angular-i18next-demo:build:production"
+        },
+        "development": {
+          "browserTarget": "angular-i18next-demo:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "angular-i18next-demo:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/angular-i18next-demo/**/*.ts",
+          "apps/angular-i18next-demo/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["coverage/apps/angular-i18next-demo"],
+      "options": {
+        "jestConfig": "apps/angular-i18next-demo/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "server": {
+      "executor": "@angular-devkit/build-angular:server",
+      "options": {
+        "outputPath": "dist/angular-i18next-demo/server",
+        "main": "apps/angular-i18next-demo/server.ts",
+        "tsConfig": "apps/angular-i18next-demo/tsconfig.server.json"
+      },
+      "configurations": {
+        "production": {
+          "outputHashing": "media",
+          "fileReplacements": [
+            {
+              "replace": "apps/angular-i18next-demo/src/environments/environment.ts",
+              "with": "apps/angular-i18next-demo/src/environments/environment.prod.ts"
+            }
+          ]
+        },
+        "development": {
+          "optimization": false,
+          "sourceMap": true,
+          "extractLicenses": false,
+          "buildOptimizer": false
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve-ssr": {
+      "executor": "@nguniversal/builders:ssr-dev-server",
+      "configurations": {
+        "development": {
+          "browserTarget": "angular-i18next-demo:build:development",
+          "serverTarget": "angular-i18next-demo:server:development"
+        },
+        "production": {
+          "browserTarget": "angular-i18next-demo:build:production",
+          "serverTarget": "angular-i18next-demo:server:production"
+        }
+      },
+      "defaultConfiguration": "development"
+    }
+  },
+  "tags": []
+}

@@ -14,7 +14,7 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
   modules: i18n.Modules;
   services: i18n.Services;
   store: i18n.ResourceStore;
-  resolvedLanguage: string;
+  resolvedLanguage: string | undefined;
 
   use<T extends i18n.Module>(
     module:
