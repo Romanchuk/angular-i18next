@@ -395,6 +395,21 @@ const appRoutes: Routes = [
 ];
 ```
 
+# New angular version released, but angular-i18next is not released YET!!!
+
+Angular releases mostly don't break angular-i18next, but we cannot tell ahead that current version of `angular-i18next` will work correctly with latest angular version.
+
+You can override an angular-i18next `peerDependencies` in your `package.json` on your **own risk**:
+
+```json
+"overrides": {
+  "angular-i18next": {
+    "@angular/common": "*",
+    "@angular/core": "*",
+    "@angular/platform-browser": "*"
+  }
+}
+```
 
 # Deep integration
 
