@@ -1,3 +1,14 @@
+# [16.0.0-0](https://github.com/Romanchuk/angular-i18next/compare/v15.0.5...v16.0.0-0) (2023-06-09)
+
+
+### Bug Fixes
+
+* package.json ([4f3d909](https://github.com/Romanchuk/angular-i18next/commit/4f3d909321651faa4f6406cf300582ce8a8001ce))
+* test ([991dbca](https://github.com/Romanchuk/angular-i18next/commit/991dbca3c5ad9807b4884727065effe456f56b61))
+* test script ([b075485](https://github.com/Romanchuk/angular-i18next/commit/b0754858d865a5e4aaa80ac18fb264d276f26787))
+
+
+
 ## [15.0.5](https://github.com/Romanchuk/angular-i18next/compare/v15.0.4...v15.0.5) (2023-01-24)
 
 
