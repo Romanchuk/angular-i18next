@@ -69,6 +69,13 @@ describe('I18nService', () => {
   });
 
 
+  it('should able to pass custom params (no typechecking errors)', () => {
+    const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
+    service.t('some.string', {
+      hello: 'there',
+    });
+  });
+
   /*
   // does not work because language=cimode ignores default value
   // setting language to anything other than 'cimode' breaks the rest of the tests
