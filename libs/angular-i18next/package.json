@@ -42,7 +42,8 @@
     "changelog:add": "git add --force CHANGELOG.md package.json",
     "changelog:commit": "git commit -m \"Updated CHANGELOG.md\"",
     "version": "npm exec -- conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build && npm run copy:assets && npm run changelog:add && npm run changelog:commit",
-    "release": "npm exec -- np"
+    "release": "npm exec -- np",
+    "test": "npm exec -- nx test angular-i18next"
   },
   "dependencies": {
     "tslib": "^2.2.0"
