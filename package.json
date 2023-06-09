@@ -30,7 +30,7 @@
     }
   ],
   "scripts": {
-    "ng": "ng",
+    "ng": "nx",
     "nx": "nx",
     "start": "npm exec -- nx run angular-i18next-demo:serve:development",
     "start:ssr": "npm exec -- nx run angular-i18next-demo:serve-ssr",
