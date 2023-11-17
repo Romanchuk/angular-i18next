@@ -1,26 +1,23 @@
-import 'zone.js/dist/zone-node';
+import 'zone.js/node';
 
 import { APP_BASE_HREF } from '@angular/common';
-import { ngExpressEngine } from '@nguniversal/express-engine';
+import { CommonEngine } from '@angular/ssr';
 import * as express from 'express';
-import { existsSync } from 'fs';
-import { join } from 'path';
-
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { REQUEST, RESPONSE } from './src/express.tokens';
 import i18next from 'i18next';
 import ChainedBackend from 'i18next-chained-backend';
 import HttpApi from 'i18next-http-backend';
-import middleware from 'i18next-http-middleware';
+import * as middleware from 'i18next-http-middleware';
 import resourcesToBackend from "i18next-resources-to-backend";
-
-import { i18nextOptions } from './src/app/i18next.options';
 import { AppServerModule } from './src/main.server';
 
-const PORT = process.env['PORT'] || 4000;
+import { i18nextOptions } from './src/app/i18next.options';
 
 // The Express app is exported so that it can be used by serverless Functions.
 export async function app(): Promise<express.Express> {
   const server = express();
-
   await i18next
     .use(ChainedBackend)
     .use(middleware.LanguageDetector)
@@ -40,21 +37,17 @@ export async function app(): Promise<express.Express> {
         }]
       }
   })
-
   server.use(
     middleware.handle(i18next, {
       // ignoreRoutes: ['/foo'] // or function(req, res, options, i18next) { /* return true to ignore */ }
     })
   )
-
   const distFolder = join(process.cwd(), 'dist/angular-i18next-demo/browser');
+  const indexHtml = existsSync(join(distFolder, 'index.original.html'))
+    ? join(distFolder, 'index.original.html')
+    : join(distFolder, 'index.html');
 
-  const indexHtml = existsSync(join(distFolder, 'index.html')) ? 'index.html' : 'index';
-
-  // Our Universal express-engine (found @ https://github.com/angular/universal/tree/main/modules/express-engine)
-  server.engine('html', ngExpressEngine({
-    bootstrap: AppServerModule,
-  }));
+  const commonEngine = new CommonEngine();
 
   server.set('view engine', 'html');
   server.set('views', distFolder);
@@ -62,29 +55,43 @@ export async function app(): Promise<express.Express> {
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
   // Serve static files from /browser
-  server.get('*.*', express.static(distFolder, {
-    maxAge: '1y'
-  }));
+  server.get(
+    '*.*',
+    express.static(distFolder, {
+      maxAge: '1y',
+    })
+  );
 
-  // All regular routes use the Universal engine
-  server.get('*', (req, res) => {
-    res.render(indexHtml, { req,
-      providers: [
-        { provide: APP_BASE_HREF, useValue: req.baseUrl }
-      ]
-    });
+  // All regular routes use the Angular engine
+  server.get('*', (req, res, next) => {
+    const { protocol, originalUrl, baseUrl, headers } = req;
+
+    commonEngine
+      .render({
+        bootstrap: AppServerModule,
+        documentFilePath: indexHtml,
+        url: `${protocol}://${headers.host}${originalUrl}`,
+        publicPath: distFolder,
+        providers: [
+          { provide: APP_BASE_HREF, useValue: baseUrl },
+          { provide: RESPONSE, useValue: res },
+          { provide: REQUEST, useValue: req },
+        ],
+      })
+      .then((html) => res.send(html))
+      .catch((err) => next(err));
   });
 
   return server;
 }
 
 async function run(): Promise<void> {
-
+  const port = process.env['PORT'] || 4000;
 
   // Start up the Node server
   const server = await app();
-  server.listen(PORT, () => {
-    console.log(`Node Express server listening on http://localhost:${PORT}`);
+  server.listen(port, () => {
+    console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
 
@@ -93,10 +100,9 @@ async function run(): Promise<void> {
 // The below code is to ensure that the server is run only when not requiring the bundle.
 declare const __non_webpack_require__: NodeRequire;
 const mainModule = __non_webpack_require__.main;
-const moduleFilename = mainModule && mainModule.filename || '';
+const moduleFilename = (mainModule && mainModule.filename) || '';
 if (moduleFilename === __filename || moduleFilename.includes('iisnode')) {
   run();
 }
 
 export * from './src/main.server';
-

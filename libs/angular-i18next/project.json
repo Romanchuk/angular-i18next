@@ -6,14 +6,14 @@
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["coverage/libs/angular-i18next"],
+      "outputs": ["{workspaceRoot}/coverage/libs/angular-i18next"],
       "options": {
         "jestConfig": "libs/angular-i18next/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "libs/angular-i18next/src/**/*.ts",
