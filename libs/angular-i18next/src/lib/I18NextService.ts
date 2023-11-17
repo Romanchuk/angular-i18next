@@ -55,16 +55,16 @@ export class I18NextService implements ITranslationService {
     this.i18next = i18nextInstance ?? i18nextGlobal;
   }
 
-  t(key: string | string[], options?: (i18n.TOptionsBase & i18n.StringMap & { defaultValue?: string | undefined; }) | undefined): i18n.DefaultTFuncReturn;
-  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: (i18n.TOptionsBase & i18n.StringMap & { defaultValue: string; }) | undefined): i18n.DefaultTFuncReturn;
-  t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): i18n.DefaultTFuncReturn {
+  t(key: string | string[], options?: (i18n.TOptions & { defaultValue?: string | undefined; }) | undefined): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue?: string | undefined; })>;
+  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: (i18n.TOptions & { defaultValue: string; }) | undefined): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue: string; })>;
+  t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue: string; })> {
     const hasDefault = !!defaultValueOrOptions && typeof defaultValueOrOptions === 'string';
 
     this.i18next.t.bind(this.i18next);
     if (hasDefault) {
-      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as string, options as i18n.TOptionsBase);
+      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as string, options as (i18n.TOptions & { defaultValue?: string | undefined; }));
     } else {
-      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as i18n.TOptionsBase);
+      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as (i18n.TOptions & { defaultValue?: string | undefined; }));
     }
   }
 

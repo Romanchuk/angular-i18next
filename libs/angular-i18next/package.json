@@ -52,7 +52,7 @@
     "@angular/common": ">=17.0.0 < 18.0.0",
     "@angular/core": ">=17.0.0 < 18.0.0",
     "@angular/platform-browser": ">=17.0.0 < 18.0.0",
-    "i18next": ">=22.0.8 <23.0.0",
+    "i18next": ">=23.0.0 <24.0.0",
     "rxjs": ">=6.6.0 <8.0.0"
   },
   "devDependencies": {
