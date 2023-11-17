@@ -1,9 +1,9 @@
 import { defaultInterpolationFormat, I18NextModule } from "angular-i18next";
 
 import * as i18n from 'i18next';
-import { BackendOptions } from "i18next-http-backend";
+import { HttpBackendOptions } from "i18next-http-backend";
 
-export const i18nextOptions: i18n.InitOptions & { backend: BackendOptions} = {
+export const i18nextOptions: i18n.InitOptions & { backend: HttpBackendOptions} = {
   supportedLngs:['en', 'ru'],
   fallbackLng: 'en',
   debug: true, // set debug?
