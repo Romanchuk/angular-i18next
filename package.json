@@ -57,7 +57,7 @@
     "workspace-generator": "nx workspace-generator",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
-    "release": "npm run release -w=libs/angular-i18next"
+    "release": "npm exec -- nx run angular-i18next:release"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "17.0.1",
