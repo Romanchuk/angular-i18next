@@ -15,6 +15,9 @@
     "type": "git",
     "url": "git+https://github.com/Romanchuk/angular-i18next.git"
   },
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "license": "MIT",
   "description": "i18next module for Angular",
   "keywords": [
