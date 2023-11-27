@@ -8,7 +8,6 @@ import { join } from 'node:path';
 import { REQUEST, RESPONSE } from './src/express.tokens';
 import i18next from 'i18next';
 import ChainedBackend, { ChainedBackendOptions } from 'i18next-chained-backend';
-import HttpApi from 'i18next-http-backend';
 import * as middleware from 'i18next-http-middleware';
 import resourcesToBackend from "i18next-resources-to-backend";
 import { AppServerModule } from './src/main.server';
@@ -25,7 +24,6 @@ export async function app(): Promise<express.Express> {
       ...i18nextOptions,
       backend: {
         backends: [
-          HttpApi,
           resourcesToBackend((lng, ns, clb) => {
             import(`./src/locales/${lng}.${ns}.json`)
                   .then((resources) => clb(null, resources))

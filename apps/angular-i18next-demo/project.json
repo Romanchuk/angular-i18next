@@ -15,7 +15,7 @@
         "polyfills": "apps/angular-i18next-demo/src/polyfills.ts",
         "tsConfig": "apps/angular-i18next-demo/tsconfig.app.json",
         "assets": [
-          "apps/angular-i18next-demo/src/assets/favicon.ico",
+          "apps/angular-i18next-demo/src/assets/favicon.png",
           "apps/angular-i18next-demo/src/assets",
           "apps/angular-i18next-demo/src/locales"
         ],
