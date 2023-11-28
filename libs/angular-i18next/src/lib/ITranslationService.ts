@@ -1,8 +1,11 @@
 import * as i18n from 'i18next';
 import { I18NextLoadResult } from './I18NextLoadResult';
 import { ITranslationEvents } from './ITranslationEvents';
+import { $Dictionary as I18Next$Dictionary } from 'i18next/typescript/helpers';
 
 type Modify<T, R> = Omit<T, keyof R> & R;
+
+export type ITranslationOptions = i18n.TOptions & I18Next$Dictionary & { defaultValue?: string; };
 
 export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
@@ -25,13 +28,13 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
   t(
     key: string | string[],
-    options? :i18n.TOptions & { defaultValue?: string; }
-  ): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue: string; })>;
+    options?: ITranslationOptions,
+  ): i18n.DefaultTReturn<ITranslationOptions>;
   t(
     key: string | string[],
     defaultValue: string,
-    options?: i18n.TOptions & { defaultValue: string; }
-  ): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue: string; })>;
+    options?: ITranslationOptions
+  ): i18n.DefaultTReturn<ITranslationOptions>;
 
   format: i18n.FormatFunction;
 

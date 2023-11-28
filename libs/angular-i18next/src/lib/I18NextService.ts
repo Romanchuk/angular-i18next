@@ -6,7 +6,8 @@ import { I18NextErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
 import { I18NextEvents } from './I18NextEvents';
 import { I18NextLoadResult } from './I18NextLoadResult';
 import { ITranslationEvents } from './ITranslationEvents';
-import { ITranslationService } from './ITranslationService';
+import { ITranslationOptions, ITranslationService } from './ITranslationService';
+import { $Dictionary } from 'i18next/typescript/helpers';
 
 
 const i18nextGlobal: i18n.i18n = i18n.default;
@@ -55,16 +56,16 @@ export class I18NextService implements ITranslationService {
     this.i18next = i18nextInstance ?? i18nextGlobal;
   }
 
-  t(key: string | string[], options?: (i18n.TOptions & { defaultValue?: string | undefined; }) | undefined): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue?: string | undefined; })>;
-  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: (i18n.TOptions & { defaultValue: string; }) | undefined): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue: string; })>;
-  t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): i18n.DefaultTReturn<(i18n.TOptions & { defaultValue: string; })> {
+  t(key: string | string[], options?: ITranslationOptions | undefined): i18n.DefaultTReturn<ITranslationOptions>;
+  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: ITranslationOptions | undefined): i18n.DefaultTReturn<ITranslationOptions>;
+  t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): i18n.DefaultTReturn<ITranslationOptions> {
     const hasDefault = !!defaultValueOrOptions && typeof defaultValueOrOptions === 'string';
 
     this.i18next.t.bind(this.i18next);
     if (hasDefault) {
-      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as string, options as (i18n.TOptions & { defaultValue?: string | undefined; }));
+      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as string, options as ITranslationOptions);
     } else {
-      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as (i18n.TOptions & { defaultValue?: string | undefined; }));
+      return this.i18next.t(key as (string | string[]), defaultValueOrOptions as ITranslationOptions);
     }
   }
 
