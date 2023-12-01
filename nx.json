@@ -1,24 +1,7 @@
 {
-  "npmScope": "angular-i18next",
   "affected": {
     "defaultBase": "master"
   },
-  "implicitDependencies": {
-    "package.json": {
-      "dependencies": "*",
-      "devDependencies": "*"
-    },
-    ".eslintrc.json": "*"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx/tasks-runners/default",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"]
-      }
-    }
-  },
-
   "targetDependencies": {
     "build": [
       {
@@ -64,7 +47,8 @@
       "cache": true
     },
     "build": {
-      "cache": true
+      "cache": true,
+      "inputs": ["production", "^production"]
     },
     "e2e": {
       "cache": true
@@ -81,6 +65,14 @@
           "codeCoverage": true
         }
       }
+    },
+    "test": {
+      "cache": true
     }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
   }
 }
