@@ -5,7 +5,7 @@ import { $Dictionary as I18Next$Dictionary } from 'i18next/typescript/helpers';
 
 type Modify<T, R> = Omit<T, keyof R> & R;
 
-export type ITranslationOptions = i18n.TOptions & I18Next$Dictionary & { defaultValue?: string; };
+export type ITranslationOptions = i18n.TOptions<I18Next$Dictionary>  & { defaultValue?: string; };
 
 export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
@@ -29,12 +29,12 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
   t(
     key: string | string[],
     options?: ITranslationOptions,
-  ): i18n.DefaultTReturn<ITranslationOptions>;
+  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], ITranslationOptions>;
   t(
     key: string | string[],
     defaultValue: string,
     options?: ITranslationOptions
-  ): i18n.DefaultTReturn<ITranslationOptions>;
+  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], ITranslationOptions>;
 
   format: i18n.FormatFunction;
 

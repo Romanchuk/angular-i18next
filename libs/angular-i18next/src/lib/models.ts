@@ -6,6 +6,6 @@ export type PrependPipeOptions = {
   prependScope?: boolean;
   prependNamespace?: boolean;
 };
-export type PipeOptions = i18n.TOptionsBase & I18Next$Dictionary & { defaultValue?: string; } &
+export type PipeOptions = i18n.TOptions<I18Next$Dictionary> & { defaultValue?: string; } &
   FormatPipeOptions &
   PrependPipeOptions;
