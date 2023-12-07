@@ -1,3 +1,12 @@
+## [17.0.1](https://github.com/Romanchuk/angular-i18next/compare/v17.0.0...v17.0.1) (2023-12-07)
+
+
+### Bug Fixes
+
+* nx and jest setup ([0e6a61d](https://github.com/Romanchuk/angular-i18next/commit/0e6a61dd882f103b40bce38577fd7e7bcf44309a))
+
+
+
 # [17.0.0](https://github.com/Romanchuk/angular-i18next/compare/v17.0.0-1...v17.0.0) (2023-12-01)
 
 
