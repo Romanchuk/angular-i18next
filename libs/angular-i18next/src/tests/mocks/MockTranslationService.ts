@@ -35,7 +35,7 @@ export class MockI18NextService implements ITranslationService {
 
   t = jest.fn((key: string | string[],
     optionsOrDefault?: string | i18next.TOptions,
-    options?: i18next.TOptions): i18next.DefaultTReturn<(i18next.TOptions & { defaultValue: string; })> => {
+    options?: i18next.TOptions): i18next.TFunctionReturn<i18next.Namespace, string | string[], (i18next.TOptions & { defaultValue: string; })> => {
     if (key instanceof Array) {
       return key.length > 0 ? key[0] : '';
     }
