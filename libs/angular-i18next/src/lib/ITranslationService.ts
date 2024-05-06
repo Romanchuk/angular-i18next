@@ -26,15 +26,15 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
   init(options: i18n.InitOptions): Promise<I18NextLoadResult>;
 
-  t(
+  t<Options extends ITranslationOptions>(
     key: string | string[],
-    options?: ITranslationOptions,
-  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], ITranslationOptions>;
-  t(
+    options?: Options,
+  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], Options>;
+  t<Options extends ITranslationOptions>(
     key: string | string[],
     defaultValue: string,
-    options?: ITranslationOptions
-  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], ITranslationOptions>;
+    options?: Options
+  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], Options>;
 
   format: i18n.FormatFunction;
 
