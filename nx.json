@@ -1,8 +1,5 @@
 {
   "npmScope": "angular-i18next",
-  "affected": {
-    "defaultBase": "master"
-  },
   "implicitDependencies": {
     "package.json": {
       "dependencies": "*",
@@ -18,7 +15,6 @@
       }
     }
   },
-
   "targetDependencies": {
     "build": [
       {
@@ -59,10 +55,6 @@
   "defaultProject": "angular-i18next",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
-    "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
-      "cache": true
-    },
     "build": {
       "cache": true
     },
@@ -81,6 +73,12 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/eslint:lint": {
+      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
+      "cache": true
     }
-  }
+  },
+  "useInferencePlugins": false,
+  "defaultBase": "master"
 }

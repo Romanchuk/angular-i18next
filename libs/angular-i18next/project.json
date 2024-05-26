@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/angular-i18next/src",
+  "tags": [],
   "targets": {
     "test": {
       "executor": "@nx/jest:jest",
@@ -13,14 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "libs/angular-i18next/src/**/*.ts",
-          "libs/angular-i18next/src/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     }
-  },
-  "tags": []
+  }
 }

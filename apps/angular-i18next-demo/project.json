@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/angular-i18next-demo/src",
   "prefix": "angular-i18next",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -75,13 +76,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/eslint:lint",
-      "options": {
-        "lintFilePatterns": [
-          "apps/angular-i18next-demo/**/*.ts",
-          "apps/angular-i18next-demo/**/*.html"
-        ]
-      }
+      "executor": "@nx/eslint:lint"
     },
     "test": {
       "executor": "@nx/jest:jest",
@@ -131,6 +126,5 @@
       },
       "defaultConfiguration": "development"
     }
-  },
-  "tags": []
+  }
 }
