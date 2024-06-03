@@ -79,7 +79,7 @@
     "@types/node": "20.9.1",
     "@typescript-eslint/eslint-plugin": "7.11.0",
     "@typescript-eslint/parser": "7.11.0",
-    "angular-i18next": "~17.0.0",
+
     "conventional-changelog-cli": "^2.1.1",
     "conventional-github-releaser": "^3.1.5",
     "coveralls": "^3.1.0",
@@ -117,7 +117,7 @@
     "@angular/platform-server": "18.0.1",
     "@angular/router": "18.0.1",
     "@angular/ssr": "18.0.2",
-    "@protoarch.angular/validation-message": "~17.0.0",
+
     "i18next": "23.11.5",
     "i18next-browser-languagedetector": "~7.2.0",
     "i18next-chained-backend": "~4.6.2",
