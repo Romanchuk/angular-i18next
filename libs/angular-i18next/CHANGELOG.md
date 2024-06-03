@@ -1,3 +1,12 @@
+## [17.0.2](https://github.com/Romanchuk/angular-i18next/compare/v17.0.1...v17.0.2) (2024-06-03)
+
+
+### Bug Fixes
+
+* tests ([50c5f38](https://github.com/Romanchuk/angular-i18next/commit/50c5f38b122755d1a33fa0db0a59f7be201f26d3))
+
+
+
 ## [17.0.1](https://github.com/Romanchuk/angular-i18next/compare/v17.0.0...v17.0.1) (2023-12-07)
 
 
