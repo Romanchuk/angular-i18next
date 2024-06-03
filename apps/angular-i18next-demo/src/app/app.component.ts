@@ -4,9 +4,8 @@ import {
   Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router
 } from '@angular/router';
 import { I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
-import { filter, map, mergeMap } from 'rxjs/operators';
+import { filter, map, mergeMap, tap } from 'rxjs/operators';
 
-// import 'assets/ng-validation.css';
 
 @Component({
   selector: 'app',
@@ -17,9 +16,16 @@ export class AppComponent implements OnInit  {
 
   loading = true;
   start = 0;
+
+  get title() {
+    return this._title.getTitle();
+  }
+
   constructor(private router: Router,
-              private title: Title,
+              private _title: Title,
               @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
+
+
       // spinner/loader subscription
       router.events
         .subscribe((event: RouterEvent) => {
@@ -42,11 +48,18 @@ export class AppComponent implements OnInit  {
   }
 
   ngOnInit() {
-    this.i18NextService.events.languageChanged.subscribe(lang => {
+    this.i18NextService.events.languageChanged.subscribe(() => {
       const root = this.router.routerState.root;
       if (root != null && root.firstChild != null) {
-        const data: any = root.firstChild.data;
-        this.updatePageTitle(data && data.value && data.value.title);
+        const data = root.firstChild.data;
+        data
+          .pipe(
+            tap((data) => {
+              this.updatePageTitle(data && data['value'] && data['value'].title);
+            })
+          )
+          .subscribe();
+
       }
     });
   }
@@ -66,7 +79,7 @@ export class AppComponent implements OnInit  {
     updatePageTitle(title: string): void {
       const newTitle = title || 'application_title';
       console.log('Setting page title:', newTitle);
-      this.title.setTitle(newTitle);
+      this._title.setTitle(newTitle);
       console.log('Setting page title end:', newTitle);
     }
 }

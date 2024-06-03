@@ -1,14 +1,17 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { I18NextModule } from 'angular-i18next';
+import { I18N_PROVIDERS } from './app.module';
 
 describe('AppComponent', () => {
-  beforeEach(waitForAsync(() => {
+  beforeEach(waitForAsync(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [I18NextModule.forRoot(), RouterTestingModule],
+      providers: [I18N_PROVIDERS],
       declarations: [AppComponent],
     }).compileComponents();
-  });
+  }));
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

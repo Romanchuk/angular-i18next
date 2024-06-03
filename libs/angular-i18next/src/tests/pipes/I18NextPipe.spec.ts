@@ -6,7 +6,7 @@ import { I18N_PROVIDERS } from '../setup';
 
 describe('I18NextPipe tests', function () {
 
-  beforeEach(async () => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [I18NextModule.forRoot()],
       providers: [...I18N_PROVIDERS],
