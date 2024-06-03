@@ -76,6 +76,14 @@ describe('I18nService', () => {
     });
   });
 
+  it('should be able to return different types while setting returnObjects: true (no typechecking errors)', () => {
+    const service: ITranslationService = TestBed.inject(I18NEXT_SERVICE);
+    service.t('some.string') as string;
+    service.t('some.string', {
+      returnObjects: true
+    }) as string[];
+  });
+
   /*
   // does not work because language=cimode ignores default value
   // setting language to anything other than 'cimode' breaks the rest of the tests
