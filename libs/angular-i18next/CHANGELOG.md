@@ -1,3 +1,12 @@
+# [19.0.0](https://github.com/Romanchuk/angular-i18next/compare/v19.0.0-0...v19.0.0) (2025-01-11)
+
+
+### Bug Fixes
+
+* app ([b634439](https://github.com/Romanchuk/angular-i18next/commit/b63443967f5da8bb470c09871562d431a2af2cf3))
+
+
+
 # [19.0.0-0](https://github.com/Romanchuk/angular-i18next/compare/v18.0.0...v19.0.0-0) (2025-01-11)
 
 
