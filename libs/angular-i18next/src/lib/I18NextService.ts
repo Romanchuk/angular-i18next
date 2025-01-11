@@ -1,13 +1,11 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import * as i18n from 'i18next';
-
 import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_INSTANCE } from './I18NEXT_TOKENS';
 import { I18NextErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
 import { I18NextEvents } from './I18NextEvents';
 import { I18NextLoadResult } from './I18NextLoadResult';
 import { ITranslationEvents } from './ITranslationEvents';
 import { ITranslationOptions, ITranslationService } from './ITranslationService';
-import { $Dictionary } from 'i18next/typescript/helpers';
 
 
 const i18nextGlobal: i18n.i18n = i18n.default;

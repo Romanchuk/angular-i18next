@@ -7,6 +7,7 @@ import { FormatPipeOptions } from './models';
 @Injectable()
 @Pipe({
   name: 'i18nextFormat',
+  standalone: false
 })
 export class I18NextFormatPipe implements PipeTransform {
   constructor(

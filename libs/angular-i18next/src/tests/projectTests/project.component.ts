@@ -4,5 +4,6 @@ import { Component, ViewEncapsulation } from '@angular/core';
   selector: 'project-component',
   encapsulation: ViewEncapsulation.None,
   template: '<div>{{ "privet" | i18next }}</div>',
+  standalone: false
 })
 export class ProjectComponent {}

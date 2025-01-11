@@ -12,6 +12,7 @@ import { PipeOptions } from './models';
 @Injectable()
 @Pipe({
   name: 'i18nextCap',
+  standalone: false
 })
 export class I18NextCapPipe extends I18NextPipe implements PipeTransform {
   constructor(

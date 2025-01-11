@@ -20,6 +20,7 @@ import { PipeOptions } from './models';
 @Pipe({
   name: 'i18nextEager',
   pure: false,
+  standalone: false
 })
 export class I18NextEagerPipe
   extends I18NextPipe
@@ -36,7 +37,7 @@ export class I18NextEagerPipe
     @Inject(I18NEXT_NAMESPACE) protected override ns: string | string[],
     @Inject(I18NEXT_SCOPE) protected override scope: string | string[],
     private cd: ChangeDetectorRef,
-    private ngZone: NgZone  
+    private ngZone: NgZone
   ) {
     super(translateI18Next, ns, scope);
     translateI18Next.events.languageChanged

@@ -10,6 +10,7 @@ import { PipeOptions } from './models';
 @Injectable()
 @Pipe({
   name: 'i18next',
+  standalone: false
 })
 export class I18NextPipe implements PipeTransform {
   constructor(
