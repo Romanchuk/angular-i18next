@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { ITranslationService, I18NEXT_SERVICE } from 'angular-i18next';
 import { Component, ViewEncapsulation, Inject } from '@angular/core';
 
@@ -5,9 +6,7 @@ import { Component, ViewEncapsulation, Inject } from '@angular/core';
   selector: 'header-language',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './header.language.component.html',
-  styles: [`
-
-  `]
+  standalone: false
 })
 export class HeaderLanguageComponent {
 

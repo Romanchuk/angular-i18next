@@ -1,9 +1,11 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-error',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './app-error.component.html'
+  templateUrl: './app-error.component.html',
+  standalone: false
 })
 export class AppErrorComponent {
   public showed = false;

@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
@@ -10,7 +11,8 @@ import { filter, map, mergeMap, tap } from 'rxjs/operators';
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  standalone: false
 })
 export class AppComponent implements OnInit  {
 

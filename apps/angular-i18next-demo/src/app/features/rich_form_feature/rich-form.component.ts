@@ -1,13 +1,14 @@
-﻿import { Component, ViewEncapsulation } from '@angular/core';
+﻿/* eslint-disable @angular-eslint/prefer-standalone */
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
 import { ValidationDirtyChecker } from '../../../lib/validation/services/ValidationDirtyChecker';
 import { RichFormModel } from './rich-form.model';
 
 @Component({
   selector: 'rich-form',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './rich-form.component.html'
+  templateUrl: './rich-form.component.html',
+  standalone: false
 })
 export class RichFormComponent {
 

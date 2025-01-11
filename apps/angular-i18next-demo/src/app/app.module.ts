@@ -1,14 +1,11 @@
 import { isPlatformBrowser } from '@angular/common';
-import { APP_INITIALIZER, LOCALE_ID, NgModule, PLATFORM_ID, Provider } from '@angular/core';
+import { APP_ID, APP_INITIALIZER, LOCALE_ID, NgModule, PLATFORM_ID, Provider } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule, Title } from '@angular/platform-browser';
-
 import { I18NextValidationMessageModule } from '@protoarch.angular/validation-message/provider-i18next';
 import { I18NextLoadResult, I18NextModule, I18NextTitle, I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
-
 import LanguageDetector from 'i18next-browser-languagedetector';
 import HttpApi from 'i18next-http-backend';
-
 import { AppComponent } from './app.component';
 import { AccessDeniedComponent } from './content/access-denied/access-denied.component';
 import { SimpleDemoComponent } from './content/simple-demo.component';
@@ -71,7 +68,7 @@ export const I18N_PROVIDERS: Provider[] = [
     AccessDeniedComponent],
   imports: [ // import Angular's modules
     //core
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     FormsModule,
     //lib
     I18NextModule.forRoot({
@@ -82,6 +79,8 @@ export const I18N_PROVIDERS: Provider[] = [
     I18NextValidationMessageModule
   ],
   providers: [
+    BrowserModule,
+    { provide: APP_ID,  useValue: 'serverApp' },
     I18N_PROVIDERS
   ]
 })

@@ -4,9 +4,9 @@ import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { I18NextModule, I18NEXT_NAMESPACE } from 'angular-i18next';
 import { I18NextValidationMessageModule } from '@protoarch.angular/validation-message/provider-i18next';
 import { ValidationModule } from '../../../lib/validation/ValidationModule';
-// import { I18NextValidationMessageModule } from '../../provider-i18next';
 import { RichFormComponent } from './rich-form.component';
 import { RichFormFeatureRouterModule } from './RichFormFeatureRouterModule';
+import { ValidationMessageModule } from '@protoarch.angular/validation-message';
 
 
 export const declarations = [
@@ -35,8 +35,8 @@ export const providers = [
 
     //lib
     I18NextModule,
+
     ValidationModule,
-    // ValidationMessageModule
     I18NextValidationMessageModule,
   ]
 })

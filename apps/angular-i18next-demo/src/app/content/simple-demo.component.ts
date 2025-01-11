@@ -1,9 +1,11 @@
-﻿import { Component, ViewEncapsulation, Input  } from '@angular/core';
+﻿/* eslint-disable @angular-eslint/prefer-standalone */
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'simple-demo',
   encapsulation: ViewEncapsulation.None,
-  templateUrl: './simple-demo.component.html'
+  templateUrl: './simple-demo.component.html',
+  standalone: false
 })
 export class SimpleDemoComponent {
   value: Number = 15;

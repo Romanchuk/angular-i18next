@@ -1,7 +1,7 @@
 import 'zone.js/node';
 
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr';
+import { CommonEngine } from '@angular/ssr/node';
 import * as express from 'express';
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
@@ -35,12 +35,10 @@ export async function app(): Promise<express.Express> {
         }]
       }
   })
-  server.use(
-    middleware.handle(i18next, {
-      // ignoreRoutes: ['/foo'] // or function(req, res, options, i18next) { /* return true to ignore */ }
-    })
-  )
-  const distFolder = join(process.cwd(), 'dist/angular-i18next-demo/browser');
+
+  const handler = middleware.handle(i18next) as any;
+  server.use(handler);
+   const distFolder = join(process.cwd(), 'dist/angular-i18next-demo/browser');
   const indexHtml = existsSync(join(distFolder, 'index.original.html'))
     ? join(distFolder, 'index.original.html')
     : join(distFolder, 'index.html');

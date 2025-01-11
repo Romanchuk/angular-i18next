@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 /* eslint-disable @angular-eslint/no-host-metadata-property */
 import { Directive } from '@angular/core';
 import { NgControl } from '@angular/forms';
@@ -9,7 +10,8 @@ import { NgControl } from '@angular/forms';
         '(blur)': 'onBlur($event)',
         '(keyup)': 'onKeyup($event)',
         '(change)': 'onChange($event)'
-    }
+    },
+    standalone: false
 })
 // cache and remove validation on focus, and restore on blur
 export class ValidationOnBlurDirective {
