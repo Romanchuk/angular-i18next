@@ -1,5 +1,4 @@
-import { getJestProjects } from '@nx/jest';
 
 export default {
-  projects: getJestProjects(),
+  projects: ['./libs/*/jest.config.ts'],
 };
