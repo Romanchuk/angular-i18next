@@ -1,4 +1,4 @@
-import { defaultInterpolationFormat, I18NextModule } from "angular-i18next";
+import {  I18NextModule, defaultInterpolationFormat } from "angular-i18next";
 
 import * as i18n from 'i18next';
 import { HttpBackendOptions } from "i18next-http-backend";

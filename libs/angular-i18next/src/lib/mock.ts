@@ -1,8 +1,12 @@
 import { Injectable } from '@angular/core';
 import { jest } from '@jest/globals';
 import * as i18next from 'i18next';
-import { Callback, FormatFunction, i18n, InterpolationOptions, TFunction } from 'i18next';
-import { defaultInterpolationFormat, I18NextEvents, I18NextLoadResult, ITranslationEvents, ITranslationService } from '../../lib';
+import type { Callback, FormatFunction, i18n, InterpolationOptions, TFunction } from 'i18next';
+import { defaultInterpolationFormat } from './interpolation';
+import { ITranslationService } from './ITranslationService';
+import { ITranslationEvents } from './ITranslationEvents';
+import { I18NextEvents } from './I18NextEvents';
+import { I18NextLoadResult } from './I18NextLoadResult';
 
 
 @Injectable()
@@ -48,7 +52,6 @@ export class MockI18NextService implements ITranslationService {
     lng?: string,
     options?: InterpolationOptions & { [key: string]: any },
   ) => defaultInterpolationFormat(value, format, lng));
-
 
   getFixedT(lng: string | readonly string[], ns?: string | readonly string[], keyPrefix?: string): TFunction;
   getFixedT(lng: null, ns: string | readonly string[] | null, keyPrefix?: string): TFunction;
@@ -136,21 +139,15 @@ export class MockI18NextService implements ITranslationService {
     return true;
   }
 
-
-
   setDefaultNamespace(ns: string) {}
 
   dir(lng: string) {
     return 'ltr';
   }
 
-
-
   getResource(lng: any, ns: any, key: any, options: any) {
     return null;
   }
-
-
 
   hasResourceBundle(lng: any, ns: any) {
     return true;
@@ -159,6 +156,4 @@ export class MockI18NextService implements ITranslationService {
   getResourceBundle(lng: any, ns: any) {
     return null;
   }
-
-
 }

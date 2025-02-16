@@ -9,3 +9,8 @@ export type PrependPipeOptions = {
 export type PipeOptions = i18n.TOptions<I18Next$Dictionary> & { defaultValue?: string; } &
   FormatPipeOptions &
   PrependPipeOptions;
+
+export type NamespaceResolver = (
+  activatedRouteSnapshot: any,
+  routerStateSnapshot?: any
+) => Promise<void>

@@ -7,10 +7,11 @@ import {
 } from './I18NEXT_TOKENS';
 import { ITranslationService } from './ITranslationService';
 import { PipeOptions } from './models';
+
 @Injectable()
 @Pipe({
   name: 'i18next',
-  standalone: false
+  standalone: true
 })
 export class I18NextPipe implements PipeTransform {
   constructor(

@@ -20,7 +20,7 @@ import { PipeOptions } from './models';
 @Pipe({
   name: 'i18nextEager',
   pure: false,
-  standalone: false
+  standalone: true
 })
 export class I18NextEagerPipe
   extends I18NextPipe

@@ -2,11 +2,7 @@ import * as i18n from 'i18next'
 import { InjectionToken } from '@angular/core';
 import { I18NextErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
 import { ITranslationService } from './ITranslationService';
-
-export type NamespaceResolver = (
-  activatedRouteSnapshot: any,
-  routerStateSnapshot?: any
-) => Promise<void>
+import { NamespaceResolver } from './models';
 
 export const I18NEXT_SCOPE = new InjectionToken<string | string[]>(
   'I18NEXT_SCOPE'
