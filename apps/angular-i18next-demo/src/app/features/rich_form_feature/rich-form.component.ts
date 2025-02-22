@@ -6,13 +6,14 @@ import { RichFormModel } from './rich-form.model';
 import { I18NextCapPipe } from "angular-i18next";
 import { I18NextPipe } from "angular-i18next";
 import { I18NextEagerPipe } from "angular-i18next";
+import { ValidationModule } from '../../../lib/validation/ValidationModule';
 
 @Component({
   selector: 'rich-form',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './rich-form.component.html',
   standalone: true,
-  imports: [I18NextCapPipe, I18NextPipe, I18NextEagerPipe, ReactiveFormsModule]
+  imports: [I18NextCapPipe, I18NextPipe, I18NextEagerPipe, ReactiveFormsModule, ValidationModule]
 })
 export class RichFormComponent {
 

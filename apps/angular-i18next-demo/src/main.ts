@@ -1,10 +1,10 @@
 import { isPlatformBrowser } from '@angular/common';
-import { APP_ID, enableProdMode, importProvidersFrom, inject, PLATFORM_ID, provideAppInitializer } from '@angular/core';
+import { APP_ID, enableProdMode, importProvidersFrom, inject, PLATFORM_ID, provideAppInitializer, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { bootstrapApplication, BrowserModule } from '@angular/platform-browser';
 import { I18NEXT_SERVICE, I18NextLoadResult, provideI18Next, withTitle } from 'angular-i18next';
 import HttpApi from 'i18next-http-backend';
-import { LanguageDetector } from 'i18next-http-middleware';
+import LanguageDetector  from 'i18next-browser-languagedetector';
 import { AppComponent } from './app/app.component';
 import i18nextOptions from './app/i18next.options';
 import { AppRouterModule } from './app/routing/AppRouterModule';
@@ -34,6 +34,7 @@ if (environment.production) {
 function bootstrap() {
   bootstrapApplication(AppComponent, {
     providers: [
+      provideExperimentalZonelessChangeDetection(),
       importProvidersFrom(
         BrowserModule,
         FormsModule,

@@ -1,11 +1,13 @@
 <div class="app-wrapper">
-  <div class="app-loader" *ngIf="loading">
+  @if (loading) {
+  <div class="app-loader">
       <div class="loader-pusher">
           <div class="spinner">
               <div class="spinner-tail"></div>
           </div>
       </div>
   </div>
+  }
   <app-header></app-header>
   <main>
       <div class="app-body">

@@ -1,5 +1,5 @@
 
-import { Component, Inject, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, Inject, ViewEncapsulation, OnInit, signal } from '@angular/core';
 import { I18NEXT_SERVICE, I18NextCapPipe, ITranslationService } from 'angular-i18next';
 
 @Component({
@@ -11,7 +11,7 @@ import { I18NEXT_SERVICE, I18NextCapPipe, ITranslationService } from 'angular-i1
 })
 export class HeaderLanguageComponent implements OnInit {
 
-  language = 'ru';
+  currentLanguage = signal('ru');
   languages: string[] = ['ru', 'en'];
 
   constructor(
@@ -31,13 +31,13 @@ export class HeaderLanguageComponent implements OnInit {
     if (lang !== this.i18NextService.language) {
       this.i18NextService.changeLanguage(lang).then(() => {
         this.updateState(lang);
-        document.location.reload();
+        // document.location.reload();
       });
     }
   }
 
   private updateState(lang: string) {
-    this.language = lang;
+    this.currentLanguage.set(lang);
   }
 
 }
