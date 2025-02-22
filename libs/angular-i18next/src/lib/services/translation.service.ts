@@ -1,6 +1,6 @@
 import * as i18n from 'i18next';
-import { I18NextLoadResult } from './I18NextLoadResult';
-import { ITranslationEvents } from './ITranslationEvents';
+import { I18NextLoadResult } from '../I18NextLoadResult';
+import { ITranslationEvents } from './translation.events';
 import { $Dictionary as I18Next$Dictionary } from 'i18next/typescript/helpers';
 
 type Modify<T, R> = Omit<T, keyof R> & R;

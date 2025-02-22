@@ -1,14 +1,10 @@
-import { LOCALE_ID, inject, provideAppInitializer } from '@angular/core';
+import { provideI18NextMockAppInitializer, withMock } from '../lib/testing/src/public_api';
 import {
-  I18NEXT_SERVICE,
-  I18NextLoadResult,
-  interpolationFormat,
   provideI18Next,
-  provideI18NextMockAppInitializer,
-  withMock
+
 } from '../lib';
 
-export const I18N_PROVIDERS = [
+export const MOCK_I18N_PROVIDERS = [
+  provideI18NextMockAppInitializer(),
   provideI18Next(withMock()),
-  provideI18NextMockAppInitializer()
 ];

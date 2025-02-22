@@ -1,14 +1,14 @@
 import { NgModule, ModuleWithProviders } from "@angular/core";
 import { FormatFunction, InterpolationOptions } from "i18next";
-import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_INSTANCE, I18NEXT_SERVICE, I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_NAMESPACE_RESOLVER } from "./I18NEXT_TOKENS";
-import { I18NextCapPipe } from "./I18NextCapPipe";
-import { I18NextEagerPipe } from "./I18NextEagerPipe";
+import { I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_INSTANCE, I18NEXT_SERVICE, I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_NAMESPACE_RESOLVER } from "./tokens";
+import { I18NextCapPipe } from "./pipes/i18next-cap.pipe";
+import { I18NextEagerPipe } from "./pipes/i18next-eager.pipe";
 import { I18NextErrorHandlingStrategy, NativeErrorHandlingStrategy } from "./I18NextErrorHandlingStrategies";
-import { I18NextFormatPipe } from "./I18NextFormatPipe";
+import { I18NextFormatPipe } from "./pipes/i18next-format.pipe";
 import { I18NextModuleParams } from "./I18NextModuleParams";
-import { I18NextPipe } from "./I18NextPipe";
-import { I18NextService } from "./I18NextService";
-import { I18NextTitle } from "./I18NextTitle";
+import { I18NextPipe } from "./pipes/i18next.pipe";
+import { I18NextService } from "./services/i18next.service";
+import { I18NextTitle } from "./services/i18next-title";
 import { defaultInterpolationFormat } from "./interpolation";
 import * as i18n from 'i18next';
 import { i18nextNamespaceResolverFactory } from "./namespace.resolver";
@@ -76,6 +76,9 @@ export class I18NextModule {
           useClass: params.errorHandlingStrategy || NativeErrorHandlingStrategy,
         },
         I18NextService,
+        I18NextPipe,
+        I18NextEagerPipe,
+        I18NextCapPipe,
         I18NextFormatPipe,
         I18NextTitle,
         {

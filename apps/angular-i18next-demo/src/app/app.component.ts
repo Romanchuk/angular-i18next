@@ -1,18 +1,22 @@
-/* eslint-disable @angular-eslint/prefer-standalone */
+
 import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
-  Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router
+  Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router,
+  RouterOutlet
 } from '@angular/router';
-import { I18NEXT_SERVICE, ITranslationService } from 'angular-i18next';
+import { I18NEXT_SERVICE, I18NextPipe, ITranslationService } from 'angular-i18next';
 import { filter, map, mergeMap, tap } from 'rxjs/operators';
+import { AppHeaderComponent } from "./structure/app-header.component";
+import { AppFooterComponent } from "./structure/app-footer.component";
 
 
 @Component({
   selector: 'app',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
-  standalone: false
+  standalone: true,
+  imports: [I18NextPipe, AppHeaderComponent, AppFooterComponent, RouterOutlet],
 })
 export class AppComponent implements OnInit  {
 

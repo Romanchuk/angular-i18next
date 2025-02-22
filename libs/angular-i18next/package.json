@@ -52,13 +52,18 @@
     "tslib": "^2.8.1"
   },
   "peerDependencies": {
-    "@angular/common": "^19.0.0",
-    "@angular/core": "^19.0.0",
-    "@angular/platform-browser": "^19.0.0",
+    "@angular/common": "^19.1.7",
+    "@angular/core": "^19.1.7",
+    "@angular/platform-browser": "^19.1.7",
     "i18next": "^24.2.1",
     "rxjs": ">=7.8.1 <8.0.0"
   },
+  "optionalDependencies": {
+    "@angular/ssr": "^19.1.8",
+    "@angular/platform-server": "^19.1.7",
+    "express": "*"
+  },
   "devDependencies": {
-    "@angular/platform-browser-dynamic": "^19.0.0"
+    "@angular/platform-browser-dynamic": "^19.1.7"
   }
 }

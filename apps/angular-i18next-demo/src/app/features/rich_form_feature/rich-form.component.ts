@@ -1,14 +1,18 @@
-﻿/* eslint-disable @angular-eslint/prefer-standalone */
+﻿
 import { Component, ViewEncapsulation } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ValidationDirtyChecker } from '../../../lib/validation/services/ValidationDirtyChecker';
 import { RichFormModel } from './rich-form.model';
+import { I18NextCapPipe } from "angular-i18next";
+import { I18NextPipe } from "angular-i18next";
+import { I18NextEagerPipe } from "angular-i18next";
 
 @Component({
   selector: 'rich-form',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './rich-form.component.html',
-  standalone: false
+  standalone: true,
+  imports: [I18NextCapPipe, I18NextPipe, I18NextEagerPipe, ReactiveFormsModule]
 })
 export class RichFormComponent {
 

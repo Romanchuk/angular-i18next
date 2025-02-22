@@ -1,7 +1,7 @@
 import * as i18n from 'i18next'
 import { InjectionToken } from '@angular/core';
 import { I18NextErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
-import { ITranslationService } from './ITranslationService';
+import { ITranslationService } from './services/translation.service';
 import { NamespaceResolver } from './models';
 
 export const I18NEXT_SCOPE = new InjectionToken<string | string[]>(

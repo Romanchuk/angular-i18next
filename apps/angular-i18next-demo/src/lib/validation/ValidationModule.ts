@@ -4,13 +4,13 @@ import { ValidationOnBlurDirective } from './directives/ValidationOnBlurDirectiv
 import { ValidationDirtyChecker } from './services/ValidationDirtyChecker';
 
 
-export const declarations = [
+export const imports = [
   ValidationOnBlurDirective
 ];
 
 @NgModule({
-  declarations: declarations,
-  exports: declarations,
+  imports,
+  exports: imports,
   providers: [
     ValidationDirtyChecker
   ]

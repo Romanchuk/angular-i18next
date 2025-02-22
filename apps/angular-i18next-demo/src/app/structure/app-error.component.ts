@@ -1,11 +1,13 @@
-/* eslint-disable @angular-eslint/prefer-standalone */
+
 import { Component, ViewEncapsulation } from '@angular/core';
+import { I18NextPipe } from 'angular-i18next';
 
 @Component({
   selector: 'app-error',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app-error.component.html',
-  standalone: false
+  standalone: true,
+  imports: [I18NextPipe]
 })
 export class AppErrorComponent {
   public showed = false;

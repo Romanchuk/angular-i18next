@@ -1,41 +1,56 @@
 import {
+  ɵDEFAULT_LOCALE_ID as DEFAULT_LOCALE_ID,
   EnvironmentProviders,
   inject,
   LOCALE_ID,
   makeEnvironmentProviders,
-  provideAppInitializer,
   Provider,
-  Type,
+  Type
 } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import * as i18n from 'i18next';
-import {
-  I18NEXT_ERROR_HANDLING_STRATEGY,
-  I18NEXT_INSTANCE,
-  I18NEXT_NAMESPACE_RESOLVER,
-  I18NEXT_SERVICE,
-} from './I18NEXT_TOKENS';
-import { I18NextCapPipe } from './I18NextCapPipe';
-import { I18NextEagerPipe } from './I18NextEagerPipe';
 import {
   I18NextErrorHandlingStrategy,
   NativeErrorHandlingStrategy,
 } from './I18NextErrorHandlingStrategies';
-import { I18NextFormatPipe } from './I18NextFormatPipe';
-import { I18NextLoadResult } from './I18NextLoadResult';
-import { I18NextPipe } from './I18NextPipe';
-import { I18NextService } from './I18NextService';
-import { I18NextTitle } from './I18NextTitle';
-import { interpolationFormat } from './interpolation';
-import { MockI18NextService } from './mock';
 import { i18nextNamespaceResolverFactory } from './namespace.resolver';
+import { I18NextCapPipe } from './pipes/i18next-cap.pipe';
+import { I18NextEagerPipe } from './pipes/i18next-eager.pipe';
+import { I18NextFormatPipe } from './pipes/i18next-format.pipe';
+import { I18NextPipe } from './pipes/i18next.pipe';
+import { I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from './provider.utils';
+import { I18NextTitle } from './services/i18next-title';
+import { I18NextService } from './services/i18next.service';
+import {
+  I18NEXT_ERROR_HANDLING_STRATEGY,
+  I18NEXT_INSTANCE,
+  I18NEXT_NAMESPACE,
+  I18NEXT_NAMESPACE_RESOLVER,
+  I18NEXT_SCOPE,
+  I18NEXT_SERVICE,
+} from './tokens';
 
 const i18nextGlobal: i18n.i18n = i18n.default;
 
 export function localeIdFactory() {
   const i18next = inject(I18NEXT_SERVICE);
-  return i18next.language;
+  return i18next.language ?? DEFAULT_LOCALE_ID;
 }
 
+  /**
+   * Provides the necessary dependencies for using i18next with Angular.
+   *
+   * @param features An array of features to enable. See {@link I18NextFeature} for available features.
+   * @returns An array of providers that can be added to the root providers.
+   *
+   * @example
+   * import { provideI18Next } from '@angular-i18next/core';
+   *
+   *   providers: [
+   *     provideI18Next(),
+   *   ],
+   *
+   */
 export function provideI18Next(
   ...features: I18NextFeature<I18NextFeatureKind>[]
 ): EnvironmentProviders {
@@ -53,23 +68,31 @@ export function provideI18Next(
       deps: [I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_INSTANCE],
     },
     {
+      provide: I18NEXT_NAMESPACE,
+      useValue: '',
+    },
+    {
+      provide: I18NEXT_SCOPE,
+      useValue: '',
+    },
+    {
       provide: I18NEXT_ERROR_HANDLING_STRATEGY,
       useClass: NativeErrorHandlingStrategy,
     },
-    I18NextService,
     {
       provide: I18NEXT_NAMESPACE_RESOLVER,
       useFactory: i18nextNamespaceResolverFactory,
       deps: [I18NEXT_SERVICE],
     },
-    I18NextPipe,
-    I18NextEagerPipe,
-    I18NextCapPipe,
-    I18NextFormatPipe,
     {
       provide: LOCALE_ID,
       useFactory: localeIdFactory,
     },
+    I18NextService,
+    I18NextPipe,
+    I18NextEagerPipe,
+    I18NextCapPipe,
+    I18NextFormatPipe,
   ];
 
   for (const feature of features) {
@@ -80,40 +103,25 @@ export function provideI18Next(
 }
 
 /**
- * A feature for use when configuring `provideI18Next`.
+ * Configures a custom error handling strategy for i18next.
  *
- * @publicApi
- */
-export interface I18NextFeature<KindT extends I18NextFeatureKind> {
-  ɵkind: KindT;
-  ɵproviders: Provider[];
-}
-
-function makeHttpFeature<KindT extends I18NextFeatureKind>(
-  kind: KindT,
-  providers: Provider[],
-): I18NextFeature<KindT> {
-  return {
-    ɵkind: kind,
-    ɵproviders: providers,
-  };
-}
-
-/**
- * Identifies a particular kind of `HttpFeature`.
+ * @param errorHandlingStrategy - A class implementing the I18NextErrorHandlingStrategy interface.
+ * @returns An I18NextFeature for the specified custom error handling strategy.
  *
- * @publicApi
+ * This feature allows the integration of a custom error handling mechanism
+ * into the i18next setup, replacing the default error handling strategy.
+ *
+ *  * Example:
+ * ```typescript
+ *    providers: [
+ *       provideI18Next(withCustomErrorHandlingStrategy(StrictErrorHandlingStrategy)())
+ *    ]
+ * ```
  */
-export enum I18NextFeatureKind {
-  CustomErrorHandlingStrategy,
-  Mock,
-  Title,
-}
-
 export function withCustomErrorHandlingStrategy(
   errorHandlingStrategy: Type<I18NextErrorHandlingStrategy>,
 ): I18NextFeature<I18NextFeatureKind.CustomErrorHandlingStrategy> {
-  return makeHttpFeature(I18NextFeatureKind.CustomErrorHandlingStrategy, [
+  return makeI18NextFeature(I18NextFeatureKind.CustomErrorHandlingStrategy, [
     {
       provide: I18NEXT_ERROR_HANDLING_STRATEGY,
       useClass: errorHandlingStrategy,
@@ -122,49 +130,10 @@ export function withCustomErrorHandlingStrategy(
 }
 
 /**
- * Initializes i18next with mock settings for testing
- */
-export function mockAppInit() {
-  const i18next = inject(I18NEXT_SERVICE);
-  let promise: Promise<I18NextLoadResult> = i18next.init({
-    lng: 'cimode',
-    interpolation: {
-      format: interpolationFormat(),
-    },
-  });
-  return promise;
-}
-
-export const provideI18NextMockAppInitializer = () =>
-  provideAppInitializer(mockAppInit);
-
-/**
- * Provides a mock implementation of I18NEXT_SERVICE for testing purposes.
- * Also initializes i18next with mock settings.
- *
- * @returns An I18NextFeature that configures the service to use MockI18NextService
- *
- * Example:
- * ```typescript
- * providers: [
- *   provideI18Next(withMock())
- * ]
- * ```
- */
-export function withMock(): I18NextFeature<I18NextFeatureKind.Mock> {
-  return makeHttpFeature(I18NextFeatureKind.Mock, [
-    {
-      provide: I18NEXT_SERVICE,
-      useClass: MockI18NextService,
-    },
-  ]);
-}
-
-/**
  * Provides I18NextTitle service for document title translation support.
- * 
+ *
  * @returns An I18NextFeature that configures the I18NextTitle service
- * 
+ *
  * Example:
  * ```typescript
  * providers: [
@@ -173,7 +142,10 @@ export function withMock(): I18NextFeature<I18NextFeatureKind.Mock> {
  * ```
  */
 export function withTitle(): I18NextFeature<I18NextFeatureKind.Title> {
-  return makeHttpFeature(I18NextFeatureKind.Title, [
-    I18NextTitle
+  return makeI18NextFeature(I18NextFeatureKind.Title, [
+    {
+        provide: Title,
+        useClass: I18NextTitle
+    }
   ]);
 }

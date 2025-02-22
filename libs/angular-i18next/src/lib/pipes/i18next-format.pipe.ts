@@ -1,8 +1,8 @@
 import { Inject, Injectable, Pipe, PipeTransform } from '@angular/core';
 
-import { I18NEXT_SERVICE } from './I18NEXT_TOKENS';
-import { ITranslationService } from './ITranslationService';
-import { FormatPipeOptions } from './models';
+import { I18NEXT_SERVICE } from '../tokens';
+import { ITranslationService } from '../services/translation.service';
+import { FormatPipeOptions } from '../models';
 
 @Injectable()
 @Pipe({

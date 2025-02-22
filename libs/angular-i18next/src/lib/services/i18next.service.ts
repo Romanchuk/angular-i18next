@@ -1,11 +1,11 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import * as i18n from 'i18next';
-import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_INSTANCE } from './I18NEXT_TOKENS';
-import { I18NextErrorHandlingStrategy } from './I18NextErrorHandlingStrategies';
-import { I18NextEvents } from './I18NextEvents';
-import { I18NextLoadResult } from './I18NextLoadResult';
-import { ITranslationEvents } from './ITranslationEvents';
-import { ITranslationOptions, ITranslationService } from './ITranslationService';
+import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_INSTANCE } from '../tokens';
+import { I18NextErrorHandlingStrategy } from '../I18NextErrorHandlingStrategies';
+import { I18NextEvents } from '../I18NextEvents';
+import { I18NextLoadResult } from '../I18NextLoadResult';
+import { ITranslationEvents } from './translation.events';
+import { ITranslationOptions, ITranslationService } from './translation.service';
 
 
 const i18nextGlobal: i18n.i18n = i18n.default;
@@ -86,9 +86,6 @@ export class I18NextService implements ITranslationService {
       );
     });
   }
-
-
-
 
   public format(value: any, format?: string, lng?: string): string {
     return this.i18next.format.call(this.i18next, value, format, lng, {});

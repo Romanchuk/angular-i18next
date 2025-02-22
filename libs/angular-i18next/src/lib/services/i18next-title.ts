@@ -1,7 +1,7 @@
 import { DOCUMENT } from '@angular/common';
 import { Inject, Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { I18NextPipe } from './I18NextPipe';
+import { I18NextPipe } from '../pipes/i18next.pipe';
 
 @Injectable()
 export class I18NextTitle extends Title {

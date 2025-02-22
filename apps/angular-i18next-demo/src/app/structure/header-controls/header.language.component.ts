@@ -1,14 +1,15 @@
-/* eslint-disable @angular-eslint/prefer-standalone */
-import { ITranslationService, I18NEXT_SERVICE } from 'angular-i18next';
-import { Component, ViewEncapsulation, Inject } from '@angular/core';
+
+import { Component, Inject, ViewEncapsulation, OnInit } from '@angular/core';
+import { I18NEXT_SERVICE, I18NextCapPipe, ITranslationService } from 'angular-i18next';
 
 @Component({
   selector: 'header-language',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './header.language.component.html',
-  standalone: false
+  standalone: true,
+  imports: [I18NextCapPipe]
 })
-export class HeaderLanguageComponent {
+export class HeaderLanguageComponent implements OnInit {
 
   language = 'ru';
   languages: string[] = ['ru', 'en'];
@@ -28,7 +29,7 @@ export class HeaderLanguageComponent {
 
   changeLanguage(lang: string){
     if (lang !== this.i18NextService.language) {
-      this.i18NextService.changeLanguage(lang).then(x => {
+      this.i18NextService.changeLanguage(lang).then(() => {
         this.updateState(lang);
         document.location.reload();
       });

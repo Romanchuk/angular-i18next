@@ -1,15 +1,15 @@
 import { ApplicationInitStatus } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { I18NextCapPipe, I18NextModule, I18NextPipe, I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE, ITranslationService } from '../../lib';
-import { I18N_PROVIDERS } from '../setup';
+import { MOCK_I18N_PROVIDERS } from '../setup';
 
 
 describe('I18NextPipe tests', function () {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [I18NextModule.forRoot()],
-      providers: [...I18N_PROVIDERS],
+      imports: [I18NextPipe],
+      providers: [...MOCK_I18N_PROVIDERS],
     });
 
   });

@@ -4,9 +4,9 @@ import {
   I18NEXT_NAMESPACE,
   I18NEXT_SCOPE,
   I18NEXT_SERVICE
-} from './I18NEXT_TOKENS';
-import { ITranslationService } from './ITranslationService';
-import { PipeOptions } from './models';
+} from '../tokens';
+import { ITranslationService } from '../services/translation.service';
+import { PipeOptions } from '../models';
 
 @Injectable()
 @Pipe({

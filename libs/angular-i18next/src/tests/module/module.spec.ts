@@ -93,12 +93,15 @@ describe('I18NextModule', () => {
   it('should provide resolver', (done) => {
     let resolver =  TestBed.inject(I18NEXT_NAMESPACE_RESOLVER);
     expect(resolver).toBeTruthy();
-    resolver({
-      data: {
-        i18nextNamespaces: [],
-      },
-    }).then(() => {
-      done();
+
+    TestBed.runInInjectionContext(() => {
+      resolver({
+        data: {
+          i18nextNamespaces: [],
+        },
+      }).then(() => {
+        done();
+      });
     });
   });
 });

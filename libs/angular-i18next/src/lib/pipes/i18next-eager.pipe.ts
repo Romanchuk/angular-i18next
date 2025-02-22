@@ -6,21 +6,21 @@ import {
   Pipe,
   PipeTransform,
 } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
 import {
   I18NEXT_NAMESPACE,
   I18NEXT_SCOPE,
   I18NEXT_SERVICE,
-} from './I18NEXT_TOKENS';
-import { I18NextPipe } from './I18NextPipe';
-import { ITranslationService } from './ITranslationService';
-import { PipeOptions } from './models';
+} from '../tokens';
+import { I18NextPipe } from './i18next.pipe';
+import { ITranslationService } from '../services/translation.service';
+import { PipeOptions } from '../models';
 
 @Pipe({
   name: 'i18nextEager',
   pure: false,
-  standalone: true
+  standalone: true,
 })
 export class I18NextEagerPipe
   extends I18NextPipe
@@ -41,7 +41,7 @@ export class I18NextEagerPipe
   ) {
     super(translateI18Next, ns, scope);
     translateI18Next.events.languageChanged
-      .pipe(takeUntil(this.ngUnsubscribe))
+      .pipe(takeUntilDestroyed())
       .subscribe(() => {
         this.ngZone.run(() => this.cd.markForCheck());
       });

@@ -1,14 +1,12 @@
 import { TestBed } from "@angular/core/testing";
-import { I18NextModule } from "../../lib";
-import { I18N_PROVIDERS } from "../setup";
-import { ProjectTestModule } from './projectTests.module';
+import { MOCK_I18N_PROVIDERS } from "../setup";
 import { ProjectComponent } from './project.component';
 
 describe('Project component tests', function () {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [I18NextModule.forRoot(), ProjectTestModule],
-      providers: [I18N_PROVIDERS],
+      imports: [ProjectComponent],
+      providers: [MOCK_I18N_PROVIDERS],
     });
   });
 
@@ -18,4 +16,3 @@ describe('Project component tests', function () {
     pc.detectChanges();
   });
 });
-
