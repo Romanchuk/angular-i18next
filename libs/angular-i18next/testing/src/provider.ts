@@ -1,6 +1,5 @@
 import { inject, provideAppInitializer } from '@angular/core';
-import { I18NEXT_SERVICE, I18NextLoadResult, interpolationFormat } from '../../src/lib';
-import { I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from '../../src/lib/provider.utils';
+import { I18NEXT_SERVICE, I18NextFeature, I18NextFeatureKind, I18NextLoadResult, interpolationFormat, makeI18NextFeature } from 'angular-i18next';
 import { MockI18NextService } from './mock.service';
 
 /**

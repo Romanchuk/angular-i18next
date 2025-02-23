@@ -10,6 +10,7 @@ export * from './pipes/i18next-eager.pipe';
 export * from './pipes/i18next-format.pipe';
 export * from './pipes/i18next.pipe';
 export * from './provider';
+export * from './provider.utils';
 export * from './services/i18next-title';
 export * from './services/i18next.service';
 export * from './services/translation.events';

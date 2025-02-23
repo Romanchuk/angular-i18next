@@ -4,6 +4,13 @@
   "projectType": "library",
   "sourceRoot": "libs/angular-i18next/src",
   "targets": {
+    "build": {
+      "executor": "@nx/angular:package",
+      "options": {
+        "project": "libs/angular-i18next/ng-package.json",
+        "tsConfig": "libs/angular-i18next/tsconfig.lib.json"
+      }
+    },
     "test": {
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/angular-i18next"],

@@ -35,18 +35,17 @@
     }
   ],
   "scripts": {
-    "build": "npm exec -- ng-packagr -p ng-package.json --config tsconfig.lib.json",
     "clean": "npm run clean:build && npm run clean:tests",
     "clean:build": "npm run rimraf -- dist build",
     "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- tests/**/*.+{js,js.map,d.ts,metadata.json}",
-    "copy:assets": "npm exec -- cpy -- CHANGELOG.md dist",
-    "conventional-changelog": "conventional-changelog",
+    "copy:assets": "npx cpy -- CHANGELOG.md dist",
+    "conventional-changelog": "npx conventional-changelog",
     "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "changelog:add": "git add --force CHANGELOG.md package.json",
     "changelog:commit": "git commit -m \"Updated CHANGELOG.md\"",
-    "version": "npm exec -- conventional-changelog -p angular -i CHANGELOG.md -s -r && npm run build && npm run copy:assets && npm run changelog:add && npm run changelog:commit",
-    "release": "npm exec -- np",
-    "test": "npm exec -- nx test angular-i18next"
+    "version": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r && npx nx run angular-i18next:build && npm run copy:assets && npm run changelog:add && npm run changelog:commit",
+    "release": "npx np",
+    "test": "npx nx run angular-i18next:test"
   },
   "dependencies": {
     "tslib": "^2.8.1"
