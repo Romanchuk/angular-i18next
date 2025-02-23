@@ -13,7 +13,6 @@
         "browser": "apps/angular-i18next-demo/src/main.ts",
         "outputPath": "dist/angular-i18next-demo",
         "index": "apps/angular-i18next-demo/src/index.html",
-        "polyfills": ["apps/angular-i18next-demo/src/polyfills.ts"],
         "tsConfig": "apps/angular-i18next-demo/tsconfig.app.json",
         "assets": [
           "apps/angular-i18next-demo/src/assets/favicon.png",

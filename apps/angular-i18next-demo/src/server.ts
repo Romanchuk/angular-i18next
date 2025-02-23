@@ -6,8 +6,14 @@ import {
 } from '@angular/ssr/node';
 import type { NextFunction, Request, Response } from 'express';
 import express from 'express';
+import i18next from 'i18next';
+import ChainedBackend, { ChainedBackendOptions } from 'i18next-chained-backend';
+import * as i18nextHttpMiddleware from 'i18next-http-middleware';
+import resourcesToBackend from "i18next-resources-to-backend";
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import i18nextOptions from './app/i18next.options';
+
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
@@ -15,6 +21,27 @@ const browserDistFolder = resolve(serverDistFolder, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine();
 
+await i18next
+    .use(ChainedBackend)
+    .use(i18nextHttpMiddleware.LanguageDetector)
+    .init<ChainedBackendOptions>({
+      ...i18nextOptions,
+      backend: {
+        backends: [
+          resourcesToBackend((lng, ns, clb) => {
+            import(`./locales/${lng}.${ns}.json`)
+                  .then((resources) => clb(null, resources))
+                  .catch((r)=> clb(r,null))
+          })
+        ],
+        backendOptions: [{
+          loadPath: '/locales/{{lng}}.{{ns}}.json'
+        }]
+      }
+  });
+
+const i18nextHandler = i18nextHttpMiddleware.handle(i18next) as any;
+app.use(i18nextHandler);
 /**
  * Example Express Rest API endpoints can be defined here.
  * Uncomment and define endpoints as necessary.
