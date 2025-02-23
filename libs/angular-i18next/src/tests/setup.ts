@@ -1,4 +1,4 @@
-import { provideI18NextMockAppInitializer, withMock } from '../lib/testing/src/public_api';
+import { provideI18NextMockAppInitializer, withMock } from '../../testing/src/public_api';
 import {
   provideI18Next,
 

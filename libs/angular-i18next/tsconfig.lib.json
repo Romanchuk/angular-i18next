@@ -1,4 +1,6 @@
 {
+  "extends": "./tsconfig.json",
+  "composite": true,
   "angularCompilerOptions": {
     "compilationMode": "partial",
     "strictTemplates": true,
@@ -14,7 +16,6 @@
     "outDir": "./dist",
     "declaration": true,
     "declarationDir": "./dist",
-    "inlineSourceMap": true,
     "inlineSources": true,
     "strict": true,
     "strictNullChecks": true,
@@ -22,8 +23,7 @@
     "emitDecoratorMetadata": false,
     "experimentalDecorators": true,
     "importHelpers": true,
-
-    "lib": ["dom", "es2018"]
+    "lib": ["dom", "es2020"]
   },
   "include": ["**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.shim.ts", "**/*.spec.ts", "src/test-setup.ts", "jest.config.ts"]

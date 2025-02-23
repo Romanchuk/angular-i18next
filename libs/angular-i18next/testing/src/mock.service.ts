@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { jest } from '@jest/globals';
-import * as i18next from 'i18next';
 import type { Callback, FormatFunction, i18n, InterpolationOptions, TFunction } from 'i18next';
-import { defaultInterpolationFormat } from '../../interpolation';
-import { ITranslationService } from '../../services/translation.service';
-import { ITranslationEvents } from '../../services/translation.events';
-import { I18NextEvents } from '../../I18NextEvents';
-import { I18NextLoadResult } from '../../I18NextLoadResult';
+import * as i18next from 'i18next';
+import { defaultInterpolationFormat, I18NextEvents, I18NextLoadResult, ITranslationEvents, ITranslationService } from '../../src/lib';
 
 
 @Injectable()

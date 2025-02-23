@@ -1,5 +1,4 @@
 import { Inject, Injectable, Pipe, PipeTransform } from '@angular/core';
-
 import {
   I18NEXT_NAMESPACE,
   I18NEXT_SCOPE,

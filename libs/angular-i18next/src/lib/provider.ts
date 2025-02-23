@@ -14,7 +14,7 @@ import {
   NativeErrorHandlingStrategy,
 } from './I18NextErrorHandlingStrategies';
 import { i18nextNamespaceResolverFactory } from './namespace.resolver';
-import { I18NextCapPipe } from './pipes/i18next-cap.pipe';
+// import { I18NextCapPipe } from './pipes/i18next-cap.pipe';
 import { I18NextEagerPipe } from './pipes/i18next-eager.pipe';
 import { I18NextFormatPipe } from './pipes/i18next-format.pipe';
 import { I18NextPipe } from './pipes/i18next.pipe';
@@ -91,7 +91,7 @@ export function provideI18Next(
     I18NextService,
     I18NextPipe,
     I18NextEagerPipe,
-    I18NextCapPipe,
+    // I18NextCapPipe,
     I18NextFormatPipe,
   ];
 

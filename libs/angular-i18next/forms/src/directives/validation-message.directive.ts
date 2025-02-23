@@ -1,4 +1,4 @@
-import { Directive, AfterViewInit, OnDestroy, ComponentRef, ViewContainerRef, inject, Type } from "@angular/core";
+import { AfterViewInit, ComponentRef, Directive, inject, OnDestroy, ViewContainerRef } from "@angular/core";
 import { FormControlName, NgControl } from "@angular/forms";
 import { I18NextValidationMessageComponent } from "../components/validation-message.component";
 
@@ -9,7 +9,7 @@ import { I18NextValidationMessageComponent } from "../components/validation-mess
 export class I18NextValidationMessageDirective implements AfterViewInit, OnDestroy {
   private readonly viewContainer = inject(ViewContainerRef);
   private readonly formControlName = inject(FormControlName, { optional: true });
-  
+
   private validationMessageComponent: ComponentRef<I18NextValidationMessageComponent> | null = null;
 
   ngAfterViewInit(): void {

@@ -25,7 +25,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "angular-i18next": ["libs/angular-i18next/src/index.ts"]
+      "angular-i18next": ["libs/angular-i18next/src/index.ts"],
+      "angular-i18next/ssr": ["libs/angular-i18next/ssr/src/public_api.ts"],
+      "angular-i18next/forms": ["libs/angular-i18next/forms/src/public_api.ts"],
+      "angular-i18next/testing": ["libs/angular-i18next/testing/src/public_api.ts"],
     }
   },
   "exclude": ["node_modules", "tmp"]

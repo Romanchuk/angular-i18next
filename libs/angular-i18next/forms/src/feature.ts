@@ -1,4 +1,4 @@
-import { I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from '../../provider.utils';
+import { I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from 'angular-i18next';
 
 /**
  * Provides the necessary dependencies for using i18next with Angular forms.

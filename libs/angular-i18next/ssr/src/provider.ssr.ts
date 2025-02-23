@@ -1,7 +1,6 @@
 import { REQUEST } from '@angular/core';
+import { I18NEXT_INSTANCE, I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from 'angular-i18next';
 import { I18NextRequest } from 'i18next-http-middleware';
-import { I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from "../../provider.utils";
-import { I18NEXT_INSTANCE } from "../../tokens";
 
 
 /**

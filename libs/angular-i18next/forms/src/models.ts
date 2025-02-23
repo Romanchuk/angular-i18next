@@ -7,7 +7,7 @@ export interface ValidationMessageParams {
 
 export class ValidationMessage {
   constructor(
-    public readonly key: string = '',
+    public readonly key = '',
     public readonly params?: ValidationMessageParams
   ) {}
 }

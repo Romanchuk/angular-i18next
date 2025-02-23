@@ -1,9 +1,9 @@
 import { Inject, Injectable, Optional } from '@angular/core';
 import * as i18n from 'i18next';
-import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_INSTANCE } from '../tokens';
 import { I18NextErrorHandlingStrategy } from '../I18NextErrorHandlingStrategies';
 import { I18NextEvents } from '../I18NextEvents';
 import { I18NextLoadResult } from '../I18NextLoadResult';
+import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_INSTANCE } from '../tokens';
 import { ITranslationEvents } from './translation.events';
 import { ITranslationOptions, ITranslationService } from './translation.service';
 

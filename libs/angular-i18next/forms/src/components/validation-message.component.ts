@@ -1,7 +1,6 @@
-import { Component, ViewEncapsulation, Input, computed, inject, input, signal } from "@angular/core";
+import { Component, ViewEncapsulation, computed, inject, input, signal } from "@angular/core";
 import { NgControl } from "@angular/forms";
-import { I18NEXT_NAMESPACE } from "src/lib/tokens";
-import { I18NextCapPipe } from "src/lib/pipes/i18next-cap.pipe";
+import { I18NEXT_NAMESPACE, I18NextCapPipe } from "angular-i18next";
 import { ValidationMessage } from "../models";
 
 @Component({

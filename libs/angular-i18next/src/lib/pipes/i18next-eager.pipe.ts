@@ -1,21 +1,20 @@
 import {
   ChangeDetectorRef,
   Inject,
-  NgZone,
   OnDestroy,
   Pipe,
-  PipeTransform,
+  PipeTransform
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subject } from 'rxjs';
+import { PipeOptions } from '../models';
+import { ITranslationService } from '../services/translation.service';
 import {
   I18NEXT_NAMESPACE,
   I18NEXT_SCOPE,
   I18NEXT_SERVICE,
 } from '../tokens';
 import { I18NextPipe } from './i18next.pipe';
-import { ITranslationService } from '../services/translation.service';
-import { PipeOptions } from '../models';
 
 @Pipe({
   name: 'i18nextEager',
@@ -37,13 +36,13 @@ export class I18NextEagerPipe
     @Inject(I18NEXT_NAMESPACE) protected override ns: string | string[],
     @Inject(I18NEXT_SCOPE) protected override scope: string | string[],
     private cd: ChangeDetectorRef,
-    private ngZone: NgZone
+    //private ngZone: NgZone
   ) {
     super(translateI18Next, ns, scope);
     translateI18Next.events.languageChanged
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
-        this.ngZone.run(() => this.cd.markForCheck());
+       // this.ngZone.run(() => this.cd.markForCheck());
       });
   }
   private hasKeyChanged(key: string | string[]): boolean {

@@ -1,12 +1,11 @@
 import { Inject, Injectable, Pipe, PipeTransform } from '@angular/core';
-
+import { PipeOptions } from '../models';
+import { ITranslationService } from '../services/translation.service';
 import {
   I18NEXT_NAMESPACE,
   I18NEXT_SCOPE,
   I18NEXT_SERVICE
 } from '../tokens';
-import { ITranslationService } from '../services/translation.service';
-import { PipeOptions } from '../models';
 
 @Injectable()
 @Pipe({

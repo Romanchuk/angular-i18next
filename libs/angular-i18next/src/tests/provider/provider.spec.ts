@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, inject, provideAppInitializer } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Title } from '@angular/platform-browser';
-import { MockI18NextService, withMock } from '../../lib/testing/src/public_api';
+import { MockI18NextService, withMock } from '../../../testing/src/public_api';
 import {
   I18NEXT_ERROR_HANDLING_STRATEGY,
   I18NEXT_INSTANCE,
