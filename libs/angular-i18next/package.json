@@ -36,9 +36,9 @@
   ],
   "scripts": {
     "clean": "npm run clean:build && npm run clean:tests",
-    "clean:build": "npm run rimraf -- dist build",
-    "clean:tests": "npm run rimraf -- coverage && npm run rimraf -- tests/**/*.+{js,js.map,d.ts,metadata.json}",
-    "copy:assets": "npx cpy -- CHANGELOG.md dist",
+    "clean:build": "npx rimraf dist",
+    "clean:tests": "npx rimraf coverage && npx rimraf tests/**/*.+{js,js.map,d.ts,metadata.json}",
+    "copy:assets": "npx cpy CHANGELOG.md dist",
     "conventional-changelog": "npx conventional-changelog",
     "changelog": "npm run conventional-changelog -- -p angular -i CHANGELOG.md -s",
     "changelog:add": "git add --force CHANGELOG.md package.json",

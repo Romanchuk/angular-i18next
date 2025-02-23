@@ -5,6 +5,7 @@
   "sourceRoot": "libs/angular-i18next/src",
   "targets": {
     "build": {
+      "dependsOn": ["clean"],
       "executor": "@nx/angular:package",
       "options": {
         "project": "libs/angular-i18next/ng-package.json",
