@@ -60,10 +60,6 @@
   },
   "optionalDependencies": {
     "@angular/ssr": "^19.1.8",
-    "@angular/platform-server": "^19.1.7",
-    "express": "*"
-  },
-  "devDependencies": {
-    "@angular/platform-browser-dynamic": "^19.1.7"
+    "@angular/platform-server": "^19.1.7"
   }
 }

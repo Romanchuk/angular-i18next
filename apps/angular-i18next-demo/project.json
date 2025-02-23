@@ -1,9 +1,10 @@
 {
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "name": "angular-i18next-demo",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/angular-i18next-demo/src",
   "prefix": "angular-i18next",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/angular:application",
@@ -20,7 +21,12 @@
           "apps/angular-i18next-demo/src/locales"
         ],
         "styles": ["apps/angular-i18next-demo/src/styles.css"],
-        "scripts": []
+        "scripts": [],
+        "server": "apps/angular-i18next-demo/src/main.server.ts",
+        "ssr": {
+          "entry": "apps/angular-i18next-demo/src/server.ts"
+        },
+        "outputMode": "server"
       },
       "configurations": {
         "production": {
@@ -89,6 +95,5 @@
         "passWithNoTests": true
       }
     }
-  },
-  "tags": []
+  }
 }

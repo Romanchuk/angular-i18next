@@ -1,10 +1,8 @@
-import { InjectionToken } from '@angular/core';
-import type { Request } from 'express';
+import { REQUEST } from '@angular/core';
 import { I18NextRequest } from 'i18next-http-middleware';
-import { I18NEXT_INSTANCE } from "../../tokens";
 import { I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from "../../provider.utils";
+import { I18NEXT_INSTANCE } from "../../tokens";
 
-const REQUEST = new InjectionToken<Request>('REQUEST');
 
 /**
  * Feature for use when configuring `provideI18Next` to enable SSR.
