@@ -68,9 +68,11 @@ app.use(
 /**
  * Handle all other requests by rendering the Angular application.
  */
-app.use('/**', (req: Request, res: Response, next: NextFunction) => {
+app.use('/**', (req: Request & i18nextHttpMiddleware.I18NextRequest, res: Response, next: NextFunction) => {
   angularApp
-    .handle(req)
+    .handle(req, {
+      i18n: req.i18n,
+    })
     .then((response) =>
       response ? writeResponseToNodeResponse(response, res) : next(),
     )

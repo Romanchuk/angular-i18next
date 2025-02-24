@@ -1,6 +1,5 @@
-import { REQUEST } from '@angular/core';
+import { REQUEST_CONTEXT } from '@angular/core';
 import { I18NEXT_INSTANCE, I18NextFeature, I18NextFeatureKind, makeI18NextFeature } from 'angular-i18next';
-import { I18NextRequest } from 'i18next-http-middleware';
 
 
 /**
@@ -16,10 +15,10 @@ export function withSSR(): I18NextFeature<I18NextFeatureKind.SSR> {
   return makeI18NextFeature(I18NextFeatureKind.SSR, [
     {
       provide: I18NEXT_INSTANCE,
-      useFactory: (req: Request & I18NextRequest) => {
-        return req.i18n;
+      useFactory: (reqCtx: any) => {
+        return reqCtx?.i18n;
       },
-      deps: [REQUEST],
+      deps: [REQUEST_CONTEXT],
     },
   ]);
 }

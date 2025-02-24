@@ -15,7 +15,7 @@ import {
 } from '@angular/platform-browser';
 import { I18NEXT_SERVICE, I18NextLoadResult, provideI18Next, withTitle } from 'angular-i18next';
 import HttpApi from 'i18next-http-backend';
-import { LanguageDetector } from 'i18next-http-middleware';
+import LanguageDetector from 'i18next-browser-languagedetector';
 import i18nextOptions from './i18next.options';
 import { provideRouter } from '@angular/router';
 import { appRoutes } from './app.routes';

@@ -5,7 +5,7 @@ import type { HttpBackendOptions } from "i18next-http-backend";
 export const i18nextOptions: i18n.InitOptions & { backend: HttpBackendOptions} = {
   supportedLngs:['en', 'ru'],
   fallbackLng: 'en',
-  debug: true, // set debug?
+  debug: true,
   returnEmptyString: false,
   ns: [
     'translation',
