@@ -1,12 +1,10 @@
 import {
   ChangeDetectorRef,
   Inject,
-  OnDestroy,
   Pipe,
   PipeTransform
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { Subject } from 'rxjs';
 import { PipeOptions } from '../models';
 import { ITranslationService } from '../services/translation.service';
 import {
@@ -23,26 +21,23 @@ import { I18NextPipe } from './i18next.pipe';
 })
 export class I18NextEagerPipe
   extends I18NextPipe
-  implements PipeTransform, OnDestroy
+  implements PipeTransform
 {
   private lastKey: string | undefined;
   private lastOptions: PipeOptions | undefined;
   private lastValue: string = '';
 
-  private ngUnsubscribe: Subject<void> = new Subject();
-
   constructor(
     @Inject(I18NEXT_SERVICE) protected override translateI18Next: ITranslationService,
     @Inject(I18NEXT_NAMESPACE) protected override ns: string | string[],
     @Inject(I18NEXT_SCOPE) protected override scope: string | string[],
-    private cd: ChangeDetectorRef,
-    //private ngZone: NgZone
+    private cd: ChangeDetectorRef
   ) {
     super(translateI18Next, ns, scope);
     translateI18Next.events.languageChanged
       .pipe(takeUntilDestroyed())
       .subscribe(() => {
-       // this.ngZone.run(() => this.cd.markForCheck());
+          this.cd.markForCheck();
       });
   }
   private hasKeyChanged(key: string | string[]): boolean {
@@ -62,10 +57,5 @@ export class I18NextEagerPipe
       this.lastValue = super.transform(key, options);
     }
     return this.lastValue;
-  }
-
-  ngOnDestroy(): void {
-    this.ngUnsubscribe.next();
-    this.ngUnsubscribe.complete();
   }
 }

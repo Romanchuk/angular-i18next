@@ -31,7 +31,7 @@ export class HeaderLanguageComponent implements OnInit {
     if (lang !== this.i18NextService.language) {
       this.i18NextService.changeLanguage(lang).then(() => {
         this.updateState(lang);
-        // document.location.reload();
+        document.location.reload();
       });
     }
   }
