@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { I18NEXT_NAMESPACE_RESOLVER } from "angular-i18next";
+import { I18NEXT_NAMESPACE, i18NextNamespacesGuard } from "angular-i18next";
 import { AccessDeniedComponent } from "./content/access-denied/access-denied.component";
 import { SimpleDemoComponent } from "./content/simple-demo.component";
 import { RichFormComponent } from "./features/rich_form_feature/rich-form.component";
@@ -10,12 +10,15 @@ export const appRoutes: Routes = [
     path: 'rich_form',
     loadComponent: () => RichFormComponent,
     data: {
-      i18nextNamespaces: ['feature.rich_form'],
       title: 'feature.rich_form:title'
     },
-    resolve: {
-      i18next: I18NEXT_NAMESPACE_RESOLVER
-    }
+    providers: [
+      {
+          provide: I18NEXT_NAMESPACE,
+          useValue: 'feature.rich_form',
+      },
+    ],
+    canActivate: [i18NextNamespacesGuard('feature.rich_form')]
  },
   { path: 'denied', component: AccessDeniedComponent, data: { title: 'error:access_denied' }}
 ];

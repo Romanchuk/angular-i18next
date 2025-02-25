@@ -13,6 +13,6 @@ export function resolver(
   return i18next.loadNamespaces(namespaces.filter((n) => n));
 }
 
-export function i18nextNamespaceResolverFactory(i18next: ITranslationService) {
+export function i18nextNamespaceResolverFactory() {
   return resolver;
 }

@@ -13,8 +13,8 @@ import {
   I18NextErrorHandlingStrategy,
   NativeErrorHandlingStrategy,
 } from './I18NextErrorHandlingStrategies';
-import { i18nextNamespaceResolverFactory } from './namespace.resolver';
 // import { I18NextCapPipe } from './pipes/i18next-cap.pipe';
+import { I18NextCapPipe } from './pipes/i18next-cap.pipe';
 import { I18NextEagerPipe } from './pipes/i18next-eager.pipe';
 import { I18NextFormatPipe } from './pipes/i18next-format.pipe';
 import { I18NextPipe } from './pipes/i18next.pipe';
@@ -25,9 +25,8 @@ import {
   I18NEXT_ERROR_HANDLING_STRATEGY,
   I18NEXT_INSTANCE,
   I18NEXT_NAMESPACE,
-  I18NEXT_NAMESPACE_RESOLVER,
   I18NEXT_SCOPE,
-  I18NEXT_SERVICE,
+  I18NEXT_SERVICE
 } from './tokens';
 
 const i18nextGlobal: i18n.i18n = i18n.default;
@@ -80,18 +79,13 @@ export function provideI18Next(
       useClass: NativeErrorHandlingStrategy,
     },
     {
-      provide: I18NEXT_NAMESPACE_RESOLVER,
-      useFactory: i18nextNamespaceResolverFactory,
-      deps: [I18NEXT_SERVICE],
-    },
-    {
       provide: LOCALE_ID,
       useFactory: localeIdFactory,
     },
     I18NextService,
     I18NextPipe,
     I18NextEagerPipe,
-    // I18NextCapPipe,
+    I18NextCapPipe,
     I18NextFormatPipe,
   ];
 

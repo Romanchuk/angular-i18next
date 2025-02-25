@@ -5,6 +5,7 @@ export * from './I18NextModuleParams';
 export * from './interpolation';
 export * from './models';
 export * from './module';
+export * from './namespaces.guard';
 export * from './pipes/i18next-cap.pipe';
 export * from './pipes/i18next-eager.pipe';
 export * from './pipes/i18next-format.pipe';

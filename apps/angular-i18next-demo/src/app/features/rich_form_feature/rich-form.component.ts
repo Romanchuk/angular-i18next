@@ -3,8 +3,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { I18NextCapPipe, I18NextEagerPipe, I18NextPipe } from "angular-i18next";
 import { I18NextValidationMessageDirective } from 'angular-i18next/forms';
-import { RichFormModel } from './rich-form.model';
 import { ValidationDirtyChecker } from '../../../lib/validation/services/ValidationDirtyChecker';
+import { RichFormModel } from './rich-form.model';
 
 @Component({
   selector: 'rich-form',
