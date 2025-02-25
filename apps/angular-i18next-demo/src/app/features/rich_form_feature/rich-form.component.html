@@ -9,13 +9,13 @@
             <div class="col-6">
                 <div class="form-group">
                     <label class="control-label control-label-sm text-muted">{{ 'email' | i18nextCap }}</label>
-                    <input validate-onblur prtValidationMessage name="email" type="email" class="form-control" formControlName="email" />
+                    <input i18nextValidationMessage name="email" type="email" class="form-control" formControlName="email" />
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
                     <label class="control-label control-label-sm text-muted">{{ 'count' | i18nextCap }}</label>
-                    <input validate-onblur prtValidationMessage name="count" type="number" class="form-control" formControlName="count" />
+                    <input  i18nextValidationMessage name="count" type="number" class="form-control" formControlName="count" />
                 </div>
             </div>
         </div>
@@ -29,14 +29,14 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="control-label control-label-sm text-muted">{{ '_person.last_name' | i18next: { format: 'cap' } }}</label>
-                        <input validate-onblur prtValidationMessage class="form-control" type="text" formControlName="lastName"/>
+                        <label class="control-label control-label-sm text-muted">{{ 'person.last_name' | i18next: { format: 'cap' } }}</label>
+                        <input i18nextValidationMessage class="form-control" type="text" formControlName="lastName"/>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="control-label control-label-sm text-muted">{{ '_person.first_name' | i18next: { format: 'cap' } }}</label>
-                        <input validate-onblur prtValidationMessage class="form-control" type="text" formControlName="firstName">
+                        <label class="control-label control-label-sm text-muted">{{ 'person.first_name' | i18next: { format: 'cap' } }}</label>
+                        <input i18nextValidationMessage class="form-control" type="text" formControlName="firstName">
                     </div>
                 </div>
             </div>
@@ -44,8 +44,8 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="control-label control-label-sm text-muted">{{ '_person.middle_name' | i18next: { format: 'cap' } }}</label>
-                        <input validate-onblur prtValidationMessage class="form-control" type="text" formControlName="middleName">
+                        <label class="control-label control-label-sm text-muted">{{ 'person.middle_name' | i18next: { format: 'cap' } }}</label>
+                        <input i18nextValidationMessage class="form-control" type="text" formControlName="middleName">
                     </div>
                 </div>
                 <div class="col-6">
@@ -55,7 +55,7 @@
         <div class="row">
             <div class="col-4">
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">{{ '_buttons.send' | i18nextCap }}</button>
+                    <button type="submit" class="btn btn-primary btn-block">{{ 'buttons.send' | i18nextCap }}</button>
                 </div>
             </div>
         </div>

@@ -1,7 +1,8 @@
-import { Component, ViewEncapsulation, computed, inject, input, signal } from "@angular/core";
-import { NgControl } from "@angular/forms";
+import { Component, ViewEncapsulation, computed, effect, inject, input, signal } from "@angular/core";
+import { AbstractControl, NgControl } from "@angular/forms";
 import { I18NEXT_NAMESPACE, I18NextCapPipe } from "angular-i18next";
 import { ValidationMessage } from "../models";
+import { combineLatest, startWith, Subscription, tap } from "rxjs";
 
 @Component({
   selector: 'i18next-validation-message',
@@ -10,13 +11,13 @@ import { ValidationMessage } from "../models";
     <i class="error-icon"></i>
   `,
   styles: [`
-    :host {
+    .i18next-validation-message {
       display: none;
       width: 100%;
       position: relative;
     }
-    :host.standalone,
-    .ng-dirty.ng-invalid + :host {
+    .i18next-validation-message.standalone,
+    .ng-dirty.ng-invalid + .i18next-validation-message {
       display: block;
     }
   `],
@@ -31,15 +32,34 @@ export class I18NextValidationMessageComponent {
   private readonly i18nextNamespace = inject<string | string[]>(I18NEXT_NAMESPACE);
   private readonly validationString = 'validation';
   private readonly manualSettedFor = signal<NgControl | null>(null);
+  private readonly messages = signal<ValidationMessage[]>([]);
+  private controlChangesSub: Subscription | null = null;
 
   for = input<NgControl | null>(null);
 
-  setFor(control: NgControl | null) {
+  setFor(control: NgControl) {
     this.manualSettedFor.set(control);
   }
 
+  constructor() {
+    effect(() => {
+        this.controlChangesSub?.unsubscribe();
+        this.messages.set([]);
+        const control = this.control();
+        if (!control?.valueChanges) {
+          return;
+        }
+        control.statusChanges?.pipe(tap((s) => console.log(s))).subscribe();
+        this.controlChangesSub = combineLatest([control.valueChanges, control.statusChanges]).pipe(
+          startWith([control.value, control.status]),
+          tap(() => {
+             this.messages.set(this.getErrorMessages(control))
+          })
+        ).subscribe();
+    });
+  }
+
   protected readonly control = computed(() => this.for() ?? this.manualSettedFor());
-  protected readonly messages = computed(() => this.getValidationMessages());
 
   protected readonly firstMessage = computed(() =>
     this.messages()[0] ?? new ValidationMessage()
@@ -71,10 +91,11 @@ export class I18NextValidationMessageComponent {
     return i18nextKeys;
   });
 
-  private getValidationMessages(): ValidationMessage[] {
-    if (!this.control()?.errors) return [];
+  private getErrorMessages(control: NgControl) {
+    const errors = control.errors;
+    if (!errors) return [];
 
-    return Object.entries(this.control()?.errors ?? {}).map(([key, value]) => {
+    return Object.entries(errors ?? {}).map(([key, value]) => {
       let params = null;
       if (value instanceof Object) {
         params = value;
