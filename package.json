@@ -33,7 +33,6 @@
     "start:ssr": "npx nx run angular-i18next-demo:serve-ssr",
     "test": "npx nx test angular-i18next",
     "lint": "npx nx workspace-lint && ng lint",
-    "e2e": "ng e2e",
     "affected:apps": "npx nx affected:apps",
     "affected:libs": "npx nx affected:libs",
     "affected:build": "npx nx affected:build",
