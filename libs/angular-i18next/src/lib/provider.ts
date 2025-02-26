@@ -13,7 +13,6 @@ import {
   I18NextErrorHandlingStrategy,
   NativeErrorHandlingStrategy,
 } from './I18NextErrorHandlingStrategies';
-// import { I18NextCapPipe } from './pipes/i18next-cap.pipe';
 import { I18NextCapPipe } from './pipes/i18next-cap.pipe';
 import { I18NextEagerPipe } from './pipes/i18next-eager.pipe';
 import { I18NextFormatPipe } from './pipes/i18next-format.pipe';

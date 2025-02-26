@@ -20,7 +20,6 @@
  - [Demo](#demo)
  - [Articles](#articles)
  - [Support project](#support-on-beerpay)
- - [DEPRECATED DOCS](./README_DEPRECATED.md)
  
 
 # Features
@@ -35,9 +34,7 @@
 - Error handling strategies
 - i18next namespaces and scopes (prefixes) for angular modules and components
 - AOT support
-- SSR support
-- Providers for unit testing
-- Angular Package Format support
+- [Angular Package Format](https://docs.google.com/document/d/1CZC2rcpxffTDfRDs6p1cfbmKNLA6x5O-NtkJglDaBVs/preview) support
 
 [Related packages](#deep-integration) also has implementations for:
 - Reactive forms validators localization
@@ -51,13 +48,6 @@ Hey dude! Help me out for a couple of :beers:!
 [![paypal](https://img.shields.io/badge/paypal-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
 
 
-## Available Submodules (optional)
-
-- **`angular-i18next/ssr`**: Adds Server Side Rendering support.
-- **`angular-i18next/forms`**: Provides localization for `@angular/forms`.
-- **`angular-i18next/testing`**: Offers features for testing.
-
-
 # Installation
 
 **1.** Install package
@@ -67,25 +57,75 @@ Hey dude! Help me out for a couple of :beers:!
     npm install angular-i18next --save
   ```
 
-**2.** Initialize i18next before angular application and provide
+**2.** Import I18NextModule to AppModule
 
-Angular would not load until i18next initialize event fired
+```typescript
+
+import { I18NextModule } from 'angular-i18next';
+
+@NgModule({
+  bootstrap: [ AppComponent ],
+  declarations: [   
+    AppComponent
+  ],
+  import: [
+    I18NextModule.forRoot()
+  ]
+})
+export class AppModule {}
+
+```
+**3.** Import I18NextModule.forRoot() to AppModule and setup provider with "init" method (use native [options](https://www.i18next.com/overview/configuration-options)). Angular would not load until i18next initialize event fired
+> **Warning:**: options in example valid for i18next v20 (Always check latest API options of i18next)
 
 ```typescript
 export function appInit(i18next: ITranslationService) {
-    return () => i18next.init();
+    return () => i18next.init({
+        supportedLngs: ['en', 'ru'],
+        fallbackLng: 'en',
+        debug: true,
+        returnEmptyString: false,
+        ns: [
+          'translation',
+          'validation',
+          'error'          
+        ],
+      });
 }
+
+export function localeIdFactory(i18next: ITranslationService)  {
+    return i18next.language;
+}
+
+export const I18N_PROVIDERS = [
+{
+    provide: APP_INITIALIZER,
+    useFactory: appInit,
+    deps: [I18NEXT_SERVICE],
+    multi: true
+},
+{
+    provide: LOCALE_ID,
+    deps: [I18NEXT_SERVICE],
+    useFactory: localeIdFactory
+}];
 ```
 
 ```typescript
-  providers: [
-    provideAppInitializer(appInit()),
-    provideI18Next(
-      withCustomErrorHandlingStrategy(StrictErrorHandlingStrategy)
-    )
-  ] 
+@NgModule({
+    imports: [
+        ...
+        I18NextModule.forRoot()
+    ],
+    providers: [
+        ...
+        I18N_PROVIDERS, 
+    ],
+    bootstrap: [AppComponent]
+})
+export class AppModule {
+}
 ```
-
 
 # Usage
 
@@ -175,23 +215,33 @@ _NOTE:_ **Do NOT** use default (or custom) i18next delimiters in namespace names
 If you want to turn on document title localization resolve Title as `I18NextTitle` imported from 'angular-i18next':
 
 ```typescript
-  providers: [provideI18Next(withTitle())]
+{
+  provide: Title,
+  useClass: I18NextTitle
+}
 ```
 
-Routes example:
+Also you can implement your own Title service with specific behavior. Inject `I18NextPipe` (or `I18NextService`) to service/component:
 ```typescript
-const appRoutes: Routes = [
-  { 
-    path: 'error',
-    component: AppErrorComponent,
-    data: { title: 'error:error_occured' }
-  },
-  { 
-    path: 'denied',
-    component: AccessDeniedComponent,
-    data: { title: 'error:access_denied' }
-  }
-];
+import { Injectable, Inject } from '@angular/core';
+import { Title, DOCUMENT } from '@angular/platform-browser';
+import { I18NextPipe } from 'angular-i18next';
+
+@Injectable()
+export class I18NextTitle extends Title {
+   constructor(private i18nextPipe: I18NextPipe, @Inject(DOCUMENT) doc) {
+    super(doc);
+   }
+
+   setTitle(value: string) {
+    return super.setTitle(this.translate(value));
+   }
+
+   private translate(text: string) {
+     return this.i18nextPipe.transform(text, { format: 'cap'});
+   }
+}
+
 ```
 
 Ways to use I18NextService in your code:
@@ -218,34 +268,29 @@ Error handling is now configurable:
   1) By default i18next promise will use NativeErrorHandlingStrategy. I18Next would be always resolve succesfully. Error could be get from 'then' handler parameter.
   2) Set StrictErrorHandlingStrategy to reject load promises (init, languageChange, loadNamespaces) on first load fail (this was default in v2 but changed to fit [native i18next behavior](https://github.com/Romanchuk/angular-i18next/issues/9):
 
-```typescript
-  providers: [
-    provideI18Next(
-      withCustomErrorHandlingStrategy(StrictErrorHandlingStrategy)
-    )
-  ]    
-```
+    `I18NextModule.forRoot({ errorHandlingStrategy: StrictErrorHandlingStrategy })`
+
+    
 
 ### Lazy loading
 
-Use `i18NextNamespacesGuard` in your routes to to load i18next namespace.
+Use I18NEXT_NAMESPACE_RESOLVER in your routes to to load i18next namespace.
 
 Note: It is not neccesary to register lazy loading namespaces in global i18next options.
 
 ```
 {
     path: 'rich_form',
-    loadComponent: () => RichFormComponent,
-    providers: [
-      {
-          provide: I18NEXT_NAMESPACE, // namespace to start in component
-          useValue: 'feature.rich_form',
-      },
-    ],
-    canActivate: [i18NextNamespacesGuard('feature.rich_form')]
- }
-```
+    loadChildren: 'app/features/rich_form_feature/RichFormFeatureModule#RichFormFeatureModule',
+    data: {
+      i18nextNamespaces: ['feature.rich_form']
+    },
+    resolve: {
+      i18next: I18NEXT_NAMESPACE_RESOLVER
+    }
+ },
 
+```
 Use I18NextService.loadNamespaces() method to load namespaces in code.
 
 
@@ -266,92 +311,89 @@ i18next.use(HttpApi)
        .init(i18nextOptions)
 ```
 
-### Server side rendereng (SSR)
 
-1. Provide for server:
 
+
+### Initialize i18next before angular application
+Angular would not load until i18next initialize event fired
 ```typescript
-import { provideI18Next, withTitle } from 'angular-i18next';
-import { withSSR } from 'angular-i18next/ssr';
+export function appInit(i18next: ITranslationService) {
+    return () => i18next.init();
+}
 
-const serverConfig: ApplicationConfig = {
-  providers: [
-    provideServerRendering(),
-    provideServerRouting(serverRoutes),
-    provideI18Next(withTitle(), withSSR()),
-  ],
-};
+export function localeIdFactory(i18next: ITranslationService)  {
+    return i18next.language;
+}
 
-export const config = mergeApplicationConfig(appConfig, serverConfig);
-```
-
-2. Configure i18next in `server.ts` ([Example](./apps/angular-i18next-demo/src/server.ts)):
-
-### Auto error message for `@angular/forms`
-
-Use `i18nextValidationMessage` directive with formControlName
-
-```typescript
-import { I18NextValidationMessageDirective } from 'angular-i18next/forms'
-
-@Component({
-  imports: [I18NextValidationMessageDirective]
-})
-
-<input i18nextValidationMessage class="form-control" type="text" formControlName="lastName"/>
-```
-
-There is priority order for validation messages: 
-
-1. namespace + `control_specific` with form hierarchy
-2. namespace +  Common validation key(like `required`)
-3. `control_specific` with form hierarchy
-4. Common validation key like `required`
-
-Also you can interpolate `control.error` values. For example: For validator `Validators.min(1)`
-
-```json
-"min": "Minimal {{min}}. Actual: {{actual}}."
-```
-
-`en.validation.json` 
-
-```json
+export const I18N_PROVIDERS = [
 {
-    "required": "Field is required.",
-    "pattern": "$t(validation:_fill) valid value.",
-    "_fill": "Please fill in",
-    "control_specific": {
-        "technicalContact": {
-            "firstName": {
-                "required": "$t(validation:_fill) technical specialist's first name."
-            },
-            "lastName": {
-                "required": "$t(validation:_fill) technical specialist's last name."
-            },
-            "middleName": {
-                "required": "$t(validation:_fill) technical specialist's patronymic."
-            }
-        }
-    }
+    provide: APP_INITIALIZER,
+    useFactory: appInit,
+    deps: [I18NEXT_SERVICE],
+    multi: true
+},
+{
+    provide: LOCALE_ID,
+    deps: [I18NEXT_SERVICE],
+    useFactory: localeIdFactory
+}];
+```
+
+
+
+### Document title update on language or route change
+
+
+```typescript
+export class AppComponent implements OnInit  {
+  constructor(private router: Router,
+              private title: Title,
+              @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
+      // page title subscription
+      // https://toddmotto.com/dynamic-page-titles-angular-2-router-events#final-code
+      this.router.events
+        .filter(event => event instanceof NavigationEnd)
+        .map(() => this.router.routerState.root)
+        .map(route => {
+          while (route.firstChild) route = route.firstChild;
+          return route;
+        })
+        .filter(route => route.outlet === 'primary')
+        .mergeMap(route => route.data)
+        .subscribe((event) => this.updatePageTitle(event['title']));
+  }
+
+  ngOnInit() {
+    this.i18NextService.events.languageChanged.subscribe(lang => {
+      let root = this.router.routerState.root;
+      if (root != null && root.firstChild != null) {
+        let data: any = root.firstChild.data;
+        this.updatePageTitle(data && data.value && data.value.title);
+      }
+    });
+  }
+
+  updatePageTitle(title: string): void {
+    let newTitle = title || 'application_title';
+    this.title.setTitle(newTitle);
+  }
 }
 ```
-
-### Testing
-
+Routes example:
 ```typescript
-  import { withSSR } from 'angular-i18next/testing';
-
-  TestBed.configureTestingModule({
-      imports: [ProjectComponent],
-      providers: [
-        provideI18NextMockAppInitializer(),
-        provideI18Next(withMock())
-      ]
-  });
+const appRoutes: Routes = [
+  { 
+    path: 'error',
+    component: AppErrorComponent,
+    data: { title: 'error:error_occured' }
+  },
+  { 
+    path: 'denied',
+    component: AccessDeniedComponent,
+    data: { title: 'error:access_denied' }
+  }
+];
 ```
-
-
 
 # What to do if... ?
 
