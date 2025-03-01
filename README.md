@@ -8,6 +8,8 @@
 
 # angular-i18next
 
+!!! NEW beta release `19.1.0-beta` with angular 19 codestyle
+
 Best [i18next](http://i18next.com/) integration with [angular](https://angular.io/)
 
 [Live DEMO](https://romanchuk.github.io/angular-i18next/)
