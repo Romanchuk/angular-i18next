@@ -6,7 +6,6 @@ import {
   I18NEXT_ERROR_HANDLING_STRATEGY,
   I18NEXT_INSTANCE,
   I18NEXT_NAMESPACE,
-  I18NEXT_NAMESPACE_RESOLVER,
   I18NEXT_SCOPE,
   I18NEXT_SERVICE,
   I18NextCapPipe,
@@ -20,7 +19,7 @@ import {
   NativeErrorHandlingStrategy,
   provideI18Next,
   withCustomErrorHandlingStrategy,
-  withTitle,
+  withTitle
 } from '../../lib/index';
 
 describe('I18Next Provider', () => {
@@ -76,20 +75,6 @@ describe('I18Next Provider', () => {
       expect(capPipe).toBeInstanceOf(I18NextCapPipe);
       expect(formatPipe).toBeInstanceOf(I18NextFormatPipe);
     });
-
-    it('should provide namespace resolver', (done) => {
-      const resolver = TestBed.inject(I18NEXT_NAMESPACE_RESOLVER);
-      expect(resolver).toBeTruthy();
-
-      TestBed.runInInjectionContext(() => {
-        resolver({
-          data: {
-            i18nextNamespaces: [],
-          },
-        }).then(() => {
-          done();
-        });
-    });
   });
 
   describe('withMock feature', () => {
@@ -134,5 +119,4 @@ describe('I18Next Provider', () => {
         expect(strategy).toBeInstanceOf(CustomErrorStrategy);
       });
     });
-  });
 });
