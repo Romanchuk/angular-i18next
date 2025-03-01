@@ -1,11 +1,11 @@
-﻿/* eslint-disable @angular-eslint/prefer-standalone */
+﻿
 import { Component, VERSION, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app-footer.component.html',
-  standalone: false
+  standalone: true
 })
 export class AppFooterComponent {
   angularVersion = '0.0.0';

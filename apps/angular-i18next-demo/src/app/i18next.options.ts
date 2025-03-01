@@ -1,12 +1,11 @@
-import { defaultInterpolationFormat, I18NextModule } from "angular-i18next";
-
-import * as i18n from 'i18next';
-import { HttpBackendOptions } from "i18next-http-backend";
+import { defaultInterpolationFormat, interpolationFormat } from "angular-i18next";
+import type * as i18n from 'i18next';
+import type { HttpBackendOptions } from "i18next-http-backend";
 
 export const i18nextOptions: i18n.InitOptions & { backend: HttpBackendOptions} = {
   supportedLngs:['en', 'ru'],
   fallbackLng: 'en',
-  debug: true, // set debug?
+  debug: true,
   returnEmptyString: false,
   ns: [
     'translation',
@@ -14,7 +13,7 @@ export const i18nextOptions: i18n.InitOptions & { backend: HttpBackendOptions} =
     'error'
   ],
   interpolation: {
-    format: I18NextModule.interpolationFormat(defaultInterpolationFormat)
+    format: interpolationFormat(defaultInterpolationFormat)
   },
   //backend plugin options
   backend: {
@@ -23,17 +22,16 @@ export const i18nextOptions: i18n.InitOptions & { backend: HttpBackendOptions} =
   // lang detection plugin options
   detection: {
     // order and from where user language should be detected
-    order: ['cookie'],
+    order: ['cookie', 'header'],
 
     // keys or params to lookup language from
     lookupCookie: 'lang',
-
+   // lookupHeader: 'accept-language',
     // cache user language on
     caches: ['cookie'],
 
     // optional expire and domain for set cookie
     cookieMinutes: 10080, // 7 days
-    // cookieDomain: I18NEXT_LANG_COOKIE_DOMAIN
   }
 };
 

@@ -1,7 +1,7 @@
 import { ApplicationInitStatus, ChangeDetectorRef } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { I18NextEagerPipe, I18NextModule, I18NEXT_NAMESPACE, I18NEXT_SCOPE, I18NEXT_SERVICE, ITranslationService, PipeOptions } from '../../lib';
-import { I18N_PROVIDERS } from '../setup';
+import { MOCK_I18N_PROVIDERS } from '../setup';
 
 
 describe('I18NextEagerPipe', () => {
@@ -11,8 +11,7 @@ describe('I18NextEagerPipe', () => {
 
   beforeEach(async () => {
       TestBed.configureTestingModule({
-        imports: [I18NextModule.forRoot()],
-        providers: [...I18N_PROVIDERS,
+        providers: [...MOCK_I18N_PROVIDERS,
           { provide: ChangeDetectorRef, useValue: { detectChanges: () => { }, markForCheck: () => { } } }, {
             provide: I18NEXT_SCOPE,
             useValue: 'scope'

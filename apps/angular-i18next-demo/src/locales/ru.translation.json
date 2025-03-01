@@ -12,7 +12,7 @@
         "ru": "Русский",
         "en": "English"
     },
-    "_buttons": {
+    "buttons": {
         "send": "отправить"
     }
 }

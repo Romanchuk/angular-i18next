@@ -4,7 +4,7 @@ import {
   ITranslationEvents,
   MissingKeyEvent,
   ResourceEvent,
-} from './ITranslationEvents';
+} from './services/translation.events';
 import * as i18n from 'i18next';
 
 export class I18NextEvents implements ITranslationEvents {

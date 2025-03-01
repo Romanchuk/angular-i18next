@@ -17,15 +17,20 @@
     "strictFunctionTypes": true,
     "strictBindCallApply": true,
     "strictNullChecks": true,
-    "target": "es2017",
-    "module": "es2020",
-    "lib": ["es2020", "dom"],
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022", "dom"],
     "strict": true,
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "angular-i18next": ["libs/angular-i18next/src/index.ts"]
+      "angular-i18next": ["libs/angular-i18next/src/index.ts"],
+      "angular-i18next/forms": ["libs/angular-i18next/forms/src/public_api.ts"],
+      "angular-i18next/ssr": ["libs/angular-i18next/ssr/src/public_api.ts"],
+      "angular-i18next/testing": [
+        "libs/angular-i18next/testing/src/public_api.ts"
+      ],
     }
   },
   "exclude": ["node_modules", "tmp"]

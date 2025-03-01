@@ -14,7 +14,7 @@
     }
   ],
   "compilerOptions": {
-    "target": "es2020",
+    "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitOverride": true,

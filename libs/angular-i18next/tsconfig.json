@@ -1,5 +1,15 @@
+
 {
   "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es2022",
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true
+  },
   "files": [],
   "include": [],
   "references": [
@@ -10,23 +20,8 @@
       "path": "./tsconfig.spec.json"
     }
   ],
-  "compilerOptions": {
-    "declaration": false,
-    "alwaysStrict": true,
-    "forceConsistentCasingInFileNames": true,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
-    "noImplicitOverride": true,
-    "noImplicitReturns": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "importHelpers": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strict": true,
-    "strictNullChecks": true,
-  },
   "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
     "strictTemplates": true

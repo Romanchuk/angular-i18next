@@ -1,4 +1,4 @@
 
 export default {
-  projects: ['./libs/*/jest.config.ts'],
+  projects: ['./libs/**/jest.config.ts'],
 };
