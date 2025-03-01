@@ -1,3 +1,19 @@
+# [19.1.0-beta](https://github.com/Romanchuk/angular-i18next/compare/v19.0.1...v19.1.0-beta) (2025-03-01)
+
+
+### Bug Fixes
+
+* browser build and serve ([d9b73f2](https://github.com/Romanchuk/angular-i18next/commit/d9b73f20b82f5ba1d0692c40787e47032f30367e))
+* build ([300e975](https://github.com/Romanchuk/angular-i18next/commit/300e975a1c6072e0564c5fff50e4bf1ddb7f4751))
+* build ([ed46b54](https://github.com/Romanchuk/angular-i18next/commit/ed46b542564070d462b8d5b3c0b92b1e4a04ac55))
+* forms ([3781a6b](https://github.com/Romanchuk/angular-i18next/commit/3781a6b7786b4666a77402cefec13860dacc4b05))
+* new provide ([f17a4f8](https://github.com/Romanchuk/angular-i18next/commit/f17a4f863b422c667d76457bc4c996760a3c1ca0))
+* specs ([5e12691](https://github.com/Romanchuk/angular-i18next/commit/5e12691a4dc091f251d0e254f36d8fa568a22158))
+* ssr ([822b4d1](https://github.com/Romanchuk/angular-i18next/commit/822b4d1950acdadc2a5dabcbdd3a9983d9b15acd))
+* tests ([7bba2bc](https://github.com/Romanchuk/angular-i18next/commit/7bba2bc353eab68a867c8bef62e7da28b9557f58))
+
+
+
 ## [19.0.1](https://github.com/Romanchuk/angular-i18next/compare/v19.0.0...v19.0.1) (2025-01-11)
 
 

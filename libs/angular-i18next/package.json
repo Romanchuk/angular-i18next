@@ -1,6 +1,6 @@
 {
   "name": "angular-i18next",
-  "version": "19.0.1",
+  "version": "19.1.0-beta",
   "publishConfig": {
     "access": "public"
   },
