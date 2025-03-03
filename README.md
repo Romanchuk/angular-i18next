@@ -8,7 +8,7 @@
 
 # angular-i18next
 
-!!! NEW beta release `19.1.0-beta` with angular 19 codestyle
+!!! NEW release `19.1.0` with angular 19 codestyle. Try `provideI18Next()` and give me your feedback
 
 Best [i18next](http://i18next.com/) integration with [angular](https://angular.io/)
 
