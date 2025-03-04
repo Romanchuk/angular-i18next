@@ -43,7 +43,7 @@ jobs:
       - run: npm run test
       - run: npm run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: './dist/angular-i18next-demo/browser'
       - name: Deploy to GitHub Pages
