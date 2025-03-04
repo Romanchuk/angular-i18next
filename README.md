@@ -1,6 +1,6 @@
 [![npm version](https://badge.fury.io/js/angular-i18next.svg)](https://badge.fury.io/js/angular-i18next)
 [![Downloads](http://img.shields.io/npm/dm/angular-i18next.svg)](https://npmjs.org/package/angular-i18next)
-[![Build Status](https://travis-ci.com/Romanchuk/angular-i18next.svg?branch=master)](https://travis-ci.com/Romanchuk/angular-i18next)
+[![Build Status](https://github.com/romanchuk/angular-i18next/actions/workflows/static.yml/badge.svg)](https://github.com/Romanchuk/angular-i18next/actions/workflows/static.yml)
 [![Coverage Status](https://coveralls.io/repos/github/Romanchuk/angular-i18next/badge.svg?branch=master)](https://coveralls.io/github/Romanchuk/angular-i18next?branch=master)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![paypal](https://img.shields.io/badge/say_thanks-%2410-green)](https://www.paypal.com/paypalme2/sergeyromanchuk/10USD)
