@@ -42,14 +42,11 @@
     "affected:dep-graph": "npx nx affected:dep-graph",
     "affected": "npx nx affected",
     "build": "npx nx run angular-i18next-demo:build",
-    "deploy": "npm run build:prod && npx gh-pages -d dist/apps/angular-i18next-demo",
+    "prepare:demo": "npx cpy --cwd=dist/angular-i18next-demo/browser --rename=index.html ./index.csr.html ./",
     "format": "npx nx format:write",
     "format:write": "npx nx format:write",
     "format:check": "npx nx format:check",
     "update": "npx nx migrate latest",
-    "workspace-generator": "npx nx workspace-generator",
-    "dep-graph": "npx nx dep-graph",
-    "help": "npx nx help",
     "release": "npx nx run angular-i18next:release"
   },
   "devDependencies": {
