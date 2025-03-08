@@ -15,7 +15,7 @@ module.exports = {
       env_production: {
         PM2: true,
         NODE_ENV: "production",
-        PORT: 4000
+        PORT: 80
       }
     },
   ],

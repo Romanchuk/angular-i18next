@@ -85,11 +85,35 @@ app.use('/**', (req: Request & i18nextHttpMiddleware.I18NextRequest, res: Respon
  */
 if (isMainModule(import.meta.url) || process.env['PM2'] === 'true') {
   const port = process.env['PORT'] || 4000;
-  app.listen(port, () => {
+  const server = app.listen(port, () => {
     process.send?.('ready');
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
-}
+
+  // Graceful shutdown
+  process.on('SIGINT', () => {
+      const cleanUp = () => {
+        // Clean up other resources like DB connections
+      }
+
+      console.log('Closing server...')
+
+      server.close(() => {
+        console.log('Server closed !!! ')
+
+        cleanUp()
+        process.exit()
+      })
+
+      // Force close server after 5secs
+      setTimeout((e: any) => {
+        console.log('Forcing server close !!!', e)
+
+        cleanUp()
+        process.exit(1)
+      }, 5000)
+    })
+  }
 
 /**
  * The request handler used by the Angular CLI (dev-server and during build).
