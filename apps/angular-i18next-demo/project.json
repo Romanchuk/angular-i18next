@@ -29,7 +29,6 @@
       },
       "configurations": {
         "production": {
-          "baseHref": "/angular-i18next/",
           "budgets": [
             {
               "type": "initial",

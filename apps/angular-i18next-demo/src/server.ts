@@ -83,9 +83,10 @@ app.use('/**', (req: Request & i18nextHttpMiddleware.I18NextRequest, res: Respon
  * Start the server if this module is the main entry point.
  * The server listens on the port defined by the `PORT` environment variable, or defaults to 4000.
  */
-if (isMainModule(import.meta.url)) {
+if (isMainModule(import.meta.url) || process.env['PM2'] === 'true') {
   const port = process.env['PORT'] || 4000;
   app.listen(port, () => {
+    process.send?.('ready');
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
