@@ -48,7 +48,7 @@
     "format:check": "npx nx format:check",
     "update": "npx nx migrate latest",
     "release": "npx nx run angular-i18next:release",
-    "pm2:prod": "npx pm2 start ecosystem.config.js --env production"
+    "pm2:prod": "npx pm2-runtime start ecosystem.config.js --env production"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "19.1.8",
