@@ -9,13 +9,11 @@ module.exports = {
       max_memory_restart: '100M',
       env: {
         PM2: true,
-        NODE_ENV: "development",
-        PORT: 4000
+        NODE_ENV: "development"
       },
       env_production: {
         PM2: true,
-        NODE_ENV: "production",
-        PORT: 80
+        NODE_ENV: "production"
       }
     },
   ],
