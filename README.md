@@ -12,7 +12,7 @@
 
 Best [i18next](http://i18next.com/) integration with [angular](https://angular.io/)
 
-[Live DEMO](https://romanchuk.github.io/angular-i18next/)
+[Live DEMO](https://angular-i18next.onrender.com)
 
 - [Features](#features)
 - [Installation](#installation)
