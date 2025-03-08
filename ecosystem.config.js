@@ -5,7 +5,7 @@ module.exports = {
     {
       name: 'angular-i18next-demo',
       script: 'server.mjs',
-      cwd: './opt/render/project/src/dist/angular-i18next-demo/server',
+      cwd: './dist/angular-i18next-demo/server',
       max_memory_restart: '100M',
       env: {
         PM2: true,
@@ -13,7 +13,8 @@ module.exports = {
       },
       env_production: {
         PM2: true,
-        NODE_ENV: "production"
+        NODE_ENV: "production",
+        PORT: 10000
       }
     },
   ],
