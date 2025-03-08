@@ -394,7 +394,7 @@ Example tests setup:
 
 # Demo
 
-[Live DEMO](https://romanchuk.github.io/angular-i18next-demo/)
+[Live DEMO](https://angular-i18next.onrender.com)
 Demo app source code available here: <https://github.com/Romanchuk/angular-i18next-demo>
 
 # Articles
