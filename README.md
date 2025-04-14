@@ -62,8 +62,7 @@ Hey dude! Help me out for a couple of :beers:!
 **1.** Install package
 
    ```bash
-    npm install i18next --save
-    npm install angular-i18next --save
+    npm install i18next angular-i18next
   ```
 
 **2.** Initialize i18next before angular application and provide
@@ -71,14 +70,19 @@ Hey dude! Help me out for a couple of :beers:!
 Angular would not load until i18next initialize event fired
 
 ```typescript
-export function appInit(i18next: ITranslationService) {
-    return () => i18next.init();
+import { I18NEXT_SERVICE } from 'angular-i18next';
+
+export function i18nAppInit() {
+  return () {
+    const i18next = inject(I18NEXT_SERVICE);
+    return i18next.init();
+  }
 }
 ```
 
 ```typescript
   providers: [
-    provideAppInitializer(appInit()),
+    provideAppInitializer(i18nAppInit()),
     provideI18Next(
       withCustomErrorHandlingStrategy(StrictErrorHandlingStrategy)
     )
@@ -99,6 +103,16 @@ Passing ["t options"](https://www.i18next.com/api.html#t):
 
 ```html
     <div>{{ 'test' | i18next: { count: 5, nsSeparator: '#' } }}</div>
+```
+
+Remember to import the Pipe into the Component:
+
+```typescript
+  @Component({
+    // ...
+    imports: [I18NextPipe],
+  })
+  export class SomeExampleComponent {}
 ```
 
 Trigger native i18next [format method](https://www.i18next.com/formatting.html) by using I18NextFormatPipe or I18NextPipe with option 'format':
