@@ -1,3 +1,16 @@
+## [19.1.1-0](https://github.com/Romanchuk/angular-i18next/compare/v19.1.0...v19.1.1-0) (2025-06-22)
+
+
+### Bug Fixes
+
+* ci ([f5c5339](https://github.com/Romanchuk/angular-i18next/commit/f5c5339598c340c2e7f973f90f06dd73c85c621b))
+* ci ([563993b](https://github.com/Romanchuk/angular-i18next/commit/563993b507873903a6caf4374508686d8b1b5fd0))
+* ci ([443db4e](https://github.com/Romanchuk/angular-i18next/commit/443db4e748522519bd1057947651e724187b1392))
+* prepare demo ([a80d2bc](https://github.com/Romanchuk/angular-i18next/commit/a80d2bc19cfed95c5c5a7c4cf40a560f720353af))
+* tsconfig.spec ([cea853b](https://github.com/Romanchuk/angular-i18next/commit/cea853bdab70b7199f05896a43deed9c26e26088))
+
+
+
 # [19.1.0](https://github.com/Romanchuk/angular-i18next/compare/v19.0.1...v19.1.0) (2025-03-03)
 
 
