@@ -8,8 +8,6 @@
 
 # angular-i18next
 
-!!! NEW release `19.1.0` with angular 19 codestyle. Try `provideI18Next()` and give me your feedback
-
 Best [i18next](http://i18next.com/) integration with [angular](https://angular.io/)
 
 [Live DEMO](https://angular-i18next.onrender.com)
