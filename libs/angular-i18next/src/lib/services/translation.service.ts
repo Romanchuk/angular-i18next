@@ -1,11 +1,10 @@
 import * as i18n from 'i18next';
-import { $Dictionary as I18Next$Dictionary } from 'i18next/typescript/helpers';
 import { I18NextLoadResult } from '../I18NextLoadResult';
 import { ITranslationEvents } from './translation.events';
 
 type Modify<T, R> = Omit<T, keyof R> & R;
 
-export type ITranslationOptions = i18n.TOptions<I18Next$Dictionary>  & { defaultValue?: string; };
+export type ITranslationOptions = i18n.TOptions
 
 export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
