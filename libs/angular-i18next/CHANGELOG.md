@@ -1,3 +1,7 @@
+## [19.1.1](https://github.com/Romanchuk/angular-i18next/compare/v19.1.1-0...v19.1.1) (2025-08-22)
+
+
+
 ## [19.1.1-0](https://github.com/Romanchuk/angular-i18next/compare/v19.1.0...v19.1.1-0) (2025-06-22)
 
 
