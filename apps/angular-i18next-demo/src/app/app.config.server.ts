@@ -1,15 +1,13 @@
 import { ApplicationConfig, mergeApplicationConfig } from '@angular/core';
-import { provideServerRendering } from '@angular/platform-server';
-import { provideServerRouting } from '@angular/ssr';
-import { appConfig } from './app.config';
-import { serverRoutes } from './app.routes.server';
+import { provideServerRendering, withRoutes } from '@angular/ssr';
 import { provideI18Next, withTitle } from 'angular-i18next';
 import { withSSR } from 'angular-i18next/ssr';
+import { appConfig } from './app.config';
+import { serverRoutes } from './app.routes.server';
 
 const serverConfig: ApplicationConfig = {
   providers: [
-    provideServerRendering(),
-    provideServerRouting(serverRoutes),
+    provideServerRendering(withRoutes(serverRoutes)),
     provideI18Next(withTitle(), withSSR()),
   ],
 };

@@ -5,7 +5,7 @@ import {
   inject,
   PLATFORM_ID,
   provideAppInitializer,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {
@@ -39,7 +39,7 @@ export function appInit() {
 export const appConfig: ApplicationConfig = {
   providers: [
     provideClientHydration(withEventReplay()),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideRouter(appRoutes),
     importProvidersFrom(BrowserModule, FormsModule),
     provideAppInitializer(appInit()),

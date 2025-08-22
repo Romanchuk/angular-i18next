@@ -1,18 +1,113 @@
 {
   "migrations": [
     {
-      "version": "18.0.0",
-      "description": "Updates two-way bindings that have an invalid expression to use the longform expression instead.",
-      "factory": "./migrations/invalid-two-way-bindings/bundle",
-      "package": "@angular/core",
-      "name": "invalid-two-way-bindings"
+      "version": "21.0.0-beta.8",
+      "description": "Removes the legacy cache configuration from nx.json",
+      "implementation": "./src/migrations/update-21-0-0/remove-legacy-cache",
+      "package": "nx",
+      "name": "remove-legacy-cache"
     },
     {
-      "version": "18.0.0",
-      "description": "Replace deprecated HTTP related modules with provider functions",
-      "factory": "./migrations/http-providers/bundle",
-      "package": "@angular/core",
-      "name": "migration-http-providers"
+      "version": "21.0.0-beta.8",
+      "description": "Removes the legacy cache configuration from nx.json",
+      "implementation": "./src/migrations/update-21-0-0/remove-custom-tasks-runner",
+      "package": "nx",
+      "name": "remove-custom-tasks-runner"
+    },
+    {
+      "version": "21.0.0-beta.11",
+      "description": "Updates release version config based on the breaking changes in Nx v21",
+      "implementation": "./src/migrations/update-21-0-0/release-version-config-changes",
+      "package": "nx",
+      "name": "release-version-config-changes"
+    },
+    {
+      "version": "21.0.0-beta.11",
+      "description": "Updates release changelog config based on the breaking changes in Nx v21",
+      "implementation": "./src/migrations/update-21-0-0/release-changelog-config-changes",
+      "package": "nx",
+      "name": "release-changelog-config-changes"
+    },
+    {
+      "version": "21.1.0-beta.2",
+      "description": "Adds **/nx-rules.mdc and **/nx.instructions.md to .gitignore if not present",
+      "implementation": "./src/migrations/update-21-1-0/add-gitignore-entry",
+      "package": "nx",
+      "name": "21-1-0-add-ignore-entries-for-nx-rule-files"
+    },
+    {
+      "cli": "nx",
+      "version": "20.8.0-beta.0",
+      "requires": { "cypress": ">=14.0.0" },
+      "description": "Replaces the `experimentalSkipDomainInjection` configuration option with the new `injectDocumentDomain` configuration option.",
+      "implementation": "./src/migrations/update-20-8-0/set-inject-document-domain",
+      "package": "@nx/cypress",
+      "name": "set-inject-document-domain"
+    },
+    {
+      "cli": "nx",
+      "version": "20.8.0-beta.0",
+      "requires": { "cypress": ">=14.0.0" },
+      "description": "Removes the `experimentalFetchPolyfill` configuration option.",
+      "implementation": "./src/migrations/update-20-8-0/remove-experimental-fetch-polyfill",
+      "package": "@nx/cypress",
+      "name": "remove-experimental-fetch-polyfill"
+    },
+    {
+      "cli": "nx",
+      "version": "20.8.0-beta.0",
+      "requires": { "cypress": ">=14.0.0" },
+      "description": "Replaces the `experimentalJustInTimeCompile` configuration option with the new `justInTimeCompile` configuration option.",
+      "implementation": "./src/migrations/update-20-8-0/replace-experimental-just-in-time-compile",
+      "package": "@nx/cypress",
+      "name": "replace-experimental-just-in-time-compile"
+    },
+    {
+      "cli": "nx",
+      "version": "20.8.0-beta.0",
+      "requires": { "cypress": ">=14.0.0" },
+      "description": "Updates the module specifier for the Component Testing `mount` function.",
+      "implementation": "./src/migrations/update-20-8-0/update-component-testing-mount-imports",
+      "package": "@nx/cypress",
+      "name": "update-component-testing-mount-imports"
+    },
+    {
+      "version": "21.0.0-beta.10",
+      "description": "Removes the `tsConfig` and `copyFiles` options from the `@nx/cypress:cypress` executor.",
+      "implementation": "./src/migrations/update-21-0-0/remove-tsconfig-and-copy-files-options-from-cypress-executor",
+      "package": "@nx/cypress",
+      "name": "remove-tsconfig-and-copy-files-options-from-cypress-executor"
+    },
+    {
+      "cli": "nx",
+      "version": "21.0.0-beta.9",
+      "description": "Replace usage of `getJestProjects` with `getJestProjectsAsync`.",
+      "implementation": "./src/migrations/update-21-0-0/replace-getJestProjects-with-getJestProjectsAsync",
+      "package": "@nx/jest",
+      "name": "replace-getJestProjects-with-getJestProjectsAsync-v21"
+    },
+    {
+      "version": "21.0.0-beta.10",
+      "description": "Remove the previously deprecated and unused `tsConfig` option from the `@nx/jest:jest` executor.",
+      "implementation": "./src/migrations/update-21-0-0/remove-tsconfig-option-from-jest-executor",
+      "package": "@nx/jest",
+      "name": "remove-tsconfig-option-from-jest-executor"
+    },
+    {
+      "version": "21.3.0-beta.3",
+      "requires": { "jest": ">=30.0.0" },
+      "description": "Rename the CLI option `testPathPattern` to `testPathPatterns`.",
+      "implementation": "./src/migrations/update-21-3-0/rename-test-path-pattern",
+      "package": "@nx/jest",
+      "name": "rename-test-path-pattern"
+    },
+    {
+      "version": "21.3.0-beta.3",
+      "requires": { "jest": ">=30.0.0" },
+      "description": "Replace removed matcher aliases in Jest v30 with their corresponding matcher",
+      "implementation": "./src/migrations/update-21-3-0/replace-removed-matcher-aliases",
+      "package": "@nx/jest",
+      "name": "replace-removed-matcher-aliases"
     }
   ]
 }
