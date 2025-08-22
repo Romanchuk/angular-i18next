@@ -1,3 +1,17 @@
+# [20.0.0](https://github.com/Romanchuk/angular-i18next/compare/v19.1.1...v20.0.0) (2025-08-22)
+
+
+### Features
+
+* **up version i18next 25:** up version i18next 25 ([4a8d23a](https://github.com/Romanchuk/angular-i18next/commit/4a8d23a016ca4daa5bf06255b24ec10faa004948))
+
+
+### BREAKING CHANGES
+
+* **up version i18next 25:** up version i18next 25
+
+
+
 ## [19.1.1](https://github.com/Romanchuk/angular-i18next/compare/v19.1.1-0...v19.1.1) (2025-08-22)
 
 
