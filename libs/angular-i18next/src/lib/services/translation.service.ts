@@ -1,10 +1,11 @@
 import * as i18n from 'i18next';
 import { I18NextLoadResult } from '../I18NextLoadResult';
 import { ITranslationEvents } from './translation.events';
+import type { Callback, ExistsFunction, FormatFunction, InitOptions, Module, Modules, Namespace, Newable, NewableModule, ResourceStore, Services, TFunction, TOptions } from 'i18next';
 
 type Modify<T, R> = Omit<T, keyof R> & R;
 
-export type ITranslationOptions = i18n.TOptions
+export type ITranslationOptions = TOptions;
 
 export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
@@ -12,39 +13,39 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
   language: string;
   languages: readonly string[];
-  options: i18n.InitOptions;
-  modules: i18n.Modules;
-  services: i18n.Services;
-  store: i18n.ResourceStore;
+  options: InitOptions;
+  modules: Modules;
+  services: Services;
+  store: ResourceStore;
   resolvedLanguage: string | undefined;
 
-  use<T extends i18n.Module>(
+  use<T extends Module>(
     module:
-    T | i18n.NewableModule<T> | i18n.Newable<T>
+    T | NewableModule<T> | Newable<T>
   ): ITranslationService;
 
-  init(options: i18n.InitOptions): Promise<I18NextLoadResult>;
+  init(options: InitOptions): Promise<I18NextLoadResult>;
 
   t<Options extends ITranslationOptions>(
     key: string | string[],
     options?: Options,
-  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], Options>;
+  ): i18n.TFunctionReturn<Namespace, string | string[], Options>;
   t<Options extends ITranslationOptions>(
     key: string | string[],
     defaultValue: string,
     options?: Options
-  ): i18n.TFunctionReturn<i18n.Namespace, string | string[], Options>;
+  ): i18n.TFunctionReturn<Namespace, string | string[], Options>;
 
-  format: i18n.FormatFunction;
+  format: FormatFunction;
 
-  exists: i18n.ExistsFunction;
+  exists: ExistsFunction;
 
   getFixedT(
     lng: string | readonly string[],
     ns?: string | readonly string[],
     keyPrefix?: string,
-  ): i18n.TFunction;
-  getFixedT(lng: null, ns: string | readonly string[] | null, keyPrefix?: string): i18n.TFunction;
+  ): TFunction;
+  getFixedT(lng: null, ns: string | readonly string[] | null, keyPrefix?: string): TFunction;
 
   setDefaultNamespace(ns: string): void;
 
@@ -53,7 +54,7 @@ export type ITranslationService = Modify<Partial<i18n.i18n>, {
   changeLanguage(lng: string): Promise<any>;
 
   loadNamespaces(namespaces: string[]): Promise<any>;
-  loadLanguages(lngs: string | readonly string[], callback?: i18n.Callback): Promise<void>;
+  loadLanguages(lngs: string | readonly string[], callback?: Callback): Promise<void>;
 
   loadResources(callback?: (err: any) => void): void;
 

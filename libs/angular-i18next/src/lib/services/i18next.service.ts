@@ -6,6 +6,7 @@ import { I18NextLoadResult } from '../I18NextLoadResult';
 import { I18NEXT_ERROR_HANDLING_STRATEGY, I18NEXT_INSTANCE } from '../tokens';
 import { ITranslationEvents } from './translation.events';
 import { ITranslationOptions, ITranslationService } from './translation.service';
+import type { InitOptions, Module, Modules, Namespace, Newable, NewableModule, ResourceStore, Services, TFunction, TFunctionReturn } from 'i18next';
 
 
 const i18nextGlobal: i18n.i18n = i18n.default;
@@ -28,13 +29,13 @@ export class I18NextService implements ITranslationService {
     return this.i18next.options;
   }
 
-  get modules() {
+  get modules(): Modules {
     return this.i18next.modules;
   }
-  get services() {
+  get services(): Services {
     return this.i18next.services;
   }
-  get store() {
+  get store(): ResourceStore {
     return this.i18next.store;
   }
 
@@ -54,9 +55,9 @@ export class I18NextService implements ITranslationService {
     this.i18next = i18nextInstance ?? i18nextGlobal;
   }
 
-  t(key: string | string[], options?: ITranslationOptions | undefined): i18n.TFunctionReturn<i18n.Namespace, string | string[], ITranslationOptions>;
-  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: ITranslationOptions | undefined): i18n.TFunctionReturn<i18n.Namespace, string | string[], ITranslationOptions>;
-  t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): i18n.TFunctionReturn<i18n.Namespace, unknown, ITranslationOptions> {
+  t(key: string | string[], options?: ITranslationOptions | undefined): TFunctionReturn<Namespace, string | string[], ITranslationOptions>;
+  t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: ITranslationOptions | undefined): TFunctionReturn<Namespace, string | string[], ITranslationOptions>;
+  t(key: unknown, defaultValueOrOptions?: unknown, options?: unknown): TFunctionReturn<Namespace, unknown, ITranslationOptions> {
     const hasDefault = !!defaultValueOrOptions && typeof defaultValueOrOptions === 'string';
 
     this.i18next.t.bind(this.i18next);
@@ -67,15 +68,15 @@ export class I18NextService implements ITranslationService {
     }
   }
 
-  public use<T extends i18n.Module>(
+  public use<T extends Module>(
     module:
-    T | i18n.NewableModule<T> | i18n.Newable<T>
+    T | NewableModule<T> | Newable<T>
   ): ITranslationService {
     this.i18next.use.call(this.i18next, module);
     return this;
   }
 
-  init(options: i18n.InitOptions): Promise<I18NextLoadResult> {
+  init(options: InitOptions): Promise<I18NextLoadResult> {
     this.subscribeEvents();
 
     return new Promise<I18NextLoadResult>((resolve, reject) => {
@@ -95,9 +96,9 @@ export class I18NextService implements ITranslationService {
     return this.i18next.exists.call(this.i18next, key, options);
   }
 
-  getFixedT(lng: string | readonly string[], ns?: string | readonly string[], keyPrefix?: string): i18n.TFunction;
-  getFixedT(lng: null, ns: string | readonly string[] | null, keyPrefix?: string): i18n.TFunction;
-  getFixedT(lng: any, ns?: any, keyPrefix?: any): i18n.TFunction {
+  getFixedT(lng: string | readonly string[], ns?: string | readonly string[], keyPrefix?: string): TFunction;
+  getFixedT(lng: null, ns: string | readonly string[] | null, keyPrefix?: string): TFunction;
+  getFixedT(lng: any, ns?: any, keyPrefix?: any): TFunction {
     return this.i18next.getFixedT.call(this.i18next, lng, ns, keyPrefix);
   }
 
@@ -109,10 +110,10 @@ export class I18NextService implements ITranslationService {
     return this.i18next.dir.call(this.i18next, lng);
   }
 
-  public changeLanguage(lng: string): Promise<i18n.TFunction> {
-    return new Promise<i18n.TFunction>(
+  public changeLanguage(lng: string): Promise<TFunction> {
+    return new Promise<TFunction>(
       (
-        resolve: (thenableOrResult: i18n.TFunction | PromiseLike<i18n.TFunction>) => void,
+        resolve: (thenableOrResult: TFunction | PromiseLike<TFunction>) => void,
         reject: (error: any) => void
       ) => {
         return this.i18next.changeLanguage.call(
@@ -205,7 +206,7 @@ export class I18NextService implements ITranslationService {
   //#endregion
 
   private subscribeEvents() {
-    this.i18next.on.call(this.i18next, 'initialized', (options: i18n.InitOptions) => {
+    this.i18next.on.call(this.i18next, 'initialized', (options: InitOptions) => {
       this.events.initialized.next(options);
     });
     this.i18next.on.call(this.i18next, 'loaded', (loaded: boolean) =>
