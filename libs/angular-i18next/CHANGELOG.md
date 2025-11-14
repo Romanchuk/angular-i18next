@@ -1,3 +1,12 @@
+## [20.0.1-0](https://github.com/Romanchuk/angular-i18next/compare/v20.0.0...v20.0.1-0) (2025-11-14)
+
+
+### Bug Fixes
+
+* i18next typings ([9dabeb9](https://github.com/Romanchuk/angular-i18next/commit/9dabeb9ab832413bb488151eb6f74bd65c9a48e8))
+
+
+
 # [20.0.0](https://github.com/Romanchuk/angular-i18next/compare/v19.1.1...v20.0.0) (2025-08-22)
 
 
