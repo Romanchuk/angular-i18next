@@ -92,7 +92,7 @@ export class I18NextService implements ITranslationService {
     return this.i18next.format.call(this.i18next, value, format, lng, {});
   }
 
-  public exists(key: string | string[], options: any) {
+  public exists(key: string | string[], options: Parameters<i18n.ExistsFunction>[1]) {
     return this.i18next.exists.call(this.i18next, key, options);
   }
 
