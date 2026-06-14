@@ -1,12 +1,11 @@
 import * as i18n from 'i18next';
 import { I18NextLoadResult } from '../I18NextLoadResult';
 import { ITranslationEvents } from './translation.events';
-import type { Callback, ExistsFunction, FormatFunction, InitOptions, Module, Modules, Namespace, Newable, NewableModule, ResourceStore, Services, TFunction, TOptions } from 'i18next';
+import type { Callback, ExistsFunction, FormatFunction, InitOptions, Module, Modules, Namespace, Newable, NewableModule, ResourceStore, Services, TFunction, TOptions,  } from 'i18next';
 
 type Modify<T, R> = Omit<T, keyof R> & R;
 
-export type ITranslationOptions = TOptions;
-
+export type ITranslationOptions = i18n.TOptionsBase & { [key: string]: unknown } & { context?: string | undefined; };
 export type ITranslationService = Modify<Partial<i18n.i18n>, {
 
   events: ITranslationEvents;

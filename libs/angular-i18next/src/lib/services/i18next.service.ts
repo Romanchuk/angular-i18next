@@ -53,7 +53,21 @@ export class I18NextService implements ITranslationService {
     @Optional() @Inject(I18NEXT_INSTANCE) i18nextInstance?: i18n.i18n
   ) {
     this.i18next = i18nextInstance ?? i18nextGlobal;
+    this.exists = this.i18next.exists.bind(this.i18next);
   }
+  on?(event: unknown, listener: unknown): i18n.i18n {
+    throw new Error('Method not implemented.');
+  }
+  off?(event: string, listener?: (...args: any[]) => void): void {
+    throw new Error('Method not implemented.');
+  }
+  isInitializing?: boolean | undefined;
+  initializedStoreOnce?: boolean | undefined;
+  initializedLanguageOnce?: boolean | undefined;
+  emit?(eventName: string, ...args: any[]): void {
+    throw new Error('Method not implemented.');
+  }
+  exists: i18n.ExistsFunction;
 
   t(key: string | string[], options?: ITranslationOptions | undefined): TFunctionReturn<Namespace, string | string[], ITranslationOptions>;
   t(key: string | string[] | (string | TemplateStringsArray)[], defaultValue: string, options?: ITranslationOptions | undefined): TFunctionReturn<Namespace, string | string[], ITranslationOptions>;
@@ -90,10 +104,6 @@ export class I18NextService implements ITranslationService {
 
   public format(value: any, format?: string, lng?: string): string {
     return this.i18next.format.call(this.i18next, value, format, lng, {});
-  }
-
-  public exists(key: string | string[], options: any) {
-    return this.i18next.exists.call(this.i18next, key, options);
   }
 
   getFixedT(lng: string | readonly string[], ns?: string | readonly string[], keyPrefix?: string): TFunction;

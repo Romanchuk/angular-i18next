@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { jest } from '@jest/globals';
 import { defaultInterpolationFormat, I18NextEvents, I18NextLoadResult, ITranslationEvents, ITranslationService } from 'angular-i18next';
-import type { Callback, FormatFunction, i18n, InterpolationOptions, TFunction, Modules, Services, ResourceStore } from 'i18next';
+import type { Callback, FormatFunction, i18n, InterpolationOptions, TFunction, Modules, Services, ResourceStore, Namespace } from 'i18next';
 import * as i18next from 'i18next';
 
+
+type TFunc = (key: string | string[], options?: any) => string;
 
 @Injectable()
 export class MockI18NextService implements ITranslationService {
@@ -31,11 +33,10 @@ export class MockI18NextService implements ITranslationService {
   constructor(
   ) {
     this.i18next = i18next.default;
+    this.exists = this.i18next.exists.bind(this.i18next);
   }
 
-  t = jest.fn((key: string | string[],
-    optionsOrDefault?: string | i18next.TOptions,
-    options?: i18next.TOptions): i18next.TFunctionReturn<i18next.Namespace, string | string[], (i18next.TOptions & { defaultValue: string; })> => {
+  t: TFunc = jest.fn((key: string | string[], options?: any) => {
     if (key instanceof Array) {
       return key.length > 0 ? key[0] : '';
     }
@@ -83,6 +84,7 @@ export class MockI18NextService implements ITranslationService {
   events: ITranslationEvents = new I18NextEvents();
   language: string = '';
   languages: string[] = [];
+  exists: i18next.ExistsFunction;
 
   get options(): any {
     return {
@@ -129,10 +131,6 @@ export class MockI18NextService implements ITranslationService {
         resolve();
       }
     );
-  }
-
-  exists(key: any, options: any) {
-    return true;
   }
 
   setDefaultNamespace(ns: string) {}

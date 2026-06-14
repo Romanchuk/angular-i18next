@@ -9,7 +9,8 @@ export type PrependPipeOptions = {
 
 export type PipeOptions = i18n.TOptions &
   FormatPipeOptions &
-  PrependPipeOptions;
+  PrependPipeOptions &
+  { context?: string | undefined; };
 
 export type NamespaceResolver = (
   activatedRouteSnapshot: any,
