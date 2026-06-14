@@ -71,9 +71,19 @@ Angular would not load until i18next initialize event fired
 import { I18NEXT_SERVICE } from 'angular-i18next';
 
 export function i18nAppInit() {
-  return () {
+  return () => {
     const i18next = inject(I18NEXT_SERVICE);
-    return i18next.init();
+    return i18next.init({
+        whitelist: ['en', 'ru'],
+        fallbackLng: 'en',
+        debug: true,
+        returnEmptyString: false,
+        ns: [
+          'translation',
+          'validation',
+          'error'          
+        ],
+      });
   }
 }
 ```
