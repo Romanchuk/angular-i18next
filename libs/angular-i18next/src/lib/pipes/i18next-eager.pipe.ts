@@ -1,5 +1,6 @@
 import {
   ChangeDetectorRef,
+  DestroyRef,
   Inject,
   Pipe,
   PipeTransform
@@ -31,11 +32,12 @@ export class I18NextEagerPipe
     @Inject(I18NEXT_SERVICE) protected override translateI18Next: ITranslationService,
     @Inject(I18NEXT_NAMESPACE) protected override ns: string | string[],
     @Inject(I18NEXT_SCOPE) protected override scope: string | string[],
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
+    private readonly destroyRef: DestroyRef,
   ) {
     super(translateI18Next, ns, scope);
     translateI18Next.events.languageChanged
-      .pipe(takeUntilDestroyed())
+      .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe(() => {
           this.cd.markForCheck();
       });
