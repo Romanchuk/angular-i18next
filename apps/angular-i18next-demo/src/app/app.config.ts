@@ -12,6 +12,7 @@ import {
   BrowserModule,
   provideClientHydration,
   withEventReplay,
+  withNoIncrementalHydration
 } from '@angular/platform-browser';
 import { I18NEXT_SERVICE, I18NextLoadResult, provideI18Next, withTitle } from 'angular-i18next';
 import HttpApi from 'i18next-http-backend';
@@ -38,7 +39,7 @@ export function appInit() {
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideClientHydration(withEventReplay()),
+    provideClientHydration(withEventReplay(), withNoIncrementalHydration()),
     provideZonelessChangeDetection(),
     provideRouter(appRoutes),
     importProvidersFrom(BrowserModule, FormsModule),

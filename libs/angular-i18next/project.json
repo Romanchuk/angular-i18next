@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/angular-i18next/src",
+  "tags": [],
   "targets": {
     "build": {
       "dependsOn": ["clean"],
@@ -29,6 +30,5 @@
         ]
       }
     }
-  },
-  "tags": []
+  }
 }
