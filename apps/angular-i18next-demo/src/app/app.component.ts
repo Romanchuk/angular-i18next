@@ -1,5 +1,5 @@
 
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
   Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router,
@@ -16,6 +16,7 @@ import { AppFooterComponent } from "./structure/app-footer.component";
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [I18NextPipe, AppHeaderComponent, AppFooterComponent, RouterOutlet],
 })
 export class AppComponent implements OnInit  {

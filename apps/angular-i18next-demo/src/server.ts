@@ -9,35 +9,39 @@ import express from 'express';
 import i18next from 'i18next';
 import ChainedBackend, { ChainedBackendOptions } from 'i18next-chained-backend';
 import * as i18nextHttpMiddleware from 'i18next-http-middleware';
-import resourcesToBackend from "i18next-resources-to-backend";
+import resourcesToBackend from 'i18next-resources-to-backend';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import i18nextOptions from './app/i18next.options';
-
 
 const serverDistFolder = dirname(fileURLToPath(import.meta.url));
 const browserDistFolder = resolve(serverDistFolder, '../browser');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+const angularApp = new AngularNodeAppEngine({
+  // TODO: This is a security-sensitive option. Remove if not needed. For more information, see https://angular.dev/best-practices/security#configuring-trusted-proxy-headers
+  trustProxyHeaders: ['x-forwarded-host', 'x-forwarded-proto'],
+});
 
 await i18next
-    .use(ChainedBackend)
-    .use(i18nextHttpMiddleware.LanguageDetector)
-    .init<ChainedBackendOptions>({
-      ...i18nextOptions,
-      backend: {
-        backends: [
-          resourcesToBackend((lng, ns, clb) => {
-            import(`./locales/${lng}.${ns}.json`)
-                  .then((resources) => clb(null, resources))
-                  .catch((r)=> clb(r,null))
-          })
-        ],
-        backendOptions: [{
-          loadPath: '/locales/{{lng}}.{{ns}}.json'
-        }]
-      }
+  .use(ChainedBackend)
+  .use(i18nextHttpMiddleware.LanguageDetector)
+  .init<ChainedBackendOptions>({
+    ...i18nextOptions,
+    backend: {
+      backends: [
+        resourcesToBackend((lng, ns, clb) => {
+          import(`./locales/${lng}.${ns}.json`)
+            .then((resources) => clb(null, resources))
+            .catch((r) => clb(r, null));
+        }),
+      ],
+      backendOptions: [
+        {
+          loadPath: '/locales/{{lng}}.{{ns}}.json',
+        },
+      ],
+    },
   });
 
 const i18nextHandler = i18nextHttpMiddleware.handle(i18next) as any;
@@ -68,16 +72,23 @@ app.use(
 /**
  * Handle all other requests by rendering the Angular application.
  */
-app.use('/**', (req: Request & i18nextHttpMiddleware.I18NextRequest, res: Response, next: NextFunction) => {
-  angularApp
-    .handle(req, {
-      i18n: req.i18n,
-    })
-    .then((response) =>
-      response ? writeResponseToNodeResponse(response, res) : next(),
-    )
-    .catch(next);
-});
+app.use(
+  '/**',
+  (
+    req: Request & i18nextHttpMiddleware.I18NextRequest,
+    res: Response,
+    next: NextFunction,
+  ) => {
+    angularApp
+      .handle(req, {
+        i18n: req.i18n,
+      })
+      .then((response) =>
+        response ? writeResponseToNodeResponse(response, res) : next(),
+      )
+      .catch(next);
+  },
+);
 
 /**
  * Start the server if this module is the main entry point.
@@ -92,28 +103,28 @@ if (isMainModule(import.meta.url) || process.env['PM2'] === 'true') {
 
   // Graceful shutdown
   process.on('SIGINT', () => {
-      const cleanUp = () => {
-        // Clean up other resources like DB connections
-      }
+    const cleanUp = () => {
+      // Clean up other resources like DB connections
+    };
 
-      console.log('Closing server...')
+    console.log('Closing server...');
 
-      server.close(() => {
-        console.log('Server closed !!! ')
+    server.close(() => {
+      console.log('Server closed !!! ');
 
-        cleanUp()
-        process.exit()
-      })
+      cleanUp();
+      process.exit();
+    });
 
-      // Force close server after 5secs
-      setTimeout((e: any) => {
-        console.log('Forcing server close !!!', e)
+    // Force close server after 5secs
+    setTimeout((e: any) => {
+      console.log('Forcing server close !!!', e);
 
-        cleanUp()
-        process.exit(1)
-      }, 5000)
-    })
-  }
+      cleanUp();
+      process.exit(1);
+    }, 5000);
+  });
+}
 
 /**
  * The request handler used by the Angular CLI (dev-server and during build).

@@ -1,5 +1,5 @@
 ﻿
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { I18NextCapPipe, I18NextEagerPipe, I18NextPipe } from "angular-i18next";
 import { I18NextValidationMessageDirective } from 'angular-i18next/forms';
@@ -12,6 +12,7 @@ import { RichFormModel } from './rich-form.model';
   templateUrl: './rich-form.component.html',
   standalone: true,
   imports: [I18NextCapPipe, I18NextPipe, I18NextEagerPipe, ReactiveFormsModule, I18NextValidationMessageDirective],
+  changeDetection: ChangeDetectionStrategy.Eager,
   providers: [ValidationDirtyChecker]
 })
 export class RichFormComponent {
