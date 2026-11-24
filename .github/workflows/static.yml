@@ -49,6 +49,8 @@ jobs:
         uses: actions/upload-pages-artifact@v5
         with:
           path: './dist/angular-i18next-demo/browser'
+      - name: Wait for artifact indexing
+        run: sleep 20
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
