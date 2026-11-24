@@ -67,6 +67,10 @@ How the maintainer actually writes this library — follow for new code:
 - The lib `CHANGELOG.md` is generated from commit messages (`conventional-changelog -p angular`)
   and releases go through `np` → library commits must follow **Conventional Commits** (`feat:`,
   `fix:` …). Demo-app commits are exempt.
+- `package-lock.json` is generated with **npm 11**: `npm ci` is strict about lock sync and the
+  npm 10 bundled with Node 22 rejects an npm 11 lock. After changing dependencies (or pulling an
+  updated lockfile) run `npm install` first to refresh the lock, then `npm ci`. CI pins npm 11 in
+  `.github/workflows/static.yml`.
 - Every push to `master` runs CI that runs tests + demo build and **deploys the demo to GitHub
   Pages** (`.github/workflows/static.yml`). Keep master green.
 - New public exports go into the matching entry point: `libs/angular-i18next/src/lib/index.ts`
