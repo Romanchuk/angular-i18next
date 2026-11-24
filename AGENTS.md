@@ -64,6 +64,10 @@ How the maintainer actually writes this library — follow for new code:
   `-0` (e.g. `21.0.1-0`). When upgrading Angular: bump root `devDependencies` and lib
   `peerDependencies`/`optionalDependencies` **together** (and check root `optionalDependencies`
   for stale `@nx/nx-*` platform pins).
+- When a task updates the **i18next version**, always also update the hardcoded `i18nextVersion`
+  in the demo's `AppFooterComponent`
+  (`apps/angular-i18next-demo/src/app/structure/app-footer.component.ts`) — it is displayed on the
+  demo site and is easy to miss.
 - The lib `CHANGELOG.md` is generated from commit messages (`conventional-changelog -p angular`)
   and releases go through `np` → library commits must follow **Conventional Commits** (`feat:`,
   `fix:` …). Demo-app commits are exempt.
