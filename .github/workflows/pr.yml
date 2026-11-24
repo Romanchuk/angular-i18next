@@ -1,0 +1,31 @@
+name: PR checks
+
+on:
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [22.22.x]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Use npm 11 (lockfile is generated with npm 11; npm 10 from Node 22 rejects it)
+        run: npm install -g npm@11
+      - run: npm ci
+      - run: npm run test
+      - run: npx nx run angular-i18next:build
