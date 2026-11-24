@@ -1,3 +1,22 @@
+# [22.0.0-1](https://github.com/Romanchuk/angular-i18next/compare/v20.0.1...v22.0.0-1) (2026-11-24)
+
+
+### Bug Fixes
+
+* build ([58a4928](https://github.com/Romanchuk/angular-i18next/commit/58a4928e28d87d235de5223a3f6c7bc9b8355bd8))
+* build ([4f8d746](https://github.com/Romanchuk/angular-i18next/commit/4f8d746e88401bc339250af3383097f6837823cb))
+* **demo:** allow Render host in SSR host validation (Angular 22 SSRF allowlist) ([429173a](https://github.com/Romanchuk/angular-i18next/commit/429173a65da452849047f9ec88a4e4833fd33438))
+* i18nAppInit function return syntax ([35bbf36](https://github.com/Romanchuk/angular-i18next/commit/35bbf36e14ebba329240cfddbeb7a4b052ea6018))
+* jest test setup ([253a5eb](https://github.com/Romanchuk/angular-i18next/commit/253a5eb47f55428e81ec43c0c48fff2de3036205))
+* units ([2a46eda](https://github.com/Romanchuk/angular-i18next/commit/2a46eda0df9e117357965e7499573a88992fef5b))
+
+
+### Features
+
+* support Angular 22 ([ad1a920](https://github.com/Romanchuk/angular-i18next/commit/ad1a92008002b3163eb0c9651fcb9ca5deff28eb)), closes [#144](https://github.com/Romanchuk/angular-i18next/issues/144)
+
+
+
 # [22.0.0-0](https://github.com/Romanchuk/angular-i18next/compare/v20.0.1...v22.0.0-0) (2026-11-24)
 
 
