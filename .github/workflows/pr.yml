@@ -27,5 +27,6 @@ jobs:
       - name: Use npm 11 (lockfile is generated with npm 11; npm 10 from Node 22 rejects it)
         run: npm install -g npm@11
       - run: npm ci
+      - run: npm run lint
       - run: npm run test
       - run: npx nx run angular-i18next:build

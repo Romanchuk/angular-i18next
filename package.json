@@ -35,7 +35,7 @@
   "scripts": {
     "start": "npx nx run angular-i18next-demo:serve:development",
     "test": "npx nx test angular-i18next",
-    "lint": "npx nx workspace-lint && ng lint",
+    "lint": "npx nx run-many -t lint",
     "affected:apps": "npx nx affected:apps",
     "affected:libs": "npx nx affected:libs",
     "affected:build": "npx nx affected:build",
