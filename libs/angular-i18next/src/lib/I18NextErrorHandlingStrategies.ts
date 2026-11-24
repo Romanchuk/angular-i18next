@@ -15,8 +15,8 @@ export class NativeErrorHandlingStrategy
     resolve: (thenableOrResult?: I18NextLoadResult) => void,
     reject: (error: any) => void
   ) {
-    return (err: any, t?: Function) => {
-      let result: I18NextLoadResult = {
+    return (err: any, t?: i18n.TFunction) => {
+      const result: I18NextLoadResult = {
         err: err,
         t: t,
       };
@@ -33,7 +33,7 @@ export class StrictErrorHandlingStrategy
     reject: (error: any) => void
   ) {
     return (err: any, t?: any) => {
-      let result: I18NextLoadResult = {
+      const result: I18NextLoadResult = {
         err: err,
         t: t,
       };

@@ -5,11 +5,10 @@ import { NamespaceResolver } from "./models";
 
 export function resolver(
   activatedRouteSnapshot: any,
-  routerStateSnapshot: any
-): NamespaceResolver {
+  routerStateSnapshot?: any
+): Promise<void> {
   const i18next: ITranslationService = inject(I18NEXT_SERVICE);
-  let namespaces: string[] = activatedRouteSnapshot.data?.i18nextNamespaces ?? [];
-  // @ts-ignore
+  const namespaces: string[] = activatedRouteSnapshot.data?.i18nextNamespaces ?? [];
   return i18next.loadNamespaces(namespaces.filter((n) => n));
 }
 

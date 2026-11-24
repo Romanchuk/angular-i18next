@@ -14,7 +14,7 @@ export class I18NextFormatPipe implements PipeTransform {
   ) {}
 
   public transform(value: any, options: FormatPipeOptions | string): string {
-    let opts: FormatPipeOptions =
+    const opts: FormatPipeOptions =
       typeof options === 'string' ? { format: options } : options;
     return this.translateI18Next.format(value, opts.format, opts.lng);
   }

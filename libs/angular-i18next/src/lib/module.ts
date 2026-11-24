@@ -90,13 +90,13 @@ export class I18NextModule {
     };
   }
 
-  static interpolationFormat(customFormat: Function | null = null): FormatFunction {
+  static interpolationFormat(customFormat: FormatFunction | null = null): FormatFunction {
     function formatDelegate(value: any,
                             format?: string,
                             lng?: string,
                             options?: InterpolationOptions & { [key: string]: any }
     ): string {
-      let formatedValue: string = defaultInterpolationFormat(
+      const formatedValue: string = defaultInterpolationFormat(
         value,
         format,
         lng

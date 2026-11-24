@@ -24,30 +24,30 @@ describe('I18NextModule', () => {
   });
 
   it('should provide tokens with default values', () =>  {
-    let tokenNs = TestBed.inject(I18NEXT_NAMESPACE);
+    const tokenNs = TestBed.inject(I18NEXT_NAMESPACE);
     expect(tokenNs).toEqual(DEFAULT_NAMESPACE);
-    let tokenScope = TestBed.inject(I18NEXT_SCOPE);
+    const tokenScope = TestBed.inject(I18NEXT_SCOPE);
     expect(tokenScope).toEqual(DEFAULT_SCOPE);
   });
 
   it('should provide I18NextService', () => {
-    let i18nextService = TestBed.inject(I18NEXT_SERVICE);
+    const i18nextService = TestBed.inject(I18NEXT_SERVICE);
     expect(i18nextService).not.toBeNull();
-    let i18nextService2 = TestBed.inject(I18NextService);
+    const i18nextService2 = TestBed.inject(I18NextService);
     expect(i18nextService2).not.toBeNull();
   });
 
   it('should provide pipes',  () =>  {
-    let i18nextPipe = TestBed.inject(I18NextPipe);
+    const i18nextPipe = TestBed.inject(I18NextPipe);
     expect(i18nextPipe).not.toBeNull();
-    let i18nextCapPipe = TestBed.inject(I18NextCapPipe);
+    const i18nextCapPipe = TestBed.inject(I18NextCapPipe);
     expect(i18nextCapPipe).not.toBeNull();
-    let i18nextFormatPipe = TestBed.inject(I18NextFormatPipe);
+    const i18nextFormatPipe = TestBed.inject(I18NextFormatPipe);
     expect(i18nextFormatPipe).not.toBeNull();
   });
 
   it('should provide title',  () => {
-    let title: I18NextTitle = TestBed.inject(I18NextTitle);
+    const title: I18NextTitle = TestBed.inject(I18NextTitle);
     expect(title).toBeTruthy();
     expect(title instanceof I18NextTitle).toBeTruthy();
   });
@@ -63,13 +63,13 @@ describe('I18NextModule', () => {
     expect(uppercaseTest).toEqual('TEST');
     expect(uppercaseTest).toEqual(uppercase2Test);
 
-    let lowercaseTest = defaultInterpolationFormat('TEST', 'lower');
-    let lowercase2Test = defaultInterpolationFormat('TEST', 'lowercase');
+    const lowercaseTest = defaultInterpolationFormat('TEST', 'lower');
+    const lowercase2Test = defaultInterpolationFormat('TEST', 'lowercase');
     expect(lowercaseTest).toEqual('test');
     expect(lowercaseTest).toEqual(lowercase2Test);
 
-    let noFormat = defaultInterpolationFormat('test', undefined);
-    let noFormat2 = defaultInterpolationFormat('test', 'none');
+    const noFormat = defaultInterpolationFormat('test', undefined);
+    const noFormat2 = defaultInterpolationFormat('test', 'none');
     expect(noFormat).toEqual('test');
     expect(noFormat).toEqual(noFormat2);
   });
@@ -78,20 +78,20 @@ describe('I18NextModule', () => {
     const valueParam = 'test';
     const formatParam = 'cap';
     const lngParam = 'en';
-    let customFormat = function (value: any, format: any, lng: any) {
+    const customFormat = function (value: any, format: any, lng: any) {
       expect(value).toEqual('Test');
       expect(format).toEqual(formatParam);
       expect(lng).toEqual(lngParam);
 
       return `$${value}$`;
     };
-    let formatFunc = I18NextModule.interpolationFormat(customFormat);
-    let result = formatFunc(valueParam, formatParam, lngParam);
+    const formatFunc = I18NextModule.interpolationFormat(customFormat);
+    const result = formatFunc(valueParam, formatParam, lngParam);
     expect(result).toBe('$Test$');
   });
 
   it('should provide resolver', (done) => {
-    let resolver =  TestBed.inject(I18NEXT_NAMESPACE_RESOLVER);
+    const resolver =  TestBed.inject(I18NEXT_NAMESPACE_RESOLVER);
     expect(resolver).toBeTruthy();
 
     TestBed.runInInjectionContext(() => {

@@ -175,7 +175,7 @@ export class I18NextService implements ITranslationService {
   }
 
   public async reloadResources(...params: any) {
-    await this.i18next.reloadResources.apply(this.i18next, params);
+    await this.i18next.reloadResources(...params);
   }
 
   public getResource(lng: string, ns: string, key: string, options: any) {

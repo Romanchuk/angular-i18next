@@ -30,7 +30,7 @@ describe('I18Next Provider', () => {
           ChangeDetectorRef,
           provideAppInitializer(() => {
             const i18next = inject(I18NEXT_SERVICE);
-            let promise: Promise<I18NextLoadResult> = i18next.init({
+            const promise: Promise<I18NextLoadResult> = i18next.init({
               lng: 'en',
               interpolation: {
                 format: interpolationFormat(),

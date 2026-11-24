@@ -22,7 +22,7 @@ export class I18NextPipe implements PipeTransform {
   public transform(key: string | string[], options?: PipeOptions): string {
     options = this.prepareOptions(options);
 
-    let i18nOpts = this.translateI18Next.options;
+    const i18nOpts = this.translateI18Next.options;
     if (options.prependScope === undefined || options.prependScope === true) {
       if (this.scope) {
         key = this.prependScope(
@@ -70,7 +70,7 @@ export class I18NextPipe implements PipeTransform {
     if (typeof scope === 'string') {
       scope = [scope];
     }
-    let keysWithScope = [];
+    const keysWithScope = [];
     for (let i = 0; i < key.length; i++) {
       const k = key[i];
       if (!this.keyContainsNsSeparator(k, nsSep)) {
@@ -96,7 +96,7 @@ export class I18NextPipe implements PipeTransform {
     if (typeof ns === 'string') {
       ns = [ns];
     }
-    let keysWithNamespace = [];
+    const keysWithNamespace = [];
     for (let i = 0; i < key.length; i++) {
       const k = key[i];
       if (!this.keyContainsNsSeparator(k, nsSep)) {

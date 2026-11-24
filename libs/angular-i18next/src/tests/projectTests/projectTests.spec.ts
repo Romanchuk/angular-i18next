@@ -11,7 +11,7 @@ describe('Project component tests', function () {
   });
 
   it('should test project component', function () {
-    let pc = TestBed.createComponent(ProjectComponent);
+    const pc = TestBed.createComponent(ProjectComponent);
     expect(pc).toBeDefined();
     pc.detectChanges();
   });

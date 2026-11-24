@@ -12,7 +12,7 @@ describe('I18NextEagerPipe', () => {
   beforeEach(async () => {
       TestBed.configureTestingModule({
         providers: [...MOCK_I18N_PROVIDERS,
-          { provide: ChangeDetectorRef, useValue: { detectChanges: () => { }, markForCheck: () => { } } }, {
+          { provide: ChangeDetectorRef, useValue: { detectChanges: () => undefined, markForCheck: () => undefined } }, {
             provide: I18NEXT_SCOPE,
             useValue: 'scope'
           },

@@ -26,7 +26,7 @@ export class I18NextEagerPipe
 {
   private lastKey: string | undefined;
   private lastOptions: PipeOptions | undefined;
-  private lastValue: string = '';
+  private lastValue = '';
 
   constructor(
     @Inject(I18NEXT_SERVICE) protected override translateI18Next: ITranslationService,
