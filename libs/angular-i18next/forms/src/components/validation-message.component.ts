@@ -24,7 +24,7 @@ import { combineLatest, startWith, Subscription, tap } from "rxjs";
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [I18NextCapPipe],
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     'class': 'i18next-validation-message'
   }

@@ -1,5 +1,5 @@
 
-import { Component, Inject, ViewEncapsulation, OnInit, signal, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, OnInit, signal, ChangeDetectionStrategy, inject } from '@angular/core';
 import { I18NEXT_SERVICE, I18NextCapPipe, ITranslationService } from 'angular-i18next';
 
 @Component({
@@ -7,7 +7,7 @@ import { I18NEXT_SERVICE, I18NextCapPipe, ITranslationService } from 'angular-i1
   encapsulation: ViewEncapsulation.None,
   templateUrl: './header.language.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18NextCapPipe]
 })
 export class HeaderLanguageComponent implements OnInit {
@@ -15,10 +15,7 @@ export class HeaderLanguageComponent implements OnInit {
   currentLanguage = signal('ru');
   languages: string[] = ['ru', 'en'];
 
-  constructor(
-    @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService
-  )
-  {}
+  private i18NextService = inject(I18NEXT_SERVICE);
 
   ngOnInit() {
     this.i18NextService.events.initialized.subscribe((e) => {

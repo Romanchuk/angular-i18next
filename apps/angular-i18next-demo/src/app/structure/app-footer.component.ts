@@ -5,15 +5,10 @@ import { Component, VERSION, ViewEncapsulation, ChangeDetectionStrategy } from '
   selector: 'app-footer',
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app-footer.component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true
 })
 export class AppFooterComponent {
-  angularVersion = '0.0.0';
-  i18nextVersion = '0.0.0';
-  constructor(){
-    this.angularVersion = VERSION.full;
-    this.i18nextVersion = '24.2.1';
-  }
-
+  angularVersion = VERSION.full;
+  i18nextVersion = '25.10.10';
 }

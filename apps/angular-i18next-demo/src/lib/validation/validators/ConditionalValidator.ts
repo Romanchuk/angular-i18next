@@ -42,7 +42,7 @@ this.formBuilder.group({
 
 
 interface ConditionalFunc {
-  (rootGroup: FormGroup | FormArray): Boolean;
+  (rootGroup: FormGroup | FormArray): boolean;
 }
 
 
@@ -53,8 +53,8 @@ export class ConditionalValidator {
   * @param {ValidatorFn} validator Валидатор, который будет применен
   * @param {Boolean} trackParentOnly Подписка только на изменение значения родителя (По-умолчанию подписка на root)
   */
-  static set(conditional: ConditionalFunc, validator: ValidatorFn, trackParentOnly: Boolean = null): ValidatorFn {
-    let revalidateSub: Boolean;
+  static set(conditional: ConditionalFunc, validator: ValidatorFn, trackParentOnly: boolean | null = null): ValidatorFn {
+    let revalidateSub: boolean;
     return (control: FormControl) => {
       if (control && control.parent) {
         if (!revalidateSub) {
@@ -70,13 +70,13 @@ export class ConditionalValidator {
   }
 
   /* Не реализован */
-  static setAsync(conditional: Function, validator: AsyncValidatorFn): AsyncValidatorFn {
+  static setAsync(conditional: ConditionalFunc, validator: AsyncValidatorFn): AsyncValidatorFn {
     throw new Error('Not implemented'); // todo: implement
   }
 
   static equivalent(controlKey: string, expectedValue: any): ConditionalFunc {
     return (rootGroup: FormGroup|FormArray) => {
-      let control = rootGroup.get(controlKey);
+      const control = rootGroup.get(controlKey);
       if (!control)
         return expectedValue === undefined;
       return expectedValue === control.value;
@@ -84,8 +84,8 @@ export class ConditionalValidator {
   }
 }
 
-function revalidateOnChanges(control: AbstractControl, trackParentOnly: Boolean = null): void {
-  let parentControl = trackParentOnly ? control.parent : control.root;
+function revalidateOnChanges(control: AbstractControl, trackParentOnly: boolean | null = null): void {
+  const parentControl = trackParentOnly ? control.parent : control.root;
   parentControl.valueChanges
     .pipe(
         distinctUntilChanged((a, b) => {
@@ -95,7 +95,7 @@ function revalidateOnChanges(control: AbstractControl, trackParentOnly: Boolean 
           } else if (a && b && Object.keys(a).length !== Object.keys(b).length) {
             return false;
           } else if (a && b) {
-            for (let i in a) {
+            for (const i in a) {
               if (a[i] !== b[i]) {
                 return false;
               }

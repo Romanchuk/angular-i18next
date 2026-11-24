@@ -8,7 +8,7 @@ import { I18NextCapPipe, I18NextFormatPipe, I18NextPipe } from "angular-i18next"
   encapsulation: ViewEncapsulation.None,
   templateUrl: './simple-demo.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18NextCapPipe, I18NextPipe, I18NextFormatPipe, FormsModule]
 })
 export class SimpleDemoComponent {

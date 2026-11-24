@@ -1,4 +1,4 @@
-/* eslint-disable */
+ 
 export default {
   displayName: 'angular-i18next-demo',
   preset: '../../jest.preset.js',

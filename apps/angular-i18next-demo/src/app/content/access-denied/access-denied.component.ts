@@ -6,7 +6,7 @@ import { I18NextPipe } from "angular-i18next";
   selector: 'access-denied',
   templateUrl: './access-denied.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18NextPipe]
 })
 export class AccessDeniedComponent {

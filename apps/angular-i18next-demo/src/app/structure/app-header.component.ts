@@ -8,7 +8,7 @@ import { RouterLink } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app-header.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18NextPipe, I18NextCapPipe, HeaderLanguageComponent, RouterLink],
 })
 export class AppHeaderComponent {}

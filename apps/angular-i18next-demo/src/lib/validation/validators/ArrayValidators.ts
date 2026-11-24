@@ -2,14 +2,14 @@ import { OnChanges, SimpleChanges, Component, Directive, forwardRef } from '@ang
 import { Validator, AsyncValidatorFn, ValidatorFn, FormControl, FormGroup, FormArray, AbstractControl, NG_VALIDATORS } from '@angular/forms';
 
 export class ArrayValidators {
-  static minLength(minLength: Number, ignoreNullAndUndefined: Boolean = false): ValidatorFn {
+  static minLength(minLength: number, ignoreNullAndUndefined = false): ValidatorFn {
     return (control: FormControl) => {
       if (control) {
-        let isArray = control.value instanceof Array;
+        const isArray = control.value instanceof Array;
         if (!isArray)
           throw new Error('Control value must be array!');
-        let val: Array<any> = control.value;
-        let isValid: Boolean = false;
+        const val: Array<any> = control.value;
+        let isValid = false;
         if (!ignoreNullAndUndefined)
           isValid = val.length >= minLength;
         else
@@ -20,14 +20,14 @@ export class ArrayValidators {
       }
     };
   }
-  static maxLength(maxLength: Number, ignoreNullAndUndefined: Boolean = false): ValidatorFn {
+  static maxLength(maxLength: number, ignoreNullAndUndefined = false): ValidatorFn {
     return (control: FormControl) => {
       if (control) {
-        let isArray = control.value instanceof Array;
+        const isArray = control.value instanceof Array;
         if (!isArray)
           throw new Error('Control value must be array!');
-        let val: Array<any> = control.value;
-        let isValid: Boolean = false;
+        const val: Array<any> = control.value;
+        let isValid = false;
         if (!ignoreNullAndUndefined)
           isValid = val.length <= maxLength;
         else
@@ -39,14 +39,14 @@ export class ArrayValidators {
     };
   }
 
-  static eqLength(length: Number, ignoreNullAndUndefined: Boolean = false): ValidatorFn {
+  static eqLength(length: number, ignoreNullAndUndefined = false): ValidatorFn {
     return (control: FormControl) => {
       if (control) {
-        let isArray = control.value instanceof Array;
+        const isArray = control.value instanceof Array;
         if (!isArray)
           throw new Error('Control value must be array!');
-        let val: Array<any> = control.value;
-        let isValid: Boolean = false;
+        const val: Array<any> = control.value;
+        let isValid = false;
         if (!ignoreNullAndUndefined)
           isValid = val.length === length;
         else

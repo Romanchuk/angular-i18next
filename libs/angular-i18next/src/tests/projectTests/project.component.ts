@@ -6,7 +6,7 @@ import { I18NextPipe } from '../../lib';
   encapsulation: ViewEncapsulation.None,
   template: '<div>{{ "privet" | i18next }}</div>',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18NextPipe]
 })
 export class ProjectComponent {}

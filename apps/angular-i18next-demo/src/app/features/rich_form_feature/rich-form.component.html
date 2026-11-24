@@ -8,14 +8,14 @@
         <div class="row">
             <div class="col-6">
                 <div class="form-group">
-                    <label class="control-label control-label-sm text-muted">{{ 'email' | i18nextCap }}</label>
-                    <input i18nextValidationMessage name="email" type="email" class="form-control" formControlName="email" />
+                    <label for="email" class="control-label control-label-sm text-muted">{{ 'email' | i18nextCap }}</label>
+                    <input i18nextValidationMessage id="email" name="email" type="email" class="form-control" formControlName="email" />
                 </div>
             </div>
             <div class="col-6">
                 <div class="form-group">
-                    <label class="control-label control-label-sm text-muted">{{ 'count' | i18nextCap }}</label>
-                    <input  i18nextValidationMessage name="count" type="number" class="form-control" formControlName="count" />
+                    <label for="count" class="control-label control-label-sm text-muted">{{ 'count' | i18nextCap }}</label>
+                    <input  i18nextValidationMessage id="count" name="count" type="number" class="form-control" formControlName="count" />
                 </div>
             </div>
         </div>
@@ -29,14 +29,14 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="control-label control-label-sm text-muted">{{ 'person.last_name' | i18next: { format: 'cap' } }}</label>
-                        <input i18nextValidationMessage class="form-control" type="text" formControlName="lastName"/>
+                        <label for="lastName" class="control-label control-label-sm text-muted">{{ 'person.last_name' | i18next: { format: 'cap' } }}</label>
+                        <input i18nextValidationMessage id="lastName" class="form-control" type="text" formControlName="lastName"/>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="control-label control-label-sm text-muted">{{ 'person.first_name' | i18next: { format: 'cap' } }}</label>
-                        <input i18nextValidationMessage class="form-control" type="text" formControlName="firstName">
+                        <label for="firstName" class="control-label control-label-sm text-muted">{{ 'person.first_name' | i18next: { format: 'cap' } }}</label>
+                        <input i18nextValidationMessage id="firstName" class="form-control" type="text" formControlName="firstName">
                     </div>
                 </div>
             </div>
@@ -44,8 +44,8 @@
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label class="control-label control-label-sm text-muted">{{ 'person.middle_name' | i18next: { format: 'cap' } }}</label>
-                        <input i18nextValidationMessage class="form-control" type="text" formControlName="middleName">
+                        <label for="middleName" class="control-label control-label-sm text-muted">{{ 'person.middle_name' | i18next: { format: 'cap' } }}</label>
+                        <input i18nextValidationMessage id="middleName" class="form-control" type="text" formControlName="middleName">
                     </div>
                 </div>
                 <div class="col-6">

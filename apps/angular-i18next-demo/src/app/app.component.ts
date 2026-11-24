@@ -1,5 +1,5 @@
 
-import { Component, Inject, OnInit, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ChangeDetectionStrategy, inject, signal } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import {
   Event as RouterEvent, NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router,
@@ -16,25 +16,26 @@ import { AppFooterComponent } from "./structure/app-footer.component";
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app.component.html',
   standalone: true,
-  changeDetection: ChangeDetectionStrategy.Eager,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [I18NextPipe, AppHeaderComponent, AppFooterComponent, RouterOutlet],
 })
 export class AppComponent implements OnInit  {
 
-  loading = true;
-  start = 0;
+  loading = signal(true);
+
+  private router = inject(Router);
+  private _title = inject(Title);
+  private i18NextService = inject(I18NEXT_SERVICE);
 
   get title() {
     return this._title.getTitle();
   }
 
-  constructor(private router: Router,
-              private _title: Title,
-              @Inject(I18NEXT_SERVICE) private i18NextService: ITranslationService) {
+  constructor() {
 
 
       // spinner/loader subscription
-      router.events
+      this.router.events
         .subscribe((event: RouterEvent) => {
             this.navigationInterceptor(event);
         });
@@ -74,12 +75,12 @@ export class AppComponent implements OnInit  {
   // http://stackoverflow.com/questions/37069609/show-loading-screen-when-navigating-between-routes-in-angular-2
   navigationInterceptor(event: RouterEvent): void {
         if (event instanceof NavigationStart) {
-            this.loading = true;
+            this.loading.set(true);
         }
         if (event instanceof NavigationEnd
             || event instanceof NavigationCancel
             || event instanceof NavigationError) {
-            this.loading = false;
+            this.loading.set(false);
         }
     }
 
