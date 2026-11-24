@@ -50,5 +50,6 @@ apps/angular-i18next-demo/     # demo app (CSR + SSR)
 
 ## Compatibility
 
-- Library major = Angular major (21.x now); i18next >= 25.4; Node >= 22.13.
+- Library major = Angular major (22.x now); i18next >= 25.4 (26/27 need lib changes — follow-up);
+  Node `^22.22.3 || ^24.15.0 || >=26` (root `engines`).
 - AOT- and zoneless-compatible; SSR via `angular-i18next/ssr` (`i18next-http-middleware` in demo `server.ts`).

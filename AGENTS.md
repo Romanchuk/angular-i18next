@@ -60,9 +60,10 @@ How the maintainer actually writes this library — follow for new code:
 
 ## Landmines
 
-- Library major version tracks the **Angular major** (21.x → Angular 21). Prereleases end with
+- Library major version tracks the **Angular major** (22.x → Angular 22). Prereleases end with
   `-0` (e.g. `21.0.1-0`). When upgrading Angular: bump root `devDependencies` and lib
-  `peerDependencies`/`optionalDependencies` **together**.
+  `peerDependencies`/`optionalDependencies` **together** (and check root `optionalDependencies`
+  for stale `@nx/nx-*` platform pins).
 - The lib `CHANGELOG.md` is generated from commit messages (`conventional-changelog -p angular`)
   and releases go through `np` → library commits must follow **Conventional Commits** (`feat:`,
   `fix:` …). Demo-app commits are exempt.
@@ -76,5 +77,6 @@ How the maintainer actually writes this library — follow for new code:
 
 ## Environment
 
-- Windows dev machine: `npx.ps1` may be blocked by the PowerShell execution policy — if
-  `npx nx ...` fails, use `node node_modules/nx/bin/nx.js ...`.
+- Windows dev machine: `npm.ps1`/`npx.ps1` may be blocked by the PowerShell execution policy —
+  use `npm.cmd ...` / `npx.cmd ...`, or run nx directly:
+  `node node_modules/nx/dist/bin/nx.js ...` (Nx 23+; before Nx 23 it was `node_modules/nx/bin/nx.js`).
