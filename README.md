@@ -167,7 +167,7 @@ This is the impure analog of *i18next pipe* that is subscribed to language chang
 
 **Warning!**: Use i18nextEager only in combine with [OnPush change detection strategy](https://netbasal.com/a-comprehensive-guide-to-angular-onpush-change-detection-strategy-5bac493074a4), or else (default change detection) each pipe will retrigger more than one time (cause of performance issues).
 
-**Note (Angular 22+):** OnPush is now the default change detection strategy. The pure `i18next` pipe does not update on language change by itself — use `i18nextEager` to react to language changes right away, or set `ChangeDetectionStrategy.Eager` on the component (the former default) to keep the pure pipe working.
+**Note:** The `i18next` pipe translates once and does not re-fire on language change — that is by design (an optimization): a language change requires a reload. Use `i18nextEager` to re-translate right away on language change. Keep your components on the OnPush change detection strategy (the default since Angular 22).
 
 Subscribing to event observables:
 
