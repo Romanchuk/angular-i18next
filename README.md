@@ -327,6 +327,11 @@ export const config = mergeApplicationConfig(appConfig, serverConfig);
 
 2. Configure i18next in `server.ts` ([Example](./apps/angular-i18next-demo/src/server.ts)):
 
+3. Since Angular 22, the SSR engine validates `Host` / proxy headers against an allowlist
+   (SSRF protection) and returns `400 Bad Request` for unrecognized hostnames. If your app runs
+   behind a proxy or on a custom domain, configure `allowedHosts` and `trustProxyHeaders`
+   in `AngularNodeAppEngine` — see the [demo `server.ts`](./apps/angular-i18next-demo/src/server.ts).
+
 ### Auto error message for `@angular/forms`
 
 Use `i18nextValidationMessage` directive with formControlName

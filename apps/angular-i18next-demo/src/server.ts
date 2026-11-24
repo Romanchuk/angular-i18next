@@ -22,6 +22,9 @@ const angularApp = new AngularNodeAppEngine({
   // The demo runs on Render behind its proxy; these headers are trusted for absolute URLs/redirects.
   // See https://angular.dev/best-practices/security#configuring-trusted-proxy-headers
   trustProxyHeaders: ['x-forwarded-host', 'x-forwarded-proto'],
+  // Angular 22 validates Host / X-Forwarded-Host against an allowlist (SSRF protection,
+  // https://angular.dev/best-practices/security#configuring-allowed-hosts).
+  allowedHosts: ['angular-i18next.onrender.com', 'localhost'],
 });
 
 await i18next
