@@ -9,6 +9,7 @@
     "build": {
       "executor": "@nx/angular:application",
       "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
       "options": {
         "browser": "apps/angular-i18next-demo/src/main.ts",
         "outputPath": "dist/angular-i18next-demo",
@@ -55,11 +56,11 @@
           "sourceMap": true,
           "namedChunks": true
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "serve": {
       "executor": "@nx/angular:dev-server",
+      "defaultConfiguration": "development",
       "configurations": {
         "production": {
           "buildTarget": "angular-i18next-demo:build:production"
@@ -67,8 +68,7 @@
         "development": {
           "buildTarget": "angular-i18next-demo:build:development"
         }
-      },
-      "defaultConfiguration": "development"
+      }
     },
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",

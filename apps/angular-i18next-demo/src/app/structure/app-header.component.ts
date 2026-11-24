@@ -1,4 +1,4 @@
-﻿import { Component, ViewEncapsulation } from '@angular/core';
+﻿import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { I18NextCapPipe, I18NextPipe } from 'angular-i18next';
 import { HeaderLanguageComponent } from "./header-controls/header.language.component";
 import { RouterLink } from '@angular/router';
@@ -8,6 +8,7 @@ import { RouterLink } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   templateUrl: './app-header.component.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [I18NextPipe, I18NextCapPipe, HeaderLanguageComponent, RouterLink],
 })
 export class AppHeaderComponent {}

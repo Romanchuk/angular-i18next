@@ -1,5 +1,5 @@
 ﻿
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { I18NextCapPipe, I18NextFormatPipe, I18NextPipe } from "angular-i18next";
 
@@ -8,6 +8,7 @@ import { I18NextCapPipe, I18NextFormatPipe, I18NextPipe } from "angular-i18next"
   encapsulation: ViewEncapsulation.None,
   templateUrl: './simple-demo.component.html',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [I18NextCapPipe, I18NextPipe, I18NextFormatPipe, FormsModule]
 })
 export class SimpleDemoComponent {

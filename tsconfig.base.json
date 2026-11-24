@@ -30,8 +30,12 @@
       "angular-i18next/ssr": ["libs/angular-i18next/ssr/src/public_api.ts"],
       "angular-i18next/testing": [
         "libs/angular-i18next/testing/src/public_api.ts"
-      ],
-    }
+      ]
+    },
+    "noUncheckedSideEffectImports": false,
+    "types": ["*"],
+    "esModuleInterop": false,
+    "ignoreDeprecations": "6.0"
   },
   "exclude": ["node_modules", "tmp"]
 }

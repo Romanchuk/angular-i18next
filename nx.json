@@ -43,7 +43,7 @@
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "lint": {
-      "inputs": ["default", "{workspaceRoot}/.eslintrc.json"],
+      "inputs": ["default", "{workspaceRoot}/eslint.config.mjs"],
       "cache": true
     },
     "build": {
@@ -73,7 +73,7 @@
   "namedInputs": {
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
-    "production": ["default"]
+    "production": ["default", "!{projectRoot}/eslint.config.mjs"]
   },
   "neverConnectToCloud": true
 }

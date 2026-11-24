@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 import { I18NextPipe } from '../../lib';
 
 @Component({
@@ -6,6 +6,7 @@ import { I18NextPipe } from '../../lib';
   encapsulation: ViewEncapsulation.None,
   template: '<div>{{ "privet" | i18next }}</div>',
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [I18NextPipe]
 })
 export class ProjectComponent {}

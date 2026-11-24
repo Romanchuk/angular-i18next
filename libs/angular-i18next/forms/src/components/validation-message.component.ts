@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, computed, effect, inject, input, signal } from "@angular/core";
+import { Component, ViewEncapsulation, computed, effect, inject, input, signal, ChangeDetectionStrategy } from "@angular/core";
 import { AbstractControl, NgControl } from "@angular/forms";
 import { I18NEXT_NAMESPACE, I18NextCapPipe } from "angular-i18next";
 import { ValidationMessage } from "../models";
@@ -24,6 +24,7 @@ import { combineLatest, startWith, Subscription, tap } from "rxjs";
   encapsulation: ViewEncapsulation.None,
   standalone: true,
   imports: [I18NextCapPipe],
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     'class': 'i18next-validation-message'
   }
