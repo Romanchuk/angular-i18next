@@ -68,6 +68,10 @@ How the maintainer actually writes this library — follow for new code:
   in the demo's `AppFooterComponent`
   (`apps/angular-i18next-demo/src/app/structure/app-footer.component.ts`) — it is displayed on the
   demo site and is easy to miss.
+- `np` is pinned at **11.2.1**: v12 has a monorepo regression — it ignores the `np.contents`
+  option from `package.json` and publishes the package directory instead of `./dist` (a release
+  without compiled `fesm2022/` + `types/`), and it mangles the OTP URL from `npm publish`.
+  After every release, verify the published tarball contains `fesm2022/` and `types/`.
 - The lib `CHANGELOG.md` is generated from commit messages (`conventional-changelog -p angular`)
   and releases go through `np` → library commits must follow **Conventional Commits** (`feat:`,
   `fix:` …). Demo-app commits are exempt.
