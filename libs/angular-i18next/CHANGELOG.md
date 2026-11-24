@@ -1,3 +1,7 @@
+# [22.0.0-2](https://github.com/Romanchuk/angular-i18next/compare/v22.0.0-1...v22.0.0-2) (2026-11-24)
+
+
+
 # [22.0.0-1](https://github.com/Romanchuk/angular-i18next/compare/v20.0.1...v22.0.0-1) (2026-11-24)
 
 
