@@ -75,5 +75,6 @@
     "sharedGlobals": [],
     "production": ["default", "!{projectRoot}/eslint.config.mjs"]
   },
-  "neverConnectToCloud": true
+  "neverConnectToCloud": true,
+  "analytics": false
 }
