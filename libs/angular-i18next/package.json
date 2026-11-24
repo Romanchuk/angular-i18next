@@ -44,7 +44,7 @@
     "changelog:add": "git add --force CHANGELOG.md package.json",
     "changelog:commit": "git commit -m \"Updated CHANGELOG.md\"",
     "version": "npx conventional-changelog -p angular -i CHANGELOG.md -s -r && npx nx run angular-i18next:build && npm run copy:assets && npm run changelog:add && npm run changelog:commit",
-    "release": "npx np --no-publish",
+    "release": "npx np",
     "test": "npx nx run angular-i18next:test"
   },
   "dependencies": {
